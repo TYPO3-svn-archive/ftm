@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>module</type>
+        <description>Language labels for the Fluid Template Manager extension in the FRONTEND</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            
+            <!-- FTM -->
+            <label index="tx_ftm_domain_model_templatemanager">Fluid Template Manager (FTM)</label>
+
+            <!-- Template -->
+            <label index="tx_ftm_domain_model_template">Fluid Template</label>
+            <label index="tx_ftm_domain_model_template.site_name">Webseiten-Name</label>
+            <label index="tx_ftm_domain_model_template.clear_cache">FTM-Cache leeren</label>
+            <label index="tx_ftm_domain_model_template.template_mode">Template Productive/Development Modus laufen lassen</label>
+            <label index="tx_ftm_domain_model_template.template_type">Template-Typ (YAML, Twitter-Bootstrap oder sonstiges)</label>
+            <label index="tx_ftm_domain_model_template.template_dir">Template-Name (Verzeichnis-Name im Ext-Verzeichnis; bspw.: ftm_theme_companysite)</label>
+            <label index="tx_ftm_domain_model_template.config">Basis-Konfiguration</label>
+            <label index="tx_ftm_domain_model_template.meta">Meta-Angaben</label>
+            <label index="tx_ftm_domain_model_template.language">Website-Sprachen</label>
+            <label index="tx_ftm_domain_model_template.tab_fluid">Fluid-Templates</label>
+            <label index="tx_ftm_domain_model_template.fluid">Fluid-Templates</label>
+            <label index="tx_ftm_domain_model_template.fluid_headline_with_info">Fluid-Templates (das erste Template ist das default-Template!)</label>
+            <label index="tx_ftm_domain_model_template.tab_menu">Menüs</label>
+            <label index="tx_ftm_domain_model_template.menu_container">Menüs</label>
+            <label index="tx_ftm_domain_model_template.tab_less">LESS/CSS</label>
+            <label index="tx_ftm_domain_model_template.less_variable">Less-Variablen</label>
+            <label index="tx_ftm_domain_model_template.tab_extensions">Extensions</label>
+            <label index="tx_ftm_domain_model_template.tab_marker">Marker</label>
+            <label index="tx_ftm_domain_model_template.marker">Marker</label>
+            <label index="tx_ftm_domain_model_template.extensions">Extensions</label>
+
+            <!-- FTM-Config -->
+            <label index="tx_ftm_domain_model_templateconfig">Fluid Template - Basis-Konfiguration</label>
+            <label index="tx_ftm_domain_model_templateconfig.doctype">HTML-Doctype</label>
+            <label index="tx_ftm_domain_model_templateconfig.base_u_r_l">baseURL</label>
+            <label index="tx_ftm_domain_model_templateconfig.link_vars">linkVars</label>
+            <label index="tx_ftm_domain_model_templateconfig.disable_charset_header">Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.</label>
+            <label index="tx_ftm_domain_model_templateconfig.meta_charset">Gibt die Zeichenkodierung für die Ausgabe an. Dieser Wert wird in den Meta-Tag und im HTTP-Header (nur bei config.disableCharsetHeader = 0) verwendet.</label>
+            <label index="tx_ftm_domain_model_templateconfig.tab_language_and_localization">Sprache&amp;Lokaliserung</label>
+            <label index="tx_ftm_domain_model_templateconfig.language_uid">sys_languag_uid</label>
+            <label index="tx_ftm_domain_model_templateconfig.language_title">Sprachen-Title</label>
+            <label index="tx_ftm_domain_model_templateconfig.language">language</label>
+            <label index="tx_ftm_domain_model_templateconfig.locale_all">localeAll</label>
+            <label index="tx_ftm_domain_model_templateconfig.tab_spam_protect">Spam Protect</label>
+            <label index="tx_ftm_domain_model_templateconfig.spam_protect_email_addresses">Spam Protect Email Addresses</label>
+            <label index="tx_ftm_domain_model_templateconfig.spam_protect_email_addresses_at_subst">@-Zeichen ersetzen durch</label>
+            <label index="tx_ftm_domain_model_templateconfig.spam_protect_email_addresses_last_dot_subst">Letzten Punkt ersetzen durch</label>
+            <label index="tx_ftm_domain_model_templateconfig.prefix_local_anchors">Anker Prefix</label>
+            <label index="tx_ftm_domain_model_templateconfig.speaking_paths">Sprechende URLs</label>
+            <label index="tx_ftm_domain_model_templateconfig.use_html5_js">html5.js über ein CDN einbinden?</label>
+            <label index="tx_ftm_domain_model_templateconfig.google_analytics_tracking_code">Google-Analytics Tracking Code (UA-XXXXX-Y)</label>
+
+            <!-- FTM-Meta -->
+            <label index="tx_ftm_domain_model_templatemeta">Fluid Template - Meta-Angaben &amp; SEO</label>
+            <label index="tx_ftm_domain_model_templatemeta.abstract">Abstract</label>
+            <label index="tx_ftm_domain_model_templatemeta.keywords">Keywords</label>
+            <label index="tx_ftm_domain_model_templatemeta.description">Description</label>
+            <label index="tx_ftm_domain_model_templatemeta.author">Author</label>
+            <label index="tx_ftm_domain_model_templatemeta.author_email">Author E-Mail</label>
+            <label index="tx_ftm_domain_model_templatemeta.copyright">Copyright</label>
+            <label index="tx_ftm_domain_model_templatemeta.robots">Robots</label>
+            <label index="tx_ftm_domain_model_templatemeta.revisit">Revisit</label>
+            <label index="tx_ftm_domain_model_templatemeta.useCanonical">Canonical-Tag verwenden?</label>
+            <label index="tx_ftm_domain_model_templatemeta.tab_defaults">Meta-Tag Standardwerte</label>
+
+            <!-- FTM-Language -->
+            <label index="tx_ftm_domain_model_templatelanguage">Fluid Template - Website-Sprachen</label>
+            <label index="tx_ftm_domain_model_templatelanguage.language_uid">Language Uid</label>
+            <label index="tx_ftm_domain_model_templatelanguage.title">Sprachen-Title</label>
+            <label index="tx_ftm_domain_model_templatelanguage.language">Language</label>
+            <label index="tx_ftm_domain_model_templatelanguage.locale_all">Locale All</label>
+
+            <!-- FTM-Fluid -->
+            <label index="tx_ftm_domain_model_templatefluid">Fluid Template - Fluid-Templates</label>
+            <label index="tx_ftm_domain_model_templatefluid.template_title">Template-Title/Beschreibung</label>
+            <label index="tx_ftm_domain_model_templatefluid.template_type">Template-Typ</label>
+            <label index="tx_ftm_domain_model_templatefluid.template_file">Template-(Datei)name</label>
+            <label index="tx_ftm_domain_model_templatefluid.backend_layout">Backend-Layout</label>
+            <label index="tx_ftm_domain_model_templatefluid.template_code">Template-Code</label>
+
+            <!-- FTM-LessVariable -->
+            <label index="tx_ftm_domain_model_templatelessvariable">Fluid Template - Less-Variablen</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_title">Variablen-Title/Beschreibung</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_name">Variablen-Name</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_type">Variablen-Typ</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.category">Kategorie</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_value">Variablen-Wert</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_color">Variablen-Farbe</label>
+
+            <!-- FTM-MenuContainer -->
+            <label index="tx_ftm_domain_model_templatemenucontainer">Fluid Template - Menü-Container</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.menu_name">Menü/Marker-Name</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.templates">Template</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.special">Menü-Typ</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.special_value_list">Menü-Seiten</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.entry_level">Einstiegs-Ebene</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.exclude_uid_list">Ausgeschlossene Seiten</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.include_not_in_menu">Zeige auch Seiten, die eigentlich nicht in Menüs angezeigt werden sollen</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.max_items">Maximale Einträge</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.min_items">Minimale-Einträge</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.std_wrap">Standard-Wrap</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.wrap">Wrap</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.menu_objects">Menü-Objekte/Menü-Ebenen</label>
+
+            <!-- FTM-Marker -->
+            <label index="tx_ftm_domain_model_templatemarker">Fluid Template - Marker</label>
+            <label index="tx_ftm_domain_model_templatemarker.marker_name">Marker-Name</label>
+            <label index="tx_ftm_domain_model_templatemarker.marker_type">Marker-Typ</label>
+            <label index="tx_ftm_domain_model_templatemarker.marker_description">Marker-Beschreibung</label>
+            <label index="tx_ftm_domain_model_templatemarker.marker_typo_script">Marker-TypoScript</label>
+
+            <!-- FTM-MenuObjeke -->
+            <label index="tx_ftm_domain_model_templatemenuobject">Fluid Template - Menü-Objekte</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.menu_type">Menü-Typ</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.exp_all">Untermenüs ausgeklappt</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.std_wrap">Standard-Wrap</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.std_wrap_html_special_chars">Sonderzeichen des Standard-Wrap in HTML-Codes umwandeln</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.wrap">Wrap</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.wrap_html_special_chars">Sonderzeichen des Wrap in HTML-Codes umwandeln</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.menu_states">Menü-Zustände</label>
+
+            <!-- FTM-MenuZustaende -->
+            <label index="tx_ftm_domain_model_templatemenustate">Fluid Template - Menü-Objektzustand</label>
+            <label index="tx_ftm_domain_model_templatemenustate.menu_state">Zustand</label>
+            <label index="tx_ftm_domain_model_templatemenustate.copy_from_state">Kopiere Eigenschalten von Zustand</label>
+            <label index="tx_ftm_domain_model_templatemenustate.std_wrap">Standard-Wrap um dieses Element und Kind-Elemente</label>
+            <label index="tx_ftm_domain_model_templatemenustate.std_wrap_html_special_chars">Sonderzeichen des Standard-Wrap in HTML-Codes umwandeln</label>
+            <label index="tx_ftm_domain_model_templatemenustate.wrap">Wrap um dieses Element</label>
+            <label index="tx_ftm_domain_model_templatemenustate.wrap_html_special_chars">Sonderzeichen des Wrap in HTML-Codes umwandeln</label>
+
+            <!-- FTM-Extensions --> 
+            <label index="tx_ftm_domain_model_templateext">Fluid Template Extension</label>
+            <label index="tx_ftm_domain_model_templateext.hidden">Extension deaktivieren</label>
+            <label index="tx_ftm_domain_model_templateext.ext_key">Extension Key</label>
+            <label index="tx_ftm_domain_model_templateext.ext_name">Extension Name</label>
+            <label index="tx_ftm_domain_model_templateext.ext_version">Extension Version</label>
+            <label index="tx_ftm_domain_model_templateext.ext_conf_t3_less">Extension Configuration T3-Less</label>
+
+            <!-- FTM-Extension: t3less -->
+            <label index="tx_ftm_domain_model_templateextt3less">Fluid Template Extension T3less</label>
+            <label index="tx_ftm_domain_model_templateextt3less.path_to_less_files">Path To Less Files</label>
+            <label index="tx_ftm_domain_model_templateextt3less.output_folder">Output Folder</label>
+            <label index="tx_ftm_domain_model_templateextt3less.less_files">Less Files</label>
+
+            <!-- FTM-Extension: t3less-Files --> 
+            <label index="tx_ftm_domain_model_templateextt3lessfiles">Fluid Template Extension T3less Files</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.name">File name</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.media">The media attribute. Like “screen”, “print” or media queries like “only screen and (max-device-width: 480px)”</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.title">The title attribute. A title for this stylesheet like “general” or “iehacks” or something else</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.compress">Options are 1 (activated) or 0 (deactivated). This setting is for usage of page.config.compressCss</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.force_on_top">Options are 1 (activated) or 0 (deactivated). With this setting you can force to include this file at the top of your html-markup</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.all_wrap">If you want to wrap the included file, please use “allWrap”. Example: &lt;!--[if IE]&gt; | &lt;![endif]--&gt;</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.exclude_from_concatenation">Options are 1 (activated) or 0 (deactivated). This setting is for usage of page.config.concatenateCss</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.exclude_from_page_renderer">With this setting you can exclude this file from pagerenderer. If activated, the file will not be included to your page. </label>
+
+            <!-- GridElements FlexForm -->
+            <label index="tx_ftm_flexform_gridelements.css_classes">CSS-Klassen (benutzerdefinierte)</label>
+            <label index="tx_ftm_flexform_gridelements.css_classes_selection">CSS-Klassen (vordefinierte aus LESS-Dateien)</label>
+            <label index="tx_ftm_flexform_gridelements.equal_height">Equal-Height</label>
+            <label index="tx_ftm_flexform_gridelements.anchor_name">HTML Anker-Name</label>
+            
+            <!-- GridElementClassesRow-Backend -->
+            <label index="tx_ftm_backend_gridelementclassesrow.error_multiple_ftm_templates_on_rootline">Error: Multiple FTM-Templates on rootline! Only one is valid!</label>
+            <!-- %s - Template-Dir -->
+            <label index="tx_ftm_backend_gridelementclassesrow.directory_notice">Options were created from %s directory.</label>
+            <!-- %s - Dokumentation-Link -->
+            <label index="tx_ftm_backend_gridelementclassesrow.documentation_notice">How to manage the provided classes, you can read here: %s.</label>
+            
+            <!-- InformationRow-Backend -->
+            <label index="tx_ftm_backend_informationrow.link_here">hier</label>
+            <label index="tx_ftm_backend_informationrow.extensions_info">Hier finden Sie alle unterstützten Extensions.. hier noch mehr Text, weitere Extensions können Sie
+natürlich auch wie gewohnt von Hand hinzufügen.
+
+Die Reihenfolge der Extensions und deren TypoScript im generierten Setup kann via Drag'n'Drop verändert werden.
+
+Weitere Informationen finden Sie in unserer Dokumentation!
+Fehlt eine Extension die Sie immer verwenden!? Schreiben Sie uns an info@fluid-template-manager.de</label>
+
+            <label index="tx_ftm_backend_informationrow.extension_t3less_info">
+FTM-Templates nutzen die t3_less-Extension um CSS zu generieren.
+Dabei werden der Pfad zu den Less-Quelldateien und zu den compilierten CSS-Dateien automatisch aus dem angegebenen Template-Verzeichnis generiert.
+
+Weitere Informationen zum Less im FTM finden Sie %s.
+</label>
+            <label index="tx_ftm_backend_informationrow.extensions_info">
+Hier können Less-Variablen für die FTM-Templates generiert werden.
+Folgende Less-Variablen bietet der FTM von Haus aus:
+%s -> bspw. http://www.fluid-template-manager.de
+%s -> bspw. http://www.fluid-template-manager.de/typo3conf/ext/ftm_theme_website/
+%s -> bspw. ftm_theme_website
+
+Somit können also auch selbst immer aktuelle Variablen generiert werden, %s könnte dann: %s oder alternativ: %s lauten.
+
+Weitere Informationen zum Less im FTM finden Sie %s
+
+</label>
+            <label index="tx_ftm_backend_informationrow.marker_info">
+Hier können Sie beliebig viele Marker für Ihr FTM-Template bereitstellen.
+
+Alle Informationen zu Markern, deren Verwendung und wie Sie diese Serverübergreifend austauschen können finden Sie %s.
+
+</label>
+            <label index="tx_ftm_backend_informationrow.include_from_template">Aus Vorlage einfügen</label>
+            <label index="tx_ftm_backend_informationrow.confirm_overwrite">Marker wirklich aus Vorlage überschreiben?</label>
+            <label index="tx_ftm_backend_informationrow.no_markers_exist">Es sind noch keine gemerkten Marker vorhanden.</label>
+            <label index="tx_ftm_backend_informationrow.no_saved_markers_exist">Es sind noch keine gemerkten Marker vorhanden.</label>
+            <label index="tx_ftm_backend_informationrow.synchronize_markers_message">Bitte synchronisieren Sie erst Ihre Marker in der Übersicht.</label>
+            <label index="tx_ftm_backend_informationrow.save_marker_in_plugincloud">Marker in PluginCloud merken</label>
+            <label index="tx_ftm_backend_informationrow.click_to_save_marker_in_plugincloud">Hier klicken um den Marker in der PluginCloud zu merken, so dass dieser zu einem späteren Zeitpunkt wiederverwendet werden kann.</label>
+            <label index="tx_ftm_backend_informationrow.warning_savemarkers_headline">Achtung:</label>
+            <label index="tx_ftm_backend_informationrow.warning_savemarkers_message">Bereits existierende Marker mit dem gleichen Namen werden überschrieben!
+Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, alle anderen User die gemerkten Marker sehen können!</label>
+            
+            <!-- Template Manager Controller -->
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update verfügbar!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_headline">FTM Root-Template Fehler!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message1">Es wurde ein Problem mit dem Root-Template auf dieser Seite festgestellt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message2">Bitte stellen Sie sicher das es nur ein Root-Template auf dieser Seite gibt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_update_headline">FTM Root-Template aktualisiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_update_message">Das FTM Root-Template auf dieser Seite wurde aktualisiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_generated_headline">FTM Root-Template erstellt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_generated_message">Es wurde ein FTM Root-Template auf dieser Seite erstellt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_pages_generated_headline">FTM-Seiten erstellt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_template_structure_generated_headline">FTM Template-Struktur erstellt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_template_structure_generated_message">FTM Template-Struktur wurde erstellt bzw. aktualisiert.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.fluid_templates_generated_headline">Fluid-Templates erstellt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_headline">Kein Template-Verzeichnis gefunden!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_message1">In diesem FTM-Template ist noch kein Template-Verzeichnis eingetragen worden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_message2">Bitte editieren Sie den Template-Datensatz, und geben Sie im Feld templateDir den Namen des Verzeichnisses an in dem Ihre Template erstellt werden soll.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_message3">Sobald das FTM-Template ein Template-Verzeichnis beinhaltet, wird die benötigte Verzeichnisstruktur gecheckt und ggf. erstellt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline">Less-Variablen nicht re-/generiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message">Die Less-Variablen konnte re-/generiert werden, da auf dieser Seite anscheinen noch kein FTM-Template existiert.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_headline">Less-Variablen wurden re-/generiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1">Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..less/0_basicLess/4_variables.less abgespeichert werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message2">Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: %s</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.less_variables_generated_headline">Less-Variablen wurden re-/generiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.less_variables_generated_message">Die Less-Variablen für dieses FTM-Template wurde re-/generiert.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline">Less-Variablen nicht re-/generiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message1">Die Less-Variablen konnte re-/generiert werden, es gab einen Fehler beim Aufruf des Generierungs-WebServices.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message2">Bitte versuchen Sie es später noch einmal. Sollte der Fehler erneut auftreten kontaktieren Sie das Entwicklungs-Team.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline">Snippets wurden ausgelesen!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1">Die Marker Snippets wurden ausgelesen, konnten aber nicht in der %s abgespeichert werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2">Bitte prüfe die Datei/Pfad auf Korrektheit und Schreibrechte: %s</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.marker_saved_headline">Marker wurde gemerkt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.marker_saved_message">Marker %s wurde in PluginCloud gemerkt.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_saved_headline">Marker nicht gemerkt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_saved_message">Marker %s konnte nicht in der PluginCloud gemerkt werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_found">Der einzufügende Marker konnte nicht gefunden werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.marker_included_headline">Marker wurde eingefügt</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.marker_included_message">Marker-Vorlage %s wurde erfolgreich in Marker %s eingefügt.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_markers_not_synchronized">Vorlagen konnten nicht gefunden werden, bitte synchronisieren Sie die Marker.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_included_headline">Marker nicht eingefügt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_included_message">Marker-Vorlage %s konnte nicht in Marker %s eingefügt werden. %s</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline">Snippets wurden ausgelesen!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1">Die Marker Snippets wurden ausgelesen, konnten aber nicht in der %s abgespeichert werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.snippets_read_headline">Snippets wurden ausgelesen!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.snippets_read_message">Es wurden alle Snippets aus der PluginCloud ausgelesen.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_headline">Snippets nicht ausgelesen!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_message">Es konnten keine Snippets aus der PluginCloud ausgelesen werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_ftm_template_not_exists_headline">TypoScript nicht re-/generiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_ftm_template_not_exists_message">Das %s TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch kein FTM-Template existiert.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_fluid_template_not_exists_headline">TypoScript nicht re-/generiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_fluid_template_not_exists_message">Das %s TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch keine Fluid-Templates existieren.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_headline">TypoScript wurde re-/generiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_message1">Das %s TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der setup.ts abgespeichert werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_message2">Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: %s</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_file_generated">Das %s TypoScript für dieses FTM-Template wurde re-/generiert.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_generated">TypoScript wurde re-/generiert.</label>      
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_constants_headline">TypoScript wurde re-/generiert!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_constants_message1">Das %s TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der constants.ts abgespeichert werden.</label>                                                                                                                                                         
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_constants_message2">Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: %s</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_tsconfig_headline">TypoScript wurde re-/generiert!</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_tsconfig_message1">Das %s TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der tsConfig.ts abgespeichert werden.</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_tsconfig_message2">Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: %s</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.template_file_copied_headline">Fluid-%s-Datei wurde erfolgreich in Fluid-%s-Datensatz kopiert!</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.template_file_copied_message">Die %s.html Fluid-%s-Datei wurde erfolgreich kopiert.</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_template_file_not_found_headline">Fluid-%s-Datei konnte nicht kopiert werden!</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_template_file_not_found_message">Die $s.html Fluid-%s-Datei konnte nicht gefunden werden.</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.fluid_datarecord_copied_headline">Fluid-%s-Datensatz wurde erfolgreich in Fluid-%s-Datei kopiert!</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.fluid_datarecord_copied_message">Die %s.html Fluid-%s-Datei wurde erfolgreich kopiert.</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_template_file_not_copied_headline">Fluid-%s-Datei konnte nicht kopiert werden!</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_template_file_not_copied_message1">Die %s.html Fluid-%s-Datei konnte nicht kopiert werden.</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_template_file_not_copied_message2">Bitte prüfen Sie den Dateinamen und die Verzeichnisrechte.</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.warning_datarecord_not_found_headline">Fluid-%s konnte nicht gefunden werden!</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.warning_datarecord_not_found_message">Der Datensatz zum %s.html Fluid-%s konnte nicht gefunden werden.%s</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_extension_not_found">%s Extension konnte nicht gefunden werden</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_realurl_not_found">RealURL (ab Version 1.12.6) Extension konnte nicht gefunden werden</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_simulatestatic_not_found">simulatestatic Extension konnte nicht gefunden werden</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_extension_missing">Erforderliche Extension fehlt!</label>  
+            <label index="tx_ftm_controller_templatemanagercontroller.error_extensions_missing">Erforderliche Extensions fehlen!</label> 
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_files_generated">TypoScript-Datei(en) erstellt!</label> 
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_files_not_generated">TypoScript-Datei(en) konnten nicht erstellt werden!</label> 
+            <label index="tx_ftm_controller_templatemanagercontroller.error_version_not_detected">Version konnte nicht ermittelt werden. Eventuell darf file_get_contents keine remote-URLs abrufen!</label> 
+            <label index="tx_ftm_controller_templatemanagercontroller.major_release_available">Es ist ein neues Major-Release verfügbar!</label> 
+            <label index="tx_ftm_controller_templatemanagercontroller.minor_release_available">Es ist ein neues Minor-Release verfügbar!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.patch_available">Es ist ein neuer Patch verfügbar!</label> 
+            <label index="tx_ftm_controller_templatemanagercontroller.update_message">Es wird empfohlen den FTM auf die aktuelle Version zu aktualisieren. Es kann u.U. ein paar Stunden dauern bis die neue Version auch über Das TER verfügbar ist.</label>
+
+           
+           
+            <!-- FluidRowViewHelper -->
+           
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.no_backend_layout_linked">Kein Backend-Layout zugewiesen!</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_backend_layout">Backend-Layout bearbeiten</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_exists_and_up_to_date">File exists and is up-to-date</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_exists_and_not_up_to_date">File exists but isn't up-to-date</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_template_record">Template-Datensatz bearbeiten</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_template_file">Template-Datei bearbeiten</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.write_template_record_to_file">Fluid-%s (%s) von Template-Datensatz in Template-Datei schreiben</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.write_template_file_to_record">Fluid-%s (%s) von Template-Datei in Template-Datensatz schreiben</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_not_exists">File doesn't exist, please generate it!</label>
+            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.generate_file">Fluid-%s (%s) re/generieren</label>
+           
+            <!--LessVariableRowViewHelper -->
+            <label index="tx_ftm_viewhelper_be_lessvariablerowviewhelper.edit_template">Template bearbeiten</label>
+           
+            <!--LessVariableStaticRowViewHelper -->
+            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_base_url_as_string">Base-URL als String (automatisch generiert)</label>
+            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_path_to_template_files">Pfad zum den Template-Dateien (automatisch generiert)</label>
+            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_dir_name">Verzeichnis-Name im Template-Verzeichnis (automatisch generiert)</label>
+            
+            <!--MarkerRowViewHelper -->
+            <label index="tx_ftm_viewhelper_be_markerrowviewhelper.edit_marker">Marker bearbeiten</label>
+               
+            <!--TypoScriptRowViewHelper -->
+            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_exists">File exists</label>
+            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_exists_and_not_up_to_date">File exists but isn't up-to-date</label>
+            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.downlad_typoscript">TypoScript (%s) herunterladen</label>
+            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_not_found">File not found</label>
+
+            <!-- Template Manager GUI -->
+            <!-- Wenn kein Template vorhanden ist -->
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableText">Auf dieser Seite ist noch kein Fluid-Template-Manager Template vorhanden.</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateTemplate">Jetzt ein neues Template auf dieser Seite erstellen!</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateYamlTemplate">Jetzt ein neues YAML-Template auf dieser Seite erstellen!</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrapTemplate">Jetzt ein neues Bootstrap-Template auf dieser Seite erstellen!</label>
+            
+            <label index="tx_ftm_domain_model_template.templateCreatedMessageOkHeadline">Template wurde erstellt!</label>
+            <label index="tx_ftm_domain_model_template.templateCreatedMessageOkMessage">Die Datenbank-Struktur des neuen Templates wurde erfolgreich erstellt!
+                Bearbeite nun den Template-Datensatz und gebe ein Template-Verzeichnis an, in dem die Template-Dateien abgelegt werden sollen.</label>
+            <label index="tx_ftm_domain_model_template.templateCreatedMessageWarningHeadline">Template wurde nicht erstellt!</label>
+            <label index="tx_ftm_domain_model_template.templateCreatedMessageWarningMessage">Es konnte kein Template auf dieser Seite erstellt werden, da schon eins existiert!</label>
+
+
+            <!-- Wiki-Form -->
+            <label index="tx_ftm_domain_model_template.wikiHeadline">Fluid-Template-Manager Dokumentation</label>
+            <label index="tx_ftm_domain_model_template.wikiText">Hier finden Sie immer die akuelle Dokumentation zum Fluid-Template-Manager. Sollten Ihre Fragen nicht beantworten werden, Sie haben einen Bug gefunden oder eine Idee für ein neues Feature - dann geht es hier lang: </label>
+
+            <!-- Info-Form -->
+            <label index="tx_ftm_domain_model_template.info_headline">Template Check &amp; Info</label>
+            <label index="tx_ftm_domain_model_template.info_text">Wenn auf dieser Seite ein Template angelegt ist, kann man hier Funktionstests durchführen und ggf. das Template reparieren.</label>
+            <label index="tx_ftm_domain_model_template.info_templatedir_found">Template-Verzeichnis gefunden</label>
+            <label index="tx_ftm_domain_model_template.info_no_templatedir_found">Kein Template-Verzeichnis gefunden</label>
+            <label index="tx_ftm_domain_model_template.info_ftm_template_not_found">Kein FTM-Template gefunden!</label>
+
+            <!-- Disclaimer-Form -->
+            <label index="tx_ftm_domain_model_template.disclaimer_headline">Wichtige Information - Vor Benutzung lesen!</label>
+            <label index="tx_ftm_domain_model_template.disclaimer_intro">Wir übernehmen keinerlei Haftung für verlorene Daten oder nicht Erreichbarkeit Ihrer.
+Um eine gute Erweiterbarkeit und Austauschbarkeit der Templates auch für spätere FTM-Versionen zu gewährleisten, halten Sie sich bitte genau an die Dokumentation.</label>
+            <label index="tx_ftm_domain_model_template.disclaimer_warning">Achtung:</label>
+            <label index="tx_ftm_domain_model_template.disclaimer_warning_text">Der FTM verwendet zur Generierung des Basis-TYPOScripts einen entfernten WebService, welcher über die Extension-Einstellungen konfiguriert werden kann.
+Beim Ausführen dieser Aktion wird der FTM-Konfigurationsdatensatz sowie die im aufrufenden System aktiven Extensions ausgelesen und an den TYPOScript-WebService gesendet.
+Dies ermöglicht es uns Ihnen ein auf Ihr System zugeschnittenes TYPOScript zu generieren, aber auch den TYPOScript-Generator zu optimieren und zu warten, ohne das Sie Ihre Extension aktualisieren müssen.
+Wir versichern Ihnen das wir keinerlei Daten ohne Ihre Zustimmung speichern.
+Die übersendeten Daten werden ausschließlich für die optimierte Generierung des TYPOScripts verwendet.
+Es werden keinerlei Daten an Dritte weitergegeben.</label>
+            <label index="tx_ftm_domain_model_template.disclaimer_accept_conditions">Ich habe diesen Hinweis gelesen und somit zur Kenntnis genommen. Bitte zeige diesen Hinweis nicht mehr an.</label>
+
+            <!-- Fluid-Form -->
+            <label index="tx_ftm_domain_model_template.fluid_headline">Fluid-Template</label>
+            <label index="tx_ftm_domain_model_template.fluid_col_type">Typ</label>
+            <label index="tx_ftm_domain_model_template.fluid_col_filename">Filename</label>
+            <label index="tx_ftm_domain_model_template.fluid_col_backend_layout">Backend-Layout</label>
+            <label index="tx_ftm_domain_model_template.fluid_col_info">Info</label>
+            <label index="tx_ftm_domain_model_template.fluid_col_actions">Aktionen</label>
+
+            <!-- Languages-Form -->
+            <label index="tx_ftm_domain_model_template.languages_headline">Languages:</label>
+            <label index="tx_ftm_domain_model_template.languages_text">Enthalten ist immer die Default-Language mit sys_language_uid 0.
+Des Weiteren können über die </label>
+
+            <!-- Less-Form -->
+            <label index="tx_ftm_domain_model_template.less_headline">Less-Variablen</label>
+            <label index="tx_ftm_domain_model_template.less_col_type">Typ</label>
+            <label index="tx_ftm_domain_model_template.less_col_name">Name</label>
+            <label index="tx_ftm_domain_model_template.less_col_value">Wert</label>
+            <label index="tx_ftm_domain_model_template.less_col_info">Info</label>
+            <label index="tx_ftm_domain_model_template.less_col_actions">Aktionen</label>
+
+            <!-- Marker-Form -->
+            <label index="tx_ftm_domain_model_template.marker_headline">Marker</label>
+            <label index="tx_ftm_domain_model_template.marker_col_name">Name</label>
+            <label index="tx_ftm_domain_model_template.marker_col_type">Marker-Typ</label>
+            <label index="tx_ftm_domain_model_template.marker_col_description">Beschreibung</label>
+            <label index="tx_ftm_domain_model_template.marker_col_actions">Aktionen</label>
+
+            <!-- Template-Form -->
+            <label index="tx_ftm_domain_model_template.template_headline">FTM-Template</label>
+            <label index="tx_ftm_domain_model_template.template_version">Version</label>
+            <label index="tx_ftm_domain_model_template.template_ftm_version">FTM-Version</label>
+            <label index="tx_ftm_domain_model_template.template_development_mode">Development-Mode</label>
+            <label index="tx_ftm_domain_model_template.template_production_mode">Production-Mode</label>
+            <label index="tx_ftm_domain_model_template.template_template_exists">Auf dieser Seite ist ein FTM-Template vorhanden.</label>
+            <label index="tx_ftm_domain_model_template.template_main_actions">Hauptaktionen:</label>
+            <label index="tx_ftm_domain_model_template.template_edit_template">FTM-Template bearbeiten</label>
+            <label index="tx_ftm_domain_model_template.template_generate_typoscript">TYPOScript (constants, setup und tsConfig) re/generieren</label>
+            <label index="tx_ftm_domain_model_template.template_load_snippets">Gemerkte Snippets (Marker, etc.) aktualisieren</label>
+            <label index="tx_ftm_domain_model_template.template_generate_less_variables">Less-Dateien/Variablen re/generieren</label>
+
+            <!-- Twitter-Form -->
+            <label index="tx_ftm_domain_model_template.twitter_headline">FTM News</label>
+            <label index="tx_ftm_domain_model_template.twitter_text">Hier findest Du immer die aktuellsten Themen zum FTM.</label>
+
+            <!-- TYPOScript-Forms -->
+            <label index="tx_ftm_domain_model_template.typoscript">Fluid Template - TYPOScript</label>
+            <label index="tx_ftm_domain_model_template.typoscript_col_filename">Dateiname</label>
+            <label index="tx_ftm_domain_model_template.typoscript_col_status">Status</label>
+            <label index="tx_ftm_domain_model_template.typoscript_col_actions">Aktionen</label>
+
+        </languageKey>
+    </data>
+</T3locallang>

@@ -1,0 +1,199 @@
+{namespace ftm=CodingMs\Ftm\ViewHelper}
+
+<f:layout name="Default" />
+
+<f:section name="content">
+    
+    <!-- Erste Meldung -->
+    <f:if condition="{options.disclaimerNotAccepted}">
+        <f:then>
+            <f:render partial="TemplateManager/Disclaimer" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+        </f:then>
+    </f:if>
+        
+    <f:flashMessages />
+  
+<style type="text/css">
+
+.ftmBlock {
+    border: 1px solid #BBB;
+    width: 100%;
+    float: left;
+    background-color: #FFF;
+    margin-bottom: 10px;
+    min-height: 200px;
+}
+.ftmBlock p {
+    line-height: 18px;
+}
+.ftmBlockInner {
+    margin: 10px;
+}
+.ftmBlockLeft {
+}
+.ftmBlockRight {
+}
+.ftmContentTable {
+    border: 1px solid #DDD;
+    width: 100%;
+}
+.ftmWiki p,
+.ftmTwitter p {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+.ftmWiki iframe,
+.ftmTwitter iframe {
+    height: 600px;
+    border-top: 1px solid #BBB;
+    padding-top: 10px;
+}
+.ftmColorSquare {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border: 1px solid #000;
+}
+.ftmCheckList {
+  list-style-type: disc;
+  margin-top: 10px;
+}
+.ftmCheckList li {
+  margin-left: 16px;
+}
+.ftmCheckList li.ok,
+span.ok {
+  color: green;
+}
+.ftmCheckList li.error,
+span.error {
+  color: red;
+}
+.ftmCheckList li.warning,
+span.warning {
+  color: orange;
+}
+.ftmBlock tr.c-headLine td a {
+  font-weight: bold;
+}
+.ftmBlock tr.c-headLine td.col-actions {
+  width: 64px;
+}
+.ftmBlock tr.c-headLine td {
+  vertical-align: middle;
+}
+.ftmActionList li {
+  height: 24px;
+}
+
+</style> 
+   
+
+<!-- Pruefen ob auf einer normalen Seite -->
+<f:if condition="{options.pid}>0">
+    <f:then>
+
+    <h1><f:translate key="tx_ftm_domain_model_templatemanager"></f:translate></h1>
+    
+<table style="width: 100%;">
+    <tr>
+        <td>
+    
+            <div class="ftmBlock">
+                <div class="ftmBlockInner">
+                    <h2><f:translate key="tx_ftm_domain_model_template"></f:translate></h2>
+                    
+                    
+                    <!-- Pruefen ob auf der aktuellen Seite schon ein Template vorhanden ist -->
+                    <f:if condition="{options.templateOnCurrentPage}">
+                    
+                        <!-- Template auf aktueller Seite vorhanden -->
+                        <f:then>
+                            
+                            
+                            <!-- Template-Datensatz -->
+                            <f:render partial="TemplateManager/Template" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                            <br/>
+                            
+                            
+                            <!-- Pruefen ob auf das aktuelle Template schon ein templateDir -->
+                            <f:if condition="{options.templateDirFound}">
+                                <f:then>
+                                    
+                                    
+                                    <!-- TypoScript -->
+                                    <f:render partial="TemplateManager/TypoScript" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                                    <br />
+                                    
+                                    <!-- Sprachen 
+                                    <f:render partial="TemplateManager/Language" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                                    <br />-->
+                                    
+                                    <!-- Fluid-Templates -->
+                                    <f:render partial="TemplateManager/Fluid" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                                    <br />
+                                    
+                                    <!-- Marker -->
+                                    <f:render partial="TemplateManager/Marker" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                                    <br />
+                                    
+                                    <!-- LESS/CSS -->
+                                    <f:render partial="TemplateManager/Less" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                                    <br />
+                                    
+                                    
+                                </f:then>
+                            </f:if>
+                            
+                            
+                        </f:then>
+                        
+                        <!-- Kein Template auf aktueller Seite vorhanden -->
+                        <f:else>
+                            <f:render partial="TemplateManager/NoTemplateAvailable" arguments="{fluidTemplate: fluidTemplate}"></f:render>
+                        </f:else>
+                            
+                    </f:if>
+                </div>
+                <a name="ftmWiki"></a>
+            </div>
+        
+        
+            <!-- Wiki/Dokumentation -->
+            <div class="ftmBlock ftmWiki">
+                <div class="ftmBlockInner"><f:render partial="TemplateManager/Wiki" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render></div>
+            </div>
+            
+            <!-- Debugging -->
+            <f:if condition="{doDebug}">
+                <f:then>
+                    <div class="ftmBlock ftmDebug">
+                        <div class="ftmBlockInner"><f:render partial="TemplateManager/Debug" arguments="{fluidTemplate: fluidTemplate, debug: debug}"></f:render></div>
+                    </div>
+                </f:then>
+            </f:if>
+        
+        </td>
+        <f:comment>
+        <td style="width: 290px; padding-left: 10px;">
+    
+            <!-- Inforamtionen und Check -->
+            <div class="ftmBlock ftmInfo">
+                <div class="ftmBlockInner"><!--f:render partial="TemplateManager/Info" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render--></div>
+            </div>
+            
+            <!-- Twitter -->
+            <div class="ftmBlock ftmTwitter">
+                <div class="ftmBlockInner"><<!--f:render partial="TemplateManager/Twitter" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render--></div>
+            </div>
+    
+        </td>
+        </f:comment>
+        
+    </tr>
+</table>
+
+    </f:then>
+</f:if>
+
+</f:section>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ftm_domain_model_templatefluid</description>
+        <type>CSH</type>
+        <csh_table>tx_ftm_domain_model_templatefluid</csh_table>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="template_title.description">Template title/description (will just be used for information)</label>
+            <label index="template_type.description">Type of the fluid template (Partial, Layout, Template)</label>
+            <label index="template_file.description">(File)name of the template (Must only contain alphabethic characters (lower-camel-case) und has to begin with a small letter)</label>
+            <label index="backend_layout.description">Backend layout related to this template</label>
+            <label index="template_code.description">Template code</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="template_title.description">Template-Title/Beschreibung (wird nur als Information verwendet)</label>
+            <label index="template_type.description">Typ des Fluid-Templates (Partial, Layout, Template)</label>
+            <label index="template_file.description">(Datei)name des Templates (darf nur alphabetische Zeichen (lower-camel-case) enthalten und muss mit einem kleinen Buchstaben beginnen)</label>
+            <label index="backend_layout.description">Backend-Layout zu diesem Template</label>
+            <label index="template_code.description">Template-Code</label>
+        </languageKey>
+    </data>
+</T3locallang>

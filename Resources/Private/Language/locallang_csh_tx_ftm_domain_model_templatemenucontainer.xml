@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ftm_domain_model_templatemenucontainer</description>
+        <type>CSH</type>
+        <csh_table>tx_ftm_domain_model_templatemenucontainer</csh_table>
+    </meta>
+    <data type="array">
+        
+        <languageKey index="default" type="array">
+            
+            <label index="menu_name.description">Name of the menu and the marker</label>
+            <label index="template.description">Template this menu is related to</label>
+            <label index="special.description">Menu type</label>
+            <label index="special_value_list.description">Menu pages</label>
+            <label index="entry_level.description">With this option you define on which level of the rootline the menu is included.
+The root page has got level 0.
+If you use a negative value, the entryLevel is relative to the current site.
+-1 thus would be the current site, -2 would be the layer of the subpage</label>
+            <label index="exclude_uid_list.description">With this option you define which pages do not appear in the menu.</label>
+            <label index="include_not_in_menu.description">If this is active, pages which are marked as HideInMenu will still be shown.</label>
+            <label index="max_items.description">Maximum items in the menu.</label>
+            <label index="min_items.description">Minimum items in the menu. If there are less than the minimum number of items, there will be filled in empty items.</label>
+            <label index="std_wrap.description">Default wrap for the whole menu</label>
+            <label index="wrap.description">Wrap for the whole menu</label>
+            <label index="menu_objects.description">Menu objects/menu levels</label>
+     
+        </languageKey>
+        
+        <languageKey index="de" type="array">
+            
+            <label index="menu_name.description">Name des Menü und auch des Markers</label>
+            <label index="template.description">Template dem diese MEnü angehört</label>
+            <label index="special.description">Menü-Typ</label>
+            <label index="special_value_list.description">Menü-Seiten</label>
+            <label index="entry_level.description">Hier kann eingestellt werden auf welcher Ebene der Rootline das Menü beginnen soll.
+Dabei hat die Root-Seite die Ebene 0.
+Wird ein negativer Wert verwendet, wird das entryLevel relative zur aktuellen Seite.
+-1 wäre somit die Ebene der aktuellen Seite, -2 die Ebene der darunterliegenden Seite</label>
+            <label index="exclude_uid_list.description">Hier wird angegeben welche Seiten nicht im Menü erscheinen sollen</label>
+            <label index="include_not_in_menu.description">Wenn aktiv werden auch Seiten im Menü angezeigt, die HideInMenu markiert sind</label>
+            <label index="max_items.description">Maximale Anzahl an Einträge im Menü</label>
+            <label index="min_items.description">Minimale Anzahl an Einträgen. Wenn weniger Einträge als das Minimum vorhanden sind, wird mit leeren Einträgen aufgefüllt</label>
+            <label index="std_wrap.description">Standard-Wrap für das gesamte Menü</label>
+            <label index="wrap.description">Wrap um das gesamte Menü</label>
+            <label index="menu_objects.description">Menü-Objekte/Menü-Ebenen</label>
+ 
+        </languageKey>
+        
+    </data>
+</T3locallang>

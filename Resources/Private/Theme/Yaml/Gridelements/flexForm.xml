@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+  </meta>
+  <ROOT type="array">
+    <type>array</type>
+    <el type="array">
+      <class type="array">
+        <TCEforms type="array">
+          <label>LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_flexform_gridelements.css_classes</label>
+          <config type="array">
+            <type>input</type>
+            <size>255</size>
+            <eval>trim</eval>
+          </config>
+        </TCEforms>
+      </class>
+      <classes type="array">
+        <TCEforms type="array">
+          <label>LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_flexform_gridelements.css_classes_selection</label>
+          <config type="array">
+            <type>user</type>
+            <userFunc>CodingMs\Ftm\Backend\GridElementClassesRow->renderField</userFunc>
+          </config>
+        </TCEforms>
+      </classes>
+      <anchor type="array">
+        <TCEforms type="array">
+          <label>LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_flexform_gridelements.anchor_name</label>
+          <config type="array">
+            <type>input</type>
+            <size>255</size>
+            <eval>trim</eval>
+          </config>
+        </TCEforms>
+      </anchor>
+      <equalheight type="array">
+        <TCEforms type="array">
+          <label>LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_flexform_gridelements.equal_height</label>
+          <config type="array">
+            <type>check</type>
+            <default>0</default>
+          </config>
+        </TCEforms>
+      </equalheight>
+    </el>
+  </ROOT>
+</T3DataStructure>

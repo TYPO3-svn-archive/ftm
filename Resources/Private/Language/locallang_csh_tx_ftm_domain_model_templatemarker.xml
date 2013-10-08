@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ftm_domain_model_templatmarker</description>
+        <type>CSH</type>
+        <csh_table>tx_ftm_domain_model_templatemarker</csh_table>
+    </meta>
+    <data type="array">
+        
+        <languageKey index="default" type="array">
+          
+            <label index="marker_name.description">Marker name</label>
+            <label index="marker_type.description">Marker typ</label>
+            <label index="marker_description.description">Marker description</label>
+            <label index="marker_typo_script.description">Marker TypoScript</label>
+       
+        </languageKey>
+        
+        <languageKey index="default" type="array">
+            
+            <label index="marker_name.description">Marker-Name</label>
+            <label index="marker_type.description">Marker-Typ</label>
+            <label index="marker_description.description">Marker-Beschreibung</label>
+            <label index="marker_typo_script.description">Marker-TypoScript</label>
+
+        </languageKey>
+        
+    </data>
+</T3locallang>

@@ -1,0 +1,19 @@
+<f:layout name="default" />
+
+<f:section name="content">
+<div id="template-scm">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <aside class="span3">
+        <f:render partial="sideContent" arguments="{layoutStyle:layoutStyle}"></f:render>
+      </aside>
+      <div class="span7">
+        <f:render partial="mainContent" arguments="{layoutStyle:layoutStyle}"></f:render>
+      </div>
+      <div class="span2">
+        <f:render partial="menuContent" arguments="{layoutStyle:layoutStyle}"></f:render>
+      </div>
+    </div>
+  </div> 
+</div>
+</f:section>

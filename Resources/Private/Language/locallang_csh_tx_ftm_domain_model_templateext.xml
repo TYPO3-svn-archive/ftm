@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ftm_domain_model_templateext</description>
+        <type>CSH</type>
+        <csh_table>tx_ftm_domain_model_templateext</csh_table>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="ext_key.description">Extension key of the extension</label>
+            <label index="ext_name.description">Name of the extension</label>
+            <label index="ext_version.description">Compatible version of the extension</label>
+            <label index="ext_conf_t3_less.description">Configuration of the extension</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="ext_key.description">Extension-Key der Extension</label>
+            <label index="ext_name.description">Name der Extension</label>
+            <label index="ext_version.description">Kompatible Version der Extension</label>
+            <label index="ext_conf_t3_less.description">Konfiguration der Extension</label>
+        </languageKey>
+    </data>
+</T3locallang>
