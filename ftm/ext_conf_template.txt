@@ -1,0 +1,14 @@
+# cat=basic; type=string; label=Host of the PluginCloud-Webservices
+pluginCloudHost = plugincloud.de
+
+# cat=basic; type=string; label=PluginCloud-Key
+pcKey = public
+
+# cat=basic; type=string; label=PluginCloud-Username
+user = noUser
+
+# cat=basic; type=string; label=PluginCloud-Userpassword
+password = noPassword
+
+# cat=basic; type=boolean; label=Allow PluginCloud to log requests in order to help the development-team to improve the services
+allowLog = 0

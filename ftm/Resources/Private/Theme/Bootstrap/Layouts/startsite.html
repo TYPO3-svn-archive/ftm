@@ -1,0 +1,24 @@
+<div id="layout-startsite">
+
+    <header id="areaHeader">
+        <h1><f:cObject typoscriptObjectPath="lib.logo"></f:cObject></h1>
+    </header>
+
+    <section id="areaTeaser">
+        <f:cObject typoscriptObjectPath="lib.area.teaser"></f:cObject>
+    </section>
+
+    <nav id="areaNav">
+        <f:cObject typoscriptObjectPath="lib.nav.main"></f:cObject>
+    </nav>
+
+    <div id="areaMain">
+        <f:render section="content"></f:render>
+    </div>
+
+    <footer id="areaFooter">
+        <f:cObject typoscriptObjectPath="lib.copyright"></f:cObject>
+        <f:cObject typoscriptObjectPath="lib.nav.footer"></f:cObject>
+    </footer>
+
+</div>

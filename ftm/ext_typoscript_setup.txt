@@ -1,0 +1,95 @@
+
+# ======================================================================
+# Extbase mapping
+# ======================================================================
+config.tx_extbase.persistence.classes {
+
+    CodingMs\Ftm\Domain\Model\BackendLayout.mapping {
+        tableName = backend_layout
+    }
+
+    CodingMs\Ftm\Domain\Model\GridLayout.mapping {
+        tableName = tx_gridelements_backend_layout
+    }
+
+    CodingMs\Ftm\Domain\Model\SysTemplate.mapping {
+        tableName = sys_template
+    }
+
+    CodingMs\Ftm\Domain\Model\Pages.mapping {
+        tableName = pages
+        columns {
+            TSconfig.mapOnProperty = tsConfig
+            uid.mapOnProperty      = uid
+            title.mapOnProperty    = title
+            doktype.mapOnProperty  = doktype
+            module.mapOnProperty   = module
+        }
+    }
+
+    CodingMs\Ftm\Domain\Model\FrontendUser.mapping {
+        tableName = fe_users
+        # Hier muss u.U. der Typ vom Extension-Model stehen, bspw. DogOwner, damit der Typ beim Registrieren direkt uebernommen wird
+        # Tx_Ftm_FrontendUser // erstmal Type = 0 => Standard, damit normale Datensaetze gefunden werden (mit extbaseType=0)
+        # ..AND (fe_users.tx_extbase_type='Tx_Ftm_FrontendUser')
+        # -> Wenn nun spezielle Datensaetze gebraucht werden, muss dieses Feld wieder gesetzt werden
+        recordType = 
+    }
+
+    CodingMs\Ftm\Domain\Model\FrontendUserGroup.mapping {
+        tableName = fe_groups
+        # Hier muss u.U. der Typ vom Extension-Model stehen, bspw. DogOwner, damit der Typ beim Registrieren direkt uebernommen wird
+        recordType = Tx_Ftm_FrontendUserGroup
+    }
+
+}
+
+
+
+# Module configuration
+module.tx_ftm {
+    persistence {
+        storagePid = 0
+        classes {
+        
+            # Backen-Layouts mappen
+            #CodingMs\Ftm\Domain\Model\BackendLayout.mapping {
+            #    tableName = backend_layout
+            #}
+           # 
+            # Grid-Layouts mappen
+            #Tx_Ftm_Domain_Model_GridLayout {
+            #    mapping {
+            #        tableName = tx_gridelements_backend_layout
+            #    }
+            #}
+            
+            # Sys-Template mappen
+            #Tx_Ftm_Domain_Model_SysTemplate {
+            #    mapping {
+            #        tableName = sys_template
+            #    }
+            #}
+            
+            # Pages mappen
+            #Tx_Ftm_Domain_Model_Pages {
+            #    mapping {
+            #        tableName = pages
+            #        columns {
+            #            TSconfig.mapOnProperty = tsConfig
+            #            uid.mapOnProperty      = uid
+            #            title.mapOnProperty    = title
+            #            doktype.mapOnProperty  = doktype
+            #            module.mapOnProperty   = module
+            #        }
+            #    }
+            #}
+                   
+        }
+    }
+    view {
+        templateRootPath = EXT:ftm/Resources/Private/Templates/
+        partialRootPath  = EXT:ftm/Resources/Private/Partials/
+        layoutRootPath   = EXT:ftm/Resources/Private/Layouts/
+    }
+}

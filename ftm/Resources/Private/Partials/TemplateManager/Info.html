@@ -1,0 +1,35 @@
+<h2><f:translate key="tx_ftm_domain_model_template.info_headline"></f:translate></h2>
+<p><f:translate key="tx_ftm_domain_model_template.info_text"></f:translate></p>
+
+<ul class="ftmCheckList">
+
+<!-- Pruefen ob auf der aktuellen Seite schon ein Template vorhanden ist -->
+<f:if condition="{options.templateOnCurrentPage}">
+
+    <!-- Template auf aktueller Seite vorhanden -->
+    <f:then>
+
+        <f:if condition="{options.templateDirFound}">
+            <f:then>
+                <li class="ok"><f:translate key="tx_ftm_domain_model_template.templatedir_found"></f:translate></li>
+            </f:then>
+            
+            <!-- Kein Template-Verzeichnis angegeben -->
+            <f:else>
+                <li class="error"><f:translate key="tx_ftm_domain_model_template.no_templatedir_found"></f:translate></li>
+            </f:else>
+            
+        </f:if>
+
+    </f:then>
+    
+    
+    <!-- Kein Template auf aktueller Seite vorhanden -->
+    <f:else>
+        <li class="warning"><f:translate key="tx_ftm_domain_model_template.info_ftm_template_not_found"></f:translate></li>
+    </f:else>
+        
+</f:if>
+
+
+</ul>

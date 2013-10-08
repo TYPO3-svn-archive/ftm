@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ftm_domain_model_template</description>
+        <type>CSH</type>
+        <csh_table>tx_ftm_domain_model_template</csh_table>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+       
+            <label index="site_name.description">The name of the website. Will be used in the HTML title-tag.</label>
+            <label index="template_mode.description">Let template run in the Productive/Development Mode</label>
+            <label index="template_type.description">Template type (YAML, Twitter-Bootstrap etc.)</label>
+            <label index="template_dir.description">Directory within Ext-Directory</label>
+            <label index="config.description">Basic configuration</label>
+            <label index="meta.description">Meta attributes &amp; SEO</label>
+            <label index="language.description">Website languages</label>
+            
+            <label index="fluid.description">Fluid templates</label>
+            <label index="fluid_headline_with_info.description">Fluid templates (the first template will be used as default!)</label>
+
+            <label index="marker.description">Marker</label> 
+            <!--
+                Nicht verwenden, damit das ?-Symbol nicht erscheint.
+                Alternativ haben wir ja unsere Info-Row ;)
+                label index="less_variable.description">Less-Variablen</label-->
+
+            <label index="less_variable_info.description">Less variables info</label>
+            <label index="less_variable.description">Less variables</label>
+ 
+            <label index="menu_container.description">Menues</label>
+            
+            <label index="extensions_info.description">Extensions info</label>
+            <label index="extensions.description">Extensions</label>    
+            
+            <!--label index="extensions.description">Unterstützte Extensions</label-->
+            
+        </languageKey>
+        <languageKey index="de" type="array">
+       
+            <label index="site_name.description">Name der Website. Wird u.A. im HTML-Titel verwendet.</label>
+            <label index="template_mode.description">Template Productive/Development Modus laufen lassen</label>
+            <label index="template_type.description">Template-Typ (YAML, Twitter-Bootstrap oder sonstiges)</label>
+            <label index="template_dir.description">Directory within Ext-Directory</label>
+            <label index="config.description">Basis-Konfiguration</label>
+            <label index="meta.description">Meta-Angaben &amp; SEO</label>
+            <label index="language.description">Website-Sprachen</label>
+            
+            <label index="fluid.description">Fluid-Templates</label>
+            <label index="fluid_headline_with_info.description">Fluid-Templates (das erste Template ist das default-Template!)</label>
+
+            <label index="marker.description">Marker</label> 
+            <!--
+                Nicht verwenden, damit das ?-Symbol nicht erscheint.
+                Alternativ haben wir ja unsere Info-Row ;)
+                label index="less_variable.description">Less-Variablen</label-->
+
+            <label index="less_variable_info.description">Less-Variablen-Info</label>
+            <label index="less_variable.description">Less-Variablen</label>
+ 
+            <label index="menu_container.description">Menüs</label>
+            
+            <label index="extensions_info.description">Extensions-Info</label>
+            <label index="extensions.description">Extensions</label>    
+            
+            <!--label index="extensions.description">Unterstützte Extensions</label-->
+            
+        </languageKey>
+    </data>
+</T3locallang>

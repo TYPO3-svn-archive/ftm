@@ -1,0 +1,33 @@
+{namespace ftm=CodingMs\Ftm\ViewHelper}
+<table border="0" cellpadding="0" cellspacing="0" class="typo3-dblist">
+    <thead>
+        <tr class="t3-row-header">
+            <td nowrap="nowrap" class="col-icon"><span class="t3-icon t3-icon-actions t3-icon-actions-view t3-icon-view-list-collapse collapseIcon">&nbsp;</span></td>
+            <td nowrap="nowrap" class="" colspan="6"><span class="c-table"><f:translate key="tx_ftm_domain_model_template.less_headline"></f:translate></span> (<f:count subject="{fluidTemplate.lessVariable}" />) </td>
+        </tr>
+        <tr class="c-headLine">
+            <td nowrap="nowrap" class="col-icon"><!--a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&amp;edit[tx_ftm_domain_model_templatefluid][{options.pid}]=new'; return false;" title="New record"><span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-new">&nbsp;</span></a--></td>
+            <td nowrap="nowrap" ><a><f:translate key="tx_ftm_domain_model_template.less_col_type"></f:translate></a></td>
+            <td nowrap="nowrap" ><a><f:translate key="tx_ftm_domain_model_template.less_col_name"></f:translate></a></td>
+            <td nowrap="nowrap" ><a><f:translate key="tx_ftm_domain_model_template.less_col_value"></f:translate></a></td>
+            <td nowrap="nowrap" ><a><f:translate key="tx_ftm_domain_model_template.less_col_info"></f:translate></a></td>
+            <td nowrap="nowrap" class="col-actions"><a><f:translate key="tx_ftm_domain_model_template.less_col_actions"></f:translate></a></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="db_list_normal firstcol">
+            <ftm:lessVariableStaticRow fluidTemplate="{fluidTemplate}" lessVariableName="baseUrl"></ftm:lessVariableStaticRow>
+        </tr>
+        <tr class="db_list_normal">
+            <ftm:lessVariableStaticRow fluidTemplate="{fluidTemplate}" lessVariableName="baseUrlTemplate"></ftm:lessVariableStaticRow>
+        </tr>
+        <tr class="db_list_normal">
+            <ftm:lessVariableStaticRow fluidTemplate="{fluidTemplate}" lessVariableName="templateDir"></ftm:lessVariableStaticRow>
+        </tr>
+        <f:for each="{fluidTemplate.lessVariable}" as="lessVariable" iteration="rowIteration">
+            <tr class="db_list_normal  {f:if(condition: rowIteration.isLast, then: 'lastcol')}"><!-- {f:if(condition: rowIteration.isFirst, then: 'firstcol')} -->
+                <ftm:lessVariableRow fluidTemplate="{fluidTemplate}" lessVariable="{lessVariable}"></ftm:lessVariableRow>
+            </tr>
+        </f:for>
+    </tbody>
+</table>

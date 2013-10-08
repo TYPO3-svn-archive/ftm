@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ftm_domain_model_templateconfig</description>
+        <type>CSH</type>
+        <csh_table>tx_ftm_domain_model_templateconfig</csh_table>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+       
+            <label index="doctype.description">Defines the DocType of the HTML</label>
+            <label index="base_u_r_l.description">Defines the baseURL (e.g. http://fluid-template-manager.de/)</label>
+            <label index="link_vars.description">Defines the link variables (e.g. L for the language parameter)</label>
+            <label index="disable_charset_header.description">Avoids transmitting the charset header (content-type:text/html; charset...).</label>
+            <label index="meta_charset.description">Defines the charset for the return. The value will be set in the meta tag and in the HTTP header (only when config.disableCharsetHeader = 0 is set).</label>
+            <label index="language_uid.description">sys_languag_uid of the default language</label>
+            <label index="language_title.description">language title</label>
+            <label index="language.description">language</label>
+            <label index="locale_all.description">localeAll</label>
+            <label index="spam_protect_email_addresses.description">spamProtectEmailAddresses</label>
+            <label index="spam_protect_email_addresses_at_subst.description">replace @-symbol with</label>
+            <label index="spam_protect_email_addresses_last_dot_subst.description">replace last dot with</label>
+            
+            <label index="prefix_local_anchors.description">Anchor Prefix - Write full path before the anchors?!</label>
+            <label index="speaking_paths.description">System for speaking URLs</label>
+            <label index="use_html5_js.description">Include html5.js via CDN (Content Delivery Network) of Google? This will make your code compatible for older browsers.</label>
+            <label index="google_analytics_tracking_code.description">Google Analytics Tracking Code - if this is set, there will be used an appropiate TYPOScript for embedding.</label>
+ 
+        </languageKey>
+        <languageKey index="de" type="array">
+       
+            <label index="doctype.description">Legt den DocType des HTML fest</label>
+            <label index="base_u_r_l.description">Legt die baseURL fest (bspw. http://fluid-template-manager.de/)</label>
+            <label index="link_vars.description">Legt die Link-Variablen fest (bspw. L für den Language-Parameter)</label>
+            <label index="disable_charset_header.description">Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.</label>
+            <label index="meta_charset.description">Gibt die Zeichenkodierung für die Ausgabe an. Dieser Wert wird in den Meta-Tag und im HTTP-Header (nur bei config.disableCharsetHeader = 0) verwendet.</label>
+            <label index="language_uid.description">sys_languag_uid der Default-Sprache</label>
+            <label index="language_title.description">Sprachen-Title</label>
+            <label index="language.description">language</label>
+            <label index="locale_all.description">localeAll</label>
+            <label index="spam_protect_email_addresses.description">spamProtectEmailAddresses</label>
+            <label index="spam_protect_email_addresses_at_subst.description">@-Zeichen ersetzen durch</label>
+            <label index="spam_protect_email_addresses_last_dot_subst.description">Letzten Punkt ersetzen durch</label>
+            
+            <label index="prefix_local_anchors.description">Anker Prefix - Den vollen Pfad vor die Anker schreiben!?</label>
+            <label index="speaking_paths.description">System für sprechende URLs</label>
+            <label index="use_html5_js.description">html5.js über das CDN (Content Delivery Network) von Google einbinden? Diese macht Ihren HTML5-Code für ältere Browser kompatibel.</label>
+            <label index="google_analytics_tracking_code.description">Google-Analytics Tracking Code - falls einer eingegeben wurde, wird ein entsprechendes TYPOScript zur Einbettung verwendet.</label>
+
+        </languageKey>
+    </data>
+</T3locallang>

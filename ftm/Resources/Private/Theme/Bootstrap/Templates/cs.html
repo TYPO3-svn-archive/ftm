@@ -1,0 +1,16 @@
+<f:layout name="default" />
+
+<f:section name="content">
+<div id="template-cs">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span9">
+        <f:render partial="mainContent" arguments="{layoutStyle:layoutStyle}"></f:render>
+      </div>
+      <aside class="span3">
+        <f:render partial="sideContent" arguments="{layoutStyle:layoutStyle}"></f:render>
+      </aside>
+    </div>
+  </div>
+</div>
+</f:section>

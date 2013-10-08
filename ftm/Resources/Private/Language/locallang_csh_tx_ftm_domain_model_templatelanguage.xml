@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ftm_domain_model_templatelanguage</description>
+        <type>CSH</type>
+        <csh_table>tx_ftm_domain_model_templatelanguage</csh_table>
+    </meta>
+    <data type="array">
+        
+        <languageKey index="default" type="array">
+       
+            <label index="language_uid.description">TYPO3-language that should be related to this (Data records have to be generated on the TYPO3 root page. Website language/sys_languag_uid)</label>
+            <label index="title.description">Language title (e.g. English)</label>
+            <label index="language.description">Language key (e.g. en)</label>
+            <label index="locale_all.description">Localization (e.g. en_US.UTF-8)</label>
+     
+        </languageKey>
+        
+        <languageKey index="de" type="array">
+       
+            <label index="language_uid.description">TYPO3-Sprache die zugeordnet werden soll (Datensatz muss auf TYPO3-Rootseite angelegt werden. Websitesprache/sys_languag_uid)</label>
+            <label index="title.description">Sprachen-Title (bspw. English)</label>
+            <label index="language.description">Sprach-Key (bspw. en)</label>
+            <label index="locale_all.description">Lokalisierung (bspw. en_US.UTF-8)</label>
+  
+        </languageKey>
+        
+    </data>
+</T3locallang>

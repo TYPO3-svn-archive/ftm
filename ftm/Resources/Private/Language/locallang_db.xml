@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>database</type>
+        <description>Language labels for database tables/fields belonging to extension 'ftm'</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            
+            <!-- FTM -->
+            <label index="tx_ftm_domain_model_templatemanager">Fluid Template Manager (FTM)</label>
+
+            <!-- Template -->
+            <label index="tx_ftm_domain_model_template">Fluid Template</label>
+            <label index="tx_ftm_domain_model_template.site_name">Webseiten-Name</label>
+            <label index="tx_ftm_domain_model_template.clear_cache">FTM-Cache leeren</label>
+            <label index="tx_ftm_domain_model_template.template_mode">Template Productive/Development Modus laufen lassen</label>
+            <label index="tx_ftm_domain_model_template.template_type">Template-Typ (YAML, Twitter-Bootstrap oder sonstiges)</label>
+            <label index="tx_ftm_domain_model_template.template_dir">Template-Name (Verzeichnis-Name im Ext-Verzeichnis; bspw.: ftm_theme_companysite)</label>
+            <label index="tx_ftm_domain_model_template.config">Basis-Konfiguration</label>
+            <label index="tx_ftm_domain_model_template.meta">Meta-Angaben</label>
+            <label index="tx_ftm_domain_model_template.language">Website-Sprachen</label>
+            <label index="tx_ftm_domain_model_template.tab_fluid">Fluid-Templates</label>
+            <label index="tx_ftm_domain_model_template.fluid">Fluid-Templates</label>
+            <label index="tx_ftm_domain_model_template.fluid_headline_with_info">Fluid-Templates (das erste Template ist das default-Template!)</label>
+            <label index="tx_ftm_domain_model_template.tab_menu">Menüs</label>
+            <label index="tx_ftm_domain_model_template.menu_container">Menüs</label>
+            <label index="tx_ftm_domain_model_template.tab_less">LESS/CSS</label>
+            <label index="tx_ftm_domain_model_template.less_variable_info">Less-Variablen-Info</label>
+            <label index="tx_ftm_domain_model_template.less_variable">Less-Variablen</label>
+            <label index="tx_ftm_domain_model_template.tab_extensions">Extensions</label>
+            <label index="tx_ftm_domain_model_template.tab_marker">Marker</label>
+            <label index="tx_ftm_domain_model_template.marker">Marker</label>
+            <label index="tx_ftm_domain_model_template.extensions_info">Extensions-Info</label>
+            <label index="tx_ftm_domain_model_template.extensions">Extensions</label>
+            
+            <!-- FTM-Config -->
+            <label index="tx_ftm_domain_model_templateconfig">Fluid Template - Basis-Konfiguration</label>
+            <label index="tx_ftm_domain_model_templateconfig.doctype">HTML-Doctype</label>
+            <label index="tx_ftm_domain_model_templateconfig.base_u_r_l">baseURL</label>
+            <label index="tx_ftm_domain_model_templateconfig.link_vars">linkVars</label>
+            <label index="tx_ftm_domain_model_templateconfig.disable_charset_header">Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.</label>
+            <label index="tx_ftm_domain_model_templateconfig.tab_language_and_localization">Sprache&amp;Lokaliserung</label>
+            <label index="tx_ftm_domain_model_templateconfig.meta_charset">Gibt die Zeichenkodierung für die Ausgabe an. Dieser Wert wird in den Meta-Tag und im HTTP-Header (nur bei config.disableCharsetHeader = 0) verwendet.</label>
+            <label index="tx_ftm_domain_model_templateconfig.language_uid">sys_languag_uid</label>
+            <label index="tx_ftm_domain_model_templateconfig.language_title">Sprachen-Title</label>
+            <label index="tx_ftm_domain_model_templateconfig.language">language</label>
+            <label index="tx_ftm_domain_model_templateconfig.locale_all">localeAll</label>
+            <label index="tx_ftm_domain_model_templateconfig.tab_spam_protect">Spam Protect</label>
+            <label index="tx_ftm_domain_model_templateconfig.spam_protect_email_addresses">Spam Protect Email Addresses</label>
+            <label index="tx_ftm_domain_model_templateconfig.spam_protect_email_addresses_at_subst">@-Zeichen ersetzen durch</label>
+            <label index="tx_ftm_domain_model_templateconfig.spam_protect_email_addresses_last_dot_subst">Letzten Punkt ersetzen durch</label>
+            <label index="tx_ftm_domain_model_templateconfig.prefix_local_anchors">Anker Prefix</label>
+            <label index="tx_ftm_domain_model_templateconfig.speaking_paths">Sprechende URLs</label>
+            <label index="tx_ftm_domain_model_templateconfig.use_html5_js">html5.js über ein CDN einbinden?</label>
+            <label index="tx_ftm_domain_model_templateconfig.google_analytics_tracking_code">Google-Analytics Tracking Code (UA-XXXXX-Y)</label>
+
+            <!-- FTM-Meta -->
+            <label index="tx_ftm_domain_model_templatemeta">Fluid Template - Meta-Angaben &amp; SEO</label>
+            <label index="tx_ftm_domain_model_templatemeta.abstract">Abstract</label>
+            <label index="tx_ftm_domain_model_templatemeta.keywords">Keywords</label>
+            <label index="tx_ftm_domain_model_templatemeta.description">Description</label>
+            <label index="tx_ftm_domain_model_templatemeta.author">Author</label>
+            <label index="tx_ftm_domain_model_templatemeta.author_email">Author E-Mail</label>
+            <label index="tx_ftm_domain_model_templatemeta.copyright">Copyright</label>
+            <label index="tx_ftm_domain_model_templatemeta.robots">Robots</label>
+            <label index="tx_ftm_domain_model_templatemeta.revisit">Revisit</label>
+            <label index="tx_ftm_domain_model_templatemeta.useCanonical">Canonical-Tag verwenden?</label>
+            <label index="tx_ftm_domain_model_templatemeta.tab_defaults">Meta-Tag Standardwerte</label>
+
+            <!-- FTM-Language -->
+            <label index="tx_ftm_domain_model_templatelanguage">Fluid Template - Website-Sprachen</label>
+            <label index="tx_ftm_domain_model_templatelanguage.language_uid">Language Uid</label>
+            <label index="tx_ftm_domain_model_templatelanguage.title">Sprachen-Title</label>
+            <label index="tx_ftm_domain_model_templatelanguage.language">Language</label>
+            <label index="tx_ftm_domain_model_templatelanguage.locale_all">Locale All</label>
+
+            <!-- FTM-Fluid -->
+            <label index="tx_ftm_domain_model_templatefluid">Fluid Template - Fluid-Templates</label>
+            <label index="tx_ftm_domain_model_templatefluid.template_title">Template-Title/Beschreibung</label>
+            <label index="tx_ftm_domain_model_templatefluid.template_type">Template-Typ</label>
+            <label index="tx_ftm_domain_model_templatefluid.template_file">Template-(Datei)name</label>
+            <label index="tx_ftm_domain_model_templatefluid.backend_layout">Backend-Layout</label>
+            <label index="tx_ftm_domain_model_templatefluid.template_code">Template-Code</label>
+
+            <!-- FTM-LessVariable -->
+            <label index="tx_ftm_domain_model_templatelessvariable">Fluid Template - Less-Variablen</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_title">Variablen-Title/Beschreibung</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_name">Variablen-Name</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.category">Kategorie</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_type">Variablen-Typ</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_value">Variablen-Wert</label>
+            <label index="tx_ftm_domain_model_templatelessvariable.variable_color">Variablen-Farbe</label>
+
+            <!-- FTM-MenuContainer -->
+            <label index="tx_ftm_domain_model_templatemenucontainer">Fluid Template - Menü-Container</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.menu_name">Menü/Marker-Name</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.templates">Template</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.special">Menü-Typ</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.special_value_list">Menü-Seiten</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.entry_level">Einstiegs-Ebene</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.exclude_uid_list">Ausgeschlossene Seiten</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.include_not_in_menu">Zeige auch Seiten, die eigentlich nicht in Menüs angezeigt werden sollen</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.max_items">Maximale Einträge</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.min_items">Minimale-Einträge</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.std_wrap">Standard-Wrap</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.wrap">Wrap</label>
+            <label index="tx_ftm_domain_model_templatemenucontainer.menu_objects">Menü-Objekte/Menü-Ebenen</label>
+
+            <!-- FTM-Marker -->
+            <label index="tx_ftm_domain_model_templatemarker">Fluid Template - Marker</label>
+            <label index="tx_ftm_domain_model_templatemarker.marker_name">Marker-Name</label>
+            <label index="tx_ftm_domain_model_templatemarker.marker_type">Marker-Typ</label>
+            <label index="tx_ftm_domain_model_templatemarker.marker_description">Marker-Beschreibung</label>
+            <label index="tx_ftm_domain_model_templatemarker.marker_typo_script">Marker-TypoScript</label>
+
+            <!-- FTM-MenuObjeke -->
+            <label index="tx_ftm_domain_model_templatemenuobject">Fluid Template - Menü-Objekte</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.menu_type">Menü-Typ</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.exp_all">Untermenüs ausgeklappt</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.std_wrap">Standard-Wrap</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.std_wrap_html_special_chars">Sonderzeichen des Standard-Wrap in HTML-Codes umwandeln</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.wrap">Wrap</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.wrap_html_special_chars">Sonderzeichen des Wrap in HTML-Codes umwandeln</label>
+            <label index="tx_ftm_domain_model_templatemenuobject.menu_states">Menü-Zustände</label>
+
+            <!-- FTM-MenuZustaende -->
+            <label index="tx_ftm_domain_model_templatemenustate">Fluid Template - Menü-Objektzustand</label>
+            <label index="tx_ftm_domain_model_templatemenustate.menu_state">Menü-Zustand</label>
+            <label index="tx_ftm_domain_model_templatemenustate.copy_from_state">Vererbe Konfiguration von Menü-Zustand</label>
+            <label index="tx_ftm_domain_model_templatemenustate.std_wrap">Standard-Wrap um dieses Element und Kind-Elemente</label>
+            <label index="tx_ftm_domain_model_templatemenustate.std_wrap_html_special_chars">Sonderzeichen des Standard-Wrap in HTML-Codes umwandeln</label>
+            <label index="tx_ftm_domain_model_templatemenustate.wrap">Wrap um dieses Element</label>
+            <label index="tx_ftm_domain_model_templatemenustate.wrap_html_special_chars">Sonderzeichen des Wrap in HTML-Codes umwandeln</label>
+
+            <!-- FTM-Extensions --> 
+            <label index="tx_ftm_domain_model_templateext">Fluid Template Extension</label>
+            <label index="tx_ftm_domain_model_templateext.hidden">Extension deaktivieren</label>
+            <label index="tx_ftm_domain_model_templateext.ext_key">Extension Key</label>
+            <label index="tx_ftm_domain_model_templateext.ext_name">Extension Name</label>
+            <label index="tx_ftm_domain_model_templateext.ext_version">Extension Version</label>
+            <label index="tx_ftm_domain_model_templateext.ext_conf_t3_less">Extension Configuration T3-Less</label>
+
+            <!-- FTM-Extension: t3less -->
+            <label index="tx_ftm_domain_model_templateextt3less">Fluid Template Extension T3less</label>
+            <label index="tx_ftm_domain_model_templateextt3less.extension_t3_less_info">Extension T3-Less Info</label>
+            <label index="tx_ftm_domain_model_templateextt3less.path_to_less_files">Path To Less Files</label>
+            <label index="tx_ftm_domain_model_templateextt3less.output_folder">Output Folder</label>
+            <label index="tx_ftm_domain_model_templateextt3less.less_files">Less Files</label>
+
+            <!-- FTM-Extension: t3less-Files --> 
+            <label index="tx_ftm_domain_model_templateextt3lessfiles">Fluid Template Extension T3less Files</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.name">File name</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.media">The media attribute. Like “screen”, “print” or media queries like “only screen and (max-device-width: 480px)”</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.title">The title attribute. A title for this stylesheet like “general” or “iehacks” or something else</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.compress">Options are 1 (activated) or 0 (deactivated). This setting is for usage of page.config.compressCss</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.force_on_top">Options are 1 (activated) or 0 (deactivated). With this setting you can force to include this file at the top of your html-markup</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.all_wrap">If you want to wrap the included file, please use “allWrap”. Example: &lt;!--[if IE]&gt; | &lt;![endif]--&gt;</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.exclude_from_concatenation">Options are 1 (activated) or 0 (deactivated). This setting is for usage of page.config.concatenateCss</label>
+            <label index="tx_ftm_domain_model_templateextt3lessfiles.exclude_from_page_renderer">With this setting you can exclude this file from pagerenderer. If activated, the file will not be included to your page. </label>
+
+            <!-- GridElements FlexForm -->
+            <label index="tx_ftm_flexform_gridelements.css_classes">CSS-Klassen (benutzerdefinierte)</label>
+            <label index="tx_ftm_flexform_gridelements.css_classes_selection">CSS-Klassen (vordefinierte aus LESS-Dateien)</label>
+            <label index="tx_ftm_flexform_gridelements.equal_height">Equal-Height</label>
+            <label index="tx_ftm_flexform_gridelements.anchor_name">HTML Anker-Name</label>
+            
+
+
+            <!-- Template Manager GUI -->
+            <!-- Wenn kein Template vorhanden ist -->
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableText">Auf dieser Seite ist noch kein Fluid-Template-Manager Template vorhanden.</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateTemplate">Jetzt ein neues Template auf dieser Seite erstellen!</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateYamlTemplate">Jetzt ein neues YAML-Template auf dieser Seite erstellen!</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrapTemplate">Jetzt ein neues Bootstrap-Template auf dieser Seite erstellen!</label>
+            
+            <label index="tx_ftm_domain_model_template.templateCreatedMessageOkHeadline">Template wurde erstellt!</label>
+            <label index="tx_ftm_domain_model_template.templateCreatedMessageOkMessage">Die Datenbank-Struktur des neuen Templates wurde erfolgreich erstellt!
+                Bearbeite nun den Template-Datensatz und gebe ein Template-Verzeichnis an, in dem die Template-Dateien abgelegt werden sollen.</label>
+            <label index="tx_ftm_domain_model_template.templateCreatedMessageWarningHeadline">Template wurde nicht erstellt!</label>
+            <label index="tx_ftm_domain_model_template.templateCreatedMessageWarningMessage">Es konnte kein Template auf dieser Seite erstellt werden, da schon eins existiert!</label>
+            
+            <!-- TYPOScript-Form -->
+            <label index="tx_ftm_domain_model_template.typoscript">Fluid Template - TYPOScript</label>
+            <label index="tx_ftm_domain_model_template.typoscript_col_filename">Dateiname</label>
+            <label index="tx_ftm_domain_model_template.typoscript_col_status">Status</label>
+            <label index="tx_ftm_domain_model_template.typoscript_col_actions">Aktionen</label>
+
+
+            <!-- Wiki-Form -->
+            <label index="tx_ftm_domain_model_template.wikiHeadline">Fluid-Template-Manager Dokumentation</label>
+            <label index="tx_ftm_domain_model_template.wikiText">Hier finden Sie immer die akuelle Dokumentation zum Fluid-Template-Manager. Sollten Ihre Fragen nicht beantworten werden, Sie haben einen Bug gefunden oder eine Idee für ein neues Feature - dann geht es hier lang: </label>
+
+            <!-- Info-Form -->
+            <label index="tx_ftm_domain_model_template.infoHeadline">Template Check &amp; Info</label>
+            <label index="tx_ftm_domain_model_template.infoText">Wenn auf dieser Seite ein Template angelegt ist, kann man hier Funktionstests durchführen und ggf. das Template reparieren.</label>
+            
+            <!-- Twitter-Form -->
+            <label index="tx_ftm_domain_model_template.twitterHeadline">FTM News</label>
+            <label index="tx_ftm_domain_model_template.twitterText">Hier findest Du immer die aktuellsten Themen zum FTM.</label>
+
+        </languageKey>
+    </data>
+</T3locallang>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ftm_domain_model_templatemenustate</description>
+        <type>CSH</type>
+        <csh_table>tx_ftm_domain_model_templatemenustate</csh_table>
+    </meta>
+    <data type="array">
+        
+        <languageKey index="default" type="array">
+            
+            <label index="menu_state.description">Menu state</label>
+            <label index="copy_from_state.description">Copy configuration from state</label>
+            <label index="std_wrap.description">Default wrap for the whole menu. If there is entered no pipe | there will be used no wrap.</label>
+            <label index="std_wrap_html_special_chars.description">HTML special chars for the default wrap for the whole menu.</label>
+            <label index="wrap.description">Wrap for the whole menu. If there is entered no pipe | there will be used no wrap.</label>
+            <label index="wrap_html_special_chars.description">HTML special chars for the wrap for the whole menu.</label>
+        
+        </languageKey>
+        
+        <languageKey index="default" type="array">
+            
+            <label index="menu_state.description">Zustand des Menüs</label>
+            <label index="copy_from_state.description">Kopiere Konfiguration von Zustand</label>
+            <label index="std_wrap.description">Standard-Wrap für das gesamte Menü. Wenn keine Pipe | eingetragen ist, wird kein Wrap verwendet.</label>
+            <label index="std_wrap_html_special_chars.description">HTML-Special-Chars für Standard-Wrap für das gesamte Menü</label>
+            <label index="wrap.description">Wrap um das gesamte Menü. Wenn keine Pipe | eingetragen ist, wird kein Wrap verwendet.</label>
+            <label index="wrap_html_special_chars.description">HTML-Special-Chars für Wrap um das gesamte Menü</label>
+        
+        </languageKey>
+        
+    </data>
+</T3locallang>

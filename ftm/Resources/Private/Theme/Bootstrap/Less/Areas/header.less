@@ -1,0 +1,66 @@
+/**
+ *
+ *  Area Header
+ *
+ */
+
+
+
+#areaHeader.navbar {
+ 
+  height: 199px;
+  margin-bottom: 0;
+  
+  #mainMenu {
+    border-left: 0px solid;
+    border-top: 1px solid #b1ada4;
+    border-right: 0px solid #b1ada4;
+    border-bottom: 1px solid #532700;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 128px;
+    
+    li {
+      line-height: 26px;
+    }
+    li.last a {
+      padding-right: 40px;
+    }
+    li a {
+      padding: 10px 14px 6px;
+    }
+    li a:hover {
+      background-image: url('@{baseUrlImage}mainMenu-background.png');
+      background-repeat: repeat-x;
+    }
+    li.active a {
+      background-image: url('@{baseUrlImage}mainMenu-background.png');
+      background-repeat: repeat-x;
+    }
+    
+  }  
+  
+  /* On Scroll Animated Header */
+  &.animatedHeader {
+
+    .navbar-inner {
+      height: 43px;
+      .transition(all 0.3s);
+    }
+    
+    img.brand {
+      width: 26px;
+      height: 24px;
+      padding-top: 10px;
+      padding-bottom: 9px;
+    }
+    
+    .nav > li > a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    
+  }
+  
+}
+

@@ -1,0 +1,37 @@
+{namespace ftm=CodingMs\Ftm\ViewHelper}
+<table border="0" cellpadding="0" cellspacing="0" class="typo3-dblist">
+    <thead>
+        <tr class="t3-row-header">
+            <td nowrap="nowrap" class="col-icon"><span class="t3-icon t3-icon-actions t3-icon-actions-view t3-icon-view-list-collapse collapseIcon">&nbsp;</span></td>
+            <td nowrap="nowrap" class="" colspan="3"><span class="c-table"><f:translate key="tx_ftm_domain_model_template.typoscript"></f:translate></span> (6) </td>
+        </tr>
+        <tr class="c-headLine">
+            <td nowrap="nowrap" class="col-icon">
+                <f:image src="{f:uri.resource(path:'Icons/empty.png')}" alt="" class=""></f:image>
+            </td>
+            <td nowrap="nowrap" class="col-filename"><a><f:translate key="tx_ftm_domain_model_template.typoscript_col_filename"></f:translate></a></td>
+            <td nowrap="nowrap" class="col-status"><a><f:translate key="tx_ftm_domain_model_template.typoscript_col_status"></f:translate></a></td>
+            <td nowrap="nowrap" class="col-actions"><a><f:translate key="tx_ftm_domain_model_template.typoscript_col_actions"></f:translate></a></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="db_list_normal firstcol">
+            <ftm:typoScriptRow fluidTemplate="{fluidTemplate}" typoScriptFile="constants.ts"></ftm:typoScriptRow>
+        </tr>
+        <tr class="db_list_normal">
+            <ftm:typoScriptRow fluidTemplate="{fluidTemplate}" typoScriptFile="constantsCustom.ts"></ftm:typoScriptRow>
+        </tr>
+        <tr class="db_list_normal">
+            <ftm:typoScriptRow fluidTemplate="{fluidTemplate}" typoScriptFile="setup.ts"></ftm:typoScriptRow>
+        </tr>
+        <tr class="db_list_normal">
+            <ftm:typoScriptRow fluidTemplate="{fluidTemplate}" typoScriptFile="setupCustom.ts"></ftm:typoScriptRow>
+        </tr>
+        <tr class="db_list_normal">
+            <ftm:typoScriptRow fluidTemplate="{fluidTemplate}" typoScriptFile="tsConfig.ts"></ftm:typoScriptRow>
+        </tr>
+        <tr class="db_list_normal">
+            <ftm:typoScriptRow fluidTemplate="{fluidTemplate}" typoScriptFile="tsConfigCustom.ts"></ftm:typoScriptRow>
+        </tr>
+    </tbody>
+</table>
