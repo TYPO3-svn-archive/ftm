@@ -3,7 +3,6 @@ ToDo
 ================================
 
 * CheckBox: Im ProduktionMode komprimieren von CSS/JS
-* 6.1.5 TS-Edit Links testen
 
 * Translate to english
 * Auf Unterseiten den FTM der Rootline ermitteln und laden
@@ -19,6 +18,8 @@ ToDo
     @todo: Geladene Extensions an den Service mit schicken
     Snippets-Logik in einen Service verlagern
     controller->lang überall oder gar nicht nutzen
+    Bootstrap-LessVariablen aufnehmen, empahsis classes/rte text-stile
+    Version-Vergleichen: version_compare(TYPO3_version,'6.0.0','>=')
 
 .. include:: ./Snippets/PoweredBy.rst
 

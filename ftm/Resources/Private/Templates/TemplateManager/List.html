@@ -1,6 +1,6 @@
 {namespace ftm=CodingMs\Ftm\ViewHelper}
 
-<f:layout name="Default" />
+<f:layout name="Default"></f:layout>
 
 <f:section name="content">
     
@@ -11,7 +11,7 @@
         </f:then>
     </f:if>
         
-    <f:flashMessages />
+    <f:flashMessages></f:flashMessages>
   
 <style type="text/css">
 
@@ -85,9 +85,25 @@ span.warning {
 .ftmActionList li {
   height: 24px;
 }
+.ftm-icon-empty {
+    background-image: url('../../typo3conf/ext/ftm/Resources/Public/Icons/empty.png') !important;
+}
+.ftm-icon-generate-typoscript {
+    background-image: url('../../typo3conf/ext/ftm/Resources/Public/Icons/ts_refresh.png') !important;
+}
+.ftm-icon-generate-less-variables {
+    background-image: url('../../typo3conf/ext/ftm/Resources/Public/Icons/lessVariable_refresh.png') !important;
+}
 
 </style> 
    
+
+
+
+
+
+
+
 
 <!-- Pruefen ob auf einer normalen Seite -->
 <f:if condition="{options.pid}>0">
@@ -95,104 +111,126 @@ span.warning {
 
     <h1><f:translate key="tx_ftm_domain_model_templatemanager"></f:translate></h1>
     
-<table style="width: 100%;">
-    <tr>
-        <td>
-    
-            <div class="ftmBlock">
-                <div class="ftmBlockInner">
-                    <h2><f:translate key="tx_ftm_domain_model_template"></f:translate></h2>
-                    
-                    
-                    <!-- Pruefen ob auf der aktuellen Seite schon ein Template vorhanden ist -->
-                    <f:if condition="{options.templateOnCurrentPage}">
-                    
-                        <!-- Template auf aktueller Seite vorhanden -->
-                        <f:then>
-                            
-                            
-                            <!-- Template-Datensatz -->
-                            <f:render partial="TemplateManager/Template" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
-                            <br/>
-                            
-                            
-                            <!-- Pruefen ob auf das aktuelle Template schon ein templateDir -->
-                            <f:if condition="{options.templateDirFound}">
-                                <f:then>
-                                    
-                                    
-                                    <!-- TypoScript -->
-                                    <f:render partial="TemplateManager/TypoScript" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
-                                    <br />
-                                    
-                                    <!-- Sprachen 
-                                    <f:render partial="TemplateManager/Language" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
-                                    <br />-->
-                                    
-                                    <!-- Fluid-Templates -->
-                                    <f:render partial="TemplateManager/Fluid" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
-                                    <br />
-                                    
-                                    <!-- Marker -->
-                                    <f:render partial="TemplateManager/Marker" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
-                                    <br />
-                                    
-                                    <!-- LESS/CSS -->
-                                    <f:render partial="TemplateManager/Less" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
-                                    <br />
-                                    
-                                    
-                                </f:then>
-                            </f:if>
-                            
-                            
-                        </f:then>
-                        
-                        <!-- Kein Template auf aktueller Seite vorhanden -->
-                        <f:else>
-                            <f:render partial="TemplateManager/NoTemplateAvailable" arguments="{fluidTemplate: fluidTemplate}"></f:render>
-                        </f:else>
-                            
-                    </f:if>
-                </div>
-                <a name="ftmWiki"></a>
-            </div>
-        
-        
-            <!-- Wiki/Dokumentation -->
-            <div class="ftmBlock ftmWiki">
-                <div class="ftmBlockInner"><f:render partial="TemplateManager/Wiki" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render></div>
-            </div>
-            
-            <!-- Debugging -->
-            <f:if condition="{doDebug}">
-                <f:then>
-                    <div class="ftmBlock ftmDebug">
-                        <div class="ftmBlockInner"><f:render partial="TemplateManager/Debug" arguments="{fluidTemplate: fluidTemplate, debug: debug}"></f:render></div>
-                    </div>
-                </f:then>
-            </f:if>
-        
-        </td>
-        <f:comment>
-        <td style="width: 290px; padding-left: 10px;">
-    
-            <!-- Inforamtionen und Check -->
-            <div class="ftmBlock ftmInfo">
-                <div class="ftmBlockInner"><!--f:render partial="TemplateManager/Info" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render--></div>
-            </div>
-            
-            <!-- Twitter -->
-            <div class="ftmBlock ftmTwitter">
-                <div class="ftmBlockInner"><<!--f:render partial="TemplateManager/Twitter" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render--></div>
-            </div>
-    
-        </td>
-        </f:comment>
-        
-    </tr>
-</table>
 
+        
+        <!-- Pruefen ob auf der aktuellen Seite schon ein Template vorhanden ist -->
+        <f:if condition="{options.templateOnCurrentPage}">
+        
+            <!-- Template auf aktueller Seite vorhanden -->
+            <f:then>
+                
+                <!-- Pruefen ob auf das aktuelle Template schon ein templateDir -->
+                <f:if condition="{options.templateDirFound}">
+                    <f:then>
+                        
+                        <div class="typo3-dyntabmenu-tabs">
+                            <table class="typo3-dyntabmenu" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td class="tab" id="DTM-ftm-1-MENU" nowrap="nowrap" onmouseover="DTM_mouseOver(this);" 
+                                        onmouseout="DTM_mouseOut(this);">
+                                        <a href="#" onclick="this.blur(); DTM_activate(&quot;DTM-ftm&quot;,&quot;1&quot;, 0); return false;"><f:translate key="tx_ftm_domain_model_template"></f:translate></a>
+                                    </td>
+                                    <td class="tab" id="DTM-ftm-2-MENU" nowrap="nowrap" onmouseover="DTM_mouseOver(this);" 
+                                        onmouseout="DTM_mouseOut(this);">
+                                        <a href="#" onclick="this.blur(); DTM_activate(&quot;DTM-ftm&quot;,&quot;2&quot;, 0); return false;"><f:translate key="tx_ftm_domain_model_template.tab_typoscript"></f:translate></a>
+                                    </td>
+                                    <td class="tab" id="DTM-ftm-3-MENU" nowrap="nowrap" onmouseover="DTM_mouseOver(this);" 
+                                        onmouseout="DTM_mouseOut(this);">
+                                        <a href="#" onclick="this.blur(); DTM_activate(&quot;DTM-ftm&quot;,&quot;3&quot;, 0); return false;"><f:translate key="tx_ftm_domain_model_template.tab_fluid"></f:translate></a>
+                                    </td>
+                                    <td class="tab" id="DTM-ftm-4-MENU" nowrap="nowrap" onmouseover="DTM_mouseOver(this);" 
+                                        onmouseout="DTM_mouseOut(this);">
+                                        <a href="#" onclick="this.blur(); DTM_activate(&quot;DTM-ftm&quot;,&quot;4&quot;, 0); return false;"><f:translate key="tx_ftm_domain_model_template.tab_marker"></f:translate></a>
+                                    </td>
+                                    <td class="tab" id="DTM-ftm-5-MENU" nowrap="nowrap" onmouseover="DTM_mouseOver(this);" 
+                                        onmouseout="DTM_mouseOut(this);">
+                                        <a href="#" onclick="this.blur(); DTM_activate(&quot;DTM-ftm&quot;,&quot;5&quot;, 0); return false;"><f:translate key="tx_ftm_domain_model_template.tab_less"></f:translate></a>
+                                    </td>
+                                    <td class="tab" id="DTM-ftm-6-MENU" nowrap="nowrap" onmouseover="DTM_mouseOver(this);" 
+                                        onmouseout="DTM_mouseOut(this);">
+                                        <a href="#" onclick="this.blur(); DTM_activate(&quot;DTM-ftm&quot;,&quot;6&quot;, 0); return false;"><f:translate key="tx_ftm_domain_model_template.tab_documentation"></f:translate></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="typo3-dyntabmenu-divs" style="min-height: 500px">
+                            <div style="display: none; padding: 10px;" id="DTM-ftm-1-DIV" class="c-tablayer">
+                                <!-- Template-Datensatz -->
+                                <h2><f:translate key="tx_ftm_domain_model_template"></f:translate></h2>
+                                <f:render partial="TemplateManager/Template" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                            </div>
+                            <div style="display: none; padding: 10px;" id="DTM-ftm-2-DIV" class="c-tablayer">
+                                <!-- TypoScript -->
+                                <h2><f:translate key="tx_ftm_domain_model_template.tab_typoscript"></f:translate></h2>
+                                <f:render partial="TemplateManager/TypoScript" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                            </div>
+                            <div style="display: none; padding: 10px;" id="DTM-ftm-3-DIV" class="c-tablayer">
+                                <!-- Fluid-Templates -->
+                                <h2><f:translate key="tx_ftm_domain_model_template.tab_fluid"></f:translate></h2>
+                                <f:render partial="TemplateManager/Fluid" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                            </div>
+                            <div style="display: none; padding: 10px;" id="DTM-ftm-4-DIV" class="c-tablayer">
+                                <!-- Marker -->
+                                <h2><f:translate key="tx_ftm_domain_model_template.tab_marker"></f:translate></h2>
+                                <f:render partial="TemplateManager/Marker" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                            </div>
+                            <div style="display: none; padding: 10px;" id="DTM-ftm-5-DIV" class="c-tablayer">
+                                <!-- LESS/CSS -->
+                                <h2><f:translate key="tx_ftm_domain_model_template.tab_less"></f:translate></h2>
+                                <f:render partial="TemplateManager/Less" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                            </div>
+                            <div style="display: none; padding: 10px;" id="DTM-ftm-6-DIV" class="c-tablayer" style="min-height: 500px">
+                                <!-- Wiki/Dokumentation -->
+                                <h2><f:translate key="tx_ftm_domain_model_template.tab_documentation"></f:translate></h2>
+                                <f:render partial="TemplateManager/Wiki" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                            </div>
+                        </div>
+                         
+                        <!-- Initialization JavaScript for the menu -->
+                        <script type="text/javascript">
+                            DTM_array["DTM-ftm"] = new Array();
+                            DTM_array["DTM-ftm"][0] = "DTM-ftm-1";
+                            DTM_array["DTM-ftm"][1] = "DTM-ftm-2";
+                            DTM_array["DTM-ftm"][2] = "DTM-ftm-3";
+                            DTM_array["DTM-ftm"][3] = "DTM-ftm-4";
+                            DTM_array["DTM-ftm"][4] = "DTM-ftm-5";
+                            DTM_array["DTM-ftm"][5] = "DTM-ftm-6";
+                            DTM_activate("DTM-ftm", top.DTM_currentTabs["DTM-ftm"]?top.DTM_currentTabs["DTM-ftm"]:1, 0);
+                        </script>
+                        
+                        
+                    </f:then>
+                    <f:else>
+                    
+                        <!-- Template-Datensatz -->
+                        <f:render partial="TemplateManager/Template" arguments="{fluidTemplate: fluidTemplate, options: options}"></f:render>
+                        <br/>
+                
+                    </f:else>
+                </f:if>
+                
+                
+            </f:then>
+            
+            <!-- Kein Template auf aktueller Seite vorhanden -->
+            <f:else>
+                <f:render partial="TemplateManager/NoTemplateAvailable" arguments="{fluidTemplate: fluidTemplate}"></f:render>
+            </f:else>
+                
+        </f:if>
+ 
+        
+        
+
+        <!-- Debugging -->
+        <f:if condition="{doDebug}">
+            <f:then>
+                <div class="ftmBlock ftmDebug">
+                    <div class="ftmBlockInner"><f:render partial="TemplateManager/Debug" arguments="{fluidTemplate: fluidTemplate, debug: debug}"></f:render></div>
+                </div>
+            </f:then>
+        </f:if>
+    
     </f:then>
 </f:if>
 

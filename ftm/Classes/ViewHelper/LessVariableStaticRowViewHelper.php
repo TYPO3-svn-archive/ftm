@@ -41,7 +41,10 @@ class LessVariableStaticRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
             $tableCells[] = "string";
             
             // Less-Variable Name
-            $tableCells[] = "<a title=\"@".$lessVariableName."\">@".$lessVariableName."</a>";            
+            $tableCells[] = "<a title=\"@".$lessVariableName."\">@".$lessVariableName."</a>";
+        
+            // Less-Variable Category
+            $tableCells[] = "FTM-Base";
 
             // Less-Variablen Wert
             $tableCells[] = $fluidTemplate->getConfig()->getBaseURL();
@@ -56,7 +59,10 @@ class LessVariableStaticRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
             $tableCells[] = "string";
             
             // Less-Variable Name
-            $tableCells[] = "<a title=\"@".$lessVariableName."\">@".$lessVariableName."</a>";   
+            $tableCells[] = "<a title=\"@".$lessVariableName."\">@".$lessVariableName."</a>";
+        
+            // Less-Variable Category
+            $tableCells[] = "FTM-Base";
             
             // Less-Variablen Wert
             $tableCells[] = $fluidTemplate->getConfig()->getBaseUrl()."typo3conf/ext/".$fluidTemplate->getTemplateDir()."/";
@@ -71,7 +77,10 @@ class LessVariableStaticRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
             $tableCells[] = "string";
             
             // Less-Variable Name
-            $tableCells[] = "<a title=\"@".$lessVariableName."\">@".$lessVariableName."</a>";   
+            $tableCells[] = "<a title=\"@".$lessVariableName."\">@".$lessVariableName."</a>";
+        
+            // Less-Variable Category
+            $tableCells[] = "FTM-Base";
             
             // Less-Variablen Wert
             $tableCells[] = $fluidTemplate->getTemplateDir();

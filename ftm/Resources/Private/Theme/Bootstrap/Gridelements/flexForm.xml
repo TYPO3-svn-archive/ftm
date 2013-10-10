@@ -19,6 +19,14 @@
       <classes type="array">
         <TCEforms type="array">
           <label>LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_flexform_gridelements.css_classes_selection</label>
+                  
+        <!--displayCond>
+            <OR>
+                <numIndex>FIELD:tx_gridelements_backend_layout:=:2008</numIndex>
+                <numIndex>FIELD:tx_gridelements_backend_layout:=:2009</numIndex>
+            </OR>
+        </displayCond-->
+        
           <config type="array">
             <type>user</type>
             <userFunc>CodingMs\Ftm\Backend\GridElementClassesRow->renderField</userFunc>

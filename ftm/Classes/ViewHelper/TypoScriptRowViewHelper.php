@@ -10,7 +10,7 @@ namespace CodingMs\Ftm\ViewHelper;
  * @since      1.0.0
  */
 class TypoScriptRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
-
+    
     /**
      * TypoScript Row
      *
@@ -102,15 +102,82 @@ class TypoScriptRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
             // Custom-Datei bearbeiten duerfen
             else {
                 
+                
+                
+        // $user_perms = $GLOBALS['BE_USER']->getFileoperationPermissions();
+        // $this->fileProcessor = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Utility\File\ExtendedFileUtility');
+        // $this->fileProcessor->init($GLOBALS['FILEMOUNTS'], $GLOBALS['TYPO3_CONF_VARS']['BE']['fileExtensions']);
+        // $this->fileProcessor->init_actionPerms($user_perms);
+        // $this->fileProcessor->dontCheckForUnique = 1;
+//                 
+//         
+        // if (is_array($GLOBALS['FILEMOUNTS']) && !empty($GLOBALS['FILEMOUNTS'])) {
+            // // we have a filemount
+            // // do something here
+        // } else {
+            // // we don't have a valid file mount
+            // // should be fixed
+// 
+            // // this throws a error message because we have no rights to upload files
+            // // to our extension's own upload folder
+            // // further investigation needed
+            // $file['upload']['1']['target'] = \t3lib_div::getFileAbsFileName($filepath); //\t3lib_div::getFileAbsFileName('uploads/tx_directmail/');
+        // }
+// 
+        // // Checking referer / executing:
+        // $refInfo = parse_url(\t3lib_div::getIndpEnv('HTTP_REFERER'));
+        // $httpHost = \t3lib_div::getIndpEnv('TYPO3_HOST_ONLY');
+// 
+        // if(empty($this->indata['newFile'])){
+                // //new file
+            // $file['newfile']['1']['target'] = '0:'.$filepath;
+            // $file['newfile']['1']['data']   = $typoScriptFile;
+//             
+            // if ($httpHost != $refInfo['host'] && $this->vC != $GLOBALS['BE_USER']->veriCode() && !$GLOBALS['TYPO3_CONF_VARS']['SYS']['doNotCheckReferer'])  {
+                // $this->fileProcessor->writeLog(0,2,1,'Referer host "%s" and server host "%s" did not match!',array($refInfo['host'],$httpHost));
+            // } else {
+                // $this->fileProcessor->start($file);
+                // $newfile = $this->fileProcessor->func_newfile($file['newfile']['1']);
+                // // in TYPO3 6.0 func_newfile returns an object, but we need the path to the new file name later on!
+                // if(is_object($newfile)){
+                    // $newfile = $newfile->getIdentifier();
+                // }
+            // }
+        // } else {
+            // $newfile = $this->indata['newFile'];
+        // }
+// 
+        // if($newfile){
+            // $csvFile['data'] = $this->indata['csv'];
+            // $csvFile['target'] = $newfile;
+            // $write = $this->fileProcessor->func_edit($csvFile);
+        // }
+        // var_dump($file);
+        // var_dump($newfile);
+        // exit;
+                
+                
+  
+                
                 // File-Object erstellen
-                $fileObject = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance()->retrieveFileOrFolderObject($relPath);
-                $fullIdentifier = $fileObject->getCombinedIdentifier();
+                // $fileObject = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance()->retrieveFileOrFolderObject($relPath);
+                // $fullIdentifier = $fileObject->getCombinedIdentifier();
                 // Pruefen ob man bearbeiten darf
                 // if (is_a($fileObject, 'TYPO3\\CMS\\Core\\Resource\\File') && $fileObject->checkActionPermission('edit') && \TYPO3\CMS\Core\Utility\GeneralUtility::inList($GLOBALS['TYPO3_CONF_VARS']['SYS']['textfile_ext'], $fileObject->getExtension())) {
                 if(1) {
-                    $editOnClick = 'top.content.list_frame.location.href=top.TS.PATH_typo3+\'file_edit.php?target=' . rawurlencode($fullIdentifier) . '&returnUrl=\'+top.rawurlencode(top.content.list_frame.document.location.pathname+top.content.list_frame.document.location.search);return false;';
-                    $actions['edit'] = '<a href="#" onclick="' . $editOnClick . '" title="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:cm.edit') . '">' . \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-page-open') . '</a>';
-                } else {
+                    
+                    /**
+                     * Wir duerfen nicht auf Dateien ausserhalb des Storages zugreifen
+                     * daher Link erstmal anders!
+                     */
+                    // $editOnClick = 'top.content.list_frame.location.href=top.TS.PATH_typo3+\'file_edit.php?target=' . rawurlencode($fullIdentifier) . '&returnUrl=\'+top.rawurlencode(top.content.list_frame.document.location.pathname+top.content.list_frame.document.location.search);return false;';
+                    $editOnClick     = 'top.content.list_frame.location.href=top.TS.PATH_typo3+\'file_edit.php?target='.$relPath.'&returnUrl=\'+top.rawurlencode(top.content.list_frame.document.location.pathname+top.content.list_frame.document.location.search);return false;';
+                    $editIcon        = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-page-open');
+                    $editTitle       = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:cm.edit');
+                    $actions['edit'] = '<a href="#" onclick="'.$editOnClick.'" title="'.$editTitle.'">'.$editIcon.'</a>';
+                    
+                } 
+                else {
                     $actions['edit'] = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('empty-empty');
                 }
                 

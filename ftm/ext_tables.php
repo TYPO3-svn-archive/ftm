@@ -495,28 +495,327 @@ $TCA['tx_ftm_domain_model_templatemarker'] = array(
 );
 
 
+// /**
+ // * tt_content: Image-Hover-Effekte 
+ // */
+// $tmp_ftm_columns = array(
+// 
+    // 'ftm_image_hover_effect' => array(
+        // 'displayCond' => 'FIELD:CType:=:image',
+        // 'exclude' => 0,
+        // 'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_ftm.xml:ftm_image_hover_effect', 
+        // 'config' => array (
+            // 'type' => 'user',
+            // 'userFunc' => 'CodingMs\Ftm\Backend\ImageHoverEffectRow->renderField'
+        // )
+    // )
+// );
+// 
+// 
+// // The handling of TCA was refactored, so that this global array is always loaded.
+// // Thus calls to \TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA() are not needed anymore.
+// // \TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA("tt_content"); 
+// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tmp_ftm_columns);
+// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content","ftm_image_hover_effect",'','after:imageorient');
+
+
+
+
+
+
 /**
  * tt_content: Image-Hover-Effekte 
  */
 $tmp_ftm_columns = array(
-
-    'ftm_image_hover_effect' => array(
-        'displayCond' => 'FIELD:CType:=:image',
+    'tx_ftm_grid_elements_col_pos_bootstrap_header' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2001',
+                    'FIELD:tx_gridelements_backend_layout:=:2002',
+                    'FIELD:tx_gridelements_backend_layout:=:2003',
+                    'FIELD:tx_gridelements_backend_layout:=:2004',
+                    'FIELD:tx_gridelements_backend_layout:=:2005',
+                    'FIELD:tx_gridelements_backend_layout:=:2006',
+                    'FIELD:tx_gridelements_backend_layout:=:2007',
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
         'exclude' => 0,
-        'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_ftm.xml:ftm_image_hover_effect', 
         'config' => array (
             'type' => 'user',
-            'userFunc' => 'CodingMs\Ftm\Backend\ImageHoverEffectRow->renderField'
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrapHeader->renderField'
         )
-    )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_1' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2001',
+                    'FIELD:tx_gridelements_backend_layout:=:2002',
+                    'FIELD:tx_gridelements_backend_layout:=:2003',
+                    'FIELD:tx_gridelements_backend_layout:=:2004',
+                    'FIELD:tx_gridelements_backend_layout:=:2005',
+                    'FIELD:tx_gridelements_backend_layout:=:2006',
+                    'FIELD:tx_gridelements_backend_layout:=:2007',
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_2' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2002',
+                    'FIELD:tx_gridelements_backend_layout:=:2003',
+                    'FIELD:tx_gridelements_backend_layout:=:2004',
+                    'FIELD:tx_gridelements_backend_layout:=:2005',
+                    'FIELD:tx_gridelements_backend_layout:=:2006',
+                    'FIELD:tx_gridelements_backend_layout:=:2007',
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_3' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2003',
+                    'FIELD:tx_gridelements_backend_layout:=:2004',
+                    'FIELD:tx_gridelements_backend_layout:=:2005',
+                    'FIELD:tx_gridelements_backend_layout:=:2006',
+                    'FIELD:tx_gridelements_backend_layout:=:2007',
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_4' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2004',
+                    'FIELD:tx_gridelements_backend_layout:=:2005',
+                    'FIELD:tx_gridelements_backend_layout:=:2006',
+                    'FIELD:tx_gridelements_backend_layout:=:2007',
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_5' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2005',
+                    'FIELD:tx_gridelements_backend_layout:=:2006',
+                    'FIELD:tx_gridelements_backend_layout:=:2007',
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_6' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2006',
+                    'FIELD:tx_gridelements_backend_layout:=:2007',
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_7' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2007',
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_8' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2008',
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_9' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2009',
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_10' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2010',
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_11' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2011',
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
+    'tx_ftm_grid_elements_col_pos_bootstrap_12' => array(
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:CType:=:gridelements_pi1',
+                'OR' => array(
+                    'FIELD:tx_gridelements_backend_layout:=:2012',
+                ),
+            ),
+        ),
+        'exclude' => 0,
+        'config' => array (
+            'type' => 'user',
+            'userFunc' => 'CodingMs\Ftm\Backend\GridElementColPosBootstrap->renderField'
+        )
+    ),
 );
-
-
-// The handling of TCA was refactored, so that this global array is always loaded.
-// Thus calls to \TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA() are not needed anymore.
-// \TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA("tt_content"); 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tmp_ftm_columns);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content","ftm_image_hover_effect",'','after:imageorient');  
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_header",'','after:section_frame');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_1",'','after:tx_ftm_grid_elements_col_pos_bootstrap_header');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_2",'','after:tx_ftm_grid_elements_col_pos_bootstrap_1');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_3",'','after:tx_ftm_grid_elements_col_pos_bootstrap_2');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_4",'','after:tx_ftm_grid_elements_col_pos_bootstrap_3');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_5",'','after:tx_ftm_grid_elements_col_pos_bootstrap_4');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_6",'','after:tx_ftm_grid_elements_col_pos_bootstrap_5');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_7",'','after:tx_ftm_grid_elements_col_pos_bootstrap_6');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_8",'','after:tx_ftm_grid_elements_col_pos_bootstrap_7');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_9",'','after:tx_ftm_grid_elements_col_pos_bootstrap_8');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_10",'','after:tx_ftm_grid_elements_col_pos_bootstrap_9');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_11",'','after:tx_ftm_grid_elements_col_pos_bootstrap_10');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_content", "tx_ftm_grid_elements_col_pos_bootstrap_12",'','after:tx_ftm_grid_elements_col_pos_bootstrap_11');
+// Nach dem Layout-Wechsel einen Reload erzwingen
+$TCA['tt_content']['ctrl']['requestUpdate'] = $TCA['tt_content']['ctrl']['requestUpdate'].',tx_gridelements_backend_layout';
 
 
 
