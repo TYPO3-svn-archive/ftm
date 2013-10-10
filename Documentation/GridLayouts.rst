@@ -17,20 +17,19 @@ Bootstrap Grid-Layouts
 Hier eine Liste der automatisch angelegten Bootstrap Grid-Layouts:
 
 ==== ====================== =========== ===========
-uid  Name                   colPos      columns
-2000 GridLayout 100         10          12
-2001 GridLayout 83-17       11, 15      10, 2
-2002 GridLayout 75-25       11, 15      9, 3
-2003 GridLayout 66-33       11, 15      8, 4
-2004 GridLayout 50-50       11, 15      6, 6
-2005 GridLayout 33-66       11, 15      4, 8
-2006 GridLayout 25-75       11, 15      3, 9
-2007 GridLayout 17-83       11, 15      2, 10
-2008 GridLayout 33-33-33    11, 13, 15  4, 4, 4
-2009 GridLayout 50-25-25    11, 13, 15  6, 3, 3
-2010 GridLayout 25-50-25    11, 13, 15  3, 6, 3
-2011 GridLayout 25-25-50    11, 13, 15  3, 3, 6
-2012 GridLayout 25-25-25-25 11, 13, 15  3, 3, 3, 3
+uid  Name                   colPos      
+2001 GridLayout Spalten 1   11          
+2002 GridLayout Spalten 2   11-12       
+2003 GridLayout Spalten 3   11-13       
+2004 GridLayout Spalten 4   11-14       
+2005 GridLayout Spalten 5   11-15       
+2006 GridLayout Spalten 6   11-16       
+2007 GridLayout Spalten 7   11-17       
+2008 GridLayout Spalten 8   11-18       
+2009 GridLayout Spalten 9   11-19       
+2010 GridLayout Spalten 10  11-20       
+2011 GridLayout Spalten 11  11-21       
+2012 GridLayout Spalten 12  11-22       
 ==== ====================== =========== ===========
 
 Der uid-Bereich für die Bootstrap Grid-Layouts liegt zwischen 2000-2999.

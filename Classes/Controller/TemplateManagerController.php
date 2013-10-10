@@ -66,6 +66,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      * GridLayout Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\GridLayoutRepository
+     * @inject
      */
     protected $gridLayoutRepository;
 
@@ -80,6 +81,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      * Fluid-Service
      *
      * @var \CodingMs\Ftm\Service\Fluid
+     * @inject
      */
     protected $fluidService;
 
@@ -87,6 +89,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      * Pages-Service
      *
      * @var \CodingMs\Ftm\Service\Pages
+     * @inject
      */
     protected $pagesService;
 
@@ -120,8 +123,17 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      * SysTemplate-Service
      *
      * @var \CodingMs\Ftm\Service\SysTemplate
+     * @inject
      */
     protected $sysTemplateService;
+
+    /**
+     * Storage-Service
+     *
+     * @var \CodingMs\Ftm\Service\Storage
+     * @inject
+     */
+    protected $storageService;
 
     /**
      * Session-Handler
@@ -150,46 +162,6 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $this->fluidTemplateMarkerRepository = $fluidTemplateMarkerRepository;
     }
 
-    /**
-     * injectGridLayoutRepository
-     *
-     * @param \CodingMs\Ftm\Domain\Repository\GridLayoutRepository $gridLayoutRepository
-     * @return void
-     */
-    public function injectGridLayoutRepository(\CodingMs\Ftm\Domain\Repository\GridLayoutRepository $gridLayoutRepository) {
-        $this->gridLayoutRepository = $gridLayoutRepository;
-    }
-
-    /**
-     * injectFluidService
-     *
-     * @param \CodingMs\Ftm\Service\Fluid $fluidService
-     * @return void
-     */
-    public function injectFluidService(\CodingMs\Ftm\Service\Fluid $fluidService) {
-        $this->fluidService = $fluidService;
-    }
-
-    /**
-     * injectPagesService
-     *
-     * @param \CodingMs\Ftm\Service\Pages $pagesService
-     * @return void
-     */
-    public function injectPagesService(\CodingMs\Ftm\Service\Pages $pagesService) {
-        $this->pagesService = $pagesService;
-    }
-
-    /**
-     * injectSysTemplate
-     *
-     * @param \CodingMs\Ftm\Service\SysTemplate $sysTemplateService
-     * @return void
-     */
-    public function injectSysTemplate(\CodingMs\Ftm\Service\SysTemplate $sysTemplateService) {
-        $this->sysTemplateService = $sysTemplateService;
-    }
-    
     /**
      * Action initialisieren
      * Wird immer aufgerufen wenn irgendeine Action ausgefuehrt wird
@@ -229,10 +201,10 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
              * @var \CodingMs\Ftm\Domain\Model\Template
              */
             $this->fluidTemplate = $this->getTemplate();
-            
-            
-            // Strukture-Service
             if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
+                
+                
+                // Strukture-Service, entsprechend des Template-Typens erstellen
                 if($this->fluidTemplate->getTemplateType()=='yaml') {
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureYaml');
                 }
@@ -242,25 +214,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 else {
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
                 }
+                
             }
             
         }
         
-        // SysTemplate-Service erstellen, falls noch nicht geschehen
-        if(!($this->sysTemplateService instanceof \CodingMs\Ftm\Service\SysTemplate)) {
-            $this->sysTemplateService = $this->objectManager->create('CodingMs\Ftm\Service\SysTemplate');
-        }
-        
-        // Fluid-Service erstellen, falls noch nicht geschehen
-        if(!($this->fluidService instanceof \CodingMs\Ftm\Service\Fluid)) {
-            $this->fluidService = $this->objectManager->create('CodingMs\Ftm\Service\Fluid');
-        }
-        
-        // Pages-Service erstellen, falls noch nicht geschehen
-        if(!($this->pagesService instanceof \CodingMs\Ftm\Service\Pages)) {
-            $this->pagesService = $this->objectManager->create('CodingMs\Ftm\Service\Pages');
-        }
-               
         
         // PluginCloud-Service initiieren
         $this->pluginService = $this->objectManager->create(
@@ -303,7 +261,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $options['ftmVersion'] = FTM_VERSION;
         $options['pid']        = $this->pid;
         $options['wikiUrl']    = 'http://fluid-template-manager.de/documentation/';
-        $options['twitterUrl'] = 'http://if-20.com/iframes/IF-20-Twitter-Stream/';
+        $options['twitterUrl'] = 'http://fluid-template-manager.de/iframes/TwitterStream/';
         $options['disclaimerNotAccepted'] = true;
         
         
@@ -432,6 +390,18 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // -------------------------------------------------
                     $options['templateDirFound'] = true;
                     $this->setTemplateDir($templateName);
+                    // -------------------------------------------------
+                    
+                    
+                    
+                    // Pruefen ob Storage vorhanden ist und erstelle ihn ggf.
+                    // -------------------------------------------------
+                    if($this->storageService->checkAndCreate($this->getTemplate()->getTemplateDir()) == 'created') {
+                        $messageText = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.storage_created_message", "Ftm");
+                        $messageHead = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.storage_created_headline", "Ftm");
+                        $messageType = \TYPO3\CMS\Core\Messaging\FlashMessage::OK;
+                        $this->flashMessageContainer->add($messageText, $messageHead, $messageType);
+                    }
                     // -------------------------------------------------
                     
                     

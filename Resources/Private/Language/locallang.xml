@@ -21,6 +21,8 @@
             <label index="tx_ftm_domain_model_template.meta">Meta-Angaben</label>
             <label index="tx_ftm_domain_model_template.language">Website-Sprachen</label>
             <label index="tx_ftm_domain_model_template.tab_fluid">Fluid-Templates</label>
+            <label index="tx_ftm_domain_model_template.tab_typoscript">TYPOScript</label>
+            <label index="tx_ftm_domain_model_template.tab_documentation">Dokumentation</label>
             <label index="tx_ftm_domain_model_template.fluid">Fluid-Templates</label>
             <label index="tx_ftm_domain_model_template.fluid_headline_with_info">Fluid-Templates (das erste Template ist das default-Template!)</label>
             <label index="tx_ftm_domain_model_template.tab_menu">Menüs</label>
@@ -162,6 +164,12 @@
             <label index="tx_ftm_flexform_gridelements.equal_height">Equal-Height</label>
             <label index="tx_ftm_flexform_gridelements.anchor_name">HTML Anker-Name</label>
             
+            
+            <!-- GridElementColPosBootstrap-Backend -->
+            <label index="tx_ftm_backend_gridelementcolposbootstrap.column">Spalte</label>
+            <label index="tx_ftm_backend_gridelementcolposbootstrap.columns">Spalten</label>
+            
+            
             <!-- GridElementClassesRow-Backend -->
             <label index="tx_ftm_backend_gridelementclassesrow.error_multiple_ftm_templates_on_rootline">Error: Multiple FTM-Templates on rootline! Only one is valid!</label>
             <!-- %s - Template-Dir -->
@@ -298,6 +306,8 @@ Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, al
             <label index="tx_ftm_controller_templatemanagercontroller.minor_release_available">Es ist ein neues Minor-Release verfügbar!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.patch_available">Es ist ein neuer Patch verfügbar!</label> 
             <label index="tx_ftm_controller_templatemanagercontroller.update_message">Es wird empfohlen den FTM auf die aktuelle Version zu aktualisieren. Es kann u.U. ein paar Stunden dauern bis die neue Version auch über Das TER verfügbar ist.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.storage_created_message">File-Storage für die Bearbeitung der Template-Dateien auf Wurzelseite erstellt.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.storage_created_headline">File-Storage erstellt</label>
 
            
            
@@ -330,6 +340,7 @@ Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, al
             <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_exists_and_not_up_to_date">File exists but isn't up-to-date</label>
             <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.downlad_typoscript">TypoScript (%s) herunterladen</label>
             <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_not_found">File not found</label>
+            
 
             <!-- Template Manager GUI -->
             <!-- Wenn kein Template vorhanden ist -->
@@ -386,6 +397,7 @@ Des Weiteren können über die </label>
             <label index="tx_ftm_domain_model_template.less_headline">Less-Variablen</label>
             <label index="tx_ftm_domain_model_template.less_col_type">Typ</label>
             <label index="tx_ftm_domain_model_template.less_col_name">Name</label>
+            <label index="tx_ftm_domain_model_template.less_col_category">Kategorie</label>
             <label index="tx_ftm_domain_model_template.less_col_value">Wert</label>
             <label index="tx_ftm_domain_model_template.less_col_info">Info</label>
             <label index="tx_ftm_domain_model_template.less_col_actions">Aktionen</label>

@@ -3,7 +3,18 @@
 #
 CREATE TABLE tt_content (
 
-	ftm_image_hover_effect varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_1 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_2 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_3 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_4 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_5 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_6 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_7 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_8 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_9 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_10 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_11 varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_grid_elements_col_pos_bootstrap_12 varchar(255) DEFAULT '' NOT NULL,
 
 );
 

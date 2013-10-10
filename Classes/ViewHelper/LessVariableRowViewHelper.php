@@ -47,6 +47,10 @@ class LessVariableRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstrac
         $tableCells[] = "<a title=\"@".$lessVariable->getVariableName()."\">@".$lessVariable->getVariableName()."</a>";
         
         
+        // Less-Variable Category
+        $tableCells[] = $lessVariable->getCategory();
+        
+        
         // Less-Variable Wert
         if($variableType=='color') {
             $tableCells[] = $lessVariable->getVariableColorSquare().' '.$lessVariable->getVariableColor();

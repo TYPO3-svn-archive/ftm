@@ -23,22 +23,26 @@
                     <li><b><f:translate key="tx_ftm_domain_model_template.template_main_actions"></f:translate></b></li>
                     <li><!-- Template bearbeiten -->
                         <a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&amp;edit[tx_ftm_domain_model_template][{fluidTemplate.uid}]=edit'; return false;" title="{f:translate(key: 'tx_ftm_domain_model_template.template_edit_template')}">
-                            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-open">&nbsp;</span>&nbsp;<span><f:translate key="tx_ftm_domain_model_template.template_edit_template"></f:translate></span>
+                            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-open">&nbsp;</span>&nbsp;
+                            <span><f:translate key="tx_ftm_domain_model_template.template_edit_template"></f:translate></span>
                         </a>
                     </li>
                     <li><!-- TYPOScript re/generieren -->
                         <f:link.action action="generateTypoScript" controller="TemplateManager" arguments="{typoScriptFile: 'setup.ts' }">
-                            <f:image src="{f:uri.resource(path:'Icons/ts_refresh.png')}" alt="" class=""></f:image>&nbsp;<span><f:translate key="tx_ftm_domain_model_template.template_generate_typoscript"></f:translate></span>
+                            <span class="t3-icon t3-icon-actions t3-icon-actions-document ftm-icon-generate-typoscript">&nbsp;</span>&nbsp;
+                            <span><f:translate key="tx_ftm_domain_model_template.template_generate_typoscript"></f:translate></span>
                         </f:link.action>
                     </li>
                     <li><!-- Snippets auslesen -->
                         <f:link.action action="loadSnippets" controller="TemplateManager">
-                            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-system-refresh">&nbsp;</span>&nbsp;<span><f:translate key="tx_ftm_domain_model_template.template_load_snippets"></f:translate></span>
+                            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-system-refresh">&nbsp;</span>&nbsp;
+                            <span><f:translate key="tx_ftm_domain_model_template.template_load_snippets"></f:translate></span>
                         </f:link.action>
                     </li>
                     <li><!-- CSS/LESS re/generieren -->
                         <f:link.action action="generateLessVariable" controller="TemplateManager">
-                            <f:image src="{f:uri.resource(path:'Icons/lessVariable_refresh.png')}" alt="" class=""></f:image>&nbsp;<span><f:translate key="tx_ftm_domain_model_template.template_generate_less_variables"></f:translate></span>
+                            <span class="t3-icon t3-icon-actions t3-icon-actions-document ftm-icon-generate-less-variables">&nbsp;</span>&nbsp;
+                            <span><f:translate key="tx_ftm_domain_model_template.template_generate_less_variables"></f:translate></span>
                         </f:link.action>
                     </li>
                 </ul>

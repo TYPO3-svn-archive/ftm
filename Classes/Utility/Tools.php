@@ -138,13 +138,13 @@ class Tools {
             return "typo3conf/ext/".$themeName."/Resources/Public/Less/";
         }
         if($type=="LessBasic") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Less/0_basicLess/";
+            return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/";
         }
         if($type=="LessGridElementLayouts") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Less/0_basicLess/6_grid_element_layouts/";
+            return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/GridElementLayouts/";
         }
         if($type=="LessImageHoverEffects") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Less/0_basicLess/5_image_hover_effects/";
+            return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/ImageHoverEffects/";
         }
         if($type=="FluidTemplates") {
             return "typo3conf/ext/".$themeName."/Resources/Private/";
