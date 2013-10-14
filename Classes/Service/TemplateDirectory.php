@@ -72,6 +72,7 @@ class TemplateDirectory {
         'Resources/Public/Less/BasicLayout'   => 'Hier liegt das gesamte Template',
         'Resources/Public/Less/Modifications' => 'Hier liegt das gesamte Template',
         'Resources/Public/Less/Areas'         => 'Hier liegt das gesamte Template',
+        'Resources/Public/Less/Navigations'   => 'Hier liegt das gesamte Template',
         'Resources/Public/Less/Layouts'       => 'Hier liegt das gesamte Template',
         'Resources/Public/Less/Templates'     => 'Hier liegt das gesamte Template',
         'Resources/Public/Less/Partials'      => 'Hier liegt das gesamte Template',

@@ -35,7 +35,7 @@ namespace CodingMs\Ftm\Domain\Model;
 class TemplateLanguage extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
     /**
-     * sys_languag_uid
+     * sys_language_uid
      *
      * @var integer
      * @validate NotEmpty

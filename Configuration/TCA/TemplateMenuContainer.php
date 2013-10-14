@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_templatemenucontainer'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_templatemenucontainer']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'hidden, menu_name, template, special, special_value_list, entry_level, exclude_uid_list, include_not_in_menu, max_items, min_items, std_wrap, wrap, menu_objects',
+        'showRecordFieldList' => 'hidden, menu_name, special, special_value_list, entry_level, exclude_uid_list, include_not_in_menu, max_items, min_items, std_wrap, wrap, menu_objects',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden;;1, menu_name, template, special, special_value_list, entry_level, exclude_uid_list, include_not_in_menu, max_items, min_items, std_wrap, wrap, menu_objects'),
+        '1' => array('showitem' => 'hidden;;1, menu_name, special, special_value_list, entry_level, exclude_uid_list, include_not_in_menu, max_items, min_items, std_wrap, wrap, menu_objects'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -102,19 +102,6 @@ $TCA['tx_ftm_domain_model_templatemenucontainer'] = array(
                 'eval' => 'trim'
             ),
         ),
-        'template' => array(
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenucontainer.template',
-            'config' => array(
-                'type' => 'group',
-                'internal_type' => 'db',
-                'allowed' => 'tx_ftm_domain_model_template',
-                'size' => 1,
-                'maxitems' => 1,
-                'minitems' => 1,
-            ),
-        ),
-        
         'special' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenucontainer.special',
@@ -279,6 +266,12 @@ $TCA['tx_ftm_domain_model_templatemenucontainer'] = array(
                   ),
                 ),
                 
+            ),
+        ),
+        
+        'template' => array(
+            'config' => array(
+                'type' => 'passthrough',
             ),
         ),
 

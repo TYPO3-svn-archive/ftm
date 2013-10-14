@@ -11,7 +11,7 @@
 #  # nur toplevel
 #  # topLevelLayout = 1 
 #  flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-#  icon        = ../uploads/tx_gridelements/GridLayout_100.jpg
+#  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_100.jpg
 #  title       = Bootstrap: GridLayout 100
 #  description = Bootstrap: GridLayout 100 (uid: 2000, colPos: 10, columns: 12)
 #  frame = 12352345
@@ -44,7 +44,7 @@ tx_gridelements.setup.2001 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_1.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_1.jpg
   title       = Bootstrap: GridLayout columns 1 (uid: 2001, colPos: 11)
   description = Bootstrap: GridLayout columns 1 (uid: 2001, colPos: 11)
   frame = 12352345
@@ -77,7 +77,7 @@ tx_gridelements.setup.2002 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_2.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_2.jpg
   title       = Bootstrap: GridLayout columns 2 (uid: 2002, colPos: 11-12)
   description = Bootstrap: GridLayout columns 2 (uid: 2002, colPos: 11-12)
   frame = 12352345
@@ -114,7 +114,7 @@ tx_gridelements.setup.2003 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_3.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_3.jpg
   title       = Bootstrap: GridLayout columns 3 (uid: 2003, colPos: 11-13)
   description = Bootstrap: GridLayout columns 3 (uid: 2003, colPos: 11-13)
   frame = 12352345
@@ -155,7 +155,7 @@ tx_gridelements.setup.2004 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_4.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_4.jpg
   title       = Bootstrap: GridLayout columns 4 (uid: 2004, colPos: 11-14)
   description = Bootstrap: GridLayout columns 4 (uid: 2004, colPos: 11-14)
   frame = 12352345
@@ -200,7 +200,7 @@ tx_gridelements.setup.2005 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_5.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_5.jpg
   title       = Bootstrap: GridLayout columns 5 (uid: 2005, colPos: 11-15)
   description = Bootstrap: GridLayout columns 5 (uid: 2005, colPos: 11-15)
   frame = 12352345
@@ -249,7 +249,7 @@ tx_gridelements.setup.2006 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_6.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_6.jpg
   title       = Bootstrap: GridLayout columns 6 (uid: 2006, colPos: 11-16)
   description = Bootstrap: GridLayout columns 6 (uid: 2006, colPos: 11-16)
   frame = 12352345
@@ -302,7 +302,7 @@ tx_gridelements.setup.2007 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_7.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_7.jpg
   title       = Bootstrap: GridLayout columns 7 (uid: 2007, colPos: 11-17)
   description = Bootstrap: GridLayout columns 7 (uid: 2007, colPos: 11-17)
   frame = 12352345
@@ -359,7 +359,7 @@ tx_gridelements.setup.2008 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_8.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_8.jpg
   title       = Bootstrap: GridLayout columns 8 (uid: 2008, colPos: 11-18)
   description = Bootstrap: GridLayout columns 8 (uid: 2008, colPos: 11-18)
   frame = 12352345
@@ -420,7 +420,7 @@ tx_gridelements.setup.2009 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_9.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_9.jpg
   title       = Bootstrap: GridLayout columns 9 (uid: 2009, colPos: 11-19)
   description = Bootstrap: GridLayout columns 9 (uid: 2009, colPos: 11-19)
   frame = 12352345
@@ -485,7 +485,7 @@ tx_gridelements.setup.2010 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_10.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_10.jpg
   title       = Bootstrap: GridLayout columns 10 (uid: 2010, colPos: 11-20)
   description = Bootstrap: GridLayout columns 10 (uid: 2010, colPos: 11-20)
   frame = 12352345
@@ -554,7 +554,7 @@ tx_gridelements.setup.2011 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_11.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_11.jpg
   title       = Bootstrap: GridLayout columns 11 (uid: 2011, colPos: 11-21)
   description = Bootstrap: GridLayout columns 11 (uid: 2011, colPos: 11-21)
   frame = 12352345
@@ -626,7 +626,7 @@ tx_gridelements.setup.2012 {
   # nur toplevel
   # topLevelLayout = 1 
   flexformDS  = FILE:EXT:ftm/Resources/Private/Theme/Bootstrap/Gridelements/flexForm.xml
-  icon        = ../uploads/tx_gridelements/GridLayout_columns_12.jpg
+  icon        = ../typo3conf/ext/ftm/Resources/Public/Icons/Gridelements/GridLayout_columns_12.jpg
   title       = Bootstrap: GridLayout columns 12 (uid: 2012, colPos: 11-22)
   description = Bootstrap: GridLayout columns 12 (uid: 2012, colPos: 11-22)
   frame = 12352345

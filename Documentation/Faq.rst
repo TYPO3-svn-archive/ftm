@@ -11,6 +11,14 @@ FTM bedeutet Fluid-Template-Manager.
 
 
 ----------------------------------------------------------------------------------------------------------------
+Was ist mit den Namen Frontend und Backend gemeint?
+----------------------------------------------------------------------------------------------------------------
+Das Frontend bezeicht alles was man später auf der eigentlichen Webseite sehen kann, also das was Ihre Besucher sehen.
+Das Backend bezeichnet die TYPO3-Verwaltungsoberfläche, also das TYPO3-Backend wo Sie ihre Inhalte pflegen.
+
+
+
+----------------------------------------------------------------------------------------------------------------
 Was passiert wenn der TYPOScript WebService nicht mehr bereitgestellt wird oder nicht verfügbar ist?
 ----------------------------------------------------------------------------------------------------------------
 Der TYPOScript WebService generiert ja lediglich die TYPOScript Dateien.
@@ -62,4 +70,3 @@ Aus dieser kann einfach der Inhalt zurück kopiert werden.
 
 
 .. include:: ./Snippets/PoweredBy.rst
-

@@ -13,7 +13,7 @@
             <label index="link_vars.description">Defines the link variables (e.g. L for the language parameter)</label>
             <label index="disable_charset_header.description">Avoids transmitting the charset header (content-type:text/html; charset...).</label>
             <label index="meta_charset.description">Defines the charset for the return. The value will be set in the meta tag and in the HTTP header (only when config.disableCharsetHeader = 0 is set).</label>
-            <label index="language_uid.description">sys_languag_uid of the default language</label>
+            <label index="language_uid.description">sys_language_uid of the default language</label>
             <label index="language_title.description">language title</label>
             <label index="language.description">language</label>
             <label index="locale_all.description">localeAll</label>
@@ -34,7 +34,7 @@
             <label index="link_vars.description">Legt die Link-Variablen fest (bspw. L für den Language-Parameter)</label>
             <label index="disable_charset_header.description">Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.</label>
             <label index="meta_charset.description">Gibt die Zeichenkodierung für die Ausgabe an. Dieser Wert wird in den Meta-Tag und im HTTP-Header (nur bei config.disableCharsetHeader = 0) verwendet.</label>
-            <label index="language_uid.description">sys_languag_uid der Default-Sprache</label>
+            <label index="language_uid.description">sys_language_uid der Default-Sprache</label>
             <label index="language_title.description">Sprachen-Title</label>
             <label index="language.description">language</label>
             <label index="locale_all.description">localeAll</label>

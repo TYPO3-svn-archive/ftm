@@ -29,7 +29,7 @@ CREATE TABLE tx_ftm_domain_model_template (
     site_name varchar(255) DEFAULT '' NOT NULL,
     template_dir varchar(255) DEFAULT '' NOT NULL,
     template_type varchar(255) DEFAULT '' NOT NULL,
-    template_mode varchar(255) DEFAULT '' NOT NULL,
+    template_mode varchar(255) DEFAULT 'development' NOT NULL,
     md5_hash_setup_ts varchar(255) DEFAULT '' NOT NULL,
     md5_hash_constants_ts varchar(255) DEFAULT '' NOT NULL,
     md5_hash_ts_config varchar(255) DEFAULT '' NOT NULL,

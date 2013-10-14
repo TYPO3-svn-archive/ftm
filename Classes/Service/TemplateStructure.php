@@ -308,7 +308,7 @@ class TemplateStructure {
                 if(!($backendLayoutObject instanceof \CodingMs\Ftm\Domain\Model\BackendLayout)) {
                 
                     /**
-                     * @var \CodingMs\Ftm\Domain\Model\GridLayout
+                     * @var \CodingMs\Ftm\Domain\Model\BackendLayout
                      */
                     $backendLayoutObject = $this->objectManager->create('CodingMs\Ftm\Domain\Model\BackendLayout');
                     $backendLayoutObject->setPid($backendLayoutPage->getUid());

@@ -18,8 +18,11 @@ ToDo
     @todo: Geladene Extensions an den Service mit schicken
     Snippets-Logik in einen Service verlagern
     controller->lang überall oder gar nicht nutzen
+    Neue Verzeichnisse mit in die Doku aufnehmen (distribution)
+    Template.config disable_charset_header doku und generator schreiben (wenn aktiv darf kein metaCharset gesetzt werden)
     Bootstrap-LessVariablen aufnehmen, empahsis classes/rte text-stile
     Version-Vergleichen: version_compare(TYPO3_version,'6.0.0','>=')
+    Sprach-Variablen für die GridLayouts/Bootstrap-Erweiterung, Header-Strings passen auch noch nicht ganz.
 
 .. include:: ./Snippets/PoweredBy.rst
 

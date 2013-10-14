@@ -6,20 +6,38 @@ Hier erfährt man alles über die Erstellung und Verwendung von Marker, und wie 
 --------------------------------------------------------------------
 Fluid-Marker
 --------------------------------------------------------------------
-Im FTM ist es möglich über die GUI Datensätze für TypoScript-Marker zu erstellen. Dies bietet uns viele Möglichkeiten - von der leichteren wiederverwendbarkeit ganz abgesehen.
+Im FTM ist es möglich über die GUI Datensätze für TypoScript-Marker zu erstellen. Dies bietet uns viele Möglichkeiten - von der leichteren Wiederverwendbarkeit ganz abgesehen.
 
-So könnte man später bspw. prüfen, welche Marker definiert wurde und diese abgleichen mit den verwendeten Markern im Fluid-Template. Sollte es Abweichungen geben, so könnte man eine Meldung ausgeben und den Template-Entwickler darauf hinweisen.
+So könnte man später bspw. prüfen, welche Marker definiert wurde und diese abgleichen mit den verwendeten Markern im Fluid-Template. 
+Sollte es Abweichungen geben, so könnte man eine Meldung ausgeben und den Template-Entwickler darauf hinweisen.
 
 Im Allgemeinen haben die Marker im FTM-Template folgende Struktur: 
 
-* lib.area - Hier liegen alle Content-Äreas
+1. ``lib.area`` - Hier liegen alle Content-Äreas, wie bspw.:
+
 * lib.area.mainContent
 * lib.area.menuContent
 * lib.area.sideContent
 * lib.area.teaser
 * lib.area.extended
-* lib.menu - Hier liegen alle Navigationen
-* ..und diverse selbstdefinierte bzw. Template abhängige 
+
+2. lib.nav - Hier liegen alle Navigationen, wie bspw.:
+
+* lib.nav.language
+* lib.nav.footer
+* lib.nav.main
+* lib.nav.sub
+
+3. ..und diverse selbstdefinierte bzw. Template abhängige, wie bspw.:
+
+* lib.logo
+* lib.copyright
+* lib.searchBox
+
+----
+also all
+
+
 
 Die Marker findet man im Template-Datensatz unter dem Tab *Marker*. 
 

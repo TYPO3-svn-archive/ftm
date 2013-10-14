@@ -561,7 +561,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         
         else {
             
-            // Less-Variablen ueber Web-Service generieren            
+            // Less-Variablen ueber Web-Service generieren
             $result = $this->pluginService->executeAction("generateLessVariable", $this->fluidTemplate->toArray());
             
             if($result['status']=='success') {

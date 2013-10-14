@@ -5,6 +5,24 @@ Hier findest Du alle Informationen über das TYPOScript im FTM.
 
 .. include:: ./Snippets/TypoScriptWebServiceMessage.rst
 
+
+--------------------------------------------------------------------
+TYPOScript-Generator
+--------------------------------------------------------------------
+
+@todo
+---- 
+Seite über den TYPOScript generator
+- was er macht
+- welche Daten werden an ihn geschickt -> möglichkeit in FTM bieten, das die gesendeten Daten angesenen werden können.
+- werden daten in der cloud gespeichert? -> kann man helfen, in dem man log einschaltet
+-
+
+- Mail für Optimierungs-vorschlag
+
+- Anreißen, das man als agentur auch einen personalisierten haben kann
+
+
 --------------------------------------------------------------------
 Root-Template
 --------------------------------------------------------------------
@@ -17,6 +35,8 @@ Das generierte Root-Template trägt den Namen *FTM Root-Template*.
 Constants
 --------------------------------------------------------------------
 Beim Erstellen eines neuen FTM-Templates werden automatisch die Dateien constants.ts und constantsCustom.ts erstellt und in das Root-Template eingetragen.
+
+@todo: welche Konstanten werden automatisch generiert?
 
 * **constants.ts:** Hier werden vom FTM generierte Konstanten abgelegt.
 * **constantsCustom.ts:** Hier können Sie eigene Konstanten definieren, ohne das diese vom FTM überschrieben werden. 
@@ -34,5 +54,3 @@ Beim Erstellen eines neuen FTM-Templates werden automatisch die Dateien setup.ts
 
 
 .. include:: ./Snippets/PoweredBy.rst
-
-

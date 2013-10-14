@@ -22,8 +22,11 @@ Der Bezeichner setzt sich also logisch aus dem String **language-** und dem Lang
 
 
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sprachen-Umschalter
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@todo: hier eine Verlinkung zu Template Website-Sprachen schaffen
+
 
 
 --------------------------------------------------------------------
@@ -32,8 +35,9 @@ Backend
 Die FTM-Extension wird momentan in den beiden Sprachen deutsch und englisch bereitgestellt. Welche Sprache verwendet wird, hängt von der verwendeten Backend-User Sprache ab.
 
 Sie sprechen eine bisher noch nicht unterstützte Sprache und wollen der Community etwas zurück geben? 
-Wir freuen uns über Ihre Mithilfe den FTM in weitere Sprachen zu übersetzen! Schicke einfach eine Mail an info@fluid-template-manager.de. 
+Wir freuen uns über Ihre Mithilfe den FTM in weitere Sprachen zu übersetzen! 
+Schicke einfach eine Mail an info@fluid-template-manager.de. 
+
 
 
 .. include:: ./Snippets/PoweredBy.rst
-
