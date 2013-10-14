@@ -242,7 +242,7 @@ Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, al
             <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline">Less-Variablen nicht re-/generiert!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message">Die Less-Variablen konnte re-/generiert werden, da auf dieser Seite anscheinen noch kein FTM-Template existiert.</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_headline">Less-Variablen wurden re-/generiert!</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1">Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..less/0_basicLess/4_variables.less abgespeichert werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1">Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..Less/BasicLess/variables.less abgespeichert werden.</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message2">Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: %s</label>
             <label index="tx_ftm_controller_templatemanagercontroller.less_variables_generated_headline">Less-Variablen wurden re-/generiert!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.less_variables_generated_message">Die Less-Variablen für dieses FTM-Template wurde re-/generiert.</label>

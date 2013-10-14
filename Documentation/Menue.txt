@@ -1,0 +1,41 @@
+=Menüs=
+Jedes Typo3-Template hat für gewöhnlich eine Vielzahl an Menüs (Top-Menü, Main-Menü, Sub-Menü, uvm.).
+Da dieses sich ja im wesentlich nicht unterscheiden haben wir versucht diese (wie es auch intern in Typo3 ist) in eine Struktur zu bekommen. Bei genauerer Betrachtung haben wir somit einen Menü-Container, Menü-Objekte und Menü-Zustände.
+
+
+==Menü-Container==
+
+
+
+==Menü-Objekt==
+Hier werden die Menü-Objekte angelegt. Für jede Menu-Ebene muss ein Menü-Objekt angelegt werden. Hat man bspw. eine Menü mit drei Ebenen, muss man auch drei Menü-Objekte anlegen.
+Die Ebenen-Reihenfolge wir entsprechend der Liste generiert - man kann also via Drag'n'Drop die Zuweisung von Menü-Objekt zu Ebene verändern.
+
+
+
+
+==Menü-Zustand==
+
+
+Die Reihenfolge der Verwendung kann hier einfach via Drag'n'Drop bestimmt werden.
+Jeder Zustand darf (muss aber nicht) nur einmal verwendet werden.
+
+Folgende Zustände werden aktuell vom FTM-Menü unterstützt:
+* NO - Normal - Muss immer angegeben werden
+* ACT - Einstellungen für Menü-Objekte auf der Rootline
+* ACTRO - MouseOver für Menü-Objekte auf der Rootline
+* ACTIFSUB - Einstellungen für Menü-Objekte auf der Rootline, die Unterseiten haben
+* ACTIFSUBRO - MouseOver für Menü-Objekte auf der Rootline, die Unterseiten haben
+* CUR - Einstellungen der aktuellen Seite/Menü-Objektes
+* CURRO - MouseOver der aktuellen Seite/Menü-Objektes
+* CURIFSUB - Einstellungen der aktuellen Seite/Menü-Objekt, wenn dieser Unterseiten hat
+* CURIFSUBRO - MouseOver der aktuellen Seite/Menü-Objekt, wenn diese Unterseiten hat
+* IFSUB - Einstellungen wenn Menü-Objekt Unterseiten besitzt
+* IFSUBRO - MouseOver wenn Menü-Objekt Unterseiten besitzt
+* SPC - Einstellungen für Menü-Trenner
+<!--USERDEF1
+USERDEF1RO
+USERDEF2
+USERDEF2RO
+USR
+USRRO-->

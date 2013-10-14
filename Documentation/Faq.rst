@@ -56,14 +56,14 @@ Wie kann ich ein FTM-Template löschen?
 2. Template bearbeiten anklicken 
 3. Im oberen Seiten-Bereich auf das Mülleimer-Symbol klicken und das Löschen bestätigen 
 
-Achtung: Hier wird nur das FTM-Template (sprich der Konfigurations-Datensatz) als gelöscht markiert. Alle Template-Dateien verbleiben auf dem Server und müssen von Hand gelöscht werden.
+**Achtung:** Hier wird nur das FTM-Template (sprich der Konfigurations-Datensatz) als gelöscht markiert. Alle Template-Dateien verbleiben auf dem Server und müssen von Hand gelöscht werden.
 
 
 
 ----------------------------------------------------------------------------------------------------------------
 Hilfe, der FTM hat eine Datei überschrieben, wie bekomme ich die alte wieder? 
 ----------------------------------------------------------------------------------------------------------------
-Jedes mal wenn der FTM eine Template-Datei überschreibt, legt er vorher ein Backup im Verzeichnis /uploads/tx_ftm/backup/ ab. 
+Jedes mal wenn der FTM eine Template-Datei überschreibt, legt er vorher ein Backup im Verzeichnis ``/uploads/tx_ftm/backup/ ab. 
 Aus dieser kann einfach der Inhalt zurück kopiert werden.
 
 
