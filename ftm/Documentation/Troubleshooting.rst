@@ -2,9 +2,9 @@
 Troubleshooting
 ===============
 Hier finden Sie Lösungsansätze zu häufigen Problemen.
-Bitte schauen Sie auch im FAQ-Bereich, vielleicht finden Sie auch dort etwaas zu Ihrem Problem
+Bitte schauen Sie auch im FAQ-Bereich, vielleicht finden Sie auch dort etwas zu Ihrem Problem
 
-.. note:: Sollten sich das Problem nicht lösen lassen oder haben Sie einen Bug gefunden, dann klicke `hier <http://forge.typo3.org/projects/show/extension-ftm>`_.
+.. note:: Sollte sich das Problem nicht lösen lassen oder haben Sie einen Bug gefunden, dann klicken Sie `hier <http://forge.typo3.org/projects/show/extension-ftm>`_.
 
 --------------------------------------------------------------------
 Die FTM-Links im Backend werden nicht aufgerufen.
@@ -24,7 +24,7 @@ Hier müssen die folgenden Einstellungen in der /etc/php5/conf.d/suhosin.ini ang
     suhosin.request.max_array_index_length = 128
     suhosin.request.max_varname_length = 128 
 
-Achtung: Nicht vergessen den Apache danach neu zu starten. Nun sollten alle Links aufgerufen und auch korrekt dispatched werden. 
+**Achtung:** Nicht vergessen den Apache danach neu zu starten. Nun sollten alle Links aufgerufen und auch korrekt dispatched werden. 
 
 --------------------------------------------------------------------
 Beim Aufrufen des FTM im Backend erhalten Sie einen Fehler
@@ -37,7 +37,9 @@ Beim Aufrufen des FTM im Backend erhalten Sie die Fehlermeldung:
     Extension configuration isnt valid! pluginCloudHost not found! Default value is plugincloud.de.
     More information regarding this error might be available online.
 
-Lösung: Bei der Extension-Installation wurde die Konfiguration nicht nochmals gespeichert. Um die Konfiguration nun zu speichern, gehen Sie unter "Erweiterungen" auf den "FTM" und klicken dort unter dem Reiter "Konfiguration" auf den Button "Aktualisieren". Abschließend sollte der Cache gelöscht werden.
+**Lösung:** Bei der Extension-Installation wurde die Konfiguration nicht korrekt gespeichert. 
+Um die Konfiguration erneut zu speichern, gehen Sie unter *Erweiterungen* auf den *FTM* und klicken dort unter dem Reiter *Konfiguration* auf den Button *Aktualisieren*. 
+Abschließend sollte der Cache gelöscht werden.
 
 
 
@@ -46,7 +48,7 @@ Beim editieren von TYPOScript-Dateien erhalten Sie einen Fehler
 --------------------------------------------------------------------
 Beim editieren von TYPOScript-Dateien erhalten Sie die folgende Meldung:
 
--- code-block:: php
+.. code-block:: php
 
     This filetype cannot be edited.
     The file must have an extension like:
@@ -63,6 +65,3 @@ Beim editieren von TYPOScript-Dateien erhalten Sie die folgende Meldung:
 
 
 .. include:: ./Snippets/PoweredBy.rst
-
-
- 

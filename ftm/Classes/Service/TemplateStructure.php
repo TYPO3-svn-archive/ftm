@@ -39,7 +39,6 @@ class TemplateStructure {
      * @since 1.0.0
      */
     public static $directories = array(
-        'uploads/tx_gridelements' => 'Hier liegen die Bilder der Grid-Layouts',
         'uploads/media'           => 'Hier liegen die Bilder der Backend-Layouts'
     );
 

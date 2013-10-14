@@ -1,0 +1,113 @@
+=Installation=
+
+==Installation der benötigten Extensions==
+Um den Fluid Tempate Manager optimial nutzen zu können benötigen Sie einige zusätzliche Extensions:
+
+Benötigte Extensions:
+* '''t3_less:''' Die t3_less-Extension hilft dem FTM optimiertes CSS für seine Templates zu generieren.
+* '''gridelements:''' Für die GridElements wurden bereits BackendLayouts vordefiniert. Diese können einfach mit dem GlobalStorage.t3d aus unserem Download-Bereich importiert werden. Das zugehörige TypoScript das für diese GridLayouts benötigt wird, wird automatisiert über den TypoScript-Generator erstellt. Damit dieser jedoch die relavanten GridLayouts identifizieren kann, müssen die Titel mit 'GridLayout-' beginnen - danach folgen die prozentualen Breiten der Spalten.
+* '''t3editor:''' Für die Bearbeitung der Fluid-Templates und TYPOScript. Hier kann dann ein HTML-Editor bzw. TYPOScript-Editor verwendet werden. Der t3editor ist sollte in der Basisversion von TYPO3 bereits vorinstalliert sein.
+* '''static_info_tables:''' Für die verbesserte Verwaltung von Website-Sprachen.
+* '''t3jquery:''' Fast in jedem Template wird JavaScript in Form von jQuery verwendet, daher wird die t3jquery-Extension benötigt. Wählen Sie hier bei der Konfiguration ''Always integrate jQuery'' an. Des Weiteren, falls Sie kein benutzerdefinierten Paket nutzen wollen, die Option ''Integrate from CDN'' um den Traffic von der eigenen Seite zu minimieren und die Requests auf mehrere Domains zu verteilen.
+* '''ftm:''' Letzten Endes noch unser Fluid-Template-Manager (kurz. ftm).
+
+Weitere Informationen zu diesen und den empfohlenen Extensions finden Sie im [[Extensions|Extension-Bereich]] unseres Wikis.
+
+'''Achtung:''' Nach der Installation des FTM müssen Sie einmal den Browser-Tab des kompletten TYPO3-Backends aktualisieren, damit auch der FTM-Cache Button sichtbar wird.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-clear-cache.png
+
+
+
+
+
+
+== Erstellung eines neuen FTM-Templates ==
+'''Schritt 1:'''
+Auf oberster Ebene im Seitebaum eine Wurzel-Seite für Ihre neue Website erstellen. Diese Seite trägt für gewöhnlich den Domain-Namen der verwendeten Base-URL, bei uns wäre es if-20.com. Es wird dringlichst empfohlen immer auf einer komplett leeren Seite zu starten. Wir übernehmen keinerlei Haftung für verloren gegangene Daten!
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-leere-seite.png
+
+
+'''Schritt 2:''' Die neue Root-Seite anwählen und dann unter WEB: Fluid Template Manager anklicken.
+Der Fluid Template Manager zeigt nun an, das es noch keinen Template-Datensatz auf dieser Seite gibt. Klicken Sie auf ''Jetzt ein neues Template auf dieser Seite erstellen!'' um ein FTM-Template zu erstellen.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-ohne-template.png
+
+'''Was im HIntergrund geschieht:'''
+Im Hintergrund erstellt der FTM nun die erforderliche Datenbank-Struktur, um die Konfiguration für das neue Template abbilden zu können.
+
+
+'''Schritt 3:''' Damit der FTM nun fortfahren kann die weiteren benötigten Dateien zu generieren, muss im nächsten Schritt das fileadmin-Verzeichnis angelegt werden, in dem unser Template abgelegt werden soll (weitere Informationen zur Verzeichnisstruktur finden Sie [[Verzeichnisstruktur|hier]] ).
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-ohne-fileadmin-dir.png
+
+Klicken Sie nun auf ''FTM-Template bearbeiten'' um das fileadmin-Verzeichnis anzugeben. Der Names dieses Verzeichnis sollte optimalerweise nur alpha-numerische Zeichen enthalten, um Fehlverhalten vorzubeugen.
+Da wir uns gerade in der Bearbeitungs-Maske befinden, geben wir hier noch schnell die basrURL an, welche auch absolute notwendig ist für unser FTM-Template.
+Danach speichern und schließen wir unseren FTM-Datensatz erst einmal wieder.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-ohne-fileadmin-dir-edit.png
+
+'''Was im HIntergrund geschieht:'''
+Im Hintergrund erstellt der FTM nun die diverse erforderliche Datenstrukturen.
+Da wäre als erstes die erforderliche TYPO3-Seitenstruktur. Hierbei prüft der FTM ob der  GlobalStorage bereits vorhanden ist und erstellt ihn ggf. inkl. aller Unterseiten wie bspw. ein Verzeichnis für BackendLayouts oder GridLayouts (Achtung: Dieses Seitennamen sollten nicht verändert werden, da der FTM diese Seiten ansonsten erneut erstellt). Auf diesen TYPO3-Seiten werden nun automatisiert die vordefinierten Datensätze, wie bspw. BackendLayouts, GridLayouts, etc., erstellt und konfiguriert.
+
+Abschließend erstellt der FTM nun die komplette Verzeichnisstruktur für unser neues FTM-Template im gerade angegebenen fileadmin-Verzeichnis und erstellt außerdem noch erforderliche Dateien wie bspw. die eingebundenen TYPOScript-Dateien.
+
+'''Schritt 4:'''
+
+
+
+
+
+== Einrichtung eines neuen FTM-Templates auf Basis vom TYAML ==
+'''Schritt 1:'''
+TYAML-Template Package herunterladen und lokal entpacken. Dann einfach das enthaltene tyaml-Verzeichnis in Ihr fileadmin-Verzeichnis hochladen. Bitte beachten Sie das diese Dateien entsprechende Berechtigungen zum Lesen/Schreiben durch den FTM besitzten.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-tyaml-uploaded-files.png
+
+Natürlich kann das Template-Verzeichnis (bei uns tyaml) auch einen anderen Namen tragen. Im Normalfall heißt das Verzeichnis so, wie das Projekt oder die Domain heißt der Website heißt.
+
+
+'''Schritt 2:'''
+Auf oberster Ebene im Seitebaum eine Wurzel-Seite für Ihre neue Website erstellen. Diese Seite trägt für gewöhnlich den Domain-Namen der verwendeten Base-URL, bei uns wäre es if-20.com. Es wird dringlichst empfohlen immer auf einer komplett leeren Seite zu starten. Wir übernehmen keinerlei Haftung für verloren gegangene Daten! D.H. hier sollte auch noch kein FTM-Template enthalten sein.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-leere-seite.png
+
+
+'''Schritt 3:''' Die neue Root-Seite anwählen und dann im Seitenbaum das Icon der neuen Seite anklicken, um die TYAML Template-Konfiguration zu importieren. Im öffnenden Kontext-Menü wählen wir dann ''Branch Actions'' -> ''Import from .t3d'' aus.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-import-tyaml-t3d.png
+
+Auf den Tab ''Upload'' wechseln und die tyaml.t3d aus dem TYAML-Package hochladen. Danach auf den Tab ''Import'' zurück wechseln und den Import-Button klicken.
+Nun haben wir die TYAML Template-Konfiguration importiert.
+
+
+'''Schritt 4:''' Die neue Root-Seite anwählen und dann unter WEB: Fluid Template Manager anklicken.
+Der Fluid Template Manager zeigt nun an, das es auf dieser Seite ein FTM-Template gibt. Des Weiteren werden einige Meldungen angezeigt.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-tyaml-first-click.png
+
+'''Achtung:''' Ggf. müssen Sie, falls Sie im ersten Schritt ein anderen Verzeichnisnamen als tyaml gewählt haben, den neuen Verzeichnisnamen im Template-Datensatz eintragen. Bearbeiten Sie dazu einfach das FTM-Template und aktualisieren Sie das fileadmin-Verzeichnis Feld.
+
+
+'''Was im Hintergrund geschieht:'''
+Im Hintergrund hat der FTM nun die diverse erforderliche Datenstrukturen generiert.
+Da wäre als erstes die Erstellung des erforderlichen Root-Templates. Dieses wird mit Hilfe der FTM Template-Konfiguration generiert.
+Des Weiteren wird auch die benötigte TYPO3-Seitenstruktur erstellt. Hierbei prüft der FTM ob der  GlobalStorage und ein DomainStorage bereits vorhanden ist und erstellt ihn ggf. inkl. aller Unterseiten wie bspw. ein Verzeichnis für BackendLayouts oder GridLayouts (Achtung: Dieses Seitennamen dürfen nicht verändert werden, da der FTM diese Seiten ansonsten erneut erstellt). Auf diesen TYPO3-Seiten werden nun automatisiert die vordefinierten Datensätze, wie bspw. BackendLayouts, GridLayouts, etc., erstellt und konfiguriert. Das Ergebnis ist im Seitenbaum und auf den erstellten Seiten zu sehen.
+
+
+'''Schritt 5:'''
+Klicken Sie nun auf ''FTM-Template bearbeiten'' um die baseURL an Ihr Projekt anzupassen, welche absolute notwendig ist für unser FTM-Template.
+Danach speichern und schließen wir unseren FTM-Datensatz erst einmal wieder.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-tyaml-baseurl-edit.png
+
+
+'''Schritt 6:'''
+Im nächsten Schritt müssen die Backend-Layouts wieder mit den Fluid-Templates verbunden werden. Dieser Schritt ist aktuell noch nicht automatisiert. Dies ist aber nicht weiter schlimm, da die Zuweisung schnell gemacht ist. 
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-tyaml-fluid-templates.png
+
+Einfach jedes Fluid-Template zum Bearbeiten öffnen, und das entsprechende Backend-Layout zuweisen.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-tyaml-fluid-templates-backend-layout.png
+
+
+'''Schritt 7:'''
+Nun muss nur noch das TypoScript regeneriert werden, was man an der entsprechenden orangen Meldung erkennt.
+http://if-20.com/fileadmin/if-20.com/content/wiki/ftm-1.0.0/installieren/start-tyaml-typoscript.png
+
+
+'''Schritt 8:'''
+BaseURL der Less-Variablen anpassen!
+
+Fertig!

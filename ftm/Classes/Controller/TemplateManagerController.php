@@ -567,7 +567,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             if($result['status']=='success') {
                 
                 $filepath = \CodingMs\Ftm\Utility\Tools::getDirectory("LessBasic", $this->fluidTemplate->getTemplateDir());
-                $filename = "4_variables.less";
+                $filename = "variables.less";
                 $relPath = $filepath.$filename;
                 
                 $absPath   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
@@ -584,7 +584,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath);
                 if(!file_put_contents($absPath, $defaults.$result['lessVariable'])) {
                     $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_headline", "Ftm"); //Less-Variablen wurden re-/generiert!
-                    $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1", "Ftm") . '<br />'; //Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..less/0_basicLess/4_variables.less abgespeichert werden.
+                    $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1", "Ftm") . '<br />'; //Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..Less/BasicLess/variables.less abgespeichert werden.
                     $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message2", "Ftm", array($absPath)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath
                     $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
                 }
