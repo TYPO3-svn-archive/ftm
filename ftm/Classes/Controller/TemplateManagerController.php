@@ -877,6 +877,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     
     
                     // setup-TypoScript schreiben
+                    // ------------------------------------------------
                     $typoScriptFile = "setup.ts";
                     $typoScript = $result['setup'];
                     
@@ -893,9 +894,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                         $this->fluidTemplate->setMd5HashSetupTs(md5(serialize($templateDataArray)));
                         $messageOk.= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_file_generated", "Ftm", array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
                     }
+                    // ------------------------------------------------
                     
-                        
+                    
                     // constants-TypoScript schreiben
+                    // ------------------------------------------------
                     $typoScriptFile = "constants.ts";
                     $typoScript = $result['constants'];
                     
@@ -912,9 +915,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                         $this->fluidTemplate->setMd5HashConstantsTs(md5(serialize($templateDataArray)));
                         $messageOk.= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_file_generated", "Ftm", array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
                     }
+                    // ------------------------------------------------
                     
-                        
+                    
                     // tsConfig-TypoScript schreiben
+                    // ------------------------------------------------
                     $typoScriptFile = "tsConfig.ts";
                     $typoScript = $result['tsConfig'];
                     
@@ -931,7 +936,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                         $this->fluidTemplate->setMd5HashTsConfig(md5(serialize($templateDataArray)));
                         $messageOk.= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_file_generated", "Ftm", array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
                     }
-                        
+                    // ------------------------------------------------
+                    
                     
                     // Meldung anzeigen?!
                     if($messageOk!="") {

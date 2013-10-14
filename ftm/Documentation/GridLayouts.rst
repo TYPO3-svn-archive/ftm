@@ -50,8 +50,9 @@ Die Grid-Elements wurden mit Hilfe einer Flex-Form und TCA-Erweiterungen mit Fun
 So finden Sie in einem Grid-Element auf dem Tab General die vordefinierten Grid-Layouts.
 Jedes dieser Grid-Layouts wurde auch mit einem Icon versehen, so dass Sie dieses schneller finden und anwählen können.
 
-@todo
-include grid-layout-general.png
+.. figure:: Images/grid-elements-general.png
+    :alt: Grid-Layout General
+
 
 Des Weiteren wurden die folgenden Felder hinzugefügt:
 
@@ -74,8 +75,9 @@ Wie dieses funktioniert wollen wir anhand eines Beispiels durch gehen.
 Ausgangsbasis dafür sollte ein GridLayout der uid 2004 mit 4 möglichen Spalten sein.
 Die nächste Abbildung zeigt ein solches GridLayout auf dem Tab Appearance.
 
-@todo
-include grid-layout-appearance.png
+.. figure:: Images/grid-elements-appearance.png
+    :alt: Grid-Layouts Appearance
+
 
 Ab der zweiten Zeile beginnt die Bootstrap-Erweiterung. Diese Zeile enthält lediglich Informationen und die Spalten-Header.
 Ab der dritten Zeile, beginnen die Einstellungen für die Spalten des GridLayouts.
@@ -88,16 +90,16 @@ In den horizontalen Zeilen haben wir die GridLayout-Spalten und in den vertikale
 
 Die im vorherigen Bild dargestellte Spalten-Konfiguration würde sich nun wie folgt in einem responsiven Layout verhalten:
 
-1. Wenn die Website in einer Auflösung von **≥1200px (Large devices Desktops)** dargestellt wird, so wird das GridLayout in 4 Spalten in einer Zeile dargestellt.
+**1.** Wenn die Website in einer Auflösung von **≥1200px (Large devices Desktops)** dargestellt wird, so wird das GridLayout in 4 Spalten in einer Zeile dargestellt.
 Jede Spalte nimmt dabei 3 Felder vom 12er-Grid ein.
 
-2. Wenn die Website in einer Auflösung von **≥992px (Medium devices Desktops)** dargestellt wird, so wird das GridLayout in 2 Spalten in zwei Zeilen dargestellt.
+**2.** Wenn die Website in einer Auflösung von **≥992px (Medium devices Desktops)** dargestellt wird, so wird das GridLayout in 2 Spalten in zwei Zeilen dargestellt.
 Jede Spalte nimmt dabei 6 Felder vom 12er-Grid ein. Sie könnten die Felder aber auch ungerade verteilen, bspw. 4 Felder für die erste Spalte, 8 Felder für die zweite.
 
-3. Wenn die Website in einer Auflösung von **≥786px (Small devices Tablets)** dargestellt wird, so wird das GridLayout in einer Spalte in vier Zeilen dargestellt.
+**3.** Wenn die Website in einer Auflösung von **≥786px (Small devices Tablets)** dargestellt wird, so wird das GridLayout in einer Spalte in vier Zeilen dargestellt.
 Jede Spalte nimmt dabei 12 Felder von 12er-Grid ein.
 
-4. Wenn die Website in einer Auflösung von **<786px (Extra small devices Phones)** dargestellt wird, so wird das genaus wie in Punkt 4. dargestellt.
+**4.** Wenn die Website in einer Auflösung von **<786px (Extra small devices Phones)** dargestellt wird, so wird das genaus wie in Punkt 4. dargestellt.
 
 
 Mit dieser Matrix an Einstellungen können Sie Ihr GridLayout optimal für die verschiedenen responsiv Stufen konfigurieren.

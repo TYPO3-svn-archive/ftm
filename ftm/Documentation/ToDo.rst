@@ -5,6 +5,8 @@ ToDo
 * CheckBox: Im ProduktionMode komprimieren von CSS/JS
 
 * Translate to english
+* Menüs-Bereich der Doku muss überarbeitet werden
+* CSS/Less-Bereich der Doku muss überarbeitet werden
 * Auf Unterseiten den FTM der Rootline ermitteln und laden
 * Eine Funktion in der Übersicht, die alle Templates kopiert (Datensatz<->Datei)
 * Less-Variablen: Vielleicht doch keine unterschiedlichen internen Felder? -> Muss, wegen der unterschiedlichen TCA-Felder!

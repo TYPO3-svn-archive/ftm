@@ -28,21 +28,14 @@
 @import "../Contrib/bootstrap/less/mixins.less";
 
 
-/* Image-Effects */
-@import url(BasicLess/ImageHoverEffects/ftm-effect-zoom1.less);
-@import url(BasicLess/ImageHoverEffects/ftm-effect-zoom2.less);
-@import url(BasicLess/ImageHoverEffects/ftm-effect-circle.less);
+/*--- Import Content-Layouts ----------------------------------------------------------*/
+// @import url(BasicLess/ContentLayouts/special-startsite-widget.less);
 
 
-/* Grid-Element-Layouts*/
-@import url(BasicLess/GridElementLayouts/ftm-grid-box-01.less);
-@import url(BasicLess/GridElementLayouts/ftm-gutter-border.less);
-@import url(BasicLess/GridElementLayouts/ftm-grid-box-gutter-border.less);
-@import url(BasicLess/GridElementLayouts/specialSpanTo12-12.less);
-@import url(BasicLess/GridElementLayouts/specialSpanTo6-6.less);
 
-@import url(BasicLess/GridElementLayouts/avency-agentur-box.less);
-@import url(BasicLess/GridElementLayouts/avency-leistungen-box.less);
+/*--- Import Grid-Element-Layouts -----------------------------------------------------*/
+// @import url(BasicLess/GridElementLayouts/ftm-grid-box-01.less);
+
 
 
 /* Import Less-BasisLayouts */
@@ -51,35 +44,49 @@
 /* @import url(1_basicLayout/2_bootstrapTypo3.less); /* File have to be imported in the bootstrap.less */
 
 
-/* Import Less-Areas*/
-/* mediaQuerys in der Datei */
+/*--- Import Less-Areas --------------------------------------------------------------*/
 @import url(Areas/top.less);
 @import url(Areas/header.less);
+@import url(Areas/teaser.less);
+@import url(Areas/nav.less);
 @import url(Areas/main.less);
 @import url(Areas/extended.less);
 @import url(Areas/footer.less);
 
 
-/* Import Less-nav */
-/* mediaQuerys in der Datei */
+
+/*--- Import Less-layout -------------------------------------------------------------*/
+@import url(Layouts/empty.less);
+@import url(Layouts/startsite.less);
+@import url(Layouts/default.less);
 
 
-/* Import Less-form */
-/* mediaQuerys in der Datei */
 
-/* Import Less-layout*/
-@import url(Layout/default.less);
-@import url(Layout/empty.less);
-@import url(Layout/startsite.less);
-
-
-/* Import Less-Templates*/
-
-/* Import Less-Partials*/
+/*--- Import Less-Partials -----------------------------------------------------------*/
 @import url(Partials/mainContent.less);
 @import url(Partials/menuContent.less);
 @import url(Partials/quickSearch.less);
 @import url(Partials/sideContent.less);
+
+
+
+/*--- Import Less-Templates ----------------------------------------------------------*/
+@import url(Templates/cm.less);
+@import url(Templates/cms.less);
+@import url(Templates/cs.less);
+@import url(Templates/csm.less);
+@import url(Templates/mc.less);
+@import url(Templates/mcs.less);
+@import url(Templates/msc.less);
+@import url(Templates/sc.less);
+@import url(Templates/scm.less);
+@import url(Templates/smc.less);
+@import url(Templates/special.less);
+@import url(Templates/startsite.less);
+
+
+/*--- Import Less-Extensions ---------------------------------------------------------*/
+// @import url(../Extensions/extensionkey/style.less);
 
 
 /* Import Less-Ext 

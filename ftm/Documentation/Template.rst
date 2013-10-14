@@ -86,6 +86,7 @@ HTML-Doctype                      Hier kann festgelegt werden, welchen HTML-Doct
                                   **Beispiel-TypoScript:**
                                   
                                   .. code-block:: ts
+                                  
                                       config.doctype = html5
                                   
 html5.js über ein CDN einbinden?  Diese Option ist nur möglich, wenn der doctype html5 eingestellt ist.
@@ -94,6 +95,7 @@ html5.js über ein CDN einbinden?  Diese Option ist nur möglich, wenn der docty
                                   **Beispiel-TypoScript:**
                                   
                                   .. code-block:: ts
+                                  
                                       page.headerData.10.value (
                                         <!--[if lt IE 9]>
                                           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -106,6 +108,7 @@ baseUrl                           Die Base-URL wird u.a. zur Erstellung von Link
                                   **Beispiel-TypoScript:**
                                  
                                   .. code-block:: ts
+                                  
                                       config.baseURL = http://www.fluid-template-manager.de/
                                   
 linkVars                          Sind die Variablen, die beim generieren von neuen Links innerhalb Ihrer Webseite nicht ausgefiltert werden.
@@ -115,6 +118,7 @@ linkVars                          Sind die Variablen, die beim generieren von ne
                                   **Beispiel-TypoScript:**
                                  
                                   .. code-block:: ts
+                                  
                                       config.linkVars = L
                                   
 Verhindert Charset-Header         Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.
@@ -122,6 +126,7 @@ Verhindert Charset-Header         Verhindert das der Charset-Header (content-typ
                                   **Beispiel-TypoScript:**
                                  
                                   .. code-block:: ts
+                                  
                                       config.disableCharsetHeader = 0
                                   
 Meta-Charset/Zeichenkodierung     Gibt die Zeichenkodierung für die Ausgabe an.
@@ -130,6 +135,7 @@ Meta-Charset/Zeichenkodierung     Gibt die Zeichenkodierung für die Ausgabe an.
                                   **Beispiel-TypoScript:**
                                  
                                   .. code-block:: ts
+                                  
                                       config.metaCharset = UTF-8
                                   
 Anker-Prefix                      Konfiguration für HTML-Ankerpunkte in TYPO3-Links.
@@ -142,6 +148,7 @@ Anker-Prefix                      Konfiguration für HTML-Ankerpunkte in TYPO3-L
                                   **Beispiel-TypoScript:**
                                  
                                   .. code-block:: ts
+                                  
                                       config.prefixLocalAnchors = all
                                   
 Sprechende URLs                   Hier ausgewählt werden, ob und mit welcher Technik sprechende URLs generiert werden sollen.
@@ -154,6 +161,7 @@ Sprechende URLs                   Hier ausgewählt werden, ob und mit welcher Te
                                   **Beispiel-TypoScript:**
                                  
                                   .. code-block:: ts
+                                  
                                       config.tx_realurl_enable = 1
                                       config.simulateStaticDocuments = 0
                                   

@@ -726,6 +726,26 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     }
 
     /**
+     * Returns the Less-ContentLayouts
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt> $extensions
+     * @since 1.0.0
+     */
+    public function getContentLayouts() {
+        $templateDir = \CodingMs\Ftm\Utility\Tools::getDirectory("LessContentLayouts", $this->getTemplateDir());
+        $directory   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($templateDir);
+        $contentLayouts = array();
+        if($handleLess=opendir($directory)) {
+            while($fileLess=readdir($handleLess)){
+                if(substr($fileLess , 0, 1) != ".") {
+                    $contentLayouts[] = str_replace(".less", "", $fileLess);
+                }
+            }
+        }
+        return $contentLayouts;
+    }
+
+    /**
      * Returns the data as array
      * @return array
      * @since 1.0.0
@@ -745,8 +765,10 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         
         // Meta und Config ohne Schleife
         // weil diese immer nur einmal existieren
-        $data['config']       = serialize($this->config->toArray());
-        $data['meta']         = serialize($this->meta->toArray());
+        $data['config']         = serialize($this->config->toArray());
+        $data['meta']           = serialize($this->meta->toArray());
+        $data['contentLayouts'] = serialize($this->getContentLayouts());
+        
         
         
         // Language

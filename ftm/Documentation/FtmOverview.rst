@@ -8,6 +8,10 @@ FTM-Template und Funktionen
 --------------------------------------------------------------------
 FTM bietet auf der Übersichtsseite eine Übersicht des Templates und stellt hier die Hauptfunktionen zum bearbeiten des Templates bereit.
 
+.. figure:: Images/ftm-overview.png
+    :alt: Fluid-Template-Manager Übersicht
+
+
 
 ========================================================= =============================================================
 Funktion                                                  Beschreibung
