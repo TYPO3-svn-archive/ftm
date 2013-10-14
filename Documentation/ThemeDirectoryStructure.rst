@@ -25,7 +25,7 @@ Verzeichnis                      Beschreibung
                                  In einem neuen Template werden automatisch die Dateien constants.ts, constantsCustom.ts, setup.ts und setupCustom.ts angelegt.
                                  
                                  .. important:: Achtung: die constants.ts und setup.ts werden vom FTM automatisiert generiert und daher vom System überschrieben.
-                                                Für eigenes TYPOScript immer die mit Custom.ts-endenden Dateien verwenden!
+                                                Für eigenes TYPOScript immer die mit *Custom.ts*-endenden Dateien verwenden!
                                   
 ``/Documentation/``              Hier liegt die Dokumentation zu diesem Theme
 ``/Meta/``                       Hier liegen Meta-Informationen zu diesem Theme

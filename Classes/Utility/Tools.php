@@ -143,6 +143,9 @@ class Tools {
         if($type=="LessGridElementLayouts") {
             return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/GridElementLayouts/";
         }
+        if($type=="LessContentLayouts") {
+            return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/ContentLayouts/";
+        }
         if($type=="LessImageHoverEffects") {
             return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/ImageHoverEffects/";
         }

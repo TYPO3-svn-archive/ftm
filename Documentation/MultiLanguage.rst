@@ -9,8 +9,11 @@ Standardmäßig wird die default Language mit in jedes Template gebunden.
 Wird eine weitere Sprache benötigt, so muss diese erst auf der Root-Seite erstellt werden. 
 Ist dies geschehen kann man in seine FTM-Konfiguration gehen und diese Sprache dort integrieren. 
 
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Templating
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Damit bei der Gestaltung der Templates auch im CSS/LESS entsprechend je nach Sprache Direktiven eingefügt werden können, wird bei FTM-Templates die Sprachvariable automatisch in den Body-Tag geschrieben.
 So würde der Body-Tag er deutschen Seite mit der Page-Id 69 folgendermaßen aussehen:
 
@@ -25,7 +28,8 @@ Der Bezeichner setzt sich also logisch aus dem String **language-** und dem Lang
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sprachen-Umschalter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-@todo: hier eine Verlinkung zu Template Website-Sprachen schaffen
+Des Weiteren erstellt der TYPOScript-Generator einen einfachen Sprach-Auswahlschalter.
+Mehr Informationen hierzu finden Sie unter `http://fluid-template-manager.de/documentation/Template.html#website-sprachen <http://fluid-template-manager.de/documentation/Template.html#website-sprachen>`_
 
 
 

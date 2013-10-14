@@ -67,6 +67,8 @@ Hier wird das TypoScript für den Marker eingegeben. Hierbei ist zu beachten das
 **Achtung:** Es wird empfohlen TypoScript im TypoScript-Editor zu bearbeiten, da man hier HTML-Entities verwenden kann, ohne das diese nach dem neu-laden ersetzt werden. 
 
 
+.. TODO:
+    @todo: Hinweis das keine verschachtlung möglich ist
 
 --------------------------------------------------------------------
 Fluid-Marker Beispiele

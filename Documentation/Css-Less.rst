@@ -3,6 +3,8 @@ CSS/LESS im FTM
 ================================
 Lesen Sie hier wie Sie Ihre FTM-Template mit CSS/LESS optimieren und flexibel halten. 
 
+.. important:: Achtung: Diese Seite ist veraltet und wird gerade überarbeitet!
+
 --------------------------------------------------------------------
 Allgemeines über CSS/LESS im FTM
 --------------------------------------------------------------------

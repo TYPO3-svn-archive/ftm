@@ -79,9 +79,11 @@ Inhaltsverzeichnis
     CurrentVersion
     Installation
     FtmOverview
+    CreateNewTemplate
     ThemeDirectoryStructure
     Template
     FluidTemplates
+    ContentAndRte
     GridLayouts
     FluidMarker
     Menus

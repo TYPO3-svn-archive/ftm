@@ -25,8 +25,10 @@ Fluid-Tempate Übersicht
 Im FTM-Modul befindet sich die Template-Übersicht. 
 Diese gibt eine gute Übersicht darüber, welche Templates vorhanden sind und wie deren Status aktuell ist.
 
-@todo
-import fluid-template-overview.png
+.. figure:: Images/fluid-template-overview.png
+    :alt: Fluid-Template OVerview
+
+
 
 ============== ==================================================================================================================================================================================================================
 Spalte         Beschreibung
@@ -43,7 +45,7 @@ Jede Listen-Spalte stellt die folgenden Aktionen bereit:
 Aktion                                          Beschreibung
 =============================================== ===========================================================================
 .. figure:: Images/Icons/fluid_edit.png         Öffnet den Template-Datensatz zum bearbeiten.
-.. figure:: Images/Icons/edit.png               Öffnet den Template-Code zum bearbeiten.
+.. figure:: Images/Icons/fluid_file_edit.png    Öffnet den Template-Code zum bearbeiten.
 .. figure:: Images/Icons/fluid_db_to_file.png   Kopiert den Template-Code aus dem Template-Datensatz in die Template-Datei.
 .. figure:: Images/Icons/fluid_file_to_db.png   Kopiert den Template-Code aus dem Template-Datei in die Template-Datensatz.
 =============================================== ===========================================================================
