@@ -29,240 +29,99 @@ namespace CodingMs\Ftm\Service;
  *
  * @package ftm
  * @subpackage Service
+ * @extended   Dieter Brüning <typo3@media-bruening.de>
  */
 class TemplateStructureYaml extends TemplateStructure {
 
-    /**
-     * Benoetigte Grid-Layouts
-     * @var array
-     * @since 1.0.0
-     */
-    protected $gridLayouts = array(
-        'GridLayout 100' => array(
-            'sorting'        => '256', 
-            'title'          => 'GridLayout 100', 
-            'description'    => 'GridLayout-100', 
-            'config'         => 'backend_layout {\r\n   colCount = 1\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = box-content\r\n                  colPos = 10\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_100.jpg'
-        ),
-        'GridLayout 80-20' => array(
-            'sorting'        => '512', 
-            'title'          => 'GridLayout 80-20', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 4\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_80-20.jpg'
-        ),
-        'GridLayout 75-25' => array(
-            'sorting'        => '640', 
-            'title'          => 'GridLayout 75-25', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 4\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 3\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_75-25.jpg'
-        ),
-        'GridLayout 66-33' => array(
-            'sorting'        => '768', 
-            'title'          => 'GridLayout 66-33', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 4\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 3\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_66-33.jpg'
-        ),
-        'GridLayout 62-38' => array(
-            'sorting'        => '1024', 
-            'title'          => 'GridLayout 62-38', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 3\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colspan = 2\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_62-38.jpg'
-        ),
-        'GridLayout 60-40' => array(
-            'sorting'        => '1280', 
-            'title'          => 'GridLayout 60-40', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 3\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colspan = 2\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_60-40.jpg'
-        ),
-        'GridLayout 50-50' => array(
-            'sorting'        => '1536', 
-            'title'          => 'GridLayout 50-50', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 2\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_50-50.jpg'
-        ),
-        'GridLayout 40-60' => array(
-            'sorting'        => '1664', 
-            'title'          => 'GridLayout 40-60', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 2\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colspan = 3\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_40-60.jpg'
-        ),
-        'GridLayout 38-62' => array(
-            'sorting'        => '1792', 
-            'title'          => 'GridLayout 38-62', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 2\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colspan = 3\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_38-62.jpg'
-        ),
-        'GridLayout 33-66' => array(
-            'sorting'        => '1920', 
-            'title'          => 'GridLayout 33-66', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 3\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colspan = 2\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_33-66.jpg'
-        ),
-        'GridLayout 25-75' => array(
-            'sorting'        => '2048', 
-            'title'          => 'GridLayout 25-75', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 4\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colspan = 3\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_25-75.jpg'
-        ),
-        'GridLayout 20-80' => array(
-            'sorting'        => '2944', 
-            'title'          => 'GridLayout 20-80', 
-            'description'    => 'GridLayout-20-80', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Rechts\r\n                   colspan = 4\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_20-80.jpg'
-        ),
-        'GridLayout 33-33-33' => array(
-            'sorting'        => '5856', 
-            'title'          => 'GridLayout 33-33-33', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 3\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_33-33-33.jpg'
-        ),
-        'GridLayout 40-40-20' => array(
-            'sorting'        => '5120', 
-            'title'          => 'GridLayout 40-40-20', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 2\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colspan = 2\r\n                 colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_40-40-20.jpg'
-        ),
-        'GridLayout 40-20-40' => array(
-            'sorting'        => '5376', 
-            'title'          => 'GridLayout 40-20-40', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 2\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colspan = 2\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_40-20-40.jpg'
-        ),
-        'GridLayout 20-40-40' => array(
-            'sorting'        => '6162', 
-            'title'          => 'GridLayout 20-40-40', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colspan = 2\r\n                 colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colspan = 2\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_20-40-40.jpg'
-        ),
-        'GridLayout 60-20-20' => array(
-            'sorting'        => '4352', 
-            'title'          => 'GridLayout 60-20-20', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 3\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_60-20-20.jpg'
-        ),
-        'GridLayout 20-60-20' => array(
-            'sorting'        => '6156', 
-            'title'          => 'GridLayout 20-60-20', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colspan = 3\r\n                 colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_20-60-20.jpg'
-        ),
-        'GridLayout 20-20-60' => array(
-            'sorting'        => '6168', 
-            'title'          => 'GridLayout 20-20-60', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colspan = 3\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_20-20-60.jpg'
-        ),
-        'GridLayout 50-25-25' => array(
-            'sorting'        => '4864', 
-            'title'          => 'GridLayout 50-25-25', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 4\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 2\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_50-25-25.jpg'
-        ),
-        'GridLayout 25-50-25' => array(
-            'sorting'        => '5904', 
-            'title'          => 'GridLayout 25-50-25', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 4\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colspan = 2\r\n                 colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_25-50-25.jpg'
-        ),
-        'GridLayout 25-25-50' => array(
-            'sorting'        => '5952', 
-            'title'          => 'GridLayout 25-25-50', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 4\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Mitte\r\n                    colPos = 13\r\n             }\r\n               3 {\r\n                 name = Rechts\r\n                   colspan = 2\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_25-25-50.jpg'
-        ),
-        'GridLayout 25-25-25-25' => array(
-            'sorting'        => '6192', 
-            'title'          => 'GridLayout 25-25-25-25', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 4\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Halblinks\r\n                    colPos = 12\r\n             }\r\n               3 {\r\n                 name = Halbrechts\r\n                   colPos = 14\r\n             }\r\n               4 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_25-25-25-25.jpg'
-        ),
-        'GridLayout 40-20-20-20' => array(
-            'sorting'        => '6180', 
-            'title'          => 'GridLayout 40-20-20-20', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colspan = 2\r\n                 colPos = 11\r\n             }\r\n               2 {\r\n                 name = Halblinks\r\n                    colPos = 12\r\n             }\r\n               3 {\r\n                 name = Halbrechts\r\n                   colPos = 14\r\n             }\r\n               4 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_40-20-20-20.jpg'
-        ),
-        'GridLayout 20-40-20-20' => array(
-            'sorting'        => '6360', 
-            'title'          => 'GridLayout 20-40-20-20', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Halblinks\r\n                    colspan = 2\r\n                 colPos = 12\r\n             }\r\n               3 {\r\n                 name = Halbrechts\r\n                   colPos = 14\r\n             }\r\n               4 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_20-40-20-20.jpg'
-        ),
-        'GridLayout 20-20-40-20' => array(
-            'sorting'        => '6400', 
-            'title'          => 'GridLayout 20-20-40-20', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Halblinks\r\n                    colPos = 12\r\n             }\r\n               3 {\r\n                 name = Halbrechts\r\n                   colspan = 2\r\n                 colPos = 14\r\n             }\r\n               4 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_20-20-40-20.jpg'
-        ),
-        'GridLayout 20-20-20-40' => array(
-            'sorting'        => '7424', 
-            'title'          => 'GridLayout 20-20-20-40', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Halblinks\r\n                    colPos = 12\r\n             }\r\n               3 {\r\n                 name = Halbrechts\r\n                   colPos = 14\r\n             }\r\n               4 {\r\n                 name = Rechts\r\n                   colspan = 2\r\n                 colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_20-20-20-40.jpg'
-        ),
-        'GridLayout 20-20-20-20-20' => array(
-            'sorting'        => '7680', 
-            'title'          => 'GridLayout 20-20-20-20-20', 
-            'description'    => '', 
-            'config'         => 'backend_layout {\r\n   colCount = 5\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = Links\r\n                    colPos = 11\r\n             }\r\n               2 {\r\n                 name = Halblinks\r\n                    colPos = 12\r\n             }\r\n               3 {\r\n                 name = Mitte\r\n                    colPos = 13\r\n             }\r\n               4 {\r\n                 name = Halbrechts\r\n                   colPos = 14\r\n             }\r\n               5 {\r\n                 name = Rechts\r\n                   colPos = 15\r\n             }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
-            'pi_flexform_ds' => 'FILE:typo3conf/ext/ftm/res/template/ext/gridelements/flexFormTyaml.xml', 
-            'icon'           => 'GridLayout_20-20-20-20-20.jpg'
-        )
+    protected $fluidLayouts = array(
+        'default'   => 'default.html',
+        'empty'     => 'empty.html',
+        'startsite' => 'startsite.html',
     );
+    
+    protected $fluidTemplates = array(
+        'c'     => 'c.html',
+        'cm'    => 'cm.html',
+        'cms'   => 'cms.html',
+        'cs'    => 'cs.html',
+        'csm'   => 'csm.html',
+        'empty' => 'empty.html',
+        'mc'    => 'mc.html',
+        'mcs'   => 'mcs.html',
+        'msc'   => 'msc.html',
+        'sc'    => 'sc.html',
+        'scm'   => 'scm.html',
+        'smc'   => 'smc.html',
+        'special'   => 'special.html',
+        'startsite' => 'startsite.html',
+    );
+    
+    protected $fluidPartials = array(
+        'mainContent' => 'mainContent.html',
+        'menuContent' => 'menuContent.html',
+        'quickSearch' => 'quickSearch.html',
+        'sideContent' => 'sideContent.html',
+    );
+    
+    protected $lessFiles = array(
+        'import.less'      => 'import.less',
+        
+        'Areas/top.less'      => 'Areas/top.less',
+        'Areas/header.less'   => 'Areas/header.less',
+        'Areas/teaser.less'   => 'Areas/teaser.less',
+        'Areas/nav.less'      => 'Areas/nav.less',
+        'Areas/main.less'     => 'Areas/main.less',
+        'Areas/extended.less' => 'Areas/extended.less',
+        'Areas/footer.less'   => 'Areas/footer.less',
+        
+        'Layouts/default.less'   => 'Layouts/default.less',
+        'Layouts/empty.less'     => 'Layouts/empty.less',
+        'Layouts/startsite.less' => 'Layouts/startsite.less',
+        
+        'Templates/c.less'         => 'Templates/c.less',
+        'Templates/cm.less'        => 'Templates/cm.less',
+        'Templates/cms.less'       => 'Templates/cms.less',
+        'Templates/cs.less'        => 'Templates/cs.less',
+        'Templates/csm.less'       => 'Templates/csm.less',
+        'Templates/empty.less'     => 'Templates/empty.less',
+        'Templates/mc.less'        => 'Templates/mc.less',
+        'Templates/mcs.less'       => 'Templates/mcs.less',
+        'Templates/msc.less'       => 'Templates/msc.less',
+        'Templates/sc.less'        => 'Templates/sc.less',
+        'Templates/scm.less'       => 'Templates/scm.less',
+        'Templates/smc.less'       => 'Templates/smc.less',
+        'Templates/special.less'   => 'Templates/special.less',
+        'Templates/startsite.less' => 'Templates/startsite.less',
+        
+        'Partials/mainContent.less' => 'Partials/mainContent.less',
+        'Partials/menuContent.less' => 'Partials/menuContent.less',
+        'Partials/quickSearch.less' => 'Partials/quickSearch.less',
+        'Partials/sideContent.less' => 'Partials/sideContent.less',
+        
+    );
+    
+    protected $lessVariables = array(
+        array('Basis URL for Images // Grundlegende URL für Bilder',                   'baseUrlImage',                   '', 'string', ' ',                   ' ',                   '@{baseUrlTemplate}Resources/Public/Images/'),        
+        array('Theme Color',                                                           'themeColor',                    '', 'color',                         ' ',                   '#049cdb'),
+    );
+
+
+    /**
+     * TemplateLessVariable Repository
+     *
+     * @var \CodingMs\Ftm\Domain\Repository\TemplateLessVariableRepository
+     */
+    protected $templateLessVariableRepository;
+
+    /**
+     * injectTemplateLessVariableRepository
+     *
+     * @param \CodingMs\Ftm\Domain\Repository\TemplateLessVariableRepository $fluidTemplateLessVariableRepository
+     * @return void
+     */
+    public function injectTemplateLessVariableRepository(\CodingMs\Ftm\Domain\Repository\TemplateLessVariableRepository $templateLessVariableRepository) {
+        $this->templateLessVariableRepository = $templateLessVariableRepository;
+    }
     
 
     
@@ -271,12 +130,121 @@ class TemplateStructureYaml extends TemplateStructure {
      *
      * @author     Thomas Deuling <typo3@coding.ms>
      * @since      22.11.2013
+     * @extended   Dieter Brüning <typo3@media-bruening.de>
      * 
      * @return mixed boolean wenn alles aktuell ist, ansonsten die Meldungens
      */
     public function checkStructure($pid, $fluidTemplate) {
         
         parent::checkStructure($pid, $fluidTemplate);
+        
+        
+        // YAML-Layouts bereitstellen
+        $sourceFolder = \CodingMs\Ftm\Utility\Tools::getDirectory("TemplateStructureYaml", $fluidTemplate->getTemplateDir())."Layouts/";
+        $targetFolder = \CodingMs\Ftm\Utility\Tools::getDirectory("FluidTemplates",        $fluidTemplate->getTemplateDir())."Layouts/";
+        $sourceFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($sourceFolder);
+        $targetFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($targetFolder);
+        if(!empty($this->fluidLayouts)) {
+            foreach($this->fluidLayouts as $name=>$filename) {
+                
+                // Nur kopieren wenn es das noch nicht gibt
+                if(!file_exists($targetFolder.$filename)) {
+                    copy($sourceFolder.$filename, $targetFolder.$filename);
+                }
+                
+            }
+        }
+        
+        
+        // YAML-Templates bereitstellen
+        $sourceFolder = \CodingMs\Ftm\Utility\Tools::getDirectory("TemplateStructureYaml", $fluidTemplate->getTemplateDir())."Templates/";
+        $targetFolder = \CodingMs\Ftm\Utility\Tools::getDirectory("FluidTemplates",        $fluidTemplate->getTemplateDir())."Templates/";
+        $sourceFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($sourceFolder);
+        $targetFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($targetFolder);
+        if(!empty($this->fluidTemplates)) {
+            foreach($this->fluidTemplates as $name=>$filename) {
+                
+                // Nur kopieren wenn es das noch nicht gibt
+                if(!file_exists($targetFolder.$filename)) {
+                    copy($sourceFolder.$filename, $targetFolder.$filename);
+                }
+                
+            }
+        }
+        
+        
+        // YAML-Partials bereitstellen
+        $sourceFolder = \CodingMs\Ftm\Utility\Tools::getDirectory("TemplateStructureYaml", $fluidTemplate->getTemplateDir())."Partials/";
+        $targetFolder = \CodingMs\Ftm\Utility\Tools::getDirectory("FluidTemplates",        $fluidTemplate->getTemplateDir())."Partials/";
+        $sourceFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($sourceFolder);
+        $targetFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($targetFolder);
+        if(!empty($this->fluidPartials)) {
+            foreach($this->fluidPartials as $name=>$filename) {
+                
+                // Nur kopieren wenn es das noch nicht gibt
+                if(!file_exists($targetFolder.$filename)) {
+                    copy($sourceFolder.$filename, $targetFolder.$filename);
+                }
+                
+            }
+        }
+        
+        
+        // Less-Dateien bereitstellen
+        $sourceFolder = \CodingMs\Ftm\Utility\Tools::getDirectory("TemplateStructureYaml", $fluidTemplate->getTemplateDir())."Less/";
+        $targetFolder = \CodingMs\Ftm\Utility\Tools::getDirectory("Less",                  $fluidTemplate->getTemplateDir());
+        $sourceFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($sourceFolder);
+        $targetFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($targetFolder);
+        if(!empty($this->lessFiles)) {
+            foreach($this->lessFiles as $name=>$filename) {
+                
+                // Nur kopieren wenn es das noch nicht gibt
+                if(!file_exists($targetFolder.$filename)) {
+                    copy($sourceFolder.$filename, $targetFolder.$filename);
+                }
+                
+            }
+        }
+        
+        
+        // Less-Variablen bereitstellen
+        if(!empty($this->lessVariables)) {
+            foreach($this->lessVariables as $variable) {
+                
+                
+                $lessVariable = $this->templateLessVariableRepository->findOneByNameAndPid($variable[1], $pid);
+                
+                // Nur kopieren wenn es das noch nicht gibt
+                if(!($lessVariable instanceof \CodingMs\Ftm\Domain\Model\TemplateLessVariable)) {
+                    
+                    /**
+                     * @var \CodingMs\Ftm\Domain\Model\TemplateLessVariable
+                     */
+                    $lessVariableObject = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateLessVariable');
+                    $lessVariableObject->setPid($pid);
+                    $lessVariableObject->setTemplate($fluidTemplate);
+                    $lessVariableObject->setVariableTitle( $variable[0]);
+                    $lessVariableObject->setVariableName(  $variable[1]);
+                    $lessVariableObject->setCategory(      $variable[2]);
+                    $lessVariableObject->setVariableType(  $variable[3]);
+                    $lessVariableObject->setVariableValue( $variable[4]);
+                    $lessVariableObject->setVariableColor( $variable[5]);
+                    $lessVariableObject->setVariableString($variable[6]);
+                    
+                    // Variable speichern
+                    $this->templateLessVariableRepository->add($lessVariableObject);
+                              
+                    // und persistieren
+                    $this->persistenceManager->persistAll();
+                    
+                }
+                else {
+                    // echo $variable[2]." exists<br>";
+                }
+                
+            }
+        }
+        
         
     }
     
