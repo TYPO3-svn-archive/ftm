@@ -9,6 +9,7 @@ Verzeichnis                      Beschreibung
 ``../Less/Modifications``        Hier liegen alle modifizierten Daten, bspw. die angepassten Bootstrap-Dateien.
                                  Es werden somit von anzupassenden Dateien eine Kopie erstellt, um das original vorzuhalten und im ``modifications``-Verzeichnis wird die Kopie verändert und statt dem Original eingebunden.
 ``../Less/Areas``                
+``../Less/Navigations``          Hier liegen alle Styles der Menüs. Für jedes Menü sollte eine eigene Datei mit gleichem Namen angelegt werden.
 ``../Less/Layouts``              Hier liegen alle Styles der Layout-Dateien. Für jedes Layout sollte eine eigene Datei mit gleichem Namen angelegt werden.
 ``../Less/Templates``            Hier liegen alle Styles der Template-Dateien. Für jedes Templates sollte eine eigene Datei mit gleichem Namen angelegt werden.
 ``../Less/Partials``             Hier liegen alle Styles die in Partials verwendet werden. Für jedes Partial sollte eine eigene Datei mit gleichem Namen angelegt werden.

@@ -74,5 +74,3 @@ Allow PluginCloud to log requests in order to help the development-team to impro
 
 
 .. include:: ./Snippets/PoweredBy.rst
-
-

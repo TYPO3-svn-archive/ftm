@@ -3,12 +3,12 @@ Dies geschieht folgendermaßen:
 
 .. code-block:: php
     
-    $TYPO3_CONF_VARS['FE']['addRootLineFields'] = 'abstract,keywords,description,author,author_email';
+    $TYPO3_CONF_VARS['FE']['addRootLineFields'] = 'abstract,keywords,description,author,author_email,backend_layout_next_level';
 
 bzw.:
 
 .. code-block:: php
     
     'FE' => array(
-        'addRootLineFields' => 'abstract,keywords,description,author,author_email',
+        'addRootLineFields' => 'abstract,keywords,description,author,author_email,backend_layout_next_level',
     ),

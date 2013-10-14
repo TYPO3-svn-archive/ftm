@@ -138,5 +138,3 @@ Hier eine kleine Liste was bei der Migration von alten, d.h. vor FTM Version 1.1
 
 
 .. include:: ./Snippets/PoweredBy.rst
-
-

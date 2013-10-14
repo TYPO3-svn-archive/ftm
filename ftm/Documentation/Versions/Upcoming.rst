@@ -8,7 +8,9 @@ Diese Version wird folgende Mainfeatures enthalten:
 * Bugfix für T3 6.1 - Das GridElements 2.0 include-static wurde nicht automatisch ins FTM Root-Template eingetragen
 * Bugfix für T3 6.1.5 - Hier wird nun automatisiert ein Storage für die Extension erstellt, so dass ein Bearbeiten der TYPOScript- und Template-Dateien möglich ist.
 * Optimierung der CSS-Classes in den Grid-Elementen
-* Twitter Bootstrap Integration, bootstrap.js via CDN eingebunden
+* Twitter Bootstrap 3 Integration
+* bootstrap.js via CDN eingebunden
+* GridElements-Vorlagen optimiert für Bootstrap 3 für responsive Sites
 * Das Template kann nun den Modus Production/Development annehmen. Je nach Mode werden Caching, Compressing, uvm. de-/aktiviert.
 * Die Bearbeitung von Fluid-Templates/Layouts/Partials wurde nun in zwei Teile geteilt: Template-Einstellungen bearbeiten; Template-Quellcode bearbeiten
 * Überarbeitung des SEO/Meta-Tag Bereichs

@@ -42,7 +42,7 @@
             <label index="tx_ftm_domain_model_templateconfig.disable_charset_header">Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.</label>
             <label index="tx_ftm_domain_model_templateconfig.tab_language_and_localization">Sprache&amp;Lokaliserung</label>
             <label index="tx_ftm_domain_model_templateconfig.meta_charset">Gibt die Zeichenkodierung für die Ausgabe an. Dieser Wert wird in den Meta-Tag und im HTTP-Header (nur bei config.disableCharsetHeader = 0) verwendet.</label>
-            <label index="tx_ftm_domain_model_templateconfig.language_uid">sys_languag_uid</label>
+            <label index="tx_ftm_domain_model_templateconfig.language_uid">sys_language_uid</label>
             <label index="tx_ftm_domain_model_templateconfig.language_title">Sprachen-Title</label>
             <label index="tx_ftm_domain_model_templateconfig.language">language</label>
             <label index="tx_ftm_domain_model_templateconfig.locale_all">localeAll</label>

@@ -80,7 +80,7 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     protected $metaCharset;
     
     /**
-     * sys_languag_uid
+     * sys_language_uid
      *
      * @var integer
      * @validate NotEmpty

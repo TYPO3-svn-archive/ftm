@@ -21,6 +21,11 @@ LESS-Dateien:
 **Achtung:**
 .. include:: ./Snippets/LocalConfigurationAllowedFiles.rst
 
+
+.. TODO:
+    @todo: Teile und Herrsche; beschreiben wie die Parts in einzelne Less-Dateien aufgeteilt werden sollen
+
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CSS-Klassen und -ID Benennung
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
