@@ -53,20 +53,20 @@ class GridElementColPosBootstrapHeader {
         $colHeadStyle = "display: block; height: 32px; font-weight: bold; ";
         $colSubStyle  = "display: block; height: 18px; font-size: 0.9em; width: 100px; border-top: 1px solid #e0e0e0;";
         
-        $col1Head = '<span style="'.$colHeadStyle.'">Extra small devices Phones</span>';
-        $col1Sub  = '<span style="'.$colSubStyle.'" >(<768px)</span>';
+        $col1Head = '<span style="'.$colHeadStyle.'">Extra small devices</span>';
+        $col1Sub  = '<span style="'.$colSubStyle.'" >Phones (<768px)</span>';
         $col1     = '<div  style="'.$colStyle.'"    >'.$col1Head.$col1Sub.'</div>';
         
-        $col2Head = '<span style="'.$colHeadStyle.'">Small devices Tablets</span>';
-        $col2Sub  = '<span style="'.$colSubStyle.'" >(≥768px)</span>';
+        $col2Head = '<span style="'.$colHeadStyle.'">Small devices</span>';
+        $col2Sub  = '<span style="'.$colSubStyle.'" >Tablets (≥768px)</span>';
         $col2     = '<div  style="'.$colStyle.'"    >'.$col2Head.$col2Sub.'</div>';
         
-        $col3Head = '<span style="'.$colHeadStyle.'">Medium devices Desktops</span>';
-        $col3Sub  = '<span style="'.$colSubStyle.'" >(≥992px)</span>';
+        $col3Head = '<span style="'.$colHeadStyle.'">Medium devices</span>';
+        $col3Sub  = '<span style="'.$colSubStyle.'" >Desktops (≥992px)</span>';
         $col3     = '<div  style="'.$colStyle.'"    >'.$col3Head.$col3Sub.'</div>';
         
-        $col4Head = '<span style="'.$colHeadStyle.'">Large devices Desktops</span>';
-        $col4Sub  = '<span style="'.$colSubStyle.'" >(≥1200px)</span>';
+        $col4Head = '<span style="'.$colHeadStyle.'">Large devices</span>';
+        $col4Sub  = '<span style="'.$colSubStyle.'" >Desktops (≥1200px)</span>';
         $col4     = '<div  style="'.$colStyle.' border-right: none;"    >'.$col4Head.$col4Sub.'</div>';
         
                 

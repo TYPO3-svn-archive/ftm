@@ -128,12 +128,12 @@ class Fluid {
      * @author Thomas Deuling <typo3@coding.ms>
      * @param  \CodingMs\Ftm\Domain\Model\Template $fluidTemplate
      * @param  string $fluidType partial/layout/template
-     * @return mixed true wenn alle Dateien vorhanden sind, ansonsten ein Array mit den vermissten Dateien
+     * @return mixed TRUE wenn alle Dateien vorhanden sind, ansonsten ein Array mit den vermissten Dateien
      * @since  1.0.0
      */
     public function checkFiles(\CodingMs\Ftm\Domain\Model\Template $fluidTemplate, $fluidType='template') {
         
-        $success = true;
+        $success = TRUE;
         $missingFiles = array();
         
         
@@ -172,14 +172,14 @@ class Fluid {
             
         }
         else {
-            $success = false;
+            $success = FALSE;
             throw new \Exception("Template dir '".$absPath."' not found", 1);
         }
         
         
         // Antwort generieren
         if(empty($missingFiles)) {
-            return true;
+            return TRUE;
         }
         else {
             return $missingFiles;
@@ -188,13 +188,13 @@ class Fluid {
     
     public function createFiles(\CodingMs\Ftm\Domain\Model\Template $fluidTemplate, $fluidType='template', array $fluidFiles=array()) {
         
-        $messages = "";
+        $messages = '';
         
         // Wenn Dateien uebergeben wurden
         if(!empty($fluidFiles)) {
             foreach($fluidFiles as $fluidFile) {
                 
-                $tempCode = "";
+                $tempCode = '';
                 
                 // Zuerst pruefen ob es das Template-Verzeichnis gibt
                 $relPath = \CodingMs\Ftm\Utility\Tools::getDirectory("FluidTemplates", $fluidTemplate->getTemplateDir()).ucfirst($fluidType)."s/";

@@ -203,7 +203,7 @@ class TemplateStructure {
      *
      * @var string
      */
-    protected $messages = "";
+    protected $messages = '';
 
     /**
      * injectGridLayoutRepository
@@ -271,7 +271,7 @@ class TemplateStructure {
         
         // Benoetigten Verzeichnisse pruefen
         // $this->checkRequiredDirectories();
-        $createdSomething=false;
+        $createdSomething=FALSE;
         
         
         // Erforderlichen Seiten ermitteln
@@ -324,7 +324,7 @@ class TemplateStructure {
                     $this->persistenceManager->persistAll();
                     
                     // Merken das wir etwas erstellt haben
-                    $createdSomething = true;
+                    $createdSomething = TRUE;
                 }
                 
                 // Icon bereitstellen

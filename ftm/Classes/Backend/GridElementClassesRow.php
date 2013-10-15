@@ -83,7 +83,7 @@ class GridElementClassesRow {
         $directory   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($templateDir);
         
         // Select-Boxen bauen    
-        for($i=0 ; $i<=3 ; $i++) {
+        for($i=0; $i<=3; $i++) {
             $options = array();
             $select.= '<select name="'.htmlspecialchars($name).'['.$i.']"  class="formField select" onchange="ftm_updateGridElementClasses_'.$uid.'(this.value, '.$i.')">' . LF;
             $select.= '<option value="none">-</option>' . LF;

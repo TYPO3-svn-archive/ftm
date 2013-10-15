@@ -56,7 +56,7 @@ class Console {
      *
      * @var boolean
      */
-    protected static $active = false;
+    protected static $active = FALSE;
 
     /**
      * Session-Handler
@@ -130,7 +130,7 @@ class Console {
      * Merkt sich ob die Console verwendet wird
      * @param boolean $active An oder aus!?
      */
-    public static function setActive($active=false) {
+    public static function setActive($active=FALSE) {
         self::$active = $active;
     }
 
@@ -209,7 +209,7 @@ class Console {
      */
     public function __destruct() {
         
-        $someErrorHappens = false;
+        $someErrorHappens = FALSE;
         
         // HTML Response
         if(!empty(self::$consoleRows) && ((int)$_REQUEST['type']===0 || (int)$_REQUEST['type']===1802)) {
@@ -229,7 +229,7 @@ class Console {
                 }
                 else if($outputType=="error") {
                     $logging.= "  console.error('".$content."')\n";
-                    $someErrorHappens = true;
+                    $someErrorHappens = TRUE;
                 }
                 else {
                     $logging.= "  console.log('".$content."')\n";
@@ -260,7 +260,7 @@ class Console {
             // $newLog = new Tx_CodingMsBase_Domain_Model_Log();
             // $newLog->initialize(__METHOD__, $this);
             // $newLog->setText(self::toString());
-            // Tx_CodingMsBase_Utility_Log::add($newLog, true);
+            // Tx_CodingMsBase_Utility_Log::add($newLog, TRUE);
         }
         
     }

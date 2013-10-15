@@ -134,9 +134,9 @@ class ClearCache {
         $s_clearCacheCmdUri .= '?'.implode('&',$a_queryStringParts);
         
         // Generate our own link
-        $s_title = $GLOBALS['LANG']->sL('LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.clear_cache', true);
+        $s_title = $GLOBALS['LANG']->sL('LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.clear_cache', TRUE);
         $s_imagePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ftm').'Resources/Public/Icons/';
-        //if(strpos($s_imagePath,'typo3conf') !== false) $s_imagePath = '../'.$s_imagePath;
+        //if(strpos($s_imagePath,'typo3conf') !== FALSE) $s_imagePath = '../'.$s_imagePath;
         $s_imagePath = str_replace('../', '/', $s_imagePath);
         $s_image = '<img src="'.$s_imagePath.'clearCache.png" title="'.$s_title.'" alt="'.$s_title.'" />';
         $s_pageIconLink = '<a href="'.$s_clearCacheCmdUri.'">'.$s_image.'</a>';

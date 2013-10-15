@@ -111,7 +111,7 @@ class PluginService {
     
     protected function transformXML($data) {
             
-        libxml_use_internal_errors(true);
+        libxml_use_internal_errors(TRUE);
         $xmlObject = simplexml_load_string($data);
         
         if($xmlObject) {
@@ -126,7 +126,7 @@ class PluginService {
         }
         
         else {
-            $errorData = "";
+            $errorData = '';
             foreach(libxml_get_errors() as $error) {
                 $errorData .= $error->message."\n";
             }

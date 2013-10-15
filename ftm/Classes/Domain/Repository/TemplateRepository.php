@@ -60,7 +60,7 @@ class TemplateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
         
         $constraints   = array();
-        $constraints[] = $query->equals('hidden',  '0');
+        $constraints[] = $query->equals('hidden', '0');
         $constraints[] = $query->equals('deleted', '0');
         
         $query->matching(

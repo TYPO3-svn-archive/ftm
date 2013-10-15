@@ -23,7 +23,7 @@ class FluidRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHe
     public function render(\CodingMs\Ftm\Domain\Model\Template $fluidTemplate, \CodingMs\Ftm\Domain\Model\TemplateFluid $template) {
             
         $tableCells = array();
-        $returnHtml = "";
+        $returnHtml = '';
                 
                 
         // Dateiname und Pfad

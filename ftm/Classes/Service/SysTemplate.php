@@ -111,8 +111,8 @@ class SysTemplate {
         
         
         // Template in Result!?
-        $found = false;
-        $foundVersion = "";
+        $found = FALSE;
+        $foundVersion = '';
         if($result) {
             
             // Alle gefundenen Template pruefen
@@ -127,7 +127,7 @@ class SysTemplate {
                         // Merken das es ein FTM Sys-Template ist
                         // aber nur wenn noch keins gefunden wurde
                         if(!$found) {
-                            $found = true;
+                            $found = TRUE;
                             $foundRow = $row;
                             $foundVersion = trim(str_replace("FTM", "", $titleParts[0]));
                         }
@@ -284,8 +284,8 @@ class SysTemplate {
             $this->persistenceManager->persistAll();
             
             
-            $messagesOk = "";
-            $messagesError = "";
+            $messagesOk = '';
+            $messagesError = '';
             
             
             // TypoScript Dateien erstellen,

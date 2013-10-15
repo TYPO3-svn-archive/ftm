@@ -81,7 +81,7 @@ class Pages {
      *
      * @var string
      */
-    protected $messages = "";
+    protected $messages = '';
 
     /**
      * injectPagesRepository
@@ -129,7 +129,7 @@ class Pages {
         // Wir starten immer bei Tiefe: 0
         // -------------------------------------------------
         $currentPid = 0;
-        $currentPagePath = "";
+        $currentPagePath = '';
         
         if(!empty($this->globalPages)) {
             foreach ($this->globalPages as $title => $config) {
@@ -152,7 +152,7 @@ class Pages {
         // Wir starten immer bei Tiefe: x -> FTM-Seite
         // -------------------------------------------------
         $currentPid = $ftmPid;
-        $currentPagePath = "";
+        $currentPagePath = '';
         
         if(!empty($this->domainPages)) {
             foreach ($this->domainPages as $title => $config) {
@@ -178,7 +178,7 @@ class Pages {
             return $this->messages;
         }
         else {
-            return true;
+            return TRUE;
         }
     }
         

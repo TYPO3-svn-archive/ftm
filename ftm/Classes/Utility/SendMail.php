@@ -40,14 +40,14 @@ class SendMail {
      *
      * @var boolean
      */
-    protected static $log = false;
+    protected static $log = FALSE;
 
     /**
      * E-Mail Kopie immer an den Admin schicken?
      *
      * @var boolean
      */
-    protected static $emailCopy = false;
+    protected static $emailCopy = FALSE;
 
     /**
      * E-Mail Kopie Adresse von Admin
@@ -61,7 +61,7 @@ class SendMail {
      * Merkt sich ob die E-Mail als Log in der DB gespeichert wird
      * @param boolean $active An oder aus!?
      */
-    public static function setLog($log=false) {
+    public static function setLog($log=FALSE) {
         self::$log = $log;
     }
     
@@ -69,7 +69,7 @@ class SendMail {
      * Merkt sich ob die E-Mail als Kopie an den Admin geschickt wird
      * @param boolean $active An oder aus!?
      */
-    public static function setEmailCopy($emailCopy=false) {
+    public static function setEmailCopy($emailCopy=FALSE) {
         self::$emailCopy = $emailCopy;
     }
     
@@ -104,47 +104,47 @@ class SendMail {
         
         
         
-        $logEntry = "";
-        $paramsFailed = false;
+        $logEntry = '';
+        $paramsFailed = FALSE;
         
         if(!isset($emailData['fromEmail']) || empty($emailData['fromEmail'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() fromEmail failed");
-            $paramsFailed = true;
+            $paramsFailed = TRUE;
         }
         else {
             $logEntry .= "fromEmail: ".$emailData['fromEmail']."\n";
         }
         if(!isset($emailData['fromName']) || empty($emailData['fromName'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() fromName failed");
-            $paramsFailed = true;
+            $paramsFailed = TRUE;
         }
         else {
             $logEntry .= "fromName: ".$emailData['fromName']."\n";
         }
         if(!isset($emailData['toEmail']) || empty($emailData['toEmail'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() toEmail failed");
-            $paramsFailed = true;
+            $paramsFailed = TRUE;
         }
         else {
             $logEntry .= "toEmail: ".$emailData['toEmail']."\n";
         }
         if(!isset($emailData['toName']) || empty($emailData['toName'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() toName failed");
-            $paramsFailed = true;
+            $paramsFailed = TRUE;
         }
         else {
             $logEntry .= "toName: ".$emailData['toName']."\n";
         }
         if(!isset($emailData['subject']) || empty($emailData['subject'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() subject failed");
-            $paramsFailed = true;
+            $paramsFailed = TRUE;
         }
         else {
             $logEntry .= "subject: ".$emailData['subject']."\n";
         }
         if(!isset($emailData['message']) || empty($emailData['message'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() message failed");
-            $paramsFailed = true;
+            $paramsFailed = TRUE;
         }
         else {
             $logEntry .= "message: ".$emailData['message']."\n";
@@ -189,10 +189,10 @@ class SendMail {
              * @ToDo: Erfolg weiter pruefen anhand eines Vergleichs der recipients
              */
             if($mail->send()>0) {
-                $success = true;
+                $success = TRUE;
             }
             else {
-                $success = false;
+                $success = FALSE;
             }
         
             $logEntry .= "sending: successful\n";
@@ -200,7 +200,7 @@ class SendMail {
         else {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() E-Mail not send!");
             $logEntry .= "sending: failed\n";
-            $success = false;
+            $success = FALSE;
         }
         
         // E-Mail Daten ggf. in den DB-Log schreiben
@@ -208,7 +208,7 @@ class SendMail {
             // $newLog = new Tx_CodingMsBase_Domain_Model_Log();
             // $newLog->initialize('send', 'SendMail');
             // $newLog->setText($logEntry);
-            // //Tx_CodingMsBase_Utility_Log::add($newLog, true); 
+            // //Tx_CodingMsBase_Utility_Log::add($newLog, TRUE); 
         // }
         
         return $success;
