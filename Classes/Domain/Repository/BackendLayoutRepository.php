@@ -48,7 +48,7 @@ class BackendLayoutRepository extends \TYPO3\CMS\Extbase\Persistence\Repository 
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
         
         $constraints   = array();
-        $constraints[] = $query->equals('pid',   $pid);
+        $constraints[] = $query->equals('pid', $pid);
         $constraints[] = $query->equals('title', $title);
         
         $query->matching(

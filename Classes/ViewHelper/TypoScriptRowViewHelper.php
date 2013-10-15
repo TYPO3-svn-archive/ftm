@@ -27,7 +27,7 @@ class TypoScriptRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
         $md5Hash    = "none";
         $generic    = false;
         $tableCells = array();
-        $returnHtml = "";
+        $returnHtml = '';
         
         
         // Pruefen: Ist es eine generierte Datei

@@ -46,11 +46,11 @@ class Updates {
         // Aktuelle Versions-Info ermitteln
         $context = array('http' => array('header' => 'Referer: http://'.$_SERVER['HTTP_HOST']));
         $xcontext = stream_context_create($context);
-        $currentVersionJson  = @file_get_contents('http://fluid-template-manager.de/updates/'.$extension.'.json', false, $xcontext);
+        $currentVersionJson  = @file_get_contents('http://fluid-template-manager.de/updates/'.$extension.'.json', FALSE, $xcontext);
         if(!$currentVersionJson) {
             return \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_version_not_detected", "Ftm"); //Version konnte nicht ermittelt werden. Eventuell darf file_get_contents keine remote-URLs abrufen!
         }
-        $currentVersionArray = json_decode($currentVersionJson, true);
+        $currentVersionArray = json_decode($currentVersionJson, TRUE);
         $currentVersionParts = explode('.', $currentVersionArray['version']);
         
         
@@ -74,7 +74,7 @@ class Updates {
                 }
                 // Alles aktuell! :)
                 else {
-                    return false;
+                    return FALSE;
                 }
             }
         }

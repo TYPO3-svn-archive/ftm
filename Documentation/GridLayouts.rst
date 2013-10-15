@@ -65,7 +65,7 @@ CSS-Klassen (vordefinierte aus LESS-Dateien) Hier können Sie Ihre vordefinierte
                                              Mit dieser Funktion können dann auch weniger erfahrene Redakteure, speziellere Inhalte leicht anlegen.
                                              Durch das Vierfache vorhanden sein der Auswahlen, haben Sie auch die Möglichkeit verschiedene Eigenschaften zu kombinieren.
                                              So könnte eine Auswahl das GridLayout mit einem Farbton versehen und eine weitere könnte abgerundete Ecken hinzufügen.
-                                             Wie Sie solche CSS-Klassen für die Auswahl-Boxen anlegen können, lesen Sie im Abschnitt CSS/LESS in dieser Dokumentation.
+                                             Wie Sie solche CSS-Klassen für die Auswahl-Boxen anlegen können, lesen Sie im Abschnitt CSS/LESS in dieser Dokumentation: `http://fluid-template-manager.de/documentation/Css-Less.html#vordefinierte-css-less-klassen-fur-die-grid-elemente <http://fluid-template-manager.de/documentation/Css-Less.html#vordefinierte-css-less-klassen-fur-die-grid-elemente>`.
 Anker-Name                                   In diesem Feld können Sie Ihr GridLayout mit einem selbst definierten Anker-Namen versehen.
                                              Somit haben Sie die Möglichkeit, wenn Sie bspw. eine längere Seite mit Scroll-Navigation haben, bestimmte Bereiche über den Anker-Namen anzuscrollen.
 ============================================ =====================================================================================================================================================

@@ -14,18 +14,19 @@
  */
 
 
-/* based on Bootstrap v2.3.2 */
+
+// Core variables and mixins
+// ----------------------------------------------------------
+@import "../Contrib/bootstrap/less/variables.less";
+
+/* based on Bootstrap v3.0.0 */
 @import "BasicLess/variables.less";
-@import "BasicLess/bootstrapVariables.less";
-
-
-/* Less-Elements/Variables for the FTM */
 @import "BasicLess/mixins.less";
 @import "BasicLess/mixinsCustom.less";
 
-
-// Core variables and mixins
 @import "../Contrib/bootstrap/less/mixins.less";
+// ----------------------------------------------------------
+
 
 
 /*--- Import Content-Layouts ----------------------------------------------------------*/
@@ -39,9 +40,11 @@
 
 
 /* Import Less-BasisLayouts */
-/* mediaQuerys in der Datei */
+/*--- Import Less-BasisLayouts --------------------------------------------------------*/
 @import url(BasicLayout/layout.less);
-/* @import url(1_basicLayout/2_bootstrapTypo3.less); /* File have to be imported in the bootstrap.less */
+@import url(BasicLayout/print.less);
+@import url(BasicLayout/typography.less);
+
 
 
 /*--- Import Less-Areas --------------------------------------------------------------*/
@@ -85,20 +88,8 @@
 @import url(Templates/startsite.less);
 
 
+
 /*--- Import Less-Extensions ---------------------------------------------------------*/
-// @import url(../Extensions/extensionkey/style.less);
+// @import url(../Extensions/extensionkey/Less/import.less);
 
 
-/* Import Less-Ext 
-@import "../ext/avency_references/less/style.less";
-@import "../ext/homeBox/css/homeBox.css";
-@import "../ext/kundenBox/css/kundenBox.less";
-@import "../ext/leistungBox/css/leistungBox.less";
-@import "../ext/rtehtmlarea/contentcss/frontend.less";
-*/
-
-/* Import 3rdPary */
-
-
-// Delete just for Doku
-@import url(BasicLayout/tbootstrapDoku.less); 

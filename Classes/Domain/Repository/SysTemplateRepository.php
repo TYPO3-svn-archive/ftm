@@ -42,9 +42,9 @@ class SysTemplateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
         
         $constraints   = array();
-        $constraints[] = $query->equals('pid',   $pid);
+        $constraints[] = $query->equals('pid', $pid);
         $constraints[] = $query->equals('title', 'FTM '.$version.' - Root-Template (Dont change this name!)');
-        $constraints[] = $query->equals('root',  '1');
+        $constraints[] = $query->equals('root', '1');
         
         $query->matching(
             $query->logicalAnd($constraints)

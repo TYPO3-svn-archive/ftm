@@ -117,7 +117,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      * Debugging
      * @var string
      */
-    protected $debug = "";
+    protected $debug = '';
 
     /**
      * SysTemplate-Service
@@ -262,13 +262,13 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $options['pid']        = $this->pid;
         $options['wikiUrl']    = 'http://fluid-template-manager.de/documentation/';
         $options['twitterUrl'] = 'http://fluid-template-manager.de/iframes/TwitterStream/';
-        $options['disclaimerNotAccepted'] = true;
+        $options['disclaimerNotAccepted'] = TRUE;
         
         
         // Pruefen ob es auf der aktuelle Seite schon ein
         // Template-Datensatz gibt
         if($this->fluidTemplate===null) {
-            $options['templateOnCurrentPage'] = false;
+            $options['templateOnCurrentPage'] = FALSE;
             
             /**
              * @ToDo: Hier muss geprueft werden, ob ein Template auf einer
@@ -283,7 +283,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // Merken das es ein Template gibt
             // und pruefen ob Meldung noch angezeigt wird
             // -------------------------------------------------
-            $options['templateOnCurrentPage'] = true;
+            $options['templateOnCurrentPage'] = TRUE;
             $options['disclaimerNotAccepted'] = !$this->fluidTemplate->isDisclaimerAccepted();
             $this->debug.="template on this pid: ".$this->pid."<br>";
         
@@ -347,7 +347,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     $pagesMessages = $this->pagesService->checkPages($this->pid);
                     
                     // Meldungen von erstellten Seiten ausgeben
-                    if(trim($pagesMessages)!="" && $pagesMessages!==true) {
+                    if(trim($pagesMessages)!="" && $pagesMessages!==TRUE) {
                         $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_pages_generated_headline", "Ftm"); //FTM Seiten erstellt!
                         $this->flashMessageContainer->add($pagesMessages, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
                     }
@@ -359,8 +359,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // vorhanden und korrekt ist
                     // -------------------------------------------------
                     $directoryCheck = \CodingMs\Ftm\Service\TemplateDirectory::checkDirectories($templateName);
-                    if($directoryCheck===true) {
-                        $this->debug.= "directory check: true<br>";
+                    if($directoryCheck===TRUE) {
+                        $this->debug.= "directory check: TRUE<br>";
                     }
                     else {
                         if(!empty($directoryCreate)) {
@@ -371,8 +371,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     }
                     
                     $directoryCreate = \CodingMs\Ftm\Service\TemplateDirectory::createDirectories($templateName);
-                    if($directoryCreate===true) {
-                        $this->debug.= "directory create: true<br>";
+                    if($directoryCreate===TRUE) {
+                        $this->debug.= "directory create: TRUE<br>";
                     }
                     else {
                         if(!empty($directoryCreate)) {
@@ -388,7 +388,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // Template-Dir ggf nochmal in Sys-
                     // Template etc. setzen/aktualisieren
                     // -------------------------------------------------
-                    $options['templateDirFound'] = true;
+                    $options['templateDirFound'] = TRUE;
                     $this->setTemplateDir($templateName);
                     // -------------------------------------------------
                     
@@ -409,7 +409,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // Template Strukture pruefen
                     // -------------------------------------------------
                     if($this->templateStructureService->checkStructure($this->pid, $this->fluidTemplate)) {
-                        // checkStructure returns true wenn etwas erstellt wurde
+                        // checkStructure returns TRUE wenn etwas erstellt wurde
                         
                         $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_template_structure_generated_headline", "Ftm"); //FTM Template-Struktur erstellt!
                         $messages = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_template_structure_generated_message", "Ftm"); //FTM Template-Struktur wurde erstellt bzw. aktualisiert.
@@ -423,11 +423,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     // Pruefen ob alle Fluid-Templates vorhanden sind
                     // -------------------------------------------------
-                    $tempMessages = "";
+                    $tempMessages = '';
                     // Pruefen ob alle Layout-Datensaetze vorhanden sind
                     $fluidLayoutFiles   = $this->fluidService->checkFiles($this->fluidTemplate, 'layout');
-                    if($fluidLayoutFiles===true) {
-                        $this->debug.= "fluid layout files: true<br>";
+                    if($fluidLayoutFiles===TRUE) {
+                        $this->debug.= "fluid layout files: TRUE<br>";
                     }
                     else {
                         $tempMessages.= $this->fluidService->createFiles($this->fluidTemplate, 'layout', $fluidLayoutFiles);
@@ -435,8 +435,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     // Pruefen ob alle Partial-Datensaetze vorhanden sind
                     $fluidPartialFiles  = $this->fluidService->checkFiles($this->fluidTemplate, 'partial');
-                    if($fluidPartialFiles===true) {
-                        $this->debug.= "fluid partial files: true<br>";
+                    if($fluidPartialFiles===TRUE) {
+                        $this->debug.= "fluid partial files: TRUE<br>";
                     }
                     else {
                         $tempMessages.= $this->fluidService->createFiles($this->fluidTemplate, 'partial', $fluidPartialFiles);
@@ -444,8 +444,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     // Pruefen ob alle Template-Datensaetze vorhanden sind
                     $fluidTemplateFiles = $this->fluidService->checkFiles($this->fluidTemplate, 'template');
-                    if($fluidTemplateFiles===true) {
-                        $this->debug.= "fluid template files: true<br>";
+                    if($fluidTemplateFiles===TRUE) {
+                        $this->debug.= "fluid template files: TRUE<br>";
                     }
                     else {
                         $tempMessages.= $this->fluidService->createFiles($this->fluidTemplate, 'template', $fluidTemplateFiles);
@@ -470,7 +470,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 // im FTM-Template angegeben
                 else {
                     
-                    $options['templateDirFound'] = false;
+                    $options['templateDirFound'] = FALSE;
                     
                     $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_headline", "Ftm"); //Kein Template-Verzeichnis gefunden!
                     $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_message1", "Ftm") . '<br />'; //In diesem FTM-Template ist noch kein Template-Verzeichnis eingetragen worden.
@@ -486,7 +486,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         // Template befuellen
         $this->view->assign('buttons', $buttons);
         $this->view->assign('debug',   $this->debug);
-        $this->view->assign('doDebug', false);
+        $this->view->assign('doDebug', FALSE);
         $this->view->assign('options', $options);
         $this->view->assign('fluidTemplate', $this->fluidTemplate);
     }
@@ -499,8 +499,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         // Parameter auswerten
         if($this->request->hasArgument('acceptDisclaimer')) {
             $acceptDisclaimer = $this->request->getArgument('acceptDisclaimer');
-            if($acceptDisclaimer=='true') {
-                $this->fluidTemplate->setDisclaimerAccepted(true);
+            if($acceptDisclaimer=='TRUE') {
+                $this->fluidTemplate->setDisclaimerAccepted(TRUE);
                 $this->fluidTemplateRepository->update($this->fluidTemplate);
             }
         }
@@ -632,8 +632,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             
             
              // Pfad ermitteln
-            $typoScript = "";
-            $messageOk  = "";
+            $typoScript = '';
+            $messageOk  = '';
             $filepath   = "uploads/tx_ftm/";
             $relPath    = $filepath;
             $absPath   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
@@ -757,8 +757,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             
             
              // Pfad ermitteln
-            $typoScript = "";
-            $messageOk  = "";
+            $typoScript = '';
+            $messageOk  = '';
             $filepath   = "uploads/tx_ftm/";
             $relPath    = $filepath;
             $absPath    = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
@@ -827,7 +827,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             
             
             // Benoetigte Daten sammeln
-            $dataCheckFailed = false;
+            $dataCheckFailed = FALSE;
             $templateDataArray = $this->getTemplateDataArray();
             
                     
@@ -838,7 +838,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_fluid_template_not_exists_message", "Ftm", array($typoScriptFile)); //Das $typoScriptFile TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch keine Fluid-Templates existieren.
                 $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
                 
-                $dataCheckFailed = true;
+                $dataCheckFailed = TRUE;
             }
 
         
@@ -850,7 +850,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 // $headline = 'TypoScript nicht re-/generiert!';
                 // $message  = 'Das '.$typoScriptFile.' TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch keine Fluid-Templates existieren.';
                 // $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
-                // $dataCheckFailed = true;
+                // $dataCheckFailed = TRUE;
             // }
 
             /**
@@ -869,8 +869,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     
                     // Pfad ermitteln
-                    $typoScript = "";
-                    $messageOk  = "";
+                    $typoScript = '';
+                    $messageOk  = '';
                     $filepath   = \CodingMs\Ftm\Utility\Tools::getDirectory("TypoScript", $this->fluidTemplate->getTemplateDir());
                     $relPath    = $filepath;
                     $absPath    = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
@@ -999,8 +999,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     public function generateFluidAction($templateType, $templateFile, $copy="dbToFile") {
 
 
-        $found = false;
-        $temp = "";
+        $found = FALSE;
+        $temp = '';
 
 
         // Template-Datei nur erstellen,
@@ -1014,7 +1014,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 if($tempFluid->getTemplateType()==$templateType && $tempFluid->getTemplateFile()==$templateFile) {
                     
                     // Merken das das Template gefunden wurde
-                    $found = true;
+                    $found = TRUE;
                     
                     
                     // Dateiname und Pfad

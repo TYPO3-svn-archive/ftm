@@ -70,7 +70,7 @@ class TypoScript {
         
 
         // Benoetigte Daten sammeln
-        $dataCheckFailed = false;
+        $dataCheckFailed = FALSE;
         $templateDataArray = $fluidTemplate->toArray();
         
                 
@@ -81,7 +81,7 @@ class TypoScript {
             $message  = 'Das '.$typoScriptFile.' TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch keine Fluid-Templates existieren.';
             $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
             
-            $dataCheckFailed = true;
+            $dataCheckFailed = TRUE;
         }
         
         
@@ -106,7 +106,7 @@ class TypoScript {
                 
                 
                 // Pfad ermitteln
-                $typoScript = "";
+                $typoScript = '';
                 $filepath   = \CodingMs\Ftm\Utility\Tools::getDirectory("TypoScript", $fluidTemplate->getTemplateDir());
                 $relPath    = $filepath.$typoScriptFile;
                 $absPath    = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
@@ -152,7 +152,7 @@ class TypoScript {
             }
         }
 
-        return false;
+        return FALSE;
     }
     
   

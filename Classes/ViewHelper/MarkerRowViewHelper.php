@@ -23,7 +23,7 @@ class MarkerRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewH
     public function render(\CodingMs\Ftm\Domain\Model\Template $fluidTemplate, \CodingMs\Ftm\Domain\Model\TemplateMarker $marker) {
             
         $tableCells = array();
-        $returnHtml = "";
+        $returnHtml = '';
                 
                 
         // Marker-Daten

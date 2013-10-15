@@ -440,13 +440,13 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
     }
 
     /**
-     * Returns true if both entered passwords are equal
+     * Returns TRUE if both entered passwords are equal
      *
      * @return boolean
      */
     public function passwordEqual() {
-        if($this->getPassword() == $this->getPasswordRepeat()) return true;
-        else return false;
+        if($this->getPassword() == $this->getPasswordRepeat()) return TRUE;
+        else return FALSE;
     }
 }
 ?>

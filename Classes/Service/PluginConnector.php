@@ -35,16 +35,16 @@ namespace CodingMs\Ftm\Service;
 class PluginConnector {
     
     // Server-IP auf dem die Plugins laufen
-    private $host = "";
+    private $host = '';
     
     // Verzeichnis in dem die APIs der Plugins liegen
     private $folder = "api"; // -dev
     
     // PHP-Datei die das Plugin ansteuert
-    private $file = "";
+    private $file = '';
     
     // Verzeichnis und Datei der API
-    private $pathAndFile = "";
+    private $pathAndFile = '';
     
     // Fehler sammeln
     private $errorRows = array();
@@ -56,7 +56,7 @@ class PluginConnector {
     
     private $resultHeaderRows = array();
     
-    private $resultXML = "";
+    private $resultXML = '';
     
     function __construct($host="", $plugin="", $pcKey="public") {
         
@@ -89,11 +89,11 @@ class PluginConnector {
         
         $result = array();
         $result['headerRows'] = array();
-        $result['xml'] = "";
+        $result['xml'] = '';
                 
         
         // Zeilen nach dem der Header zuende ist
-        $xmlFound = false;
+        $xmlFound = FALSE;
         
         
         try {
@@ -101,7 +101,7 @@ class PluginConnector {
             // Verbindung oeffnen
             $fs = fsockopen("tcp://".$this->host, 80, $errno, $errstr);
             
-            $allInAll = "";
+            $allInAll = '';
             
             if($fs) {
                 
@@ -110,9 +110,9 @@ class PluginConnector {
                 fwrite($fs, $out);
         
                 // Anfrage auslesen
-                while(($line = fgets($fs)) !== false) {
+                while(($line = fgets($fs)) !== FALSE) {
                     $allInAll .= $line."<br>";
-                    if(substr($line, 0, 6) == "<?xml ") $xmlFound = true;
+                    if(substr($line, 0, 6) == "<?xml ") $xmlFound = TRUE;
                     if($xmlFound) {
                         $result['xml'] .= $line;
                     }
@@ -146,7 +146,7 @@ class PluginConnector {
          if(empty($this->errors)) {
              return $allInAll;
          }
-         else return false;
+         else return FALSE;
     }
     
     

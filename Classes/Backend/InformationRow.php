@@ -80,11 +80,11 @@ class InformationRow {
         else if($parameters['field']=="marker_save") {
                
                 
-            $script     = "";
-            $insertHref = "";
-            $insertLink = "";
+            $script     = '';
+            $insertHref = '';
+            $insertLink = '';
             
-            $markerSelection = "";
+            $markerSelection = '';
             
             $snippetFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName("uploads/tx_ftm/");
             

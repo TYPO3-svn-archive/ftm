@@ -92,12 +92,12 @@ class TemplateDirectory {
      * 
      * @author     Thomas Deuling <typo3@coding.ms>
      * @param      string Verzeichnis-Name im Ext-Verzeichnis
-     * @return     mixed true wenn alle Verzeichnisse vorhanden sind, ansonsten ein Array mit den vermissten Verzeichnissen
+     * @return     mixed TRUE wenn alle Verzeichnisse vorhanden sind, ansonsten ein Array mit den vermissten Verzeichnissen
      * @since      1.0.0
      */
     public static function checkDirectories($templateName) {
         
-        $success = true;
+        $success = TRUE;
         $missingDirectories = array();
         
         
@@ -105,7 +105,7 @@ class TemplateDirectory {
         $relPath = "typo3conf/ext/".$templateName;
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
         if(!is_dir($absPath)) {
-            $success = false;
+            $success = FALSE;
             $directory = 'root';
             $missingDirectories[$directory] = 'Hier liegen alle Website-Daten';
         }
@@ -119,7 +119,7 @@ class TemplateDirectory {
                 $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
                 
                 if(!is_dir($absPath)) {
-                    $success = false;
+                    $success = FALSE;
                     $missingDirectories[$directory] = $description;
                 }
                 
@@ -127,7 +127,7 @@ class TemplateDirectory {
         }
         
         if($success) {
-            return true;
+            return TRUE;
         }
         else {
             return $missingDirectories;
@@ -140,12 +140,12 @@ class TemplateDirectory {
      * 
      * @author     Thomas Deuling <typo3@coding.ms>
      * @param      string Verzeichnis-Name im Ext-Verzeichnis
-     * @return     mixed true wenn alle Verzeichnisse vorhanden sind bzw. erstellt wurden, ansonsten ein Array mit den vermissten/nicht erstellten Verzeichnissen
+     * @return     mixed TRUE wenn alle Verzeichnisse vorhanden sind bzw. erstellt wurden, ansonsten ein Array mit den vermissten/nicht erstellten Verzeichnissen
      * @since      1.0.0
      */
     public static function createDirectories($templateName) {
         
-        $success = true;
+        $success = TRUE;
         $missingDirectories = array();
         
         
@@ -154,7 +154,7 @@ class TemplateDirectory {
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
         if(!is_dir($absPath)) {
             if(!mkdir($absPath)) {
-                $success = false;
+                $success = FALSE;
                 $directory = 'root';
                 $missingDirectories[$directory] = 'Hier liegen alle Website-Daten';
             }
@@ -173,7 +173,7 @@ class TemplateDirectory {
                 
                 if(!is_dir($absPath)) {
                     if(!mkdir($absPath)) {
-                        $success = false;
+                        $success = FALSE;
                         $missingDirectories[$directory] = $description;
                     }
                     else {
@@ -185,7 +185,7 @@ class TemplateDirectory {
         }
         
         if($success) {
-            return true;
+            return TRUE;
         }
         else {
             return $missingDirectories;

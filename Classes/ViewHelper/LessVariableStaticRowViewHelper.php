@@ -23,7 +23,7 @@ class LessVariableStaticRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
     public function render(\CodingMs\Ftm\Domain\Model\Template $fluidTemplate, $lessVariableName='') {
             
         $tableCells = array();
-        $returnHtml = "";
+        $returnHtml = '';
                 
                 
         // Dateiname und Pfad
