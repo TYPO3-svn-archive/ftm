@@ -1,6 +1,9 @@
 ================================
 Installation & Konfiguration
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Installation & Konfiguration <http://fluid-template-manager.de/documentation/Installation.html>`_
+
+
 Hier finden Sie alle Informationen zur Installation und Konfiguration des FTM. 
 
 Herunterladen können Sie den Fluid-Template-Manager im TER oder über die TYPO3-Seite:

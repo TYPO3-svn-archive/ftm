@@ -28,15 +28,15 @@ Was ist der Fluid-Template-Manager, kurz FTM?
 =============================================
 
 Der Fluid Template Manager (kurz FTM) ist ein TYPO3-Backendmodul welches es erlaubt TYPO3-Templates zu generieren, anzupassen und zu verwalten. 
-Darüberhinaus ist eine schnelle Austauschbarkeit (sprich Import/Export) des gesamten Templates möglich. 
+Darüberhinaus ist eine schnelle Austauschbarkeit (sprich Import/Export) des gesamten Templates möglich.
 Auf dieser Seite finden Sie eine ausführliche Hilfe/Dokumentation zum aktuellen FTM. 
 
 
 Für wen ist der FTM gedacht?
 =============================================
-Der FTM gibt neuen TYPO3-Entwicklern einen vereinfachten Start bei der Entwicklung von Webseiten,
-hilft aber auch den erfahrenen Entwicklern nicht die gleichen stupiden Basis-Codes immer und immer wieder zu schreiben, sondern direkt immer mit der gleichen generierten Basis zu beginnen.
+Der FTM gibt neuen TYPO3-Entwicklern einen vereinfachten Start bei der Entwicklung von Webseiten, hilft aber auch den erfahrenen Entwicklern nicht die gleichen stupiden Basis-Codes immer und immer wieder zu schreiben, sondern direkt immer mit der gleichen generierten Basis zu beginnen.
 Somit haben alle TYPO3-Themes die gleiche Grundstruktur und jeder Entwickler findet sich schnell darin zurecht.
+Template-Designer können also ohne viel Wissen über TYPOScript Themes erstellen und diese dann bereitstellen.
 
 
 Wichtige Begriffserklärungen

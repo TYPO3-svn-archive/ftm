@@ -1,6 +1,9 @@
 ﻿===============
 Troubleshooting
 ===============
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Troubleshooting <http://fluid-template-manager.de/documentation/Troubleshooting.html>`_
+
+
 Hier finden Sie Lösungsansätze zu häufigen Problemen.
 Bitte schauen Sie auch im FAQ-Bereich, vielleicht finden Sie auch dort etwas zu Ihrem Problem
 

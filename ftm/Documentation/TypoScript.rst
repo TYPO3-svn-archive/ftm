@@ -1,6 +1,9 @@
 ====================================================================
 TypoScript
 ====================================================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `TypoScript <http://fluid-template-manager.de/documentation/TypoScript.html>`_
+
+
 Hier findest Du alle Informationen über das TYPOScript im FTM.
 
 

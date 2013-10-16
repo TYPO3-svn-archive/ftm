@@ -1,6 +1,9 @@
 ================================
 FAQ - Frequently asked questions
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `FAQ - Frequently asked questions <http://fluid-template-manager.de/documentation/Faq.html>`_
+
+
 Hier finden Sie alle häufig gestellten Fragen. 
 
 ----------------------------------------------------------------------------------------------------------------

@@ -1,6 +1,8 @@
 ================================
 Fluid-Templates
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Fluid-Templates <http://fluid-template-manager.de/documentation/FluidTemplates.html>`_
+
 
 Die im FTM verwendeten Fluid Templates/Layouts/Partials bestehen aus einem Datensatz und eine entsprechenden Fluid-Datei.
 
