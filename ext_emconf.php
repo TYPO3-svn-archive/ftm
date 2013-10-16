@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'FTM - Fluid Template Manager',
-	'description' => 'FTM - Fluid Template Manager',
+	'description' => 'FTM - Fluid Template Manager. Dokumentation: http://www.fluid-template-manager.de/',
 	'category' => 'Backend Modules',
 	'author' => 'Thomas Deuling - typo3@coding.ms',
 	'author_email' => 'typo3@coding.ms',
@@ -20,14 +20,14 @@ $EM_CONF[$_EXTKEY] = array(
 	'shy' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => 1,
 	'createDirs' => '',
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 1,
 	'lockType' => '',
-	'version' => '1.1.0',
+	'version' => '1.0.5',
 	'constraints' => array(
 		'depends' => array(
 			'extbase' => '4.7.7',

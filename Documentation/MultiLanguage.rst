@@ -1,6 +1,8 @@
 ================================
 Mehrsprachigkeit
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Mehrsprachigkeit <http://fluid-template-manager.de/documentation/MultiLanguage.html>`_
+
 
 --------------------------------------------------------------------
 Frontend

@@ -1,6 +1,7 @@
 ================================
 Menüs
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Menüs <http://fluid-template-manager.de/documentation/Menus.html>`_
 
 
 .. important:: Achtung: Diese Seite ist veraltet und wird gerade überarbeitet!

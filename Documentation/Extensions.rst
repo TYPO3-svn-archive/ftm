@@ -1,6 +1,9 @@
 ================================
 Extensions
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Extensions <http://fluid-template-manager.de/documentation/Extensions.html>`_
+
+
 Hier finden Sie alle Informationen zu den verwendeten bzw. empfohlenen Extensions.
 
 --------------------------------------------------------------------

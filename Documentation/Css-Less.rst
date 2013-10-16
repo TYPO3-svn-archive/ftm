@@ -1,6 +1,9 @@
 ================================
 CSS/LESS im FTM
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `CSS/LESS im FTM <http://fluid-template-manager.de/documentation/Css-Less.html>`_
+
+
 Lesen Sie hier wie Sie Ihre FTM-Template mit CSS/LESS optimieren und flexibel halten. 
 
 .. important:: Achtung: Diese Seite ist veraltet und wird gerade überarbeitet!
@@ -49,7 +52,6 @@ Beachten Sie, das die Reihenfolge der LESS-Variablen u.U. wichtig ist (bspw. wen
 **Achtung:** Die neue Reihenfolge ist aktiv, wenn Sie das LESS neu generiert haben. 
 
 
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 LESS-Variablen Typen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,6 +94,14 @@ TODO:
 
 **Achtung:** Die gelöschte LESS-Variable ist erst wirklich nicht mehr vorhanden, wenn Sie das LESS neu generiert haben. 
 
+
+
+
+--------------------------------------------------------------------
+Vordefinierte CSS/Less-Variablen
+--------------------------------------------------------------------
+Wenn Sie ein Template vom Typ Bootstrap erstellen, werden alle Bootstrap 3 Variablen automatisiert mit erstellt!
+Mehr Informationen über diese Variablen erhalten Sie hier: `http://getbootstrap.com/customize/#less-variables <http://getbootstrap.com/customize/#less-variables>`_.
 
 
 
@@ -142,4 +152,3 @@ Die Realisierung der CSS/LESS-Klassen auf Basis von einzelnen Dateien in Ihrem T
 
 
 .. include:: ./Snippets/PoweredBy.rst
-

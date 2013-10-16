@@ -33,6 +33,14 @@ namespace CodingMs\Ftm\Domain\Model;
  *
  */
 class TemplateLessVariable extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+    
+    /**
+     * Sorting
+     * 
+     * @var integer 
+     * @since 1.1.0
+     */
+    protected $sorting;
 
     /**
      * Variablen-Title/Beschreibung
@@ -98,6 +106,27 @@ class TemplateLessVariable extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntit
      * @since 1.1.0
      */
     protected $template;
+
+    /**
+     * Returns the sorting
+     *
+     * @return integer $sorting
+     * @since 1.1.0
+     */
+    public function getSorting() {
+        return $this->sorting;
+    }
+
+    /**
+     * Sets the sorting
+     *
+     * @param integer $sorting
+     * @return void
+     * @since 1.1.0
+     */
+    public function setSorting($sorting) {
+        $this->sorting = $sorting;
+    }
     
     /**
      * Returns the variableTitle

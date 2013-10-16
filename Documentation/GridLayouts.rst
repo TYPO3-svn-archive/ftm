@@ -1,6 +1,9 @@
 ================================
 Grid-Layouts
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Grid-Layouts <http://fluid-template-manager.de/documentation/GridLayouts.html>`_
+
+
 Die Extension Grid-Elements stellt strukturierende Content-Elemente bereit, die mit Hilfe eines Grid-Layouts dargestellt werden können.
 Im folgenden finden Sie alle Informationen über die vom FTM bereitgestellten Grid-Layouts und deren Funktion.
 

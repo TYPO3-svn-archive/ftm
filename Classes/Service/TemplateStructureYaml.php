@@ -101,8 +101,8 @@ class TemplateStructureYaml extends TemplateStructure {
     );
     
     protected $lessVariables = array(
-        array('Basis URL for Images // Grundlegende URL für Bilder',                   'baseUrlImage',                   '', 'string', ' ',                   ' ',                   '@{baseUrlTemplate}Resources/Public/Images/'),        
-        array('Theme Color',                                                           'themeColor',                    '', 'color',                         ' ',                   '#049cdb'),
+        array('Basis URL for Images // Grundlegende URL für Bilder',                   'baseUrlImage',                   '', 'string', ' ',                   ' ',                   '@{baseUrlTemplate}Resources/Public/Images/'),
+        array('Theme Color',                                                           'themeColor',                     '', 'color',                         ' ',                   '#049cdb'),
     );
 
 

@@ -9,7 +9,7 @@ $TCA['tx_ftm_domain_model_templatelessvariable'] = array(
         'showRecordFieldList' => 'variable_title, variable_name, variable_type, category, variable_value, variable_string, variable_color',
     ),
     'types' => array(
-        '1' => array('showitem' => 'variable_title, variable_name, variable_type, category, variable_value, variable_string, variable_color'),
+        '1' => array('showitem' => 'sorting, variable_title, variable_name, variable_type, category, variable_value, variable_string, variable_color'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -91,6 +91,15 @@ $TCA['tx_ftm_domain_model_templatelessvariable'] = array(
                 'range' => array(
                     'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
                 ),
+            ),
+        ),
+        'sorting' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateextt3lessfiles.sorting',
+            'config' => array(
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim,required'
             ),
         ),
         'variable_title' => array(

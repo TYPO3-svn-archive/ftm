@@ -1,6 +1,9 @@
 ================================
 Theme Verzeichnisstruktur
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Theme Verzeichnisstruktur <http://fluid-template-manager.de/documentation/ThemeDirectoryStructure.html>`_
+
+
 Seit der FTM Version 1.1.0 haben die Themes eine neue Verzeichnisstrukutur.
 Diese ist zum einen an die Site-Strukturen der TYPO3 Neos Sites angelehnt, aber auch an Theme-Strukturen wie sie bspw. vom site_mgr von Kay Strobach verwendet werden.
 Dies erlaubt Entwicklern eine schnellere Portierung der Templates auf die verschiedenen System, und vielleicht darüberhinaus auch die Nutzung von site_mgr und ftm im gleichen System.
@@ -27,6 +30,8 @@ Verzeichnis                      Beschreibung
                                  .. important:: Achtung: die constants.ts und setup.ts werden vom FTM automatisiert generiert und daher vom System überschrieben.
                                                 Für eigenes TYPOScript immer die mit *Custom.ts*-endenden Dateien verwenden!
                                   
+``/Initialisation/``             Hier kann man sein Template mit Initial-Daten ausstatten.
+                                 Mehr Informationen dazu gibt es hier: `http://wiki.typo3.org/Blueprints/DistributionManagement <http://wiki.typo3.org/Blueprints/DistributionManagement>`_.
 ``/Documentation/``              Hier liegt die Dokumentation zu diesem Theme
 ``/Meta/``                       Hier liegen Meta-Informationen zu diesem Theme
 ``/Resources/``                  Hier liegen alle Resoucen zu diesem Theme.

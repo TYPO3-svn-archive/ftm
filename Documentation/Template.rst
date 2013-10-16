@@ -1,6 +1,9 @@
 ================================
 Template-Konfiguration
 ================================
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Template-Konfiguration <http://fluid-template-manager.de/documentation/Template.html>`_
+
+
 Der Template-Konfigurations-Datensatz enthält all die Informationen, wie sich Ihr Template später verhalten soll.
 
 
