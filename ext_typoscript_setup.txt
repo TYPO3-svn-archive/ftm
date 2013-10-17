@@ -42,6 +42,62 @@ config.tx_extbase.persistence.classes {
         recordType = Tx_Ftm_FrontendUserGroup
     }
 
+    # tt_address fuer Zugriff mappen
+    CodingMs\Ftm\Domain\Model\TtAddress.mapping {
+        
+        tableName = tt_address
+        columns {
+            uid.mapOnProperty = uid
+            pid.mapOnProperty = pid
+            hidden.mapOnProperty = hidden
+            deleted.mapOnProperty = deleted
+            
+            name.mapOnProperty = name
+            gender.mapOnProperty = gender
+            first_name.mapOnProperty = first_name
+            middle_name.mapOnProperty = middle_name
+            last_name.mapOnProperty = last_name
+            
+            birthday.mapOnProperty = birthday
+            title.mapOnProperty = title
+            email.mapOnProperty = email
+            phone.mapOnProperty = phone
+            mobile.mapOnProperty = mobile
+            
+            www.mapOnProperty = www
+            address.mapOnProperty = address
+            building.mapOnProperty = building
+            room.mapOnProperty = room
+            company.mapOnProperty = company
+            
+            city.mapOnProperty = city
+            zip.mapOnProperty = zip
+            region.mapOnProperty = region
+            country.mapOnProperty = country
+            image.mapOnProperty = image
+            
+            fax.mapOnProperty = fax
+            description.mapOnProperty = description
+            addressgroup.mapOnProperty = addressgroup
+            
+        }
+    }
+
+    # tt_address_group fuer Zugriff mappen
+    CodingMs\Ftm\Domain\Model\TtAddressGroup.mapping {
+        
+        tableName = tt_address_group
+        columns {
+            uid.mapOnProperty = uid
+            pid.mapOnProperty = pid
+            hidden.mapOnProperty = hidden
+            deleted.mapOnProperty = deleted
+            title.mapOnProperty = title
+            description.mapOnProperty = description
+        }
+    }
+
+    
 }
 
 

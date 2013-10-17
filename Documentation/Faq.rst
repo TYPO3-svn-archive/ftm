@@ -71,5 +71,13 @@ Aus dieser kann einfach der Inhalt zurück kopiert werden.
 
 
 
+----------------------------------------------------------------------------------------------------------------
+Der FTM wirft im Backend den Fehler: FTM Template-Dataset damaged! / FTM Template-Datensatz beschädigt! 
+----------------------------------------------------------------------------------------------------------------
+Anscheinend ist beim Erstellen/Importieren des Datensatzes ein Fehler aufgetreten. 
+Erforderliche verknüpfte Datensätze konnten nicht gefunden werden.
+Versuche den vorhandenen fehlerhaften Datensatz zu löschen und versuche dann den Import/ das Erstellen noch einmal.
+
+
 
 .. include:: ./Snippets/PoweredBy.rst

@@ -110,7 +110,7 @@ Templates    Hier wird eine komplette Kopie des Templates-Verzeichnis aus ``ftm_
 ============ ===============================================================================================================================================================================================================================================================================================================================================
 
 3. Nun muss dem System nur noch mitgeteilt werden, das die Templates der ``ftm_ext_shop`` Extension nun in unserem Theme-Verzeichnis liegen.
-Dies können wir einfach über die folgenden TYPOScript-Constants machen:
+Dies können wir einfach über die folgenden TYPOScript-Constants machen, die wir in die ``constantsCustom.ts`` eintragen:
 
 .. code-block:: ts
 
@@ -121,6 +121,16 @@ Dies können wir einfach über die folgenden TYPOScript-Constants machen:
         layoutRootPath   = typo3conf/ext/ftm_theme_website/Resources/Private/Extensions/ftm_ext_shop/Layouts/
       }
     }
+    
+    # oder ab FTM 1.1.1: hier kann die Template-Verzeichnis Konstante verwendet werden
+    plugin.tx_ftmextshop {
+      view {
+        templateRootPath = typo3conf/ext/{$ftmTemplateDir}/Resources/Private/Extensions/ftm_ext_shop/Templates/
+        partialRootPath  = typo3conf/ext/{$ftmTemplateDir}/Resources/Private/Extensions/ftm_ext_shop/Partials/
+        layoutRootPath   = typo3conf/ext/{$ftmTemplateDir}/Resources/Private/Extensions/ftm_ext_shop/Layouts/
+      }
+    }
+    
 
 4. Um die eigenen Sprachdateien nutzen zu können, muss man in der ``LocalConfiguration.php`` in einem Knoten ``locallangXMLOverride`` angeben, welche Dateien man anpassen möchte, bspw.:
 

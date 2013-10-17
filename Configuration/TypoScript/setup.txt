@@ -35,10 +35,10 @@ module.tx_ftm {
             #            title.mapOnProperty    = title
             #            doktype.mapOnProperty  = doktype
             #            module.mapOnProperty   = module
-             #       }
-            #ä    }
+            #        }
+            #    }
             #}
-                   
+            
         }
     }
     view {
@@ -47,3 +47,4 @@ module.tx_ftm {
         layoutRootPath   = EXT:ftm/Resources/Private/Layouts/
     }
 }
+

@@ -17,6 +17,7 @@ ToDo
 * Weitere Daten in Extension-Config auf Typo3.org eintragen.
 * getDirectory() für Icons, ggf. relative gestalten, damit auch Icons angezeit werden wenn das TYPO3 in einem Unterordner liegt.
   Ebenfalls mit 'config.absRefPrefix = /' arbeiten, und dem User die Möglichkeit bieten ein Unterverzeichnis anzugeben
+* Less-Extension Dokuentations
 
 .. TODO: STILL TO ADD IN THIS DOCUMENT
     @todo: Geladene Extensions an den Service mit schicken

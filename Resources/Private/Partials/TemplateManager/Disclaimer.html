@@ -17,8 +17,8 @@
                  biete die Moeglichkeit der Ausblendung dieser Nachricht -->
             <f:if condition="{options.templateOnCurrentPage}">
                 <f:then>
-                    <f:form action="acceptDisclaimer" name="newDogMeasurement" object="{newDogMeasurement}" id="measurementForm">
-                        <label><f:form.checkbox name="acceptDisclaimer" value="true" additionalAttributes="{onclick: 'this.form.submit();' }"></f:form.checkbox> <f:translate key="tx_ftm_domain_model_template.disclaimer_accept_conditions"></f:translate></label><br />
+                    <f:form action="acceptDisclaimer">
+                        <label><f:form.checkbox name="acceptDisclaimer" value="TRUE" additionalAttributes="{onclick: 'this.form.submit();' }"></f:form.checkbox> <f:translate key="tx_ftm_domain_model_template.disclaimer_accept_conditions"></f:translate></label><br />
                     </f:form>
                 </f:then>
             </f:if>
