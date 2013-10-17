@@ -29,6 +29,8 @@ return array(
     'CodingMs\Ftm\Domain\Model\SysTemplate'            => $extensionClassesPath.'Domain/Model/SysTemplate.php',
     'CodingMs\Ftm\Domain\Model\FrontendUser'           => $extensionClassesPath.'Domain/Model/FrontendUser.php',
     'CodingMs\Ftm\Domain\Model\FrontendUserGroup'      => $extensionClassesPath.'Domain/Model/FrontendUserGroup.php',
+    'CodingMs\Ftm\Domain\Model\TtAddress'              => $extensionClassesPath.'Domain/Model/TtAddress.php',
+    'CodingMs\Ftm\Domain\Model\TtAddressGroup'         => $extensionClassesPath.'Domain/Model/TtAddressGroup.php',
     
     // Repositories
     'CodingMs\Ftm\Domain\Repository\TemplateRepository'       => $extensionClassesPath.'Domain/Repository/TemplateRepository.php',
@@ -38,6 +40,7 @@ return array(
     'CodingMs\Ftm\Domain\Repository\SysTemplateRepository'    => $extensionClassesPath.'Domain/Repository/SysTemplateRepository.php',
     'CodingMs\Ftm\Domain\Repository\FrontendUserRepository'      => $extensionClassesPath.'Domain/Repository/FrontendUserRepository.php',
     'CodingMs\Ftm\Domain\Repository\FrontendUserGroupRepository' => $extensionClassesPath.'Domain/Repository/FrontendUserGroupRepository.php',
+    'CodingMs\Ftm\Domain\Repository\TtAddressRepository'         => $extensionClassesPath.'Domain/Repository/TtAddressRepository.php',
     
     // Session
     'CodingMs\Ftm\Domain\Session\SessionHandler'                 => $extensionClassesPath.'Domain/Session/SessionHandler.php',

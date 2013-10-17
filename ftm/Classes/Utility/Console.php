@@ -33,6 +33,7 @@ namespace CodingMs\Ftm\Utility;
  * }
  * ..in file: 
  * /typo3/sysext/extbase/Classes/Persistence/Storage/Typo3DbBackend.php
+ * /typo3/sysext/extbase/Classes/Persistence/Generic/Storage/Typo3DbBackend.php
  * 
  * ..before the return in method buildQuery()
  * 

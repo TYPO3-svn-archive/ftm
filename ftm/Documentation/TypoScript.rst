@@ -58,6 +58,9 @@ Die generierte *constants.ts* beinhaltet aktuell die folgenden Konstanten:
 
 .. code-block:: ts
     
+    # FTM-Template Directory
+    ftmTemplateDir = ftm_theme_website
+    
     # FTM-Template URL
     ftmTemplateUrl = typo3conf/ext/ftm_theme_website/
     

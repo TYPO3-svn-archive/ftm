@@ -221,6 +221,7 @@ Please consider, that if you use the FTM with a public-Key, every other user is 
             
             <!-- Template Manager Controller -->
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update available!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_template_damaged">FTM Template-Dataset damaged!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_headline">FTM root template error!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message1">A problem with the root template has been detected on this page!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message2">Please ensure that there is only one root template on this page!</label>
@@ -639,6 +640,7 @@ Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, al
             
             <!-- Template Manager Controller -->
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update verfügbar!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.ftm_template_damaged">FTM Template-Datensatz ist beschädigt!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_headline">FTM Root-Template Fehler!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message1">Es wurde ein Problem mit dem Root-Template auf dieser Seite festgestellt!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message2">Bitte stellen Sie sicher das es nur ein Root-Template auf dieser Seite gibt!</label>
