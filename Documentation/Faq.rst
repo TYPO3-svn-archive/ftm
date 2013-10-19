@@ -80,4 +80,22 @@ Versuche den vorhandenen fehlerhaften Datensatz zu löschen und versuche dann de
 
 
 
+----------------------------------------------------------------------------------------------------------------
+Unter Filelist kommt der Fehler: You are not allowed to access the given folder!
+----------------------------------------------------------------------------------------------------------------
+Diese Meldung erscheint, wenn das verwendete Storage als *offline* markiert wurde.
+Um das Storage wieder zu aktivieren führe die folgenden Schritte durch:
+
+1. Wechseln Sie in WEB:List
+
+2. Wählen Sie die Root-Seite (aller oberste Seite im Seitenbaum) an.
+
+3. Suchen Sie den Abschnitt *Dateispeicher/Storages* und bearbeiten Sie den relevanten Eintrag, bspw. ``typo3conf/ext/ftm_theme_tyaml/``.
+
+4. Wechseln Sie auf den Tab *Access* und setzen Sie den Haken bei *Ist Online?*.
+
+5. Nach dem Speichern des Datensatzes sollte der Zugriff auf das Storage wieder möglich sein.
+
+
+
 .. include:: ./Snippets/PoweredBy.rst
