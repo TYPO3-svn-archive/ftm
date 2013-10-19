@@ -59,6 +59,38 @@ class Pages extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $module;
     
     /**
+     * realurl alias
+     * 
+     * @var string 
+     * @since 1.1.0
+     */
+    protected $alias;
+    
+    /**
+     * starttime
+     * 
+     * @var \DateTime 
+     * @since 1.1.0
+     */
+    protected $starttime;
+    
+    /**
+     * endtime
+     * 
+     * @var \DateTime 
+     * @since 1.1.0
+     */
+    protected $endtime;
+    
+    /**
+     * BackendLayout
+     * 
+     * @var \CodingMs\Ftm\Domain\Model\BackendLayout 
+     * @since 1.1.0
+     */
+    protected $backendLayout;
+    
+    /**
      * TS-Config
      * 
      * @var string 
@@ -127,6 +159,90 @@ class Pages extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      */
     public function setModule($module) {
         $this->module = $module;
+    }
+
+    /**
+     * Returns the alias
+     *
+     * @return string $alias
+     * @since 1.1.0
+     */
+    public function getAlias() {
+        return $this->alias;
+    }
+
+    /**
+     * Sets the alias
+     *
+     * @param string $alias
+     * @return void
+     * @since 1.1.0
+     */
+    public function setAlias($alias) {
+        $this->alias = $alias;
+    }
+
+    /**
+     * Returns the starttime
+     *
+     * @return \DateTime $starttime
+     * @since 1.1.0
+     */
+    public function getStarttime() {
+        return $this->starttime;
+    }
+
+    /**
+     * Sets the starttime
+     *
+     * @param \DateTime $starttime
+     * @return void
+     * @since 1.1.0
+     */
+    public function setStarttime($starttime) {
+        $this->starttime = $starttime;
+    }
+
+    /**
+     * Returns the endtime
+     *
+     * @return \DateTime $endtime
+     * @since 1.1.0
+     */
+    public function getEndtime() {
+        return $this->endtime;
+    }
+
+    /**
+     * Sets the endtime
+     *
+     * @param \DateTime $endtime
+     * @return void
+     * @since 1.1.0
+     */
+    public function setEndtime($endtime) {
+        $this->endtime = $endtime;
+    }
+
+    /**
+     * Returns the backendLayout
+     *
+     * @return \CodingMs\Ftm\Domain\Model\BackendLayout $backendLayout
+     * @since 1.0.4
+     */
+    public function getBackendLayout() {
+        return $this->backendLayout;
+    }
+
+    /**
+     * Sets the backendLayout
+     *
+     * @param \CodingMs\Ftm\Domain\Model\BackendLayout $backendLayout
+     * @return void
+     * @since 1.0.4
+     */
+    public function setBackendLayout(\CodingMs\Ftm\Domain\Model\BackendLayout $backendLayout) {
+        $this->backendLayout = $backendLayout;
     }
 
     /**

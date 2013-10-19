@@ -19,11 +19,15 @@ config.tx_extbase.persistence.classes {
     CodingMs\Ftm\Domain\Model\Pages.mapping {
         tableName = pages
         columns {
-            TSconfig.mapOnProperty = tsConfig
-            uid.mapOnProperty      = uid
-            title.mapOnProperty    = title
-            doktype.mapOnProperty  = doktype
-            module.mapOnProperty   = module
+            TSconfig.mapOnProperty  = tsConfig
+            uid.mapOnProperty       = uid
+            title.mapOnProperty     = title
+            doktype.mapOnProperty   = doktype
+            module.mapOnProperty    = module
+            alias.mapOnProperty     = alias
+            starttime.mapOnProperty = starttime
+            endtime.mapOnProperty   = endtime
+            backend_layout.mapOnProperty = backendLayout
         }
     }
 
