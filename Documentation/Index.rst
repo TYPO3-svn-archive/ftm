@@ -24,6 +24,21 @@ Fluid-Template-Manager |extension_version| Documentation
     <http://www.typo3.org/>`_
 
 
+News: Neue/überarbeitete Artikel
+=============================================
+Eine Liste der zuletzt bearbeiteten Dokumentations-Artikel.
+
+=========== ==========================================================================
+Datum       Beschreibung
+=========== ==========================================================================
+2013-01-19  Neuer FAQ-Eintrag: Unter Filelist kommt der Fehler: You are not allowed to access the given folder!
+            http://fluid-template-manager.de/documentation/Faq.html#unter-filelist-kommt-der-fehler-you-are-not-allowed-to-access-the-given-folder
+2013-01-19: Installation & Konfiguration überarbeitet.
+            http://fluid-template-manager.de/documentation/Installation.html
+=========== ==========================================================================
+
+
+
 Was ist der Fluid-Template-Manager, kurz FTM?
 =============================================
 
