@@ -75,6 +75,7 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * Geburtsdatum
      *
      * @var DateTime
+     * @since 1.1.0
      */
     protected $birthday;
     
