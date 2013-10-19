@@ -17,7 +17,7 @@ ToDo
 * Weitere Daten in Extension-Config auf Typo3.org eintragen.
 * getDirectory() für Icons, ggf. relative gestalten, damit auch Icons angezeit werden wenn das TYPO3 in einem Unterordner liegt.
   Ebenfalls mit 'config.absRefPrefix = /' arbeiten, und dem User die Möglichkeit bieten ein Unterverzeichnis anzugeben
-* Less-Extension Dokuentations
+* Less-Extension Dokumentation
 
 .. TODO: STILL TO ADD IN THIS DOCUMENT
     @todo: Geladene Extensions an den Service mit schicken
@@ -28,6 +28,7 @@ ToDo
     Bootstrap-LessVariablen aufnehmen, empahsis classes/rte text-stile
     Version-Vergleichen: version_compare(TYPO3_version,'6.0.0','>=')
     Sprach-Variablen für die GridLayouts/Bootstrap-Erweiterung, Header-Strings passen auch noch nicht ganz.
+    Irgendwo eine Liste/Guide/Reihenfolge angeben, was wie gemacht werden soll: quasi vorgehen bis zu fertige seite; gerne mit Diagramm
 
 .. include:: ./Snippets/PoweredBy.rst
 
