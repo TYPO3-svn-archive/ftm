@@ -170,7 +170,7 @@ class FluidRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHe
             $actions = array();
             $actions[] = "<a><img src=\"/".$imagePath."empty.png\"></a>";
             $actions[] = "<a><img src=\"/".$imagePath."empty.png\"></a>";
-            $actions[] = "<a href=\"".$fluidRefreshUri."\" title=\"" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_viewhelper_be_fluidrowviewhelper.generate_file", "Ftm", array(ucfirst($templateType), $filename)) . "\"><img src=\"/".$imagePath."fluid_refresh.png\"></a>";
+            $actions[] = "<a href=\"".$fluidRefreshUri."\" title=\"" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_viewhelper_be_fluidrowviewhelper.generate_file", "Ftm", array(ucfirst($templateType), $filename)) . "\"><img src=\"/".$imagePath."fluid_db_to_file.png\"></a>";
             $actions[] = "<a><img src=\"/".$imagePath."empty.png\"></a>";
             
             // Spalte Actions

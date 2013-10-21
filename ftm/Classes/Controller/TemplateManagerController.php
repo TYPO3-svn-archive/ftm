@@ -576,7 +576,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 $defaults = "/* FTM - Less-Defaults: */\n";
                 $defaults.= "@baseUrl         = \"".$this->fluidTemplate->getConfig()->getBaseUrl()."\";\n";
                 $defaults.= "@baseUrlTemplate = \"".$this->fluidTemplate->getConfig()->getBaseUrl()."typo3conf/ext/".$this->fluidTemplate->getTemplateDir()."/\";\n";
-                $defaults.= "@templateDir    = \"".$this->fluidTemplate->getTemplateDir()."\";\n";
+                $defaults.= "@baseUrlImage    = \"".$this->fluidTemplate->getConfig()->getBaseUrl()."typo3conf/ext/".$this->fluidTemplate->getTemplateDir()."/Resources/Public/Images/\";\n";
+                $defaults.= "@templateDir     = \"".$this->fluidTemplate->getTemplateDir()."\";\n";
                 $defaults.= "\n";
                 $defaults.= "/* FTM - Less-Customs: */\n";
                 
