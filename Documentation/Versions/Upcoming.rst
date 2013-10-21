@@ -10,3 +10,5 @@ Diese Version wird folgende Mainfeatures enthalten:
 * Optimierung von Fehlermeldungen
 * Bereitstellung von tt_address ExtBase-Objekten, damit mit tt_address-Datensätzen gearbeitet werden kann.
 * Exception beim Template erstellen wegen einer fehlenden Übersetzung korrigiert
+* Fehlendes Icon auf Tab Fluid-Templates hinzugefügt
+* Es wird nun auch eine Less-Variable für den Bild-Pfad automatisch angelegt

@@ -68,6 +68,7 @@ Der FTM erstellt einige häufig verwendete Variablen automatisiert. Diese erkenn
 
 * @baseUrl: Enthält die Base-URL als String, bspw. http://fluid-template-manager.de/
 * @baseUrlTemplate: Enthält den Pfad zum Template als String, bspw. http://fluid-template-manager.de/fileadmin/tyaml/template/
+* @baseUrlImage: Enthält den Pfad zum den Bildern als String, bspw. http://fluid-template-manager.de/typo3conf/ext/ftm_theme_brightclear/Resources/Public/Images/"
 * @fileadminDir: Enthält den fileadmin-Verzeichnisnamen als String, bspw. tyaml 
 
 Diese vordefinierten LESS-Variablen können auch verschachtelt in neuen LESS-Variablen verwendet werden. Eine LESS-Variable für einen Bildpfad (@baseUrlImage) könnte dann wie folgt aussehen: 
