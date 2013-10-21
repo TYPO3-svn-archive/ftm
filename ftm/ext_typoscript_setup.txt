@@ -37,6 +37,7 @@ config.tx_extbase.persistence.classes {
             uid.mapOnProperty          = uid
             pid.mapOnProperty          = pid
             sorting.mapOnProperty      = sorting
+            hidden.mapOnProperty       = hidden
             CType.mapOnProperty        = contentType
             header.mapOnProperty       = header
             header_link.mapOnProperty  = headerLink
@@ -49,6 +50,7 @@ config.tx_extbase.persistence.classes {
             imagecols.mapOnProperty    = imageCols
             sectionIndex.mapOnProperty = sectionIndex
             pi_flexform.mapOnProperty  = piFlexForm
+            layout.mapOnProperty       = layout
         }
     }
 
