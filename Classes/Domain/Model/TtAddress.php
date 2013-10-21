@@ -196,7 +196,6 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @var string 
      */
     protected $description;
-    
 
     /**
      * addressgroup

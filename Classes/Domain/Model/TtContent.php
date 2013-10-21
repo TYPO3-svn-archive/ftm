@@ -62,6 +62,14 @@ class TtContent extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $sorting;
     
     /**
+     * hidden=1
+     *
+     * @var boolean
+     */
+    protected $hidden=1;
+    
+    
+    /**
      * contentType
      *
      * @var string
@@ -145,6 +153,14 @@ class TtContent extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $piFlexForm;
     
     /**
+     * layout
+     *
+     * @var int
+     */
+    protected $layout;
+    
+    
+    /**
      * Returns the pid
      *
      * @return int $pid
@@ -184,6 +200,26 @@ class TtContent extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     public function setSorting($sorting) {
         $this->sorting = $sorting;
     }
+    
+    /**
+     * Returns the hidden
+     *
+     * @return boolean $hidden
+     */
+    public function getHidden() {
+        return $this->hidden;
+    }
+    
+    /**
+     * Sets the hidden
+     *
+     * @param boolean $hidden
+     * @return void
+     */
+    public function setHidden($hidden) {
+        $this->hidden = $hidden;
+    }
+    
     
     /**
      * Returns the contentType
@@ -403,6 +439,25 @@ class TtContent extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      */
     public function setPiFlexForm($piFlexForm) {
         $this->piFlexForm = $piFlexForm;
+    }
+    
+    /**
+     * Returns the layout
+     *
+     * @return int $layout
+     */
+    public function getLayout() {
+        return $this->layout;
+    }
+    
+    /**
+     * Sets the layout
+     *
+     * @param int $layout
+     * @return void
+     */
+    public function setLayout($layout) {
+        $this->layout = $layout;
     }
     
 }
