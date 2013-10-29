@@ -41,6 +41,7 @@ config.tx_extbase.persistence.classes {
             CType.mapOnProperty        = contentType
             header.mapOnProperty       = header
             header_link.mapOnProperty  = headerLink
+            subheader.mapOnProperty    = subHeader
             bodytext.mapOnProperty     = bodyText
             image.mapOnProperty        = image
             image_link.mapOnProperty   = imageLink

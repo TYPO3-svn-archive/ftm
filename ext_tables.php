@@ -28,7 +28,7 @@ if (!defined('TYPO3_MODE')) {
 // Diese muss vor dem TER-Upload bereits
 // auf der geplanten Version stehen 
 if(!defined('FTM_VERSION')) {
-    define('FTM_VERSION', '1.1.0');
+    define('FTM_VERSION', '1.1.1');
 }
 // Benoetigte Extensions
 if(!defined('FTM_REQUIRED_EXTENSIONS')) {

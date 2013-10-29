@@ -93,6 +93,13 @@ class TtContent extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $headerLink;
     
     /**
+     * subHeader
+     *
+     * @var string
+     */
+    protected $subHeader;
+    
+    /**
      * bodyText
      * 
      * @var string
@@ -280,6 +287,25 @@ class TtContent extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      */
     public function setHeaderLink($headerLink) {
         $this->headerLink = $headerLink;
+    }
+    
+    /**
+     * Returns the subHeader
+     *
+     * @return string $subHeader
+     */
+    public function getSubheader() {
+        return $this->subHeader;
+    }
+    
+    /**
+     * Sets the subHeader
+     *
+     * @param string $subHeader
+     * @return void
+     */
+    public function setSubheader($subHeader) {
+        $this->subHeader = $subHeader;
     }
     
 
