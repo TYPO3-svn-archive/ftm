@@ -12,3 +12,6 @@ Diese Version wird folgende Mainfeatures enthalten:
 * Exception beim Template erstellen wegen einer fehlenden Übersetzung korrigiert
 * Fehlendes Icon auf Tab Fluid-Templates hinzugefügt
 * Es wird nun auch eine Less-Variable für den Bild-Pfad automatisch angelegt
+* Strukturelle Optimierung bzgl. Page-IDs
+* Erweiterung des Session-Objektes für FTM-Extensions
+* Erweiterungen am tt_content ExtBase-Objekt

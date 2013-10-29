@@ -40,9 +40,9 @@ class SessionHandler implements \TYPO3\CMS\Core\SingletonInterface {
      * Return stored session data
      * @return Object the stored object
      */
-    public function restoreFromSession() {
+    public function restoreFromSession($extension='ftm') {
         if(isset($GLOBALS['TSFE']->fe_user)) {
-            $sessionData = $GLOBALS['TSFE']->fe_user->getKey('ses', 'tx_ftm');
+            $sessionData = $GLOBALS['TSFE']->fe_user->getKey('ses', 'tx_'.$extension);
             return unserialize($sessionData);
         }
     }
@@ -52,10 +52,10 @@ class SessionHandler implements \TYPO3\CMS\Core\SingletonInterface {
      * @param    $object    any serializable object to store into the session
      * @return    \CodingMs\Ftm\Domain\Session\SessionHandler this
      */
-    public function writeToSession($object) {
+    public function writeToSession($object, $extension='ftm') {
         if(isset($GLOBALS['TSFE']->fe_user)) {
             $sessionData = serialize($object);
-            $GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_ftm', $sessionData);
+            $GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_'.$extension, $sessionData);
             $GLOBALS['TSFE']->fe_user->storeSessionData();
         }
         return $this;
@@ -65,9 +65,9 @@ class SessionHandler implements \TYPO3\CMS\Core\SingletonInterface {
      * Clean up session
      * @return    \CodingMs\Ftm\Domain\Session\SessionHandler this
      */
-    public function cleanUpSession() {
+    public function cleanUpSession($extension='ftm') {
         if(isset($GLOBALS['TSFE']->fe_user)) {
-            $GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_ftm', NULL);
+            $GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_'.$extension, NULL);
             $GLOBALS['TSFE']->fe_user->storeSessionData();
         }
         return $this;

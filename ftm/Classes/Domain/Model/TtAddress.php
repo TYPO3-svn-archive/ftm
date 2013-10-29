@@ -706,17 +706,17 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @return string
      */
     public function getDescription() {
-        return $this->decription;
+        return $this->description;
     }
 
     /**
      * Sets the Description
      *
-     * @param string $decription
+     * @param string $description
      * @return void
      */
-    public function setDescription($decription) {
-        $this->decription = $decription;
+    public function setDescription($description) {
+        $this->description = $description;
     }
 
     /**

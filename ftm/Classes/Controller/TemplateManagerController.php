@@ -1113,12 +1113,14 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             
             // Template-Config
             $fluidTemplateConfig = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateConfig');
+            $fluidTemplateConfig->setPid($this->pid);
             $fluidTemplateConfig->setDefaults();
             $fluidTemplate->setConfig($fluidTemplateConfig);
             
             
             // Template-Meta
             $fluidTemplateMeta = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateMeta');
+            $fluidTemplateMeta->setPid($this->pid);
             $fluidTemplateMeta->setDefaults();
             $fluidTemplate->setMeta($fluidTemplateMeta);
             
@@ -1140,6 +1142,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // -----------------------------
             $fluidTemplateExt     = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateExt');
             $fluidTemplateExtConf = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateExtT3Less');
+            $fluidTemplateExtConf->setPid($this->pid);
+            $fluidTemplateExt->setPid($this->pid);
             $fluidTemplateExt->setExtKey('t3_less');
             $fluidTemplateExt->setExtName('LESS for TYPO3');
             $fluidTemplateExt->setExtVersion('1.0.7');
