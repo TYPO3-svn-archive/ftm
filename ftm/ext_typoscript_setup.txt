@@ -82,9 +82,9 @@ config.tx_extbase.persistence.classes {
             
             name.mapOnProperty = name
             gender.mapOnProperty = gender
-            first_name.mapOnProperty = first_name
-            middle_name.mapOnProperty = middle_name
-            last_name.mapOnProperty = last_name
+            first_name.mapOnProperty = firstName
+            middle_name.mapOnProperty = middleNname
+            last_name.mapOnProperty = lastName
             
             birthday.mapOnProperty = birthday
             title.mapOnProperty = title
@@ -108,6 +108,12 @@ config.tx_extbase.persistence.classes {
             description.mapOnProperty = description
             addressgroup.mapOnProperty = addressgroup
             
+            tx_ftm_map_latitude.mapOnProperty  = mapLatitude
+            tx_ftm_map_longitude.mapOnProperty = mapLongitude
+            tx_ftm_map_zoom.mapOnProperty      = mapZoom
+            tx_ftm_map_tooltip.mapOnProperty   = mapTooltip
+            tx_ftm_directions.mapOnProperty    = directions
+            
         }
     }
 
@@ -128,7 +134,13 @@ config.tx_extbase.persistence.classes {
     
 }
 
-
+# Plugin configuration
+plugin.tx_ftm {
+    settings {
+        # FTM und Extensions debuggen!?
+        debug = 0
+    }
+}
 
 # Module configuration
 module.tx_ftm {

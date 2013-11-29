@@ -829,4 +829,125 @@ $TCA['be_groups']['columns']['tables_modify']['config']['maxitems'] = 99;
 $TCA['be_groups']['columns']['tables_select']['config']['maxitems'] = 99;
 
 
+// tt_address:description zu RTE machen
+$TCA['tt_address']['columns']['description']['config'] = array(
+    'type' => 'text',
+    'cols' => 40,
+    'rows' => 15,
+    'eval' => 'trim',
+    'wizards' => array(
+        'RTE' => array(
+            'icon' => 'wizard_rte2.gif',
+            'notNewRecords'=> 1,
+            'RTEonly' => 1,
+            'script' => 'wizard_rte.php',
+            'title' => 'LLL:EXT:cms/locallang_ttc.xml:bodytext.W.RTE',
+            'type' => 'script'
+        )
+    )
+);
+$TCA['tt_address']['columns']['description']['defaultExtras'] = 'richtext[]';
+
+// tt_address:image FAL-Kompatibel machen
+$TCA['tt_address']['columns']['image']['config'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('images');
+
+// Google-Maps Felder hinzufuegen
+$tmp_ftm_columns = array(
+    'tx_ftm_map_latitude' => array(
+        'exclude' => 1,
+        'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xlf:tx_ftm_domain_model_ttaddress.map_latitude',
+        'config' => array(
+            'type' => 'input',
+            'size' => 30,
+            'eval' => 'trim,required',
+            'default' => '51.950085',
+        ),
+    ),
+    'tx_ftm_map_longitude' => array(
+        'exclude' => 1,
+        'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xlf:tx_ftm_domain_model_ttaddress.map_longitude',
+        'config' => array(
+            'type' => 'input',
+            'size' => 30,
+            'eval' => 'trim,required',
+            'default' => '7.624097',
+        ),
+    ),
+    'tx_ftm_map_zoom' => array(
+        'exclude' => 1,
+        'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xlf:tx_ftm_domain_model_ttaddress.map_zoom',
+        'config' => array(
+            'type' => 'select',
+                'items' => array(
+                    array('0',   '0'),
+                    array('1',   '1'),
+                    array('2',   '2'),
+                    array('3',   '3'),
+                    array('4',   '4'),
+                    array('5',   '5'),
+                    array('6',   '6'),
+                    array('7',   '7'),
+                    array('8',   '8'),
+                    array('9',   '9'),
+                    array('10', '10'),
+                    array('11', '11'),
+                    array('12', '12'),
+                    array('13', '13'),
+                    array('14', '14'),
+                    array('15', '15'),
+                    array('16', '16'),
+                    array('17', '17'),
+                    array('18', '18'),
+                    array('19', '19'),
+                    array('20', '20'),
+                    array('21', '21'),
+                ),
+                'size' => 1,
+                'maxitems' => 1,
+                'eval' => 'required'
+        ),
+    ),
+    'tx_ftm_map_tooltip' => array(
+        'exclude' => 1,
+        'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xlf:tx_ftm_domain_model_ttaddress.map_tooltip',
+        'config' => array(
+            'type' => 'input',
+            'size' => 30,
+            'eval' => 'trim'
+        ),
+    ),
+    'tx_ftm_directions' => array(
+        'exclude' => 1,
+        'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xlf:tx_ftm_domain_model_ttaddress.directions',
+        'config' => array(
+            'type' => 'text',
+            'cols' => 40,
+            'rows' => 15,
+            'eval' => 'trim',
+            'wizards' => array(
+                'RTE' => array(
+                    'icon' => 'wizard_rte2.gif',
+                    'notNewRecords'=> 1,
+                    'RTEonly' => 1,
+                    'script' => 'wizard_rte.php',
+                    'title' => 'LLL:EXT:cms/locallang_ttc.xml:bodytext.W.RTE',
+                    'type' => 'script'
+                ),
+            ),
+        ),
+        'defaultExtras' => 'richtext[]',
+    ),
+);
+
+$TCA["tt_address"]['ctrl']['dividers2tabs']=1; 
+$tempShowItems=$TCA["tt_address"]["types"][1]['showitem'].= ',--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xlf:tx_ftm_domain_model_ttaddress.tab_map';
+//$TCA["tt_address"]["types"][1]['showitem']='---div---;Yleiset,'.$tempShowItems.',---div---;
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_address', $tmp_ftm_columns);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_map_latitude",'','after:section_frame');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_map_longitude",'','after:section_frame');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_map_zoom",'','after:section_frame');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_map_tooltip",'','after:section_frame');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_directions",'','after:section_frame');
+
 ?>

@@ -176,10 +176,10 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $country;
     
     /**
-     * Profilbild
-     * 
-     * @var string 
-     * @todo FAL-Integration
+     * Adress-Bilder
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @lazy
      */
     protected $image;
     
@@ -203,6 +203,42 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Ftm_Domain_Model_TtAddressGroup>
      */
     protected $addressgroup;
+    
+    /**
+     * mapLatitude
+     *
+     * @var string
+     */
+    protected $mapLatitude;
+    
+    /**
+     * mapLongitude
+     *
+     * @var string
+     */
+    protected $mapLongitude;
+    
+    /**
+     * mapZoom
+     *
+     * @var integer
+     */
+    protected $mapZoom;
+    
+    /**
+     * mapTooltip
+     *
+     * @var string
+     */
+    protected $mapTooltip;
+    
+    /**
+     * directions
+     *
+     * @var string
+     */
+    protected $directions;
+    
 
     /**
      * __construct
@@ -660,24 +696,68 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     public function setCountry($country) {
         $this->country = $country;
     }
-    
+
     /**
-     * Gets the Image
-     * 
-     * @return string
+     * Adds a image
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return void
      */
-    public function getImage() {
-        $imageArray = explode(',', $this->image);
-        return $imageArray;
+    public function addImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
+        $this->image->attach($image);
     }
 
     /**
-     * Sets the Image
+     * Removes a image
      *
-     * @param string $image
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The image to be removed
      * @return void
      */
-    public function setImage($image) {
+    public function removeImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove) {
+        $this->image->detach($imageToRemove);
+    }
+
+    /**
+     * Returns the images as array
+     *
+     * @return \Array $images
+    public function getImagesArray() {
+        $imagesArray = array();
+        $images = $this->getImages();
+        if(!empty($images)) {
+            foreach($images as $image) {
+                if (!is_object($image)) {
+                    // nichts tun
+                    // return null;
+                    \CodingMs\Ftm\Utility\Console::log('continue');
+                    continue;
+                }
+                else if($image instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+                    $image->_loadRealInstance();
+                }
+                $imagesArray[] = $image->getOriginalResource();
+            } 
+        }
+        return $imagesArray;
+    }
+     */
+
+    /**
+     * Returns the images
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
+     */
+    public function getImage() {
+        return $this->image;
+    }
+
+    /**
+     * Sets the images
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
+     * @return void
+     */
+    public function setImage(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $image) {
         $this->image = $image;
     }
     
@@ -756,6 +836,101 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      */
     public function setAddressgroup(Tx_Extbase_Persistence_ObjectStorage $addressgroup) {
         $this->addressgroup = $addressgroup;
+    }
+    
+    /**
+     * Returns the mapLatitude
+     *
+     * @return string $mapLatitude
+     */
+    public function getMapLatitude() {
+        return $this->mapLatitude;
+    }
+    
+    /**
+     * Sets the mapLatitude
+     *
+     * @param string $mapLatitude
+     * @return void
+     */
+    public function setMapLatitude($mapLatitude) {
+        $this->mapLatitude = $mapLatitude;
+    }
+    
+    /**
+     * Returns the mapLongitude
+     *
+     * @return string $mapLongitude
+     */
+    public function getMapLongitude() {
+        return $this->mapLongitude;
+    }
+    
+    /**
+     * Sets the mapLongitude
+     *
+     * @param string $mapLongitude
+     * @return void
+     */
+    public function setMapLongitude($mapLongitude) {
+        $this->mapLongitude = $mapLongitude;
+    }
+    
+    /**
+     * Returns the mapZoom
+     *
+     * @return integer $mapZoom
+     */
+    public function getMapZoom() {
+        return $this->mapZoom;
+    }
+    
+    /**
+     * Sets the mapZoom
+     *
+     * @param integer $mapZoom
+     * @return void
+     */
+    public function setMapZoom($mapZoom) {
+        $this->mapZoom = $mapZoom;
+    }
+    
+    /**
+     * Returns the mapTooltip
+     *
+     * @return string $mapTooltip
+     */
+    public function getMapTooltip() {
+        return $this->mapTooltip;
+    }
+    
+    /**
+     * Sets the mapTooltip
+     *
+     * @param string $mapTooltip
+     * @return void
+     */
+    public function setMapTooltip($mapTooltip) {
+        $this->mapTooltip = $mapTooltip;
+    }
+    
+    /**
+     * Returns the directions
+     *
+     * @return string $directions
+     */
+    public function getDirections() {
+        return $this->directions;
+    }
+    
+    /**
+     * Sets the directions
+     *
+     * @param string $directions
+     * @return void
+     */
+    public function setDirections($directions) {
+        $this->directions = $directions;
     }
 
 }

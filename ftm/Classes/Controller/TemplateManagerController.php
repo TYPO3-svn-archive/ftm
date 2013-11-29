@@ -181,7 +181,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $this->validateExtConf();
         
         // Aktuelle Page auslesen
-        $this->pid = intval($_GET['id']);
+        $this->pid = intval(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'));
         if($this->pid==0) {
             if($this->typo3Version>=6) {
                 die("Please select a first-level page in order to create or edit a FTM-Template.");

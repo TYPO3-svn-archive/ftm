@@ -219,6 +219,13 @@ All information about markers, using them and how you can share them between ser
             <label index="tx_ftm_backend_informationrow.warning_savemarkers_message">Existing markers with the same name will be overwritten!
 Please consider, that if you use the FTM with a public-Key, every other user is able to see the saved markers.</label>
             
+            <label index="tx_ftm_domain_model_ttaddress.tab_map">Google-Maps</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_latitude">Latitude</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_longitude">Longitude</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_zoom">Zoom</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_tooltip">Tooltip-Text</label>
+            <label index="tx_ftm_domain_model_ttaddress.directions">Directions</label>
+            
             <!-- Template Manager Controller -->
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update available!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.storage_created_headline">Storage created!</label>
@@ -638,6 +645,13 @@ Alle Informationen zu Markern, deren Verwendung und wie Sie diese Serverübergre
             <label index="tx_ftm_backend_informationrow.warning_savemarkers_headline">Achtung:</label>
             <label index="tx_ftm_backend_informationrow.warning_savemarkers_message">Bereits existierende Marker mit dem gleichen Namen werden überschrieben!
 Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, alle anderen User die gemerkten Marker sehen können!</label>
+            
+            <label index="tx_ftm_domain_model_ttaddress.tab_map">Google-Maps</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_latitude">Latitude</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_longitude">Longitude</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_zoom">Zoomfaktor</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_tooltip">Tooltip-Text</label>
+            <label index="tx_ftm_domain_model_ttaddress.directions">Anfahrtsbeschreibung</label>
             
             <!-- Template Manager Controller -->
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update verfügbar!</label>

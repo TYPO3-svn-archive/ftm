@@ -19,6 +19,19 @@ CREATE TABLE tt_content (
 );
 
 #
+# Table structure for table 'tt_content'
+#
+CREATE TABLE tt_address (
+
+    tx_ftm_map_latitude varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_map_longitude varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_map_zoom int(11) DEFAULT '0' NOT NULL,
+    tx_ftm_map_tooltip varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_directions text NOT NULL,
+
+);
+
+#
 # Table structure for table 'tx_ftm_domain_model_template'
 #
 CREATE TABLE tx_ftm_domain_model_template (

@@ -34,7 +34,6 @@ namespace CodingMs\Ftm\Domain\Repository;
  */
 class TtAddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-    
     /**
      * Ruft eine Addresse ab, dessen UID uebereinstimmt
      * die page ist aber egal
@@ -44,8 +43,6 @@ class TtAddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      */
     public function findOneByUidWithoutPid($uid) {
         $query = $this->createQuery();
-        // $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        $query->getQuerySettings()->setRespectEnableFields(FALSE);
         $query->matching($query->equals('uid', $uid));
         return $query->execute()->getFirst();
     }
@@ -56,10 +53,23 @@ class TtAddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * @param array $addressGroups TtAddress-Groups
      * @return CodingMs\Ftm\Domain\Model\TtAddress
      */
-    public function findAllByAddressgroup(array $addressGroups=array()) {
+    public function findAllByAddressgroup(array $addressGroups=array(), $sortBy='name') {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectEnableFields(FALSE);
         $query->matching($query->in('addressgroup', $addressGroups));
+        
+        $sorting = array();
+        if($sortBy=='name') {
+            $sorting['name'] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+        }
+        else if($sortBy=='cityThenName') {
+            $sorting['city'] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+            $sorting['name'] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+        }
+        else {
+            $sorting['name'] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+        }
+        $query->setOrderings($sorting);
+        
         return $query->execute();
     }
     

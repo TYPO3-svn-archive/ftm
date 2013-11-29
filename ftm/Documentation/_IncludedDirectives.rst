@@ -4,7 +4,7 @@
 
 .. |author| replace:: Thomas Deuling <typo3@coding.ms>
 .. |extension_key| replace:: ftm
-.. |extension_version| replace:: 1.1.0
+.. |extension_version| replace:: 1.1.1
 .. |extension_name| replace:: Fluid-Template-Manager
 .. |typo3| image:: Images/IntroductionPackage.png
 .. |time| date:: %m-%d-%Y %H:%M

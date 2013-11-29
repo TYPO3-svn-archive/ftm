@@ -111,45 +111,26 @@ class SendMail {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() fromEmail failed");
             $paramsFailed = TRUE;
         }
-        else {
-            $logEntry .= "fromEmail: ".$emailData['fromEmail']."\n";
-        }
         if(!isset($emailData['fromName']) || empty($emailData['fromName'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() fromName failed");
             $paramsFailed = TRUE;
-        }
-        else {
-            $logEntry .= "fromName: ".$emailData['fromName']."\n";
         }
         if(!isset($emailData['toEmail']) || empty($emailData['toEmail'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() toEmail failed");
             $paramsFailed = TRUE;
         }
-        else {
-            $logEntry .= "toEmail: ".$emailData['toEmail']."\n";
-        }
         if(!isset($emailData['toName']) || empty($emailData['toName'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() toName failed");
             $paramsFailed = TRUE;
-        }
-        else {
-            $logEntry .= "toName: ".$emailData['toName']."\n";
         }
         if(!isset($emailData['subject']) || empty($emailData['subject'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() subject failed");
             $paramsFailed = TRUE;
         }
-        else {
-            $logEntry .= "subject: ".$emailData['subject']."\n";
-        }
         if(!isset($emailData['message']) || empty($emailData['message'])) {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() message failed");
             $paramsFailed = TRUE;
         }
-        else {
-            $logEntry .= "message: ".$emailData['message']."\n";
-        }
-        
         
         // Wenn alle Parameter ok sind,
         // sende die E-Mail
@@ -195,11 +176,9 @@ class SendMail {
                 $success = FALSE;
             }
         
-            $logEntry .= "sending: successful\n";
         }
         else {
             \CodingMs\Ftm\Utility\Console::error("SendMail->send() E-Mail not send!");
-            $logEntry .= "sending: failed\n";
             $success = FALSE;
         }
         
@@ -210,6 +189,8 @@ class SendMail {
             // $newLog->setText($logEntry);
             // //Tx_CodingMsBase_Utility_Log::add($newLog, TRUE); 
         // }
+        $emailData['success'] = $success;
+        \CodingMs\Ftm\Utility\Console::log(json_encode($emailData));
         
         return $success;
     }
@@ -230,6 +211,8 @@ class SendMail {
         
         // Template-Pfad an die Sub-Extension anpassen
         // $templateRootPath = str_replace("coding_ms_base", $this->baseSettings['belongsToExtension'], $extbaseFrameworkConfiguration['view']['templateRootPath']);
+        // Zur Sicherheit den Pfad replacen
+        $templatePath = str_replace('typo3conf/ext/', '', $templatePath);
         $templateRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('typo3conf/ext/'.$templatePath);
         $templatePathAndFilename = $templateRootPath.'Email/' . $templateName . '.html';
         

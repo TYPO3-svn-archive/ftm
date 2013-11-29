@@ -107,6 +107,9 @@ class Console {
                 if($outputType=="warn") {
                     $logging.= "warn:  ".$content."\n";
                 }
+                else if($outputType=="info") {
+                    $logging.= "info:  ".$content."\n";
+                }
                 else if($outputType=="error") {
                     $logging.= "error: ".$content."\n";
                 }
@@ -134,6 +137,14 @@ class Console {
     public static function setActive($active=FALSE) {
         self::$active = $active;
     }
+    
+    /**
+     * Merkt sich ob die Console verwendet wird
+     * @return boolean An oder aus!?
+     */
+    public static function getActive() {
+        return self::$active;
+    }
 
     /**
      * Schreibt eine Zeile in den Firebug
@@ -152,10 +163,37 @@ class Console {
             // ein Object erstellen, was wir spaeter
             // fuer den Ausgabe-Aufruf missbrauchen
             self::$destructEvent = new self();
+            
+            $row.= ' ('.count(self::$consoleRows).' Console rows restored)';
         }
         
         // Zeile im statischen Array merken
         self::$consoleRows[] = array('log' => $row);
+    }
+
+    /**
+     * Schreibt eine Zeile in den Firebug
+     *
+     * @param string $row Zeile die in den Firebug geschrieben werden soll
+     * @return void
+     */
+    public static function info($row) {
+        
+        // Nur beim ersten Aufruf..
+        if(empty(self::$consoleRows)) {
+            // Pruefen ob wegen eines Redirects consoleRows
+            // in der Session gemerkt wurden. Wenn ja, stelle
+            // diese wieder her
+            self::restoreConsoleRowsFromSession();
+            // ein Object erstellen, was wir spaeter
+            // fuer den Ausgabe-Aufruf missbrauchen
+            self::$destructEvent = new self();
+            
+            $row.= ' ('.count(self::$consoleRows).' Console rows restored)';
+        }
+        
+        // Zeile im statischen Array merken
+        self::$consoleRows[] = array('info' => $row);
     }
 
     /**
@@ -175,6 +213,8 @@ class Console {
             // ein Object erstellen, was wir spaeter
             // fuer den Ausgabe-Aufruf missbrauchen
             self::$destructEvent = new self();
+            
+            $row.= ' ('.count(self::$consoleRows).' Console rows restored)';
         }
         
         // Zeile im statischen Array merken
@@ -198,6 +238,8 @@ class Console {
             // ein Object erstellen, was wir spaeter
             // fuer den Ausgabe-Aufruf missbrauchen
             self::$destructEvent = new self();
+            
+            $row.= ' ('.count(self::$consoleRows).' Console rows restored)';
         }
         
         // Zeile im statischen Array merken
@@ -225,15 +267,28 @@ class Console {
                 $content = str_replace("\n", "\\n", $content);
                 $content = str_replace("\r", "\\n", $content);
                 
+                // Pruefen ob es ein JSON-String ist
+                $json = json_decode($content);
+                if($json!=NULL) {
+                    $json = $content;
+                }
+                // ..wenn nicht in Hochkomma einschliessen
+                else {
+                    $json = "'".$content."'";
+                }
+                
                 if($outputType=="warn") {
-                    $logging.= "  console.warn('".$content."')\n";
+                    $logging.= "  console.warn('FTM: ', ".$json.");\n";
+                }
+                else if($outputType=="info") {
+                    $logging.= "  console.info('FTM: ', ".$json.");\n";
                 }
                 else if($outputType=="error") {
-                    $logging.= "  console.error('".$content."')\n";
+                    $logging.= "  console.error('FTM: ', ".$json.");\n";
                     $someErrorHappens = TRUE;
                 }
                 else {
-                    $logging.= "  console.log('".$content."')\n";
+                    $logging.= "  console.log('FTM: ', ".$json.");\n";
                 }
             }
             $logging.= "}\n"; 
@@ -243,10 +298,10 @@ class Console {
             // vorm schliessenden Body-Tag   
             if(self::$active) {
                 echo $logging;
+                //$GLOBALS['TSFE']->additionalHeaderData[] = $logging;
             }
             
         }
-        
         
         
         // Wenn ein Fehler geloggt wurde
@@ -285,14 +340,15 @@ class Console {
             self::$sessionHandler = self::$objectManager->get('CodingMs\Ftm\Domain\Session\SessionHandler');
             $session = self::$sessionHandler->restoreFromSession();
 
-            // Wenn Logs gespeichert sind            
+            // Wenn Logs gespeichert sind
             if(is_array($session['consoleRows']) && !empty($session['consoleRows'])) {
                 
                 // Stelle sie wieder her
                 self::$consoleRows = $session['consoleRows'];
+                $session['consoleRows'] = NULL;
                 
-                // ..und loesche den Eintrag aus der Sesssion                
-                self::$sessionHandler->writeToSession(array('consoleRows'=>NULL));
+                // ..und loesche den Eintrag aus der Sesssion
+                self::$sessionHandler->writeToSession($session);
         
             }
         }

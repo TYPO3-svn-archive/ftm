@@ -6,6 +6,8 @@ Versions-Verlauf
 
 .. include:: ./Versions/Current.rst
 
+.. include:: ./Versions/Version1.1.0.rst
+
 .. include:: ./Versions/Version1.0.5.rst
 
 .. include:: ./Versions/Version1.0.4.rst

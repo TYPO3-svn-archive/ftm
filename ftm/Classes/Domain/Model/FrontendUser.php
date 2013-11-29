@@ -38,7 +38,7 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
      * E-Mail/Benutzername mit dem sich der Benutzer anmeldet
      * 
      * @var string
-     * @validate Tx_Extbase_Validation_Validator_EmailAddressValidator
+     * @validate \TYPO3\CMS\Extbase\Validation\Validator\EmailAddressValidator
      */
     protected $email;
     

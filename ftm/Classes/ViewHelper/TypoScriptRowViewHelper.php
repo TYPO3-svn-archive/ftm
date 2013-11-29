@@ -121,12 +121,12 @@ class TypoScriptRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
             // // this throws a error message because we have no rights to upload files
             // // to our extension's own upload folder
             // // further investigation needed
-            // $file['upload']['1']['target'] = \t3lib_div::getFileAbsFileName($filepath); //\t3lib_div::getFileAbsFileName('uploads/tx_directmail/');
+            // $file['upload']['1']['target'] = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($filepath); //\t3lib_div::getFileAbsFileName('uploads/tx_directmail/');
         // }
 // 
         // // Checking referer / executing:
-        // $refInfo = parse_url(\t3lib_div::getIndpEnv('HTTP_REFERER'));
-        // $httpHost = \t3lib_div::getIndpEnv('TYPO3_HOST_ONLY');
+        // $refInfo = parse_url(\TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('HTTP_REFERER'));
+        // $httpHost = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_HOST_ONLY');
 // 
         // if(empty($this->indata['newFile'])){
                 // //new file
