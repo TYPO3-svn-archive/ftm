@@ -49,113 +49,113 @@ class TemplateStructure {
      */
     public static $backendLayouts = array(
         'BackendLayout C - Startsite' => array(
-            'template'    => 'startsite.html', 
+            'template'    => 'Startsite.html', 
             'sorting'     => '128', 
-            'title'       => 'BackendLayout C - Startsite', 
+            'title'       => 'BackendLayout Startsite', 
             'description' => 'Content (Startsite)', 
             'config'      => 'backend_layout {\r\n colCount = 3\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 3\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 3\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_C-Startsite.jpg'
         ),
         'BackendLayout MCS' => array(
-            'template'    => 'mcs.html', 
+            'template'    => 'MenuContentSidebar.html', 
             'sorting'     => '256', 
-            'title'       => 'BackendLayout MCS', 
+            'title'       => 'BackendLayout MenuContentSidebar', 
             'description' => 'Menu - Content - Side', 
             'config'      => 'backend_layout {\r\n colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               2 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               3 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_MCS.jpg'
         ),
         'BackendLayout SCM' => array(
-            'template'    => 'scm.html', 
+            'template'    => 'SidebarContentMenu.html', 
             'sorting'     => '512', 
-            'title'       => 'BackendLayout SCM', 
+            'title'       => 'BackendLayout SidebarContentMenu', 
             'description' => 'Side - Content - Menu', 
             'config'      => 'backend_layout {\r\n colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               2 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               3 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_SCM.jpg'
         ),
         'BackendLayout MSC' => array(
-            'template'    => 'msc.html', 
+            'template'    => 'MenuSidebarContent.html', 
             'sorting'     => '768', 
-            'title'       => 'BackendLayout MSC', 
+            'title'       => 'BackendLayout MenuSidebarContent', 
             'description' => 'Menu - Side - Content', 
             'config'      => 'backend_layout {\r\n colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               2 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               3 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_MSC.jpg'
         ),
         'BackendLayout SMC' => array(
-            'template'    => 'smc.html', 
+            'template'    => 'SidebarMenuContent.html', 
             'sorting'     => '1024', 
-            'title'       => 'BackendLayout SMC', 
+            'title'       => 'BackendLayout SidebarMenuContent', 
             'description' => 'Side - Menu -Content', 
             'config'      => 'backend_layout {\r\n    colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               2 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               3 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}', 
             'icon'        => 'BackendLayout_SMC.jpg'
         ),
         'BackendLayout CSM' => array(
-            'template'    => 'csm.html', 
+            'template'    => 'ContentSidebarMenu.html', 
             'sorting'     => '1280', 
-            'title'       => 'BackendLayout CSM', 
+            'title'       => 'BackendLayout ContentSidebarMenu', 
             'description' => 'Content - Side - Menu', 
             'config'      => 'backend_layout {\r\n colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               2 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               3 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_CSM.jpg'
         ),
         'BackendLayout CMS' => array(
-            'template'    => 'cms.html', 
+            'template'    => 'ContentMenuSidebar.html', 
             'sorting'     => '1536', 
-            'title'       => 'BackendLayout CMS', 
+            'title'       => 'BackendLayout ContentMenuSidebar', 
             'description' => 'Content - Menu - Side', 
             'config'      => 'backend_layout {\r\n    colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               2 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               3 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}', 
             'icon'        => 'BackendLayout_CMS.jpg'
         ),
         'BackendLayout MC' => array(
-            'template'    => 'mc.html', 
+            'template'    => 'MenuContent.html', 
             'sorting'     => '1792', 
-            'title'       => 'BackendLayout MC', 
+            'title'       => 'BackendLayout MenuContent', 
             'description' => 'Menu - Content', 
             'config'      => 'backend_layout {\r\n colCount = 4\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 4\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               2 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 4\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_MC.jpg'
         ),
         'BackendLayout SC' => array(
-            'template'    => 'sc.html', 
+            'template'    => 'SidebarContent.html', 
             'sorting'     => '2048', 
-            'title'       => 'BackendLayout SC', 
+            'title'       => 'BackendLayout SidebarContent', 
             'description' => 'Side - Content', 
             'config'      => 'backend_layout {\r\n colCount = 4\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 4\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               2 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 4\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_SC.jpg'
         ),
         'BackendLayout CM' => array(
-            'template'    => 'cm.html', 
+            'template'    => 'ContentMenu.html', 
             'sorting'     => '2304', 
-            'title'       => 'BackendLayout CM', 
+            'title'       => 'BackendLayout ContentMenu', 
             'description' => 'Content - Menu', 
             'config'      => 'backend_layout {\r\n colCount = 4\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 4\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               2 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 4\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_CM.jpg'
         ),
         'BackendLayout CS' => array(
-            'template'    => 'cs.html', 
+            'template'    => 'ContentSidebar.html', 
             'sorting'     => '2560', 
-            'title'       => 'BackendLayout CS', 
+            'title'       => 'BackendLayout ContentSidebar', 
             'description' => 'Content - Side', 
             'config'      => 'backend_layout {\r\n colCount = 4\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 4\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               2 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 4\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_CS.jpg'
         ),
         'BackendLayout C' => array(
-            'template'    => 'c.html', 
+            'template'    => 'Content.html', 
             'sorting'     => '2816', 
-            'title'       => 'BackendLayout C', 
+            'title'       => 'BackendLayout Content', 
             'description' => 'Content', 
             'config'      => 'backend_layout {\r\n colCount = 3\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 3\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 3\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_C.jpg'
         ),
         'BackendLayout C - Empty' => array(
-            'template'    => 'empty.html', 
+            'template'    => 'Empty.html', 
             'sorting'     => '3072', 
-            'title'       => 'BackendLayout C - Empty', 
+            'title'       => 'BackendLayout Empty', 
             'description' => 'Content (with empty layout)', 
             'config'      => 'backend_layout {\r\n   colCount = 1\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colPos = 0\r\n              }\r\n           }\r\n       }\r\n   }\r\n}', 
             'icon'        => 'BackendLayout_C-Empty.jpg'
         ),
         'BackendLayout C - Special' => array(
-            'template'    => 'special.html', 
+            'template'    => 'Special.html', 
             'sorting'     => '3328', 
-            'title'       => 'BackendLayout C - Special', 
+            'title'       => 'BackendLayout Special', 
             'description' => 'Content (special)', 
             'config'      => 'backend_layout {\r\n   colCount = 1\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colPos = 0\r\n              }\r\n           }\r\n       }\r\n   }\r\n}', 
             'icon'        => 'BackendLayout_C-Special.jpg'
@@ -167,6 +167,7 @@ class TemplateStructure {
      * Grid-Layout Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\GridLayoutRepository
+     * @inject
      */
     protected $gridLayoutRepository;
 
@@ -174,6 +175,7 @@ class TemplateStructure {
      * Backend-Layout Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\BackendLayoutRepository
+     * @inject
      */
     protected $backendLayoutRepository;
 
@@ -181,6 +183,7 @@ class TemplateStructure {
      * Pages Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\PagesRepository
+     * @inject
      */
     protected $pagesRepository;
 
@@ -188,6 +191,7 @@ class TemplateStructure {
      * Persistence-manager
      *
      * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+     * @inject
      */
     protected $persistenceManager;
 
@@ -195,6 +199,7 @@ class TemplateStructure {
      * Object-Manager
      *
      * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @inject
      */
     protected $objectManager;
 
@@ -204,56 +209,6 @@ class TemplateStructure {
      * @var string
      */
     protected $messages = '';
-
-    /**
-     * injectGridLayoutRepository
-     *
-     * @param \CodingMs\Ftm\Domain\Repository\GridLayoutRepository $gridLayoutRepository
-     * @return void
-     */
-    public function injectGridLayoutRepository(\CodingMs\Ftm\Domain\Repository\GridLayoutRepository $gridLayoutRepository) {
-        $this->gridLayoutRepository = $gridLayoutRepository;
-    }
-
-    /**
-     * injectBackendLayoutRepository
-     *
-     * @param \CodingMs\Ftm\Domain\Repository\BackendLayoutRepository $backendLayoutRepository
-     * @return void
-     */
-    public function injectBackendLayoutRepository(\CodingMs\Ftm\Domain\Repository\BackendLayoutRepository $backendLayoutRepository) {
-        $this->backendLayoutRepository = $backendLayoutRepository;
-    }
-
-    /**
-     * injectPagesRepository
-     *
-     * @param \CodingMs\Ftm\Domain\Repository\PagesRepository $pagesRepository
-     * @return void
-     */
-    public function injectPagesRepository(\CodingMs\Ftm\Domain\Repository\PagesRepository $pagesRepository) {
-        $this->pagesRepository = $pagesRepository;
-    }
-
-    /**
-     * injectPersistenceManager
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager $persistenceManager
-     * @return void
-     */
-    public function injectPersistenceManager(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager $persistenceManager) {
-        $this->persistenceManager = $persistenceManager;
-    }
-
-    /**
-     * injectObjectManager
-     *
-     * @param \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager
-     * @return void
-     */
-    public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManager $objectManager) {
-        $this->objectManager = $objectManager;
-    }
     
     /**
      * Prueft ob das Sys-Template vorhanden ist, und
