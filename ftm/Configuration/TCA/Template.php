@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_template'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_template']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'site_name, template_mode, template_type, template_dir, config, meta, language, fluid, marker, less_variable_info, less_variable, menu_container, extensions_info, extensions',
+        'showRecordFieldList' => 'site_name, template_mode, template_type, template_dir, config, meta, language, fluid, typo_script_snippet, less_variable_info, less_variable, menu_container', // , extensions_info, extensions
     ),
     'types' => array(
-        '1' => array('showitem' => 'site_name, template_mode, template_type, template_dir, config, meta, language,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_fluid, fluid,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_marker, marker_info, marker,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_menu, menu_container,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_less, less_variable_info, less_variable,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_extensions, extensions_info, extensions'),
+        '1' => array('showitem' => 'site_name, template_mode, template_type, template_dir, config, meta, language,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_fluid, fluid,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_typoscript_snippets, typo_script_snippet_info, typo_script_snippet,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_menu, menu_container,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_less, less_variable_info, less_variable'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -272,33 +272,41 @@ $TCA['tx_ftm_domain_model_template'] = array(
             'exclude' => 0,
             //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.less_variable',
             'config' => array(
-                'type' => 'inline',
+                'type' => 'select',
+                'size' => 25,
+                'internal_type' => 'db',
+                'allowed' => 'tx_ftm_domain_model_templatelessvariable',
                 'foreign_table'       =>          'tx_ftm_domain_model_templatelessvariable',
+                'MM' => 'tx_ftm_domain_model_templatelessvariable_mm',
                 'foreign_table_where' => 'ORDER BY tx_ftm_domain_model_templatelessvariable.sorting',
                 'foreign_field'  => 'template', 
                 'foreign_sortby' => 'sorting',
-                
-                'maxitems'      => 9999,
-                'appearance' => array(
-                    'collapseAll' => 1,
-                    'levelLinksPosition' => 'bottom',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1,
-                    
-                    'useSortable' => 1,
-                    
-                    /* Loeschen, Erstellen, etc Buttons ausblenden */
-                    'enabledControls' => array(
-                        'info'     => true,
-                        'new'      => true,
-                        'dragdrop' => true,
-                        'sort'     => true,
-                        'hide'     => false,
-                        'delete'   => true
-                  ),
+                'minitems' => 0,
+                'maxitems' => 999,
+                'multiple' => 1,
+                'wizards' => array(
+                    '_PADDING' => 1,
+                    '_VERTICAL' => 1,
+                    'edit' => array(
+                        'type' => 'popup',
+                        'title' => 'Edit', // @todo: Translation
+                        'script' => 'wizard_edit.php',
+                        'icon' => 'edit2.gif',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        ),
+                    'add' => Array(
+                        'type' => 'script',
+                        'title' => 'Create new', // @todo: Translation
+                        'icon' => 'add.gif',
+                        'params' => array(
+                            'table' => 'tx_ftm_domain_model_templatelessvariable',
+                            'pid' => '###CURRENT_PID###',
+                            'setValue' => 'prepend'
+                            ),
+                        'script' => 'wizard_add.php',
+                    ),
                 ),
-                
             ),
         ),
         
@@ -355,75 +363,58 @@ $TCA['tx_ftm_domain_model_template'] = array(
             ),
         ),
         
-        // Marker
-        'marker_info' => array (
+        // TYPOScript-Snippets
+        'typo_script_snippet_info' => array (
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.marker',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.typoscript_snippets',
             'config' => array (
                 'type' => 'user',
                 'userFunc' => 'CodingMs\Ftm\Backend\InformationRow->renderField',
-                'param1' => 'marker'
+                'param1' => 'typo_script_snippet'
                 
             )
         ),
-        'marker' => array(
+        'typo_script_snippet' => array(
             'exclude' => 0,
-            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.marker',
+            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.typoscript_snippet',
             'config' => array(
-                'type' => 'inline',
-                'foreign_table' => 'tx_ftm_domain_model_templatemarker',
-                'foreign_field' => 'template',
-                'maxitems'      => 9999,
-                'appearance' => array(
-                    'collapseAll' => 1,
-                    'levelLinksPosition' => 'bottom',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1
+                'type' => 'select',
+                'size' => 25,
+                'internal_type' => 'db',
+                'allowed' => 'tx_ftm_domain_model_templatetyposcriptsnippet',
+                'foreign_table'       =>          'tx_ftm_domain_model_templatetyposcriptsnippet',
+                'MM' => 'tx_ftm_domain_model_templatetyposcriptsnippet_mm',
+                'foreign_table_where' => 'ORDER BY tx_ftm_domain_model_templatetyposcriptsnippet.sorting',
+                'foreign_field'  => 'template', 
+                'foreign_sortby' => 'sorting',
+                'minitems' => 0,
+                'maxitems' => 999,
+                'multiple' => 1,
+                'wizards' => array(
+                    '_PADDING' => 1,
+                    '_VERTICAL' => 1,
+                    'edit' => array(
+                        'type' => 'popup',
+                        'title' => 'Edit', // @todo: Translation
+                        'script' => 'wizard_edit.php',
+                        'icon' => 'edit2.gif',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        ),
+                    'add' => Array(
+                        'type' => 'script',
+                        'title' => 'Create new', // @todo: Translation
+                        'icon' => 'add.gif',
+                        'params' => array(
+                            'table' => 'tx_ftm_domain_model_templatelessvariable',
+                            'pid' => '###CURRENT_PID###',
+                            'setValue' => 'prepend'
+                            ),
+                        'script' => 'wizard_add.php',
+                    ),
                 ),
             ),
         ),
-        
-        // Extensions
-        'extensions_info' => array (
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.extensions', 
-            'config' => array (
-                'type' => 'user',
-                'userFunc' => 'CodingMs\Ftm\Backend\InformationRow->renderField',
-                'param1' => 'extensions'
-                
-            )
-        ),
-        'extensions' => array(
-            'exclude' => 0,
-            'config' => array(
-                'type' => 'inline',
-                'foreign_table' => 'tx_ftm_domain_model_templateext',
-                'foreign_field' => 'template',
-                'maxitems'      => 9999,
-                'appearance' => array(
-                    'collapseAll' => 1,
-                    'levelLinksPosition' => 'none',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1,
-                    
-                    'useSortable' => 1,
-        
-                    /* Loeschen, Erstellen, etc Buttons ausblenden */
-                    'enabledControls' => array(
-                        'info'     => true,
-                        'new'      => false,
-                        'dragdrop' => true,
-                        'sort'     => true,
-                        'hide'     => true,
-                        'delete'   => false
-                  ),
-                ),
-            ),
-        ),
-        
         
     ),
 );

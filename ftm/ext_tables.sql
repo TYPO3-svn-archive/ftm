@@ -2,7 +2,6 @@
 # Table structure for table 'tt_content'
 #
 CREATE TABLE tt_content (
-
     tx_ftm_grid_elements_col_pos_bootstrap_1 varchar(255) DEFAULT '' NOT NULL,
     tx_ftm_grid_elements_col_pos_bootstrap_2 varchar(255) DEFAULT '' NOT NULL,
     tx_ftm_grid_elements_col_pos_bootstrap_3 varchar(255) DEFAULT '' NOT NULL,
@@ -15,20 +14,18 @@ CREATE TABLE tt_content (
     tx_ftm_grid_elements_col_pos_bootstrap_10 varchar(255) DEFAULT '' NOT NULL,
     tx_ftm_grid_elements_col_pos_bootstrap_11 varchar(255) DEFAULT '' NOT NULL,
     tx_ftm_grid_elements_col_pos_bootstrap_12 varchar(255) DEFAULT '' NOT NULL,
-
 );
 
 #
 # Table structure for table 'tt_content'
 #
 CREATE TABLE tt_address (
-
     tx_ftm_map_latitude varchar(255) DEFAULT '' NOT NULL,
     tx_ftm_map_longitude varchar(255) DEFAULT '' NOT NULL,
     tx_ftm_map_zoom int(11) DEFAULT '0' NOT NULL,
     tx_ftm_map_tooltip varchar(255) DEFAULT '' NOT NULL,
+    tx_ftm_map_link varchar(255) DEFAULT '' NOT NULL,
     tx_ftm_directions text NOT NULL,
-
 );
 
 #
@@ -56,7 +53,7 @@ CREATE TABLE tx_ftm_domain_model_template (
     fluid int(11) unsigned DEFAULT '0' NOT NULL,
     less_variable int(11) unsigned DEFAULT '0' NOT NULL,
     menu_container int(11) unsigned DEFAULT '0' NOT NULL,
-    marker int(11) unsigned DEFAULT '0' NOT NULL,
+    typo_script_snippet int(11) unsigned DEFAULT '0' NOT NULL,
     extensions int(11) unsigned DEFAULT '0' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -103,6 +100,7 @@ CREATE TABLE tx_ftm_domain_model_templateconfig (
     base_u_r_l varchar(255) DEFAULT '' NOT NULL,
     link_vars varchar(255) DEFAULT '' NOT NULL,
     disable_charset_header varchar(255) DEFAULT '' NOT NULL,
+    dyn_css varchar(255) DEFAULT '' NOT NULL,
     meta_charset varchar(255) DEFAULT '' NOT NULL,
     language_uid int(11) DEFAULT '0' NOT NULL,
     language varchar(255) DEFAULT '' NOT NULL,
@@ -341,6 +339,19 @@ CREATE TABLE tx_ftm_domain_model_templatelessvariable (
 
 );
 
+#
+# Table structure for table 'tx_ftm_domain_model_templatelessvariable_mm'
+#
+CREATE TABLE tx_ftm_domain_model_templatelessvariable_mm (
+    uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+    KEY uid_local (uid_local),
+    KEY uid_foreign (uid_foreign)
+);
+
 
 
 
@@ -461,6 +472,10 @@ CREATE TABLE tx_ftm_domain_model_templatemenustate (
     std_wrap_html_special_chars tinyint(4) unsigned DEFAULT '0' NOT NULL,
     wrap varchar(255) DEFAULT '' NOT NULL,
     wrap_html_special_chars tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    
+    append_before varchar(255) DEFAULT '' NOT NULL,
+    append_after varchar(255) DEFAULT '' NOT NULL,
+    do_not_link_it tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
     template_menu_object int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -496,111 +511,20 @@ CREATE TABLE tx_ftm_domain_model_templatemenustate (
 );
 
 #
-# Table structure for table 'tx_ftm_domain_model_templateext'
+# Table structure for table 'tx_ftm_domain_model_templatetyposcriptsnippet'
 #
-CREATE TABLE tx_ftm_domain_model_templateext (
+CREATE TABLE tx_ftm_domain_model_templatetyposcriptsnippet (
 
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
     template int(11) unsigned DEFAULT '0' NOT NULL,
-
-    ext_key varchar(255) DEFAULT '' NOT NULL,
-    ext_name varchar(255) DEFAULT '' NOT NULL,
-    ext_version varchar(255) DEFAULT '' NOT NULL,
-
-    ext_conf_t3_less int(11) unsigned DEFAULT '0',
-
-    tstamp int(11) unsigned DEFAULT '0' NOT NULL,
-    crdate int(11) unsigned DEFAULT '0' NOT NULL,
-    cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
-    deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
-
-    t3ver_oid int(11) DEFAULT '0' NOT NULL,
-    t3ver_id int(11) DEFAULT '0' NOT NULL,
-    t3ver_wsid int(11) DEFAULT '0' NOT NULL,
-    t3ver_label varchar(255) DEFAULT '' NOT NULL,
-    t3ver_state tinyint(4) DEFAULT '0' NOT NULL,
-    t3ver_stage int(11) DEFAULT '0' NOT NULL,
-    t3ver_count int(11) DEFAULT '0' NOT NULL,
-    t3ver_tstamp int(11) DEFAULT '0' NOT NULL,
-    t3ver_move_id int(11) DEFAULT '0' NOT NULL,
-
-    t3_origuid int(11) DEFAULT '0' NOT NULL,
-    sys_language_uid int(11) DEFAULT '0' NOT NULL,
-    l10n_parent int(11) DEFAULT '0' NOT NULL,
-    l10n_diffsource mediumblob,
-
-    PRIMARY KEY (uid),
-    KEY parent (pid),
-    KEY t3ver_oid (t3ver_oid,t3ver_wsid),
-    KEY language (l10n_parent,sys_language_uid)
-
-);
-
-#
-# Table structure for table 'tx_ftm_domain_model_templateextt3less'
-#
-CREATE TABLE tx_ftm_domain_model_templateextt3less (
-
-    uid int(11) NOT NULL auto_increment,
-    pid int(11) DEFAULT '0' NOT NULL,
-
-    path_to_less_files varchar(255) DEFAULT '' NOT NULL,
-    output_folder varchar(255) DEFAULT '' NOT NULL,
-    less_files int(11) unsigned DEFAULT '0' NOT NULL,
-
-    tstamp int(11) unsigned DEFAULT '0' NOT NULL,
-    crdate int(11) unsigned DEFAULT '0' NOT NULL,
-    cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
-    deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
-
-    t3ver_oid int(11) DEFAULT '0' NOT NULL,
-    t3ver_id int(11) DEFAULT '0' NOT NULL,
-    t3ver_wsid int(11) DEFAULT '0' NOT NULL,
-    t3ver_label varchar(255) DEFAULT '' NOT NULL,
-    t3ver_state tinyint(4) DEFAULT '0' NOT NULL,
-    t3ver_stage int(11) DEFAULT '0' NOT NULL,
-    t3ver_count int(11) DEFAULT '0' NOT NULL,
-    t3ver_tstamp int(11) DEFAULT '0' NOT NULL,
-    t3ver_move_id int(11) DEFAULT '0' NOT NULL,
-
-    t3_origuid int(11) DEFAULT '0' NOT NULL,
-    sys_language_uid int(11) DEFAULT '0' NOT NULL,
-    l10n_parent int(11) DEFAULT '0' NOT NULL,
-    l10n_diffsource mediumblob,
-
-    PRIMARY KEY (uid),
-    KEY parent (pid),
-    KEY t3ver_oid (t3ver_oid,t3ver_wsid),
-    KEY language (l10n_parent,sys_language_uid)
-
-);
-
-#
-# Table structure for table 'tx_ftm_domain_model_templateextt3lessfiles'
-#
-CREATE TABLE tx_ftm_domain_model_templateextt3lessfiles (
-
-    uid int(11) NOT NULL auto_increment,
-    pid int(11) DEFAULT '0' NOT NULL,
-
-    template_ext_t3_less int(11) unsigned DEFAULT '0' NOT NULL,
 
     name varchar(255) DEFAULT '' NOT NULL,
-    media varchar(255) DEFAULT '' NOT NULL,
-    title varchar(255) DEFAULT '' NOT NULL,
-    `compress` tinyint(1) unsigned DEFAULT '0' NOT NULL,
-    force_on_top tinyint(1) unsigned DEFAULT '0' NOT NULL,
-    all_wrap varchar(255) DEFAULT '' NOT NULL,
-    exclude_from_concatenation tinyint(1) unsigned DEFAULT '0' NOT NULL,
-    exclude_from_page_renderer varchar(255) DEFAULT '' NOT NULL,
+    type int(11) DEFAULT '0' NOT NULL,
+    description text NOT NULL,
+    constants text NOT NULL,
+    setup text NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,
@@ -633,25 +557,36 @@ CREATE TABLE tx_ftm_domain_model_templateextt3lessfiles (
 
 );
 
+#
+# Table structure for table 'tx_ftm_domain_model_templatetyposcriptsnippet_mm'
+#
+CREATE TABLE tx_ftm_domain_model_templatetyposcriptsnippet_mm (
+    uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 
+    KEY uid_local (uid_local),
+    KEY uid_foreign (uid_foreign)
+);
 
 #
-# Table structure for table 'tx_ftm_domain_model_templatemarker'
+# Table structure for table 'tx_codingmsbase_domain_model_log'
 #
-CREATE TABLE tx_ftm_domain_model_templatemarker (
+CREATE TABLE tx_ftm_domain_model_log (
 
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
-    template int(11) unsigned DEFAULT '0' NOT NULL,
-
-    marker_name varchar(255) DEFAULT '' NOT NULL,
-    marker_type varchar(255) DEFAULT '' NOT NULL,
-    marker_description text NOT NULL,
-    marker_typo_script text NOT NULL,
+    frontend_user int(11) DEFAULT '0' NOT NULL,
+    category varchar(255) DEFAULT '' NOT NULL,
+    remote_address varchar(255) DEFAULT '' NOT NULL,
+    text text NOT NULL,
+    action varchar(255) DEFAULT '' NOT NULL,
+    extension_name varchar(255) DEFAULT '' NOT NULL,
+    request_arguments text NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
-    sorting int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
@@ -680,5 +615,4 @@ CREATE TABLE tx_ftm_domain_model_templatemarker (
     KEY language (l10n_parent,sys_language_uid)
 
 );
-
 

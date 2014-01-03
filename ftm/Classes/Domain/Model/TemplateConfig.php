@@ -44,6 +44,15 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     protected $doctype;
     
     /**
+     * Legt den Typ des dynamischen CSS fest
+     *
+     * @var string
+     * @validate NotEmpty
+     * @since 2.0.0
+     */
+    protected $dynCss;
+    
+    /**
      * Legt die BaseURL fest
      *
      * @var string
@@ -188,6 +197,50 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     public function setDoctype($doctype) {
         $this->doctype = $doctype;
     }
+    
+    /**
+     * Returns the dynCss
+     *
+     * @return string $dynCss
+     * @since 2.0.0
+     */
+    public function getDynCss() {
+        return $this->dynCss;
+    }
+    
+    /**
+     * Returns the dynCss
+     *
+     * @return string $dynCss
+     * @since 2.0.0
+     */
+    public function getDynCssFolder() {
+        $parts = explode('_', $this->dynCss);
+        return ucfirst($parts[1]);
+    }
+    
+    /**
+     * Returns the dynCss
+     *
+     * @return string $dynCss
+     * @since 2.0.0
+     */
+    public function getDynCssType() {
+        $parts = explode('_', $this->dynCss);
+        return $parts[0];
+    }
+    
+    /**
+     * Sets the dynCss
+     *
+     * @param string $dynCss
+     * @return void
+     * @since 2.0.0
+     */
+    public function setDynCss($dynCss) {
+        $this->dynCss = $dynCss;
+    }
+    
 
     /**
      * Returns the baseURL

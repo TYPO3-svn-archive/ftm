@@ -37,14 +37,12 @@ namespace CodingMs\Ftm\Service;
  */
 class TemplateDirectory {
     
-
     /**
      * Benoetigte Verzeichnis Struktur
      * @var array
      * @since 1.0.0
      */
     public static $directories = array(
-    
         'Configuration'               => 'Hier liegt das gesamte Template',
         'Configuration/TCA'           => 'Hier liegt das gesamte Template',
         'Configuration/TypoScript'    => 'Hier liegt das gesamte Template',
@@ -59,13 +57,17 @@ class TemplateDirectory {
         'Resources/Private/Layouts'   => 'Hier liegt das gesamte Template',
         'Resources/Private/Partials'  => 'Hier liegt das gesamte Template',
         'Resources/Private/Templates' => 'Hier liegt das gesamte Template',
-        
+        'Resources/Private/TypoScript' => 'Hier liegt das gesamte TYPOScript',
+        'Resources/Private/TypoScript/Constants' => 'Hier liegen alle TYPOScript Konstanten',
+        'Resources/Private/TypoScript/Library' => 'Hier liegen alle TYPOScript Snippets',
+        'Resources/Private/TypoScript/Setup' => 'Hier liegt das gesamte TYPOScript Setup',
         'Resources/Public'             => 'Hier liegt das gesamte Template',
         'Resources/Public/Fonts'       => 'Hier liegt das gesamte Template',
         'Resources/Public/Icons'       => 'Hier liegt das gesamte Template',
         'Resources/Public/Images'      => 'Hier liegt das gesamte Template',
         'Resources/Public/JavaScript'  => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less'        => 'Hier liegt das gesamte Template',
+        'Resources/Public/Sass'        => 'Hier liegt das gesamte Template',
+        'Resources/Public/Less'        => 'Hier liegt das gesamte LESS des Templates',
         'Resources/Public/Less/BasicLess'     => 'Hier liegt das gesamte Template',
         'Resources/Public/Less/BasicLess/ContentLayouts' => 'Hier liegt das gesamte Template',
         'Resources/Public/Less/BasicLess/GridElementLayouts' => 'Hier liegt das gesamte Template',
@@ -79,17 +81,16 @@ class TemplateDirectory {
         'Resources/Public/Stylesheets' => 'Hier liegt das gesamte Template',
         'Resources/Public/Contrib'     => 'Hier liegt das gesamte Template',
         'Resources/Public/Extensions'  => 'Hier liegt das gesamte Template',
-    
     );
     
     /**
      * @ToDo: auch das 0_lessBasics etc erstellen und die Dateien reinkopieren
      */
     
-         
     /**
      * Prueft die Template Verzeichnisstruktur
      * 
+     * @todo Hier muss auch der dcncss-Typ berücksichtigt werden
      * @author     Thomas Deuling <typo3@coding.ms>
      * @param      string Verzeichnis-Name im Ext-Verzeichnis
      * @return     mixed TRUE wenn alle Verzeichnisse vorhanden sind, ansonsten ein Array mit den vermissten Verzeichnissen
@@ -100,7 +101,6 @@ class TemplateDirectory {
         $success = TRUE;
         $missingDirectories = array();
         
-        
         // Zuerst pruefen ob es das Projekt-Verzeichnis gibt
         $relPath = "typo3conf/ext/".$templateName;
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
@@ -109,7 +109,6 @@ class TemplateDirectory {
             $directory = 'root';
             $missingDirectories[$directory] = 'Hier liegen alle Website-Daten';
         }
-        
         
         // Dann alle anderen Verzeichnisse pruefen 
         if(!empty(self::$directories) && $success) {
@@ -134,10 +133,10 @@ class TemplateDirectory {
         }
     }
     
-         
     /**
      * Erstellt die Template Verzeichnisstruktur
      * 
+     * @todo Hier muss auch der dcncss-Typ berücksichtigt werden
      * @author     Thomas Deuling <typo3@coding.ms>
      * @param      string Verzeichnis-Name im Ext-Verzeichnis
      * @return     mixed TRUE wenn alle Verzeichnisse vorhanden sind bzw. erstellt wurden, ansonsten ein Array mit den vermissten/nicht erstellten Verzeichnissen
@@ -162,7 +161,6 @@ class TemplateDirectory {
                 chmod($absPath, 0777);
             }
         }
-        
         
         // Dann alle anderen Verzeichnisse pruefen 
         if(!empty(self::$directories) && $success) {
@@ -191,7 +189,6 @@ class TemplateDirectory {
             return $missingDirectories;
         }
     }
-    
     
 }
 

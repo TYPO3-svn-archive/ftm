@@ -3,24 +3,29 @@ if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
+$configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ftm']);
 
 /**
  * Registers a Backend Module
  */
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-    'CodingMs.'.$_EXTKEY,
-    'web',    // Make module a submodule of 'web'
-    'ftm',    // Submodule key
-    '999',    // Position
-    array(
-        'TemplateManager' => 'list,createTemplate,generateTypoScript,generateLessVariable,generateFluid,acceptDisclaimer,saveMarker,insertMarker,loadSnippets',
-    ),
-    array(
-        'access' => 'user,group',
-        'icon'   => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
-        'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_ftm.xml',
-    )
-);
+if(!isset($configuration) || $configuration['disableBackendModule']!='1') {
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+        'CodingMs.'.$_EXTKEY,
+        'web',    // Make module a submodule of 'web'
+        'ftm',    // Submodule key
+        '999',    // Position
+        array(
+            'TemplateManager'   => 'list,createTemplate,generateTypoScript,generateFluid,acceptDisclaimer',
+            'DynCss'            => 'generate',
+            'TypoScriptSnippet' => 'saveSnippet,insertSnippet,loadSnippets',
+        ),
+        array(
+            'access' => 'user,group',
+            'icon'   => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+            'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_ftm.xml',
+        )
+    );
+}
 
 
 
@@ -28,11 +33,12 @@ if (!defined('TYPO3_MODE')) {
 // Diese muss vor dem TER-Upload bereits
 // auf der geplanten Version stehen 
 if(!defined('FTM_VERSION')) {
-    define('FTM_VERSION', '1.1.1');
+    define('FTM_VERSION', '2.0.0');
 }
 // Benoetigte Extensions
 if(!defined('FTM_REQUIRED_EXTENSIONS')) {
-    define('FTM_REQUIRED_EXTENSIONS', 't3_less;gridelements;t3editor;static_info_tables');
+    //define('FTM_REQUIRED_EXTENSIONS', 't3_less;gridelements;t3editor;static_info_tables');
+    define('FTM_REQUIRED_EXTENSIONS', 'gridelements;t3editor;static_info_tables');
 }
 
 
@@ -354,91 +360,24 @@ $TCA['tx_ftm_domain_model_templatemenustate'] = array(
 );
 
 /**
- * Extension - Basis
+ * Fluid Template-TYPOScript Snippets
  */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ftm_domain_model_templateext', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_templateext.xml');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_templateext');
-$TCA['tx_ftm_domain_model_templateext'] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ftm_domain_model_templatetyposcriptsnippet', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_templatetyposcriptsnippet.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_templatetyposcriptsnippet');
+$TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
     'ctrl' => array(
-        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateext',
-        
-        'label' => 'ext_key',
-        'label_alt' => 'ext_name',
-        'label_alt_force' => true,
-        
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
-        'dividers2tabs' => TRUE,
-
-        'versioningWS' => 2,
-        'versioning_followPages' => TRUE,
-        'origUid' => 't3_origuid',
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
-        'delete' => 'deleted',
-        'enablecolumns' => array(
-            'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ),
-        'searchFields' => 'ext_key,ext_name,ext_version,ext_conf_t3_less,',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateExt.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templateext.gif'
-    ),
-);
-
-/**
- * Extension: t3_less - Basis
- */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ftm_domain_model_templateextt3less', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_templateextt3less.xml');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_templateextt3less');
-$TCA['tx_ftm_domain_model_templateextt3less'] = array(
-    'ctrl' => array(
-        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateextt3less',
-        'label' => 'path_to_less_files',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
-        'dividers2tabs' => TRUE,
-
-        'versioningWS' => 2,
-        'versioning_followPages' => TRUE,
-        'origUid' => 't3_origuid',
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
-        'delete' => 'deleted',
-        'enablecolumns' => array(
-            'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ),
-        'searchFields' => 'path_to_less_files,output_folder,less_files,',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateExtT3Less.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templateextt3less.gif'
-    ),
-);
-
-/**
- * Extension: t3_less - Dateien
- */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ftm_domain_model_templateextt3lessfiles', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_templateextt3lessfiles.xml');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_templateextt3lessfiles');
-$TCA['tx_ftm_domain_model_templateextt3lessfiles'] = array(
-    'ctrl' => array(
-        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateextt3lessfiles',
+        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatetyposcriptsnippet',
         
         'label' => 'name',
-        'label_alt' => 'media',
-        'label_alt_force' => true,
+        'label_alt' => 'type',
+        'label_alt_force' => TRUE,
         
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => TRUE,
         'sortby' => 'sorting',
+        'dividers2tabs' => TRUE,
+
         'versioningWS' => 2,
         'versioning_followPages' => TRUE,
         'origUid' => 't3_origuid',
@@ -451,31 +390,25 @@ $TCA['tx_ftm_domain_model_templateextt3lessfiles'] = array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'name,media,title,compress,force_on_top,all_wrap,exclude_from_concatenation,exclude_from_page_renderer,',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateExtT3LessFiles.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templateextt3lessfiles.gif'
+        'searchFields' => 'name,type,description,constants,setup,',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateTypoScriptSnippet.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templatetyposcriptsnippet.gif'
     ),
 );
 
-/**
- * Fluid Template-Marker
- */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ftm_domain_model_templatemarker', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_templatemarker.xml');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_templatemarker');
-$TCA['tx_ftm_domain_model_templatemarker'] = array(
+
+t3lib_extMgm::addLLrefForTCAdescr('tx_ftm_domain_model_log', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_log.xml');
+t3lib_extMgm::allowTableOnStandardPages('tx_ftm_domain_model_log');
+$TCA['tx_ftm_domain_model_log'] = array(
     'ctrl' => array(
-        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemarker',
-        
-        'label' => 'marker_name',
-        'label_alt' => 'marker_type',
+        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_log',
+        'label' => 'extension_name',
+        'label_alt' => 'action',
         'label_alt_force' => true,
-        
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'sortby' => 'sorting',
         'dividers2tabs' => TRUE,
-
         'versioningWS' => 2,
         'versioning_followPages' => TRUE,
         'origUid' => 't3_origuid',
@@ -488,9 +421,8 @@ $TCA['tx_ftm_domain_model_templatemarker'] = array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'marker_name,marker_descriptiom,marker_typo_script,',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateMarker.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templatemarker.gif'
+        'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Log.php',
+        'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_log.gif'
     ),
 );
 
@@ -912,7 +844,16 @@ $tmp_ftm_columns = array(
         'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xlf:tx_ftm_domain_model_ttaddress.map_tooltip',
         'config' => array(
             'type' => 'input',
-            'size' => 30,
+            'size' => 60,
+            'eval' => 'trim'
+        ),
+    ),
+    'tx_ftm_map_link' => array(
+        'exclude' => 1,
+        'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xlf:tx_ftm_domain_model_ttaddress.map_link',
+        'config' => array(
+            'type' => 'input',
+            'size' => 60,
             'eval' => 'trim'
         ),
     ),
@@ -948,6 +889,7 @@ $tempShowItems=$TCA["tt_address"]["types"][1]['showitem'].= ',--div--;LLL:EXT:ft
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_map_longitude",'','after:section_frame');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_map_zoom",'','after:section_frame');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_map_tooltip",'','after:section_frame');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_map_link",'','after:section_frame');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tt_address", "tx_ftm_directions",'','after:section_frame');
 
 ?>

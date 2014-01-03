@@ -19,7 +19,7 @@
             <label index="fluid.description">Fluid templates</label>
             <label index="fluid_headline_with_info.description">Fluid templates (the first template will be used as default!)</label>
 
-            <label index="marker.description">Marker</label> 
+            <label index="typo_script_snippet.description">TYPOScript snippets</label> 
             <!--
                 Nicht verwenden, damit das ?-Symbol nicht erscheint.
                 Alternativ haben wir ja unsere Info-Row ;)
@@ -49,7 +49,7 @@
             <label index="fluid.description">Fluid-Templates</label>
             <label index="fluid_headline_with_info.description">Fluid-Templates (das erste Template ist das default-Template!)</label>
 
-            <label index="marker.description">Marker</label> 
+            <label index="typo_script_snippet.description">TYPOScript-Schnipsel</label> 
             <!--
                 Nicht verwenden, damit das ?-Symbol nicht erscheint.
                 Alternativ haben wir ja unsere Info-Row ;)

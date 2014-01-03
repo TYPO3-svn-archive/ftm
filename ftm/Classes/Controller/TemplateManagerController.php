@@ -56,13 +56,6 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     protected $fluidTemplateRepository;
 
     /**
-     * Template-Marker Repository
-     *
-     * @var \CodingMs\Ftm\Domain\Repository\TemplateMarkerRepository
-     */
-    protected $fluidTemplateMarkerRepository;
-
-    /**
      * GridLayout Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\GridLayoutRepository
@@ -153,16 +146,6 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     }
 
     /**
-     * injectTemplateMarkerRepository
-     *
-     * @param \CodingMs\Ftm\Domain\Repository\TemplateMarkerRepository $fluidTemplateMarkerRepository
-     * @return void
-     */
-    public function injectTemplateMarkerRepository(\CodingMs\Ftm\Domain\Repository\TemplateMarkerRepository $fluidTemplateMarkerRepository) {
-        $this->fluidTemplateMarkerRepository = $fluidTemplateMarkerRepository;
-    }
-
-    /**
      * Action initialisieren
      * Wird immer aufgerufen wenn irgendeine Action ausgefuehrt wird
      */
@@ -178,7 +161,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         
         // Extension-Konfiguration auslesen
         $this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ftm']);
-        $this->validateExtConf();
+        \CodingMs\Ftm\Service\ExtensionConfiguration::validate($this->extConf);
         
         // Aktuelle Page auslesen
         $this->pid = intval(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'));
@@ -224,9 +207,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $this->pluginService = $this->objectManager->create(
             'CodingMs\Ftm\Service\PluginService', 
             $this->extConf['pluginCloudHost'],
+            $this->extConf['pluginCloudScript'],
             $this->extConf['pcKey'],
             $this->extConf['user'],
-            $this->extConf['password']
+            $this->extConf['password'],
+            $this->extConf['allowLog']
         );
         
     }
@@ -541,257 +526,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         
         return $fluidTemplate;
     }
-
     
-    /**
-     * Erstellt die Less-Variablen Datei zu einem FTM-Template
-     *
-     * @author Thomas Deuling <typo3@coding.ms>
-     * @return void
-     * @since 1.0.0
-     */
-    public function generateLessVariableAction() {
-        
-        // Pruefen ob FTM-Template vorhanden
-        if(!($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message", 'Ftm'); //Die Less-Variablen konnte re-/generiert werden, da auf dieser Seite anscheinen noch kein FTM-Template existiert.
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-        }
-        
-        else {
-            
-            // Less-Variablen ueber Web-Service generieren
-            $result = $this->pluginService->executeAction("generateLessVariable", $this->fluidTemplate->toArray());
-            
-            if($result['status']=='success') {
-                
-                $filepath = \CodingMs\Ftm\Utility\Tools::getDirectory("LessBasic", $this->fluidTemplate->getTemplateDir());
-                $filename = "variables.less";
-                $relPath = $filepath.$filename;
-                
-                $absPath   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
-                $touchPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($filepath);
-                
-                $defaults = "/* FTM - Less-Defaults: */\n";
-                $defaults.= "@baseUrl         = \"".$this->fluidTemplate->getConfig()->getBaseUrl()."\";\n";
-                $defaults.= "@baseUrlTemplate = \"".$this->fluidTemplate->getConfig()->getBaseUrl()."typo3conf/ext/".$this->fluidTemplate->getTemplateDir()."/\";\n";
-                $defaults.= "@baseUrlImage    = \"".$this->fluidTemplate->getConfig()->getBaseUrl()."typo3conf/ext/".$this->fluidTemplate->getTemplateDir()."/Resources/Public/Images/\";\n";
-                $defaults.= "@templateDir     = \"".$this->fluidTemplate->getTemplateDir()."\";\n";
-                $defaults.= "\n";
-                $defaults.= "/* FTM - Less-Customs: */\n";
-                
-                // Versuche Datei zu aktualisieren
-                \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath);
-                if(!file_put_contents($absPath, $defaults.$result['lessVariable'])) {
-                    $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_headline", 'Ftm'); //Less-Variablen wurden re-/generiert!
-                    $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1", 'Ftm') . '<br />'; //Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..Less/BasicLess/variables.less abgespeichert werden.
-                    $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message2", 'Ftm', array($absPath)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath
-                    $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-                }
-                else {
-                    $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.less_variables_generated_headline", 'Ftm'); //Less-Variablen wurden re-/generiert!
-                    $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.less_variables_generated_message", 'Ftm'); //Die Less-Variablen für dieses FTM-Template wurde re-/generiert.
-                    $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-                }
-            }
-            else {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
-                $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message1", 'Ftm') . '<br />'; //Die Less-Variablen konnte re-/generiert werden, es gab einen Fehler beim Aufruf des Generierungs-WebServices.
-                $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message2", 'Ftm'); //Bitte versuchen Sie es später noch einmal. Sollte der Fehler erneut auftreten kontaktieren Sie das Entwicklungs-Team.
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-            }
-            
-            
-        }
-        
-        
-        $this->redirect('list', 'TemplateManager', NULL, array());
-    }
-
-    
-    /**
-     * Merkt sich einen Marker in der PluginCloud
-     *
-     * @author Thomas Deuling <typo3@coding.ms>
-     * @param \CodingMs\Ftm\Domain\Model\TemplateMarker $marker
-     * @return void
-     * @since 1.0.4
-     */
-    public function saveMarkerAction(\CodingMs\Ftm\Domain\Model\TemplateMarker $marker) {
-        
-        // Infos fuer WebService ermitteln
-        $data = $marker->toArray();
-        $data['typo3Version'] = $typo3Version;
-        // $data['templateDir'] = $this->fluidTemplate->getTemplateDir();
-        // $data['baseUrl']      = $this->fluidTemplate->config->getBaseURL();
-        $data['ftmVersion']   = FTM_VERSION;
-        
-        $result = $this->pluginService->executeAction("saveMarker", $data);
-        
-        if($result['status']=='success') {
-            
-            
-             // Pfad ermitteln
-            $typoScript = '';
-            $messageOk  = '';
-            $filepath   = "uploads/tx_ftm/";
-            $relPath    = $filepath;
-            $absPath   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
-
-
-            // Marker schreiben
-            $markerFile       = "marker.serialized";
-            $markerSerialized = $result['marker'];
-            
-            
-            \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath.$markerFile);
-            if(!file_put_contents($absPath.$markerFile, $markerSerialized)) {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline", 'Ftm'); //Snippets wurden ausgelesen!
-                $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1", 'Ftm', array($markerFile)). '<br />'; //Die Marker Snippets wurden ausgelesen, konnten aber nicht in der $markerFile abgespeichert werden.
-                $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2", 'Ftm', array($absPath.$markerFile)); //Bitte prüfe die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath.$markerFile
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-            }
-            
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.marker_saved_headline", 'Ftm'); //Marker wurde gemerkt!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.marker_saved_message", 'Ftm', array($marker->getMarkerName())); // Marker $marker->getMarkerName() wurde in PluginCloud gemerkt.
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-        }
-        else {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_marker_not_saved_headline", 'Ftm'); //Marker nicht gemerkt!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_marker_not_saved_message", 'Ftm', array($marker->getMarkerName())); //Marker $marker->getMarkerName() konnte nicht in der PluginCloud gemerkt werden.
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-        }
-        
-        $this->redirect('list', 'TemplateManager', NULL, array());
-    }
-
-    
-    /**
-     * Setzt einen Marker aus der PluginCloud ein
-     *
-     * @author Thomas Deuling <typo3@coding.ms>
-     * @param \CodingMs\Ftm\Domain\Model\TemplateMarker $marker
-     * @param string $markerName
-     * @return void
-     * @since 1.0.4
-     */
-    public function insertMarkerAction(\CodingMs\Ftm\Domain\Model\TemplateMarker $marker, $markerName) {
-        
-        $error = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_marker_not_found", 'Ftm'); //Der einzufügende Marker konnte nicht gefunden werden.
-        
-        // Snippets auslesen
-        $snippetFolder   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName("uploads/tx_ftm/");
-       
-        
-        if(@file_exists($snippetFolder)) {
-            $markerSerialized = file_get_contents($snippetFolder.'marker.serialized');
-            $markerArray = unserialize($markerSerialized);
-            
-            // Marker-Vorlage suchen
-            if(is_array($markerArray) && !empty($markerArray)) {
-                foreach($markerArray as $tempMarker) {
-
-                    if($tempMarker['markerName']==$markerName) {
-                        
-                        $marker->setMarkerName($tempMarker['markerName']);
-                        $marker->setMarkerType($tempMarker['markerType']);
-                        $marker->setMarkerDescription($tempMarker['markerDescription']);
-                        $marker->setMarkerTypoScript($this->removeSlashes($tempMarker['markerTypoScript']));
-                        
-                        $this->fluidTemplateMarkerRepository->update($marker);
-                        
-                        $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.marker_included_headline", 'Ftm'); //Marker wurde eingefügt!
-                        $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.marker_included_message", 'Ftm', array($markerName, $marker->getMarkerName())) . '<br />'; //Marker-Vorlage $markerName wurde erfolgreich in Marker $marker->getMarkerName() eingefügt.
-                        $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-                    }
-                    // else {
-                        // echo $tempMarker['markerName']."!=".$markerName."<br/>";
-                    // }
-                    
-                }
-            }
-            else {
-                $error = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_markers_not_synchronized", 'Ftm'); //Vorlagen konnten nicht gefunden werden, bitte synchronisieren Sie die Marker.
-            }
-        }
-        else {
-            $error = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_markers_not_synchronized", 'Ftm');
-        }
-        
-        // var_dump($markerArray);
-        // exit;
-        
-        $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_marker_not_included_headline", 'Ftm'); //Marker nicht eingefügt!
-        $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_marker_not_included_message", 'Ftm', array($markerName, $marker->getMarkerName(), $error)); //Marker-Vorlage $markerName konnte nicht in Marker $marker->getMarkerName() eingefügt werden. $error
-        $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-            
-        $this->redirect('list', 'TemplateManager', NULL, array());
-    }
-
-    protected function removeSlashes($text) {
-        $text = str_replace("\\n", "\n", $text);
-        $text = str_replace("\\r", "\r", $text);
-        $text = str_replace("\\\"", "\"", $text);
-        return $text;
-    }
-
-    /**
-     * Liest alle Snippets (Marker, etc.) aus der PluginCloud
-     *
-     * @author Thomas Deuling <typo3@coding.ms>
-     * @return void
-     * @since 1.0.4
-     */
-    public function loadSnippetsAction() {
-        
-        // Infos fuer WebService ermitteln
-        $data = array();
-        $data['typo3Version'] = $this->typo3Version;
-        // $data['templateDir'] = $this->fluidTemplate->getTemplateDir();
-        // $data['baseUrl']      = $this->fluidTemplate->config->getBaseURL();
-        $data['ftmVersion']   = FTM_VERSION;
-        
-        $result = $this->pluginService->executeAction("loadSnippets", $data);
-        
-        if($result['status']=='success') {
-            
-            
-             // Pfad ermitteln
-            $typoScript = '';
-            $messageOk  = '';
-            $filepath   = "uploads/tx_ftm/";
-            $relPath    = $filepath;
-            $absPath    = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
-
-
-            // Marker schreiben
-            $markerFile       = "marker.serialized";
-            $markerSerialized = $result['marker'];
-            
-            
-            \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath.$markerFile);
-            if(!file_put_contents($absPath.$markerFile, $markerSerialized)) {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline", 'Ftm'); //Snippets wurden ausgelesen!
-                $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1", 'Ftm', array($markerFile)) . '<br />'; //Die Marker Snippets wurden ausgelesen, konnten aber nicht in der $markerFile abgespeichert werden.
-                $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2", 'Ftm'); //Bitte prüfe die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath.$markerFile
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-            }
-            
-            
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.snippets_read_headline", 'Ftm'); //Snippets wurden ausgelesen!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.snippets_read_message", 'Ftm'); //Es wurden alle Snippets aus der PluginCloud ausgelesen.
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-        }
-        else {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_headline", 'Ftm'); //Snippets nicht ausgelesen!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_message", 'Ftm'); //Es konnten keine Snippets aus der PluginCloud ausgelesen werden.
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-        }
-        
-        $this->redirect('list', 'TemplateManager', NULL, array());
-    }
-
     /**
      * Erstellt das TypoScript zu einem FTM-Template
      *
@@ -863,9 +598,6 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             if(!$dataCheckFailed) {
                          
                 $result = $this->pluginService->executeAction("generateTypoScript", $templateDataArray);
-                
-                
-                // Antwort auswerten
                 if($result['status']=='success') {
                     
                     
@@ -948,6 +680,10 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     }
                    
     
+                }
+                else {
+                    $errors = str_replace('|', '<br />', $result['errors']);
+                    $this->flashMessageContainer->add($errors, 'TypoScript konnte nicht re-/generiert werden!', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
                 }
             }
             
@@ -1140,15 +876,15 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
              
             // Extensions:t3_less
             // -----------------------------
-            $fluidTemplateExt     = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateExt');
-            $fluidTemplateExtConf = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateExtT3Less');
-            $fluidTemplateExtConf->setPid($this->pid);
-            $fluidTemplateExt->setPid($this->pid);
-            $fluidTemplateExt->setExtKey('t3_less');
-            $fluidTemplateExt->setExtName('LESS for TYPO3');
-            $fluidTemplateExt->setExtVersion('1.0.7');
-            $fluidTemplateExt->setExtConfT3Less($fluidTemplateExtConf);
-            $fluidTemplate->addExtension($fluidTemplateExt);
+            // $fluidTemplateExt     = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateExt');
+            // $fluidTemplateExtConf = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateExtT3Less');
+            // $fluidTemplateExtConf->setPid($this->pid);
+            // $fluidTemplateExt->setPid($this->pid);
+            // $fluidTemplateExt->setExtKey('t3_less');
+            // $fluidTemplateExt->setExtName('LESS for TYPO3');
+            // $fluidTemplateExt->setExtVersion('1.0.7');
+            // $fluidTemplateExt->setExtConfT3Less($fluidTemplateExtConf);
+            // $fluidTemplate->addExtension($fluidTemplateExt);
             
             /**
              * @ToDo: import.less by default einsetzen
@@ -1294,51 +1030,23 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         }
         
         // In den t3_less Constants setzen/aktualisieren
-        $lessExtension = $this->fluidTemplate->getExtensionByName('t3_less');
-        if(!($lessExtension instanceof \CodingMs\Ftm\Domain\Model\TemplateExt)) {
-            throw new \Exception("FTM-Template doesnt contain the required t3_less object", 1);
-        }
-        else {
-            $lessExtensionConf = $lessExtension->getExtConfT3Less();
-            if(!($lessExtensionConf instanceof \CodingMs\Ftm\Domain\Model\TemplateExtT3Less)) {
-                throw new \Exception("FTM-Template doesnt contain the required t3_less configuration object", 1);
-            }
-            else {
-                $lessExtensionConf->setPathToLessFiles(\CodingMs\Ftm\Utility\Tools::getDirectory("Less", $templateName));
-                $lessExtensionConf->setOutputFolder(\CodingMs\Ftm\Utility\Tools::getDirectory("Stylesheets", $templateName));
-            }
-        }
+        // $lessExtension = $this->fluidTemplate->getExtensionByName('t3_less');
+        // if(!($lessExtension instanceof \CodingMs\Ftm\Domain\Model\TemplateExt)) {
+            // throw new \Exception("FTM-Template doesnt contain the required t3_less object", 1);
+        // }
+        // else {
+            // $lessExtensionConf = $lessExtension->getExtConfT3Less();
+            // if(!($lessExtensionConf instanceof \CodingMs\Ftm\Domain\Model\TemplateExtT3Less)) {
+                // throw new \Exception("FTM-Template doesnt contain the required t3_less configuration object", 1);
+            // }
+            // else {
+                // $lessExtensionConf->setPathToLessFiles(\CodingMs\Ftm\Utility\Tools::getDirectory("Less", $templateName));
+                // $lessExtensionConf->setOutputFolder(\CodingMs\Ftm\Utility\Tools::getDirectory("Stylesheets", $templateName));
+            // }
+        // }
         
         // Geaendertes Template speichern
         $this->fluidTemplateRepository->update($this->fluidTemplate);
-        
-    }
-
-
-    /**
-     * Prueft on in der Extension-Konfiguration
-     * alle notwendigen Werte vorhanden sind
-     * 
-     * @return void
-     * @since 1.0.0
-     */
-    protected function validateExtConf() {
-        
-        if(!isset($this->extConf['pluginCloudHost']) || trim($this->extConf['pluginCloudHost'])=='') {
-            throw new \Exception("Extension configuration isnt valid! pluginCloudHost not found! Default value is plugincloud.de.", 1);
-        }
-        
-        if(!isset($this->extConf['pcKey']) || trim($this->extConf['pcKey'])=='') {
-            throw new \Exception("Extension configuration isnt valid! pcKey not found! Default value is public.", 1);
-        }
-        
-        if(!isset($this->extConf['user']) || trim($this->extConf['user'])=='') {
-            throw new \Exception("Extension configuration isnt valid! user not found! Default value is noUser.", 1);
-        }
-        
-        if(!isset($this->extConf['password']) || trim($this->extConf['password'])=='') {
-            throw new \Exception("Extension configuration isnt valid! password not found! Default value is noPassword.", 1);
-        }
         
     }
 

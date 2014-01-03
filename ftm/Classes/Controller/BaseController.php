@@ -24,6 +24,8 @@ namespace CodingMs\Ftm\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use CodingMs\Ftm\Utility\Console;
+use CodingMs\Ftm\Utility\Log;
 
 /**
  *
@@ -154,7 +156,9 @@ class BaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      */
     protected function pushMessage($type='OK', $languageKey='', $extensionKey='Ftm') {
         \CodingMs\Ftm\Utility\Console::log('BaseController->pushMessage('.$type.', '.$languageKey.', '.$extensionKey.')');
-        
+
+        Log::
+
         // Valide Typen
         $validTypes = array();
         $validTypes['NOTICE']  = '\TYPO3\CMS\Core\Messaging\FlashMessage::NOTICE';
@@ -167,7 +171,7 @@ class BaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         if(array_key_exists($type, $validTypes)) {
             
             // Key-Prefix: tx_ftm_message.*
-            $keyPrefix = 'tx_'.strtolower($extensionKey).'_messages';
+            $keyPrefix = 'tx_'.strtolower($extensionKey).'_message';
             
             // Sprach-Key: error_*
             $key = strtolower($type).'_'.strtolower($languageKey);
@@ -193,8 +197,28 @@ class BaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         }
     }
 
+    protected function translate($type='label', $languageKey='', $extensionKey='Ftm') {
+        // Key-Prefix: tx_ftm_label.*
+        $keyPrefix = 'tx_'.strtolower($extensionKey).'_'.strtolower($type);
+        
+        // Schauen ob es eine Uebersetzung gibt
+        $translation = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($keyPrefix.'.'.$languageKey, $extensionKey);
+        if($translation===NULL) {
+            $translation = $languageKey;
+            \CodingMs\Ftm\Utility\Console::warn('missed language value '.$keyPrefix.'.'.$languageKey.' ('.$extensionKey.' locallang.xlf)');
+        }
+        return $translation;
+    }
+
+    protected function prepareView() {
+        \CodingMs\Ftm\Utility\Console::log('prepareView()');
+        $this->session['flashMessages'] = $this->messages;
+        \CodingMs\Ftm\Utility\Console::log(json_encode($this->session['flashMessages']));
+        $this->restoreMessages();
+    }
+
     protected function restoreMessages() {
-        // \CodingMs\Ftm\Utility\Console::log('restoreMessages-start');
+        \CodingMs\Ftm\Utility\Console::log('restoreMessages-start');
         // \CodingMs\Ftm\Utility\Console::log(json_encode($this->session['flashMessages']));
 
         if(isset($this->session['flashMessages']) && is_array($this->session['flashMessages']) && !empty($this->session['flashMessages'])) {

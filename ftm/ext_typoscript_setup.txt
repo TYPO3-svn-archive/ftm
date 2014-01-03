@@ -112,6 +112,7 @@ config.tx_extbase.persistence.classes {
             tx_ftm_map_longitude.mapOnProperty = mapLongitude
             tx_ftm_map_zoom.mapOnProperty      = mapZoom
             tx_ftm_map_tooltip.mapOnProperty   = mapTooltip
+            tx_ftm_map_link.mapOnProperty      = mapLink
             tx_ftm_directions.mapOnProperty    = directions
             
         }
@@ -124,10 +125,81 @@ config.tx_extbase.persistence.classes {
         columns {
             uid.mapOnProperty = uid
             pid.mapOnProperty = pid
-            hidden.mapOnProperty = hidden
+            hidden.mapOnProperty  = hidden
             deleted.mapOnProperty = deleted
-            title.mapOnProperty = title
+            title.mapOnProperty   = title
             description.mapOnProperty = description
+        }
+    }
+    CodingMs\Ftm\Domain\Model\StaticCountry.mapping {
+        tableName = static_countries
+        columns {
+            cn_iso_2.mapOnProperty = isoCodeA2
+            cn_iso_3.mapOnProperty = isoCodeA3
+            cn_iso_nr.mapOnProperty = isoCodeNumber
+            cn_parent_tr_iso_nr.mapOnProperty = parentTerritoryCode
+            cn_official_name_local.mapOnProperty = officialNameLocal
+            cn_official_name_en.mapOnProperty = officialName
+            cn_capital.mapOnProperty = capital
+            cn_tldomain.mapOnProperty = topLevelDomain
+            cn_currency_iso_3.mapOnProperty = currencyCode
+            cn_currency_iso_nr.mapOnProperty = currencyCodeNumber
+            cn_phone.mapOnProperty = phonePrefix
+            cn_eu_member.mapOnProperty = euMember
+            cn_address_format.mapOnProperty = addressFormat
+            cn_zone_flag.mapOnProperty = zoneFlag
+            cn_short_local.mapOnProperty = shortNameLocal
+            cn_short_en.mapOnProperty = shortName
+            cn_uno_member.mapOnProperty = unMember
+        }
+    }
+    CodingMs\Ftm\Domain\Model\StaticCountryZone.mapping {
+        tableName = static_country_zones
+        columns {
+            zn_country_iso_2.mapOnProperty  = countryIsoCodeA2
+            zn_country_iso_3.mapOnProperty  = countryIsoCodeA3
+            zn_country_iso_nr.mapOnProperty = countryIsoCodeNumber
+            zn_code.mapOnProperty           = isoCode
+            zn_name_local.mapOnProperty     = localName
+            zn_name_en.mapOnProperty        = name
+        }
+    }
+    CodingMs\Ftm\Domain\Model\StaticCurrency.mapping {
+        tableName = static_currencies
+        columns {
+            cu_iso_3.mapOnProperty            = isoCodeA3
+            cu_iso_nr.mapOnProperty           = isoCodeNumber
+            cu_name_en.mapOnProperty          = name
+            cu_symbol_left.mapOnProperty      = symbolLeft
+            cu_symbol_right.mapOnProperty     = symbolRight
+            cu_thousands_point.mapOnProperty  = thousandsPoint
+            cu_decimal_point.mapOnProperty    = decimalPoint
+            cu_decimal_digits.mapOnProperty   = decimalDigits
+            cu_sub_name_en.mapOnProperty      = subName
+            cu_sub_divisor.mapOnProperty      = divisor
+            cu_sub_symbol_left.mapOnProperty  = subSymbolLeft
+            cu_sub_symbol_right.mapOnProperty = subSymbolRight
+        }
+    }
+    CodingMs\Ftm\Domain\Model\StaticLanguage.mapping {
+        tableName = static_languages
+        columns {
+            lg_iso_2.mapOnProperty          = isoCode
+            lg_name_en.mapOnProperty        = name
+            lg_typo3.mapOnProperty          = typo3Code
+            lg_country_iso_2.mapOnProperty  = countryIsoCode
+            lg_collate_locale.mapOnProperty = collatingLocale
+            lg_name_local.mapOnProperty     = localName
+            lg_sacred.mapOnProperty         = sacredLanguage
+            lg_constructed.mapOnProperty    = constructedLanguage
+        }
+    }
+    CodingMs\Ftm\Domain\Model\StaticTerritory.mapping {
+        tableName = static_territories
+        columns {
+            tr_iso_nr.mapOnProperty        = isoCode
+            tr_parent_iso_nr.mapOnProperty = parentTerritoryCode
+            tr_name_en.mapOnProperty       = name
         }
     }
 

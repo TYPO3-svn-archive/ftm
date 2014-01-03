@@ -160,20 +160,20 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $menuContainer;
 
     /**
-     * Marker
+     * TypoScriptSnippet
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateMarker>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet>
      * @since 1.0.0
      */
-    protected $marker;
+    protected $typoScriptSnippet;
 
     /**
-     * Marker
+     * TypoScriptSnippet
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt>
      * @since 1.0.0
-     */
     protected $extensions;
+     */
 
     /**
      * __construct
@@ -202,8 +202,8 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         $this->fluid         = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->lessVariable  = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->menuContainer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->marker        = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->extensions    = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->typoScriptSnippet        = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        //$this->extensions    = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -621,46 +621,46 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     }
 
     /**
-     * Adds a TemplateMarker
+     * Adds a TemplateTypoScriptSnippet
      *
-     * @param \CodingMs\Ftm\Domain\Model\TemplateMarker $marker
+     * @param \CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet $typoScriptSnippet
      * @return void
      * @since 1.0.0
      */
-    public function addMarker(\CodingMs\Ftm\Domain\Model\TemplateMarker $marker) {
-        $this->marker->attach($marker);
+    public function addTypoScriptSnippet(\CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet $typoScriptSnippet) {
+        $this->typoScriptSnippet->attach($typoScriptSnippet);
     }
 
     /**
-     * Removes a TemplateMarker
+     * Removes a TemplateTypoScriptSnippet
      *
-     * @param \CodingMs\Ftm\Domain\Model\TemplateMarker $markerToRemove The TemplateMarker to be removed
+     * @param \CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet $typoScriptSnippetToRemove The TemplateTypoScriptSnippet to be removed
      * @return void
      * @since 1.0.0
      */
-    public function removeMarker(\CodingMs\Ftm\Domain\Model\TemplateMarker $markerToRemove) {
-        $this->marker->detach($markerToRemove);
+    public function removeTypoScriptSnippet(\CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet $typoScriptSnippetToRemove) {
+        $this->typoScriptSnippet->detach($typoScriptSnippetToRemove);
     }
 
     /**
-     * Returns the marker
+     * Returns the typoScriptSnippet
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateMarker> $marker
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet> $typoScriptSnippet
      * @since 1.0.0
      */
-    public function getMarker() {
-        return $this->marker;
+    public function getTypoScriptSnippet() {
+        return $this->typoScriptSnippet;
     }
 
     /**
-     * Sets the marker
+     * Sets the typoScriptSnippet
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateMarker> $marker
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet> $typoScriptSnippet
      * @return void
      * @since 1.0.0
      */
-    public function setMarker(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $marker) {
-        $this->marker = $marker;
+    public function setTypoScriptSnippet(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $typoScriptSnippet) {
+        $this->typoScriptSnippet = $typoScriptSnippet;
     }
 
     /**
@@ -669,10 +669,10 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @param \CodingMs\Ftm\Domain\Model\TemplateExt $extension
      * @return void
      * @since 1.0.0
-     */
     public function addExtension(\CodingMs\Ftm\Domain\Model\TemplateExt $extension) {
         $this->extensions->attach($extension);
     }
+     */
 
     /**
      * Removes a TemplateExt
@@ -680,10 +680,10 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @param \CodingMs\Ftm\Domain\Model\TemplateExt $extensionToRemove The TemplateExt to be removed
      * @return void
      * @since 1.0.0
-     */
     public function removeExtension(\CodingMs\Ftm\Domain\Model\TemplateExt $extensionToRemove) {
         $this->extensions->detach($extensionToRemove);
     }
+     */
 
     /**
      * Returns the extensions
@@ -691,7 +691,6 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @param string $extName Name of the extensions
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt> $extensions
      * @since 1.0.0
-     */
     public function getExtensionByName($extName) {
         $ext = null;
         if($this->extensions->count()>0) {
@@ -703,16 +702,17 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         }
         return $ext;
     }
+     */
 
     /**
      * Returns the extensions
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt> $extensions
      * @since 1.0.0
-     */
     public function getExtensions() {
         return $this->extensions;
     }
+     */
 
     /**
      * Sets the extensions
@@ -720,10 +720,10 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt> $extensions
      * @return void
      * @since 1.0.0
-     */
     public function setExtensions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $extensions) {
         $this->extensions = $extensions;
     }
+     */
 
     /**
      * Returns the Less-ContentLayouts
@@ -797,7 +797,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
             }
         }
         $data['lessVariable'] = serialize($tempLessVariableArray);
-        
+        $data['dyncssVariable'] = serialize($tempLessVariableArray);
         
         // Fluid-Template-Daten
         // ------------------------------
@@ -810,15 +810,15 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         $data['fluid'] = serialize($tempFluidArray);
         
         
-        // Marker-Daten
+        // TypoScriptSnippet-Daten
         // ------------------------------
-        $tempMarkerArray = array();
-        if(!empty($this->marker)) {
-            foreach($this->marker as $tempMarker) {
-                $tempMarkerArray[$tempMarker->getMarkerName()] = $tempMarker->toArray();
+        $tempTypoScriptSnippetArray = array();
+        if(!empty($this->typoScriptSnippet)) {
+            foreach($this->typoScriptSnippet as $tempTypoScriptSnippet) {
+                $tempTypoScriptSnippetArray[$tempTypoScriptSnippet->getName()] = $tempTypoScriptSnippet->toArray();
             }
         }
-        $data['marker'] = serialize($tempMarkerArray);
+        $data['typoScriptSnippets'] = serialize($tempTypoScriptSnippetArray);
         
         
         // Menu-Daten
@@ -834,13 +834,13 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         
         // Extension-Daten
         // ------------------------------
-        $tempExtensionArray = array();
-        if(!empty($this->extensions)) {
-            foreach($this->extensions as $tempExtension) {
-                $tempExtensionArray[$tempExtension->getExtKey()] = $tempExtension->toArray();
-            }
-        }
-        $data['extensions'] = serialize($tempExtensionArray);
+        // $tempExtensionArray = array();
+        // if(!empty($this->extensions)) {
+            // foreach($this->extensions as $tempExtension) {
+                // $tempExtensionArray[$tempExtension->getExtKey()] = $tempExtension->toArray();
+            // }
+        // }
+        // $data['extensions'] = serialize($tempExtensionArray);
         
         
         return $data;

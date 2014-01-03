@@ -255,7 +255,7 @@ class Console {
         $someErrorHappens = FALSE;
         
         // HTML Response
-        if(!empty(self::$consoleRows) && ((int)$_REQUEST['type']===0 || (int)$_REQUEST['type']===1802)) {
+        if(!empty(self::$consoleRows) && self::$active && ((int)$_REQUEST['type']===0 || (int)$_REQUEST['type']===1802)) {
             $logging = "<script>";
             $logging.= "if(typeof(console)!='undefined' && console!=null) {\n";
             foreach(self::$consoleRows as $row) {

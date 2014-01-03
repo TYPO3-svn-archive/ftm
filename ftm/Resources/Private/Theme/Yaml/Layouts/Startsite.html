@@ -1,0 +1,64 @@
+<div id="layout-startsite">
+
+  <ul class="ym-skiplinks">
+    <li><a class="ym-skip" href="#nav">Skip to navigation (Press Enter)</a></li>
+    <li><a class="ym-skip" href="#main">Skip to main content (Press Enter)</a></li>
+  </ul>
+
+  <div id="areaTop">
+    <div class="ym-wrapper">
+      <div class="ym-wbox"></div>
+    </div>
+  </div>
+
+  <header id="areaHeader">
+    <div class="ym-wrapper">
+      <div class="ym-wbox">
+        <h1><f:cObject typoscriptObjectPath="lib.logo"></f:cObject></h1>
+      </div>
+    </div>
+  </header>
+  
+  <section id="areaTeaser">
+    <div class="ym-wrapper">
+      <div class="ym-wbox">
+        <f:cObject typoscriptObjectPath="lib.area.teaser"></f:cObject>
+      </div>
+    </div>
+  </section>
+
+  <nav id="areaNav">
+    <div class="ym-wrapper">
+      <div class="ym-hlist">
+        <f:cObject typoscriptObjectPath="lib.nav.main"></f:cObject>
+        <f:render partial="QuickSearch"></f:render>
+      </div>
+    </div>
+  </nav>
+
+  <main id="areaMain">
+    <div class="ym-wrapper">
+      <div class="ym-wbox">        
+        <f:render section="content"></f:render>        
+      </div>
+    </div>
+  </main>
+  
+  <section id="areaExtended">
+    <div class="ym-wrapper">
+      <div class="ym-wbox">
+        <f:cObject typoscriptObjectPath="lib.area.extended"></f:cObject>
+      </div>
+    </div>
+  </section>
+    
+  <footer id="areaFooter">
+    <div class="ym-wrapper">
+      <div class="ym-wbox">
+        <f:cObject typoscriptObjectPath="lib.copyright"></f:cObject>
+        <f:cObject typoscriptObjectPath="lib.nav.footer"></f:cObject>
+      </div>
+    </div>
+  </footer>
+  
+</div>

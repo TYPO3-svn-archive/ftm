@@ -58,11 +58,17 @@ class PluginService {
      */
     protected $token = '';
     
+    /**
+     * Loggen erlauben?!
+     * @var boolean
+     */
+     protected $allowLog = false;
     
-    function __construct($pcHost="plugincloud.de", $pcKey="public", $user="noUser", $password="noPassword") {
+    function __construct($pcHost="fluid-template-manager.de", $pcScript='index.php?id=75', $pcKey="public", $user="noUser", $password="noPassword", $allowLog=false) {
+        $this->allowLog = $allowLog;
         $this->pluginCloudHost = $pcHost;
         $this->token = base64_encode($user.":".$password);
-        $this->pluginConnector = new \CodingMs\Ftm\Service\PluginConnector($this->pluginCloudHost, $this->plugin, $pcKey);
+        $this->pluginConnector = new \CodingMs\Ftm\Service\PluginConnector($this->pluginCloudHost, $pcScript, $pcKey);
     }
   
     
@@ -71,6 +77,8 @@ class PluginService {
      */
     public function executeAction($action='', array $dataValues=array(), $dataType='xml') {
         
+        // Das Loggen der Daten erlauben!?
+        $dataValues['allowLog'] = $this->allowLog;
         
         // Daten in XML ueberfuehren
         $dataXml = '';
@@ -130,6 +138,7 @@ class PluginService {
             foreach(libxml_get_errors() as $error) {
                 $errorData .= $error->message."\n";
             }
+            var_dump(strip_tags($data));
             throw new \Exception($errorData."Data is not valid!", E_WARNING);
         }
         

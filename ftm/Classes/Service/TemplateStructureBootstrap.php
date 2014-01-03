@@ -56,10 +56,10 @@ class TemplateStructureBootstrap extends TemplateStructure {
     );
     
     protected $fluidPartials = array(
-        'MainContent'    => 'MainContent.html',
-        'MenuContent'    => 'MenuContent.html',
-        'QuickSearch'    => 'QuickSearch.html',
-        'SidebarContent' => 'SidebarContent.html',
+        'MainContent'        => 'MainContent.html',
+        'MenuContent'        => 'MenuContent.html',
+        'QuickIndexedSearch' => 'QuickIndexedSearch.html',
+        'SidebarContent'     => 'SidebarContent.html',
     );
     
     protected $lessFiles = array(
@@ -110,7 +110,7 @@ class TemplateStructureBootstrap extends TemplateStructure {
     );
     
     protected $lessVariables = array(
-        array('Basis Url für die Bilder',                                                               'baseUrlImage',                   '', 'string', ' ',                                ' ',       '@{baseUrlTemplate}Resources/Public/Images/'),
+        // array('Basis Url für die Bilder',                                                               'baseUrlImage',                   '', 'string', ' ',                                ' ',       '@{baseUrlTemplate}Resources/Public/Images/'),
         
         
         //     Name                                                                                      Variable                          Kategorie      Typ       Value                       Color     String
@@ -153,7 +153,7 @@ class TemplateStructureBootstrap extends TemplateStructure {
         array('Typography: headings-line-height',                                                       'link-color',                     'Typography',       'value',  '1.1',           '',       ''),
         
         //     Name                                                                                      Variable                          Kategorie      Typ       Value                       Color     String
-        // array('Iconography: icon-font-path',                                                            'icon-font-path',                 'Iconography',       'value',  '../fonts/',           '',       ''),
+        // array('Iconography: icon-font-path',                                                            'icon-font-path',                 'Iconography',       'string',  '../fonts/',           '',       ''),
         // array('Iconography: icon-font-name',                                                            'icon-font-name',                 'Iconography',       'value',  'glyphicons-halflings-regular', '',       ''),
 //         
         // //     Name                                                                                      Variable                          Kategorie      Typ       Value                       Color     String
@@ -237,12 +237,12 @@ class TemplateStructureBootstrap extends TemplateStructure {
         // array('Forms: legend-border-color',                                                              'legend-border-color',            'Forms',       'color',  '',                                                                                     '#e5e5e5',       ''),
 //         
         // array('Forms: input-group-addon-bg',                                                             'input-group-addon-bg',           'Forms',       'value',  '@gray-lighter',                                                                        '',       ''),
-        // array('Forms: input-group-addon-border-color',                                                   'input-group-addon-border-color', 'Forms',       'color',  '@input-border',                                                                        '',       ''),
+        // array('Forms: input-group-addon-border-color',                                                   'input-group-addon-border-color', 'Forms',       'value',  '@input-border',                                                                        '',       ''),
 //         
         // //     Name                                                                                      Variable                          Kategorie      Typ       Value                    Color          String
         // array('Dropdowns: dropdown-bg',                                                                  'dropdown-bg',                    'Dropdowns',   'color',  '',                         '#fff',     ''),
         // array('Dropdowns: dropdown-border',                                                              'dropdown-border',                'Dropdowns',   'value',  'rgba(0,0,0,.15)',          '',         ''),
-        // array('Dropdowns: dropdown-fallback-border',                                                     'dropdown-fallback-border',       'Dropdowns',   'value',  '',                         '#ccc',     ''),
+        // array('Dropdowns: dropdown-fallback-border',                                                     'dropdown-fallback-border',       'Dropdowns',   'color',  '',                         '#ccc',     ''),
         // array('Dropdowns: dropdown-divider-bg',                                                          'dropdown-divider-bg',            'Dropdowns',   'color',  '',                         '#e5e5e5',  ''),
 //         
         // array('Dropdowns: dropdown-link-active-color',                                                   'dropdown-link-active-color',     'Dropdowns',   'color',  '',                         '#fff',     ''),
@@ -320,7 +320,7 @@ class TemplateStructureBootstrap extends TemplateStructure {
         // array('Navbar: navbar-inverse-border',                                                           'navbar-inverse-border',                       'Navbar',                        'value',  'darken(@navbar-inverse-bg, 10%)',                   '',             ''),
 //         
         // array('Navbar: navbar-inverse-link-color',                                                       'navbar-inverse-link-color',                   'Navbar',                        'value',  '@gray-light',                                       '',             ''),
-        // array('Navbar: navbar-inverse-link-hover-color',                                                 'navbar-inverse-link-hover-color',             'Navbar',                        'color',  '',                                                  '',             ''),
+        // array('Navbar: navbar-inverse-link-hover-color',                                                 'navbar-inverse-link-hover-color',             'Navbar',                        'color',  '',                                                  '#FFF',             ''),
         // array('Navbar: navbar-inverse-link-hover-bg',                                                    'navbar-inverse-link-hover-bg',                'Navbar',                        'value',  'transparent',                                       '',             ''),
         // array('Navbar: navbar-inverse-link-active-color',                                                'navbar-inverse-link-active-color',            'Navbar',                        'value',  '@navbar-inverse-link-hover-color',                  '',             ''),
         // array('Navbar: navbar-inverse-link-active-bg',                                                   'navbar-inverse-link-active-bg',               'Navbar',                        'value',  'darken(@navbar-inverse-bg, 10%)',                   '',             ''),
@@ -328,13 +328,13 @@ class TemplateStructureBootstrap extends TemplateStructure {
         // array('Navbar: navbar-inverse-link-disabled-bg',                                                 'navbar-inverse-link-disabled-bg',             'Navbar',                        'value',  'transparent',                                       '',             ''),
 //         
         // array('Navbar: navbar-inverse-brand-color',                                                      'navbar-inverse-brand-color',                  'Navbar',                        'value',  '@navbar-inverse-link-color',                        '',             ''),
-        // array('Navbar: navbar-inverse-brand-hover-color',                                                'navbar-inverse-brand-hover-color',            'Navbar',                        'color',  '#fff',                                              '',             ''),
+        // array('Navbar: navbar-inverse-brand-hover-color',                                                'navbar-inverse-brand-hover-color',            'Navbar',                        'color',  '',                                                  '#fff',             ''),
         // array('Navbar: navbar-inverse-brand-hover-bg',                                                   'navbar-inverse-brand-hover-bg',               'Navbar',                        'value',  'transparent',                                       '',             ''),
 //         
         // array('Navbar: navbar-inverse-search-bg',                                                        'navbar-inverse-search-bg',                    'Navbar',                        'value',  'lighten(@navbar-inverse-bg, 25%)',                  '',             ''),
         // array('Navbar: navbar-inverse-search-bg-focus',                                                  'navbar-inverse-search-bg-focus',              'Navbar',                        'color',  '',                                                  '#fff',             ''),
         // array('Navbar: navbar-inverse-search-border',                                                    'navbar-inverse-search-border',                'Navbar',                        'value',  '@navbar-inverse-bg',                                '',             ''),
-        // array('Navbar: navbar-inverse-search-placeholder-color',                                         'navbar-inverse-search-placeholder-color',     'Navbar',                        'value',  '',                                                  '#ccc',             ''),
+        // array('Navbar: navbar-inverse-search-placeholder-color',                                         'navbar-inverse-search-placeholder-color',     'Navbar',                        'color',  '',                                                  '#ccc',             ''),
 //         
         // array('Navbar: navbar-inverse-toggle-hover-bg',                                                  'navbar-inverse-toggle-hover-bg',              'Navbar',                        'color',  '',                                                  '#333',             ''),
         // array('Navbar: navbar-inverse-toggle-icon-bar-bg',                                               'navbar-inverse-toggle-icon-bar-bg',           'Navbar',                        'color',  '',                                                  '#fff',             ''),

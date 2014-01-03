@@ -1,10 +1,10 @@
 ================================
-CSS/LESS im FTM
+CSS/LESS im FTM <1.1.1
 ================================
 `Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `CSS/LESS im FTM <http://fluid-template-manager.de/documentation/Css-Less.html>`_
 
 
-Lesen Sie hier wie Sie Ihre FTM-Template mit CSS/LESS optimieren und flexibel halten. 
+Lesen Sie hier wie Sie Ihre FTM-Templates mit CSS/LESS optimieren und flexibel halten. 
 
 .. important:: Achtung: Diese Seite ist veraltet und wird gerade überarbeitet!
 

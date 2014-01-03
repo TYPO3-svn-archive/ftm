@@ -201,7 +201,7 @@ $TCA['tx_ftm_domain_model_templatemenucontainer'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenucontainer.max_items',
             'config' => array(
                 'type' => 'input',
-                'size' => 30,
+                'size' => 13,
                 'eval' => 'trim'
             ),
         ),
@@ -211,7 +211,7 @@ $TCA['tx_ftm_domain_model_templatemenucontainer'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenucontainer.min_items',
             'config' => array(
                 'type' => 'input',
-                'size' => 30,
+                'size' => 13,
                 'eval' => 'trim'
             ),
         ),
@@ -220,7 +220,7 @@ $TCA['tx_ftm_domain_model_templatemenucontainer'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenucontainer.std_wrap',
             'config' => array(
                 'type' => 'input',
-                'size' => 30,
+                'size' => 69,
                 'eval' => 'trim'
             ),
         ),
@@ -229,7 +229,7 @@ $TCA['tx_ftm_domain_model_templatemenucontainer'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenucontainer.wrap',
             'config' => array(
                 'type' => 'input',
-                'size' => 30,
+                'size' => 69,
                 'eval' => 'trim'
             ),
         ),

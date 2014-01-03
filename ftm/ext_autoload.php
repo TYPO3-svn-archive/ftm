@@ -13,16 +13,12 @@ return array(
     'CodingMs\Ftm\Domain\Model\TemplateLanguage'       => $extensionClassesPath.'Domain/Model/TemplateLanguage.php',
     'CodingMs\Ftm\Domain\Model\TemplateMeta'           => $extensionClassesPath.'Domain/Model/TemplateMeta.php',
     'CodingMs\Ftm\Domain\Model\TemplateFluid'          => $extensionClassesPath.'Domain/Model/TemplateFluid.php',
-    'CodingMs\Ftm\Domain\Model\TemplateMarker'         => $extensionClassesPath.'Domain/Model/TemplateMarker.php',
+    'CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet'         => $extensionClassesPath.'Domain/Model/TemplateTypoScriptSnippet.php',
     'CodingMs\Ftm\Domain\Model\TemplateLessVariable'   => $extensionClassesPath.'Domain/Model/TemplateLessVariable.php',
     
     'CodingMs\Ftm\Domain\Model\TemplateMenuContainer'  => $extensionClassesPath.'Domain/Model/TemplateMenuContainer.php',
     'CodingMs\Ftm\Domain\Model\TemplateMenuObject'     => $extensionClassesPath.'Domain/Model/TemplateMenuObject.php',
     'CodingMs\Ftm\Domain\Model\TemplateMenuState'      => $extensionClassesPath.'Domain/Model/TemplateMenuState.php',
-    
-    'CodingMs\Ftm\Domain\Model\TemplateExt'            => $extensionClassesPath.'Domain/Model/TemplateExt.php',
-    'CodingMs\Ftm\Domain\Model\TemplateExtT3Less'      => $extensionClassesPath.'Domain/Model/TemplateExtT3Less.php',
-    'CodingMs\Ftm\Domain\Model\TemplateExtT3LessFiles' => $extensionClassesPath.'Domain/Model/TemplateExtT3LessFiles.php',
     
     'CodingMs\Ftm\Domain\Model\BackendLayout'          => $extensionClassesPath.'Domain/Model/BackendLayout.php',
     'CodingMs\Ftm\Domain\Model\GridLayout'             => $extensionClassesPath.'Domain/Model/GridLayout.php',
@@ -35,7 +31,7 @@ return array(
     
     // Repositories
     'CodingMs\Ftm\Domain\Repository\TemplateRepository'       => $extensionClassesPath.'Domain/Repository/TemplateRepository.php',
-    'CodingMs\Ftm\Domain\Repository\TemplateMarkerRepository' => $extensionClassesPath.'Domain/Repository/TemplateMarkerRepository.php',
+    'CodingMs\Ftm\Domain\Repository\TemplateTypoScriptSnippetRepository' => $extensionClassesPath.'Domain/Repository/TemplateTypoScriptSnippetRepository.php',
     'CodingMs\Ftm\Domain\Repository\BackendLayoutRepository'  => $extensionClassesPath.'Domain/Repository/BackendLayoutRepository.php',
     'CodingMs\Ftm\Domain\Repository\GridLayoutRepository'     => $extensionClassesPath.'Domain/Repository/GridLayoutRepository.php',
     'CodingMs\Ftm\Domain\Repository\SysTemplateRepository'    => $extensionClassesPath.'Domain/Repository/SysTemplateRepository.php',
@@ -77,7 +73,7 @@ return array(
     'CodingMs\Ftm\ViewHelper\ContentViewHelper'          => $extensionClassesPath.'ViewHelper/ContentViewHelper.php',
     'CodingMs\Ftm\ViewHelper\RenderExternalViewHelper'   => $extensionClassesPath.'ViewHelper/RenderExternalViewHelper.php',
     'CodingMs\Ftm\ViewHelper\FluidRowViewHelper'         => $extensionClassesPath.'ViewHelper/FluidRowViewHelper.php',
-    'CodingMs\Ftm\ViewHelper\MarkerRowViewHelper'        => $extensionClassesPath.'ViewHelper/MarkerRowViewHelper.php',
+    'CodingMs\Ftm\ViewHelper\TypoScriptSnippetRowViewHelper'        => $extensionClassesPath.'ViewHelper/TypoScriptSnippetRowViewHelper.php',
     'CodingMs\Ftm\ViewHelper\LessVariableRowViewHelper'  => $extensionClassesPath.'ViewHelper/LessVariableRowViewHelper.php',
     'CodingMs\Ftm\ViewHelper\LessVariableStaticRowViewHelper' => $extensionClassesPath.'ViewHelper/LessVariableStaticRowViewHelper.php',
     'CodingMs\Ftm\ViewHelper\Be\Buttons\IconViewHelper'       => $extensionClassesPath.'ViewHelper/Be/Buttons/IconViewHelper.php',

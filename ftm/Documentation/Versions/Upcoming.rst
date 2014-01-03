@@ -11,4 +11,7 @@ Diese Version wird folgende Mainfeatures enthalten:
 * BaseController für FTM-Extensions bereitgestellt
 * Console-Utility überarbeitet
 * SendMail-Utility überarbeitet
-*
+* Im Extension-Manager kann man die FTM-Extension nun so konfigurieren, das das Modul im Backend nicht sichtbar ist
+* Menü-Zustände haben nun auch das Feld before, after und doNotLinkIt
+* Utility zum Loggen von Ereignissen hinzugefügt
+* StaticInfoTables-ExtBase Objekte hinzugefügt

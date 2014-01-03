@@ -6,7 +6,7 @@ Installation & Konfiguration
 
 Hier finden Sie alle Informationen zur Installation und Konfiguration des FTM. 
 
-Herunterladen können Sie den Fluid-Template-Manager im TER oder über die TYPO3-Seite:
+Herunterladen können Sie den Fluid-Template-Manager im Extension-Manager oder über die TYPO3-Seite:
 
 `http://typo3.org/extensions/repository/view/ftm <http://typo3.org/extensions/repository/view/ftm>`_
 
@@ -100,6 +100,7 @@ PluginCloud-Userpassword [basic.password]                                       
 Allow PluginCloud to log requests in order to help the development-team to improve the services [basic.allowLog]  ``false``           Ist der Haken gesetzt, erlauben Sie der PluginCloud Ihre Anfragen in einem Log zu speichern.
                                                                                                                                       Wenn Sie dem FTM-Entwicklungsteam bei der Optimierung und Wartung der WebServices helfen wollen, aktivieren Sie gerne diesen Haken.
                                                                                                                                       Die geloggten Daten werden dann ausschließlich für Optimierung und Wartung verwendet!.
+Disable FTM Backend-Module!? [basic.disableBackendModule]                                                         ``false``           Wenn Sie den FTM nur als Toolkit oder zur Unterstützung von anderen FTM-Extensions verwenden, können Sie hier das Backend-Modul deaktivieren.
 ================================================================================================================= =================== ====================================================================================================================================================================================
 
 

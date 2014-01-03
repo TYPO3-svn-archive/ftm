@@ -48,7 +48,7 @@ class TemplateStructure {
      * @since 1.0.0
      */
     public static $backendLayouts = array(
-        'BackendLayout C - Startsite' => array(
+        'BackendLayout Startsite' => array(
             'template'    => 'Startsite.html', 
             'sorting'     => '128', 
             'title'       => 'BackendLayout Startsite', 
@@ -56,7 +56,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 3\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 3\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 3\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_C-Startsite.jpg'
         ),
-        'BackendLayout MCS' => array(
+        'BackendLayout MenuContentSidebar' => array(
             'template'    => 'MenuContentSidebar.html', 
             'sorting'     => '256', 
             'title'       => 'BackendLayout MenuContentSidebar', 
@@ -64,7 +64,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               2 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               3 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_MCS.jpg'
         ),
-        'BackendLayout SCM' => array(
+        'BackendLayout SidebarContentMenu' => array(
             'template'    => 'SidebarContentMenu.html', 
             'sorting'     => '512', 
             'title'       => 'BackendLayout SidebarContentMenu', 
@@ -72,7 +72,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               2 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               3 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_SCM.jpg'
         ),
-        'BackendLayout MSC' => array(
+        'BackendLayout MenuSidebarContent' => array(
             'template'    => 'MenuSidebarContent.html', 
             'sorting'     => '768', 
             'title'       => 'BackendLayout MenuSidebarContent', 
@@ -80,7 +80,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               2 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               3 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_MSC.jpg'
         ),
-        'BackendLayout SMC' => array(
+        'BackendLayout SidebarMenuContent' => array(
             'template'    => 'SidebarMenuContent.html', 
             'sorting'     => '1024', 
             'title'       => 'BackendLayout SidebarMenuContent', 
@@ -88,7 +88,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n    colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               2 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               3 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}', 
             'icon'        => 'BackendLayout_SMC.jpg'
         ),
-        'BackendLayout CSM' => array(
+        'BackendLayout ContentSidebarMenu' => array(
             'template'    => 'ContentSidebarMenu.html', 
             'sorting'     => '1280', 
             'title'       => 'BackendLayout ContentSidebarMenu', 
@@ -96,7 +96,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               2 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               3 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_CSM.jpg'
         ),
-        'BackendLayout CMS' => array(
+        'BackendLayout ContentMenuSidebar' => array(
             'template'    => 'ContentMenuSidebar.html', 
             'sorting'     => '1536', 
             'title'       => 'BackendLayout ContentMenuSidebar', 
@@ -104,7 +104,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n    colCount = 5\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 5\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               2 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               3 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 5\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}', 
             'icon'        => 'BackendLayout_CMS.jpg'
         ),
-        'BackendLayout MC' => array(
+        'BackendLayout MenuContent' => array(
             'template'    => 'MenuContent.html', 
             'sorting'     => '1792', 
             'title'       => 'BackendLayout MenuContent', 
@@ -112,7 +112,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 4\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 4\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n               2 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 4\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_MC.jpg'
         ),
-        'BackendLayout SC' => array(
+        'BackendLayout SidebarContent' => array(
             'template'    => 'SidebarContent.html', 
             'sorting'     => '2048', 
             'title'       => 'BackendLayout SidebarContent', 
@@ -120,7 +120,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 4\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 4\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n               2 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 4\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_SC.jpg'
         ),
-        'BackendLayout CM' => array(
+        'BackendLayout ContentMenu' => array(
             'template'    => 'ContentMenu.html', 
             'sorting'     => '2304', 
             'title'       => 'BackendLayout ContentMenu', 
@@ -128,7 +128,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 4\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 4\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               2 {\r\n                 name = MENU\r\n                 rowspan = 3\r\n                 colPos = 1\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 4\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_CM.jpg'
         ),
-        'BackendLayout CS' => array(
+        'BackendLayout ContentSidebar' => array(
             'template'    => 'ContentSidebar.html', 
             'sorting'     => '2560', 
             'title'       => 'BackendLayout ContentSidebar', 
@@ -136,7 +136,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 4\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 4\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n               2 {\r\n                 name = SIDE\r\n                 rowspan = 3\r\n                 colPos = 2\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 4\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_CS.jpg'
         ),
-        'BackendLayout C' => array(
+        'BackendLayout Content' => array(
             'template'    => 'Content.html', 
             'sorting'     => '2816', 
             'title'       => 'BackendLayout Content', 
@@ -144,7 +144,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n colCount = 3\r\n    rowCount = 5\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = TEASER\r\n                   colspan = 3\r\n                 colPos = 3\r\n              }\r\n           }\r\n       }\r\n       2 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colspan = 3\r\n                 rowspan = 3\r\n                 colPos = 0\r\n              }\r\n           }\r\n       }\r\n       3 {\r\n         columns {\r\n           }\r\n       }\r\n       4 {\r\n         columns {\r\n           }\r\n       }\r\n       5 {\r\n         columns {\r\n               1 {\r\n                 name = EXTENDED\r\n                 colspan = 3\r\n                 colPos = 4\r\n              }\r\n           }\r\n       }\r\n   }\r\n}\r\n', 
             'icon'        => 'BackendLayout_C.jpg'
         ),
-        'BackendLayout C - Empty' => array(
+        'BackendLayout Empty' => array(
             'template'    => 'Empty.html', 
             'sorting'     => '3072', 
             'title'       => 'BackendLayout Empty', 
@@ -152,7 +152,7 @@ class TemplateStructure {
             'config'      => 'backend_layout {\r\n   colCount = 1\r\n    rowCount = 1\r\n    rows {\r\n      1 {\r\n         columns {\r\n               1 {\r\n                 name = CONTENT\r\n                  colPos = 0\r\n              }\r\n           }\r\n       }\r\n   }\r\n}', 
             'icon'        => 'BackendLayout_C-Empty.jpg'
         ),
-        'BackendLayout C - Special' => array(
+        'BackendLayout Special' => array(
             'template'    => 'Special.html', 
             'sorting'     => '3328', 
             'title'       => 'BackendLayout Special', 

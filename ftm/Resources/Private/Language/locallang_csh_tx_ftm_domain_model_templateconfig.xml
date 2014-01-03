@@ -9,6 +9,7 @@
         <languageKey index="default" type="array">
        
             <label index="doctype.description">Defines the DocType of the HTML</label>
+            <label index="dyn_css.description">Defines the type of dynamic CSS</label>
             <label index="base_u_r_l.description">Defines the baseURL (e.g. http://fluid-template-manager.de/)</label>
             <label index="link_vars.description">Defines the link variables (e.g. L for the language parameter)</label>
             <label index="disable_charset_header.description">Avoids transmitting the charset header (content-type:text/html; charset...).</label>
@@ -30,6 +31,7 @@
         <languageKey index="de" type="array">
        
             <label index="doctype.description">Legt den DocType des HTML fest</label>
+            <label index="dyn_css.description">Legt den Typ vom dynamischen CSS fest</label>
             <label index="base_u_r_l.description">Legt die baseURL fest (bspw. http://fluid-template-manager.de/)</label>
             <label index="link_vars.description">Legt die Link-Variablen fest (bspw. L für den Language-Parameter)</label>
             <label index="disable_charset_header.description">Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.</label>

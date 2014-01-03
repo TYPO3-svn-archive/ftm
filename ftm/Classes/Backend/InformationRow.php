@@ -73,71 +73,75 @@ class InformationRow {
  
         }
         
-        else if($parameters['field']=="marker_info") {
-            $infotext = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.marker_info", "Ftm", array($this->wikiLink('FluidMarker.html', \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.link_here", "Ftm"))));
+        else if($parameters['field']=="typo_script_snippet_info") {
+            $infotext = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.typoScript_snippet_info", "Ftm", array($this->wikiLink('TypoScriptSnippets.html', \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.link_here", "Ftm"))));
         }
         
-        else if($parameters['field']=="marker_save") {
+        else if($parameters['field']=="typo_script_snippet_save") {
                
                 
             $script     = '';
             $insertHref = '';
             $insertLink = '';
             
-            $markerSelection = '';
+            $snippetSelection = '';
             
             $snippetFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName("uploads/tx_ftm/");
             
             
-            if(@file_exists($snippetFolder.'marker.serialized')) {
-                $markerSerialized = file_get_contents($snippetFolder.'marker.serialized');
-                $markerArray = unserialize($markerSerialized);
+            if(@file_exists($snippetFolder.'typoScriptSnippets.serialized')) {
+                $snippetsSerialized = file_get_contents($snippetFolder.'typoScriptSnippets.serialized');
+                $snippetsArray = unserialize($snippetsSerialized);
                 
-                if(is_array($markerArray) && !empty($markerArray)) {
+                if(is_array($snippetsArray) && !empty($snippetsArray)) {
                     
-                    $markerSelection = "<span><strong>" .\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.include_from_template", "Ftm"). "</strong></span><br /><select id=\"ftm_insertMarkerSelect_".$uid."\">";
+                    $snippetSelection = "<span><strong>" .\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.include_from_template", "Ftm"). "</strong></span><br /><select id=\"ftm_insertSnippetSelect_".$uid."\">";
                     
-                    foreach($markerArray as $marker) {
-                        $markerSelection.= "<option value=\"".$marker['markerName']."\">lib.".$marker['markerName']." (".$marker['markerType'].") ".$marker['markerDescription']."</option>";
+                    foreach($snippetsArray as $snippet) {
+                        $snippetDesc = substr(html_entity_decode(strip_tags(base64_decode($snippet['description']))), 0, 40);
+                        if(strlen($snippetDesc)==40) {
+                            $snippetDesc.= '...';
+                        }
+                        $snippetSelection.= "<option value=\"".$snippet['name']."\">".$snippet['name']." (".$snippet['type'].") ".$snippetDesc."</option>";
                     }
-                    $markerSelection.= "</select>";
+                    $snippetSelection.= "</select>";
                     
                     // JavaScript zum Anpassen des Insert-Links
                     $script = '<script type="text/javascript">'.LF;
-                    $script.= 'function ftm_generateInsertMarkerLink_'.$uid.'() {'.LF;
-                    $script.= '  var tempValue  = document.getElementById("ftm_insertMarkerSelect_'.$uid.'").value;'.LF;
+                    $script.= 'function ftm_generateInsertSnippetLink_'.$uid.'() {'.LF;
+                    $script.= '  var tempValue  = document.getElementById("ftm_insertSnippetSelect_'.$uid.'").value;'.LF;
                     // $script.= '  console.log(tempValue);'.LF;
-                    $script.= '  var tempHref   = document.getElementById("ftm_insertMarkerLink_'.$uid.'").href;'.LF;
+                    $script.= '  var tempHref   = document.getElementById("ftm_insertSnippetLink_'.$uid.'").href;'.LF;
                     // $script.= '  console.log(tempHref);'.LF;
-                    $script.= '  var tempAdd    = "&tx_ftm_web_ftmftm[markerName]="+tempValue;'.LF;
-                    $script.= '  document.getElementById("ftm_insertMarkerLink_'.$uid.'").href = tempHref+tempAdd;'.LF;
+                    $script.= '  var tempAdd    = "&tx_ftm_web_ftmftm[snippetName]="+tempValue;'.LF;
+                    $script.= '  document.getElementById("ftm_insertSnippetLink_'.$uid.'").href = tempHref+tempAdd;'.LF;
                     // $script.= '  console.log(tempAdd);'.LF;
                     $script.= 'return confirm("' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.confirm_overwrite", "Ftm") . '");}'.LF;
                     $script.= '</script>'.LF;
                     
                     
                     // Insert-Link
-                    $insertHref = '/typo3/mod.php?M=web_FtmFtm&amp;id='.$pid.'&amp;tx_ftm_web_ftmftm[action]=insertMarker&amp;tx_ftm_web_ftmftm[controller]=TemplateManager&amp;tx_ftm_web_ftmftm[marker]='.$uid; 
-                    $insertLink = '<a href="'.$insertHref.'" id="ftm_insertMarkerLink_'.$uid.'" onclick="ftm_generateInsertMarkerLink_'.$uid.'()"><span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-paste-after">&nbsp;</span></a>';
+                    $insertHref = '/typo3/mod.php?M=web_FtmFtm&amp;id='.$pid.'&amp;tx_ftm_web_ftmftm[action]=insertSnippet&amp;tx_ftm_web_ftmftm[controller]=TypoScriptSnippet&amp;tx_ftm_web_ftmftm[snippet]='.$uid; 
+                    $insertLink = '<a href="'.$insertHref.'" id="ftm_insertSnippetLink_'.$uid.'" onclick="ftm_generateInsertSnippetLink_'.$uid.'()"><span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-paste-after">&nbsp;</span></a>';
                     
                 }
                 else {
-                    $markerSelection = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.no_markers_exists", "Ftm"); //Es sind noch keine gemerkten Marker vorhanden.
+                    $snippetSelection = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.no_typoscript_snippet_exists", "Ftm");
                 }
             }
             else {
-                $syncHref = '/typo3/mod.php?M=web_FtmFtm&amp;id='.$pid.'&amp;tx_ftm_web_ftmftm[action]=loadSnippets&amp;tx_ftm_web_ftmftm[controller]=TemplateManager'; 
-                $markerSelection = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.no_saved_markers_exists", "Ftm") . "<a href=\"".$syncHref."\"><span style=\"color: red\">" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.synchronize_markers_message", "Ftm") . "</span></a>";
+                $syncHref = '/typo3/mod.php?M=web_FtmFtm&amp;id='.$pid.'&amp;tx_ftm_web_ftmftm[action]=loadSnippets&amp;tx_ftm_web_ftmftm[controller]=TypoScriptSnippet'; 
+                $snippetSelection = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.no_saved_typoscript_snippet_exists", "Ftm") . "<a href=\"".$syncHref."\"><span style=\"color: red\">" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.synchronize_typoscript_snippets_message", "Ftm") . "</span></a>";
             }
             
             
             
             
-            $markerSaveUri = "/typo3/mod.php?M=web_FtmFtm&id=".$pid."&tx_ftm_web_ftmftm[action]=saveMarker&tx_ftm_web_ftmftm[controller]=TemplateManager&tx_ftm_web_ftmftm[marker]=".$uid."";
-            $saveLink = "<a href=\"".$markerSaveUri."\" title=\"" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.save_marker_in_plugincloud", "Ftm") . "\"><img src=\"".$imagePath."marker_save.png\"></a>";
-            $infotext = $saveLink." <span>&nbsp;<strong>". \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.klick_to_save_marker_in_plugincloud", "Ftm") ."</strong></span></a><br />";
-            $infotext.= "<br /><u>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.warning_savemarkers_headline", "Ftm") . "</u> " . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.warning_savemarkers_message", "Ftm") . "<br /><br />";
-            $infotext.= $script.$markerSelection." ".$insertLink."<br /><br />";
+            $snippetSaveUri = "/typo3/mod.php?M=web_FtmFtm&id=".$pid."&tx_ftm_web_ftmftm[action]=saveSnippet&tx_ftm_web_ftmftm[controller]=TypoScriptSnippet&tx_ftm_web_ftmftm[snippet]=".$uid."";
+            $saveLink = "<a href=\"".$snippetSaveUri."\" title=\"" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.save_typoscript_snippet_in_plugincloud", "Ftm") . "\"><img src=\"".$imagePath."typoscript_snippet_save.png\"> ". \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.save_typoscript_snippet_in_plugincloud", "Ftm")."</a>";
+            $infotext = $saveLink." <span>&nbsp;<strong>". \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.klick_to_save_typoscript_snippet_in_plugincloud", "Ftm") ."</strong></span></a><br />";
+            $infotext.= "<br /><u>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.warning_save_typoscript_snippets_headline", "Ftm") . "</u> " . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.warning_save_typoscript_snippets_message", "Ftm") . "<br /><br />";
+            $infotext.= $script.$snippetSelection." ".$insertLink."<br /><br />";
         }
         
         return $infotext;

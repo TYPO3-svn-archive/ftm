@@ -31,18 +31,22 @@
                         <f:link.action action="generateTypoScript" controller="TemplateManager" arguments="{typoScriptFile: 'setup.ts' }">
                             <span class="t3-icon t3-icon-actions t3-icon-actions-document ftm-icon-generate-typoscript">&nbsp;</span>&nbsp;
                             <span><f:translate key="tx_ftm_domain_model_template.template_generate_typoscript"></f:translate></span>
+                            <span>@todo translate: Diese Aktion muss ausgeführt werden, wenn sich die Konfiguration des Templates veränder hat.
+                                Also wenn Sie Einstellungen um Template-Datensatz geändert haben.</span>
                         </f:link.action>
                     </li>
                     <li><!-- Snippets auslesen -->
-                        <f:link.action action="loadSnippets" controller="TemplateManager">
+                        <f:link.action action="loadSnippets" controller="TypoScriptSnippet">
                             <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-system-refresh">&nbsp;</span>&nbsp;
                             <span><f:translate key="tx_ftm_domain_model_template.template_load_snippets"></f:translate></span>
                         </f:link.action>
                     </li>
                     <li><!-- CSS/LESS re/generieren -->
-                        <f:link.action action="generateLessVariable" controller="TemplateManager">
+                        <f:link.action action="generate" controller="DynCss">
                             <span class="t3-icon t3-icon-actions t3-icon-actions-document ftm-icon-generate-less-variables">&nbsp;</span>&nbsp;
                             <span><f:translate key="tx_ftm_domain_model_template.template_generate_less_variables"></f:translate></span>
+                            <span>@todo translate: Diese Aktion muss ausgeführt werden, wenn sich die dynamischen CSS Variablen geändert haben.
+                                Wenn sich also default-Werte geändert haben, neue Variablen dazugekommen sind oder sich bspw. die Reihenfolge verändert hat.</span>
                         </f:link.action>
                     </li>
                 </ul>

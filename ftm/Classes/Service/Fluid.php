@@ -41,6 +41,7 @@ class Fluid {
      * Object-Manager
      *
      * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @inject
      */
     protected $objectManager;
 
@@ -48,6 +49,7 @@ class Fluid {
      * Template Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\TemplateRepository
+     * @inject
      */
     protected $templateRepository;
 
@@ -55,6 +57,7 @@ class Fluid {
      * Backend-Layout Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\BackendLayoutRepository
+     * @inject
      */
     protected $backendLayoutRepository;
 
@@ -62,6 +65,7 @@ class Fluid {
      * Pages Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\PagesRepository
+     * @inject
      */
     protected $pagesRepository;
 
@@ -69,59 +73,10 @@ class Fluid {
      * Persistence-manager
      *
      * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+     * @inject
      */
     protected $persistenceManager;
 
-    /**
-     * injectTemplateRepository
-     *
-     * @param \CodingMs\Ftm\Domain\Repository\TemplateRepository $templateRepository
-     * @return void
-     */
-    public function injectTemplateRepository(\CodingMs\Ftm\Domain\Repository\TemplateRepository $templateRepository) {
-        $this->templateRepository = $templateRepository;
-    }
-
-    /**
-     * injectBackendLayoutRepository
-     *
-     * @param \CodingMs\Ftm\Domain\Repository\BackendLayoutRepository $backendLayoutRepository
-     * @return void
-     */
-    public function injectBackendLayoutRepository(\CodingMs\Ftm\Domain\Repository\BackendLayoutRepository $backendLayoutRepository) {
-        $this->backendLayoutRepository = $backendLayoutRepository;
-    }
-
-    /**
-     * injectPagesRepository
-     *
-     * @param \CodingMs\Ftm\Domain\Repository\PagesRepository $pagesRepository
-     * @return void
-     */
-    public function injectPagesRepository(\CodingMs\Ftm\Domain\Repository\PagesRepository $pagesRepository) {
-        $this->pagesRepository = $pagesRepository;
-    }
-
-    /**
-     * injectPersistenceManager
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager $persistenceManager
-     * @return void
-     */
-    public function injectPersistenceManager(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager $persistenceManager) {
-        $this->persistenceManager = $persistenceManager;
-    }
-
-    /**
-     * injectObjectManager
-     *
-     * @param \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager
-     * @return void
-     */
-    public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManager $objectManager) {
-        $this->objectManager = $objectManager;
-    }
-         
     /**
      * Prueft die Templates eines Types
      * 

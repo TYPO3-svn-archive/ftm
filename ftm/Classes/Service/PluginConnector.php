@@ -38,7 +38,7 @@ class PluginConnector {
     private $host = '';
     
     // Verzeichnis in dem die APIs der Plugins liegen
-    private $folder = "api"; // -dev
+    private $folder = "api-dev"; // 
     
     // PHP-Datei die das Plugin ansteuert
     private $file = '';
@@ -58,20 +58,20 @@ class PluginConnector {
     
     private $resultXML = '';
     
-    function __construct($host="", $plugin="", $pcKey="public") {
+    function __construct($host="", $script="", $pcKey="public") {
         
-        $this->host  = "plugincloud.de";
+        $this->host  = $host;
         $this->file  = $plugin;
         $this->pcKey = $pcKey;
         
         // Kompletten Pfad zum Plugin zusammensetzen
-        $this->pathAndFile = "/".$this->folder."/".$this->file.".php";
+        $this->pathAndFile = $script; // "/".$this->folder."/".$this->file.".php";
         
     }
     
     private function createRequest($token, $post) {
         
-        $request  = "POST ".$this->pathAndFile." HTTP/1.1\r\n";
+        $request  = "POST /".$this->pathAndFile." HTTP/1.1\r\n";
         $request .= "Host: ".$this->host."\r\n";
         $request .= "Authorization: Basic ".$token."\r\n";
         $request .= "Content-type: application/x-www-form-urlencoded\r\n";
@@ -124,7 +124,7 @@ class PluginConnector {
 
             }
             else {
-                $this->errors[] = "fsockopen failed to tcp://".$this->host.$this->pathAndFile." Port 80";
+                $this->errors[] = "fsockopen failed to tcp://".$this->host."/".$this->pathAndFile." Port 80";
             }
         
         }
@@ -132,8 +132,9 @@ class PluginConnector {
             var_dump($e);
         }
         
+        // var_dump($result['xml'], $this->host."/".$this->pathAndFile);
         
-        // Alles hinter dem End-Tag abschneiden     
+        // Alles hinter dem End-Tag abschneiden
         $xmlParts = explode("</return>", $result['xml']);
         $result['xml'] = $xmlParts[0]."</return>";
         

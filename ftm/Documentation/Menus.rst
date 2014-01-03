@@ -1,38 +1,41 @@
-================================
+====================================================================
 Menüs
-================================
+====================================================================
 `Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `Menüs <http://fluid-template-manager.de/documentation/Menus.html>`_
 
 
 .. important:: Achtung: Diese Seite ist veraltet und wird gerade überarbeitet!
 
---------------------------------------------------------------------
+
 Allgemein
---------------------------------------------------------------------
+====================================================================
 Mit Hilfe des FTMs sind Sie auch in der Lage Menüs zu generieren.
 Auch dies bietet nun wieder einige Vorteile, ein paar wären z.B.:
 
-* Einheitliche HTML-Strukturen und CSS-Klassen erlauben es, einmal gestylte Menüs immer wieder zu verwenden.
-Um eine solche Wiederverwendung von bspw. eines CSS-Ausklappmenüs gewährleisten zu können, sollten Sie sich angewöhnen die CSS/LESS-Angaben eines Menüs in eine gleichnamige Datei zu schreiben.
-So kommen bspw. alle Styles des Main-Menüs in die Datei ``Resources/Public/Less/Navigations/main.less``
-
-* Diverse Angaben über Menü-Elemente/Seiten bereits vorkonfiguriert.
-  .. welche Klassen etc. sind schon vorhanden?!
-
-, ggf. Uids einfach auswählbar.
+*   Einheitliche HTML-Strukturen und CSS-Klassen erlauben es, einmal gestylte Menüs immer wieder zu verwenden.
+    Um eine solche Wiederverwendung von bspw. eines CSS-Ausklappmenüs gewährleisten zu können, sollten Sie sich angewöhnen die CSS/LESS-Angaben eines Menüs in eine gleichnamige Datei zu schreiben.
+    So kommen bspw. alle Styles des Main-Menüs (``lib.nav.main``) in die Datei ``Resources/Public/Less/Navigations/main.less``
+*   Diverse Angaben über Menü-Elemente/Seiten bereits vorkonfiguriert.
+*   Verwenden Sie Menüs mit festen IDs, so können Sie diese Seite einfach über die GUI auswählen.
 
 
 
+..
 Wrapper:
 HIer ist die Namens-Konvention wieder wichtig!!!
 <ul class="nav-main">|</ul>
 
-------------------------
-# SubNavi nicht automatisch in Column-Menu schreiben
-lib.area.menuContent.10 >
+Gängige Menüs:
 
-------------------------
+* ``lib.nav.main``: Das Hauptmenü der Seite.
+* ``lib.nav.top``: Dieses Menü erscheint meistens im oberen Seitenbereich und stellt einige wenige wichtige Links bereit (bspw. Startseite, Kontakt, etc.).
+* ``lib.nav.sub``: Dies ist das Untermenü und wird automatisch in der Menü-Content Spalte platziert.
+* ``lib.nav.special``: Dieses ist ein spezielles Menü und kommt bspw. oft im Teaser-Bereich zum Einsatz.
+* ``lib.nav.footer``: Dieses Menü wird im Fuß der Seite platziert.
 
+
+
+.. tip:: Falls Sie möchten das die Sub-Navigation nicht in der Menü-Spalte erscheint, können Sie dies mit ``lib.area.menuContent.10 >`` in der *setupCustom.ts* verhindern.
 
 
 ###############################################

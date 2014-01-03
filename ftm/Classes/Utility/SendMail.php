@@ -86,7 +86,7 @@ class SendMail {
      *
      * 
      * $emailData example:
-     * $emailData['toEmail']     = "tdeuling@gmail.com";
+     * $emailData['toEmail']     = "typo3@coding.ms";
      * $emailData['toName']      = "Thomas Deuling";
      * $emailData['fromEmail']   = "bestellung@riederverlag.de";
      * $emailData['fromName']    = "Bestellung auf www.riederverlag.de";
@@ -213,7 +213,10 @@ class SendMail {
         // $templateRootPath = str_replace("coding_ms_base", $this->baseSettings['belongsToExtension'], $extbaseFrameworkConfiguration['view']['templateRootPath']);
         // Zur Sicherheit den Pfad replacen
         $templatePath = str_replace('typo3conf/ext/', '', $templatePath);
-        $templateRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('typo3conf/ext/'.$templatePath);
+        if(strstr($templatePath, 'fileadmin')===FALSE) {
+            $templatePath = 'typo3conf/ext/'.$templatePath;
+        }
+        $templateRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($templatePath);
         $templatePathAndFilename = $templateRootPath.'Email/' . $templateName . '.html';
         
         
@@ -235,6 +238,8 @@ class SendMail {
         }
         else {
             \CodingMs\Ftm\Utility\Console::error("SendMail->renderEmail() file not found: ".$templatePathAndFilename);
+            $emailData['subject'] = 'file not found: '.$templatePathAndFilename;
+            $emailData['message'] = 'file not found: '.$templatePathAndFilename;
         }
         return $emailData;
     }

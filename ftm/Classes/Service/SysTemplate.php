@@ -159,11 +159,6 @@ class SysTemplate {
             $includeStatics[] = "EXT:css_styled_content/static/";
             $includeStatics[] = "EXT:ftm/Configuration/TypoScript";
             $includeStatics[] = "EXT:static_info_tables/static/static_info_tables/";
-            $includeStatics[] = "EXT:t3_less/Configuration/TypoScript";
-            
-            // GridElements 1.4.0
-            $includeStatics[] = "EXT:gridelements/static/gridelements/";
-            // GridElements 2.0
             $includeStatics[] = "EXT:gridelements/Configuration/TypoScript/";
             
             

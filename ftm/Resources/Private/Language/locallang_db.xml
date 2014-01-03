@@ -25,19 +25,21 @@
             <label index="tx_ftm_domain_model_template.fluid_headline_with_info">Fluid templates (first template is default!)</label>
             <label index="tx_ftm_domain_model_template.tab_menu">Menues</label>
             <label index="tx_ftm_domain_model_template.menu_container">Menues</label>
-            <label index="tx_ftm_domain_model_template.tab_less">LESS/CSS</label>
-            <label index="tx_ftm_domain_model_template.less_variable_info">Less variable info</label>
-            <label index="tx_ftm_domain_model_template.less_variable">Less variables</label>
+            <label index="tx_ftm_domain_model_template.tab_less">Dynamic CSS</label>
+            <label index="tx_ftm_domain_model_template.less_variable_info">Dynamic CSS info</label>
+            <label index="tx_ftm_domain_model_template.less_variable">Dynamic CSS variables</label>
             <label index="tx_ftm_domain_model_template.tab_extensions">Extensions</label>
             <label index="tx_ftm_domain_model_template.tab_documentation">Documentation</label>
             <label index="tx_ftm_domain_model_template.tab_typoscript">TYPOScript</label>
-            <label index="tx_ftm_domain_model_template.tab_marker">Markers</label>
-            <label index="tx_ftm_domain_model_template.marker">Markers</label>
-            <label index="tx_ftm_domain_model_template.extensions_info">Extensions info</label>
-            <label index="tx_ftm_domain_model_template.extensions">Extensions</label>
+            <label index="tx_ftm_domain_model_template.tab_typoscript_snippets">TYPOScript snippets</label>
+            <label index="tx_ftm_domain_model_template.typoscript_snippets">TYPOScript snippets</label>
+            
+            
+            
             
             <!-- FTM-Config -->
             <label index="tx_ftm_domain_model_templateconfig">Fluid Template - Basic configuration</label>
+            <label index="tx_ftm_domain_model_templateconfig.dyn_css">Dynamic CSS</label>
             <label index="tx_ftm_domain_model_templateconfig.doctype">HTML doctype</label>
             <label index="tx_ftm_domain_model_templateconfig.base_u_r_l">baseURL</label>
             <label index="tx_ftm_domain_model_templateconfig.link_vars">linkVars</label>
@@ -109,12 +111,13 @@
             <label index="tx_ftm_domain_model_templatemenucontainer.wrap">Wrap</label>
             <label index="tx_ftm_domain_model_templatemenucontainer.menu_objects">Menu objects/Menu levels</label>
 
-            <!-- FTM-Marker -->
-            <label index="tx_ftm_domain_model_templatemarker">Fluid Template - Marker</label>
-            <label index="tx_ftm_domain_model_templatemarker.marker_name">Marker name</label>
-            <label index="tx_ftm_domain_model_templatemarker.marker_type">Marker type</label>
-            <label index="tx_ftm_domain_model_templatemarker.marker_description">Marker description</label>
-            <label index="tx_ftm_domain_model_templatemarker.marker_typo_script">Marker TypoScript</label>
+            <!-- FTM-TYPOScript Snippets -->
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet">TYPOScript-Snippets</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.name">Name</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.type">Type</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.description">Description</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.constants">Constants TypoScript</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.setup">Setup TypoScript</label>
 
             <!-- FTM-MenuObjeke -->
             <label index="tx_ftm_domain_model_templatemenuobject">Fluid Template - Menu objects</label>
@@ -134,6 +137,9 @@
             <label index="tx_ftm_domain_model_templatemenustate.std_wrap_html_special_chars">Make HTML codes from special chars in default wrap</label>
             <label index="tx_ftm_domain_model_templatemenustate.wrap">Wrap arround this element</label>
             <label index="tx_ftm_domain_model_templatemenustate.wrap_html_special_chars">Make HTML codes from chars in default wrap</label>
+            <label index="tx_ftm_domain_model_templatemenustate.append_before">Before</label>
+            <label index="tx_ftm_domain_model_templatemenustate.append_after">After</label>
+            <label index="tx_ftm_domain_model_templatemenustate.do_not_link_it">Do not link it</label>
 
             <!-- FTM-Extensions --> 
             <label index="tx_ftm_domain_model_templateext">Fluid Template Extension</label>
@@ -208,27 +214,19 @@ Here you can optionally add markers for your FTM template.
 All information about markers, using them and how you can share them between servers you'll find %s.
 
 </label>
-            <label index="tx_ftm_backend_informationrow.include_from_template">Include from template</label>
-            <label index="tx_ftm_backend_informationrow.confirm_overwrite">Really overwrite marker from template?</label>
-            <label index="tx_ftm_backend_informationrow.no_markers_exist">There are no markers existing.</label>
-            <label index="tx_ftm_backend_informationrow.no_saved_markers_exist">There are no saved markers existing.</label>
-            <label index="tx_ftm_backend_informationrow.synchronize_markers_message">Please synchronize your markers in the scheme first.</label>
-            <label index="tx_ftm_backend_informationrow.save_marker_in_plugincloud">Save marker in PluginCloud</label>
-            <label index="tx_ftm_backend_informationrow.click_to_save_marker_in_plugincloud">Click here to save marker in the PluginCloud for using it later again.</label>
-            <label index="tx_ftm_backend_informationrow.warning_savemarkers_headline">Warning:</label>
-            <label index="tx_ftm_backend_informationrow.warning_savemarkers_message">Existing markers with the same name will be overwritten!
-Please consider, that if you use the FTM with a public-Key, every other user is able to see the saved markers.</label>
             
             <label index="tx_ftm_domain_model_ttaddress.tab_map">Google-Maps</label>
             <label index="tx_ftm_domain_model_ttaddress.map_latitude">Latitude</label>
             <label index="tx_ftm_domain_model_ttaddress.map_longitude">Longitude</label>
             <label index="tx_ftm_domain_model_ttaddress.map_zoom">Zoom</label>
             <label index="tx_ftm_domain_model_ttaddress.map_tooltip">Tooltip-Text</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_link">Google-Maps Link</label>
             <label index="tx_ftm_domain_model_ttaddress.directions">Directions</label>
             
             <!-- Template Manager Controller -->
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update available!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.storage_created_headline">Storage created!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.storage_created_message">Storage for this template was created!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_template_damaged">FTM Template-Datensatz ist beschädigt!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_headline">FTM root template error!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message1">A problem with the root template has been detected on this page!</label>
@@ -258,16 +256,16 @@ Please consider, that if you use the FTM with a public-Key, every other user is 
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline">Snippets read out!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1">The marker snippets have been read out, but could not be saved in %s.</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2">Please check the file/directory for validity and write access: %s</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.marker_saved_headline">Marker saved!</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.marker_saved_message">Marker %s saved in PluginCloud.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_saved_headline">Marker not saved!</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_saved_message">Marker %s could not be saved in PluginCloud.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_found">The marker that should be included could not be found.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.marker_included_headline">Marker included</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.marker_included_message">Marker template %s has been successfully included in marker %s.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_markers_not_synchronized">Templates could not be found, please synchronize the markers.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_included_headline">Markers not included!</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_included_message">Marker template %s could not be included in marker %s. %s</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_snippet_saved_headline">Marker saved!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_snippet_saved_message">Marker %s saved in PluginCloud.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_saved_headline">Marker not saved!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_saved_message">Marker %s could not be saved in PluginCloud.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_found">The marker that should be included could not be found.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_snippet_included_headline">Marker included</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_snippet_included_message">Marker template %s has been successfully included in marker %s.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippets_not_synchronized">Templates could not be found, please synchronize the markers.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_included_headline">Markers not included!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_included_message">Marker template %s could not be included in marker %s. %s</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline">Snippets read out!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1">The marker snippets have been read out, but could not be saved in %s.</label>
             <label index="tx_ftm_controller_templatemanagercontroller.snippets_read_headline">Snippets read out!</label>
@@ -313,35 +311,7 @@ Please consider, that if you use the FTM with a public-Key, every other user is 
             <label index="tx_ftm_controller_templatemanagercontroller.patch_available">A new patch is available!</label> 
             <label index="tx_ftm_controller_templatemanagercontroller.update_message">We recommend you to update the FTM to the current version. It could take a few hours until the new version is available via the TER.</label>
 
-            <!-- FluidRowViewHelper -->
            
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.no_backend_layout_linked">No backend layout associated!</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_backend_layout">Edit backend layout</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_exists_and_up_to_date">File exists and is up-to-date</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_exists_and_not_up_to_date">File exists but isn't up-to-date</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_template_record">Edit template record</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_template_file">Edit template file</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.write_template_record_to_file">Write Fluid-%s (%s) from template record to template file</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.write_template_file_to_record">Write Fluid-%s (%s) from template file to template record</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_not_exists">File doesn't exist, please generate it!</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.generate_file">(Re)generate Fluid-%s (%s)</label>
-           
-            <!--LessVariableRowViewHelper -->
-            <label index="tx_ftm_viewhelper_be_lessvariablerowviewhelper.edit_template">Edit template</label>
-           
-            <!--LessVariableStaticRowViewHelper -->
-            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_base_url_as_string">Base-URL as string (generated automatically)</label>
-            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_path_to_template_files">Path to template files (generated automatically)</label>
-            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_dir_name">Directory name in template directory (generated automatically)</label>
-            
-            <!--MarkerRowViewHelper -->
-            <label index="tx_ftm_viewhelper_be_markerrowviewhelper.edit_marker">Edit markers</label>
-               
-            <!--TypoScriptRowViewHelper -->
-            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_exists">File exists</label>
-            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_exists_and_not_up_to_date">File exists but isn't up-to-date</label>
-            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.downlad_typoscript">Download TypoScript (%s)</label>
-            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_not_found">File not found</label>
 
             <!-- Template Manager GUI -->
             <!-- Wenn kein Template vorhanden ist -->
@@ -401,13 +371,6 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_template.less_col_info">Info</label>
             <label index="tx_ftm_domain_model_template.less_col_actions">Actions</label>
 
-            <!-- Marker-Form -->
-            <label index="tx_ftm_domain_model_template.marker_headline">Marker</label>
-            <label index="tx_ftm_domain_model_template.marker_col_name">Name</label>
-            <label index="tx_ftm_domain_model_template.marker_col_type">Marker type</label>
-            <label index="tx_ftm_domain_model_template.marker_col_description">Description</label>
-            <label index="tx_ftm_domain_model_template.marker_col_actions">Actions</label>
-
             <!-- Template-Form -->
             <label index="tx_ftm_domain_model_template.template_headline">FTM template</label>
             <label index="tx_ftm_domain_model_template.template_version">Version</label>
@@ -452,20 +415,19 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_template.fluid_headline_with_info">Fluid-Templates (das erste Template ist das default-Template!)</label>
             <label index="tx_ftm_domain_model_template.tab_menu">Menüs</label>
             <label index="tx_ftm_domain_model_template.menu_container">Menüs</label>
-            <label index="tx_ftm_domain_model_template.tab_less">LESS/CSS</label>
-            <label index="tx_ftm_domain_model_template.less_variable_info">Less-Variablen-Info</label>
-            <label index="tx_ftm_domain_model_template.less_variable">Less-Variablen</label>
+            <label index="tx_ftm_domain_model_template.tab_less">Dynamisches CSS</label>
+            <label index="tx_ftm_domain_model_template.less_variable_info">Dynamisches CSS Variablen-Info</label>
+            <label index="tx_ftm_domain_model_template.less_variable">Dynamische CSS-Variablen</label>
             <label index="tx_ftm_domain_model_template.tab_extensions">Extensions</label>
             <label index="tx_ftm_domain_model_template.tab_documentation">Dokumentation</label>
             <label index="tx_ftm_domain_model_template.tab_typoscript">TYPOScript</label>
-            <label index="tx_ftm_domain_model_template.tab_marker">Marker</label>
-            <label index="tx_ftm_domain_model_template.marker">Marker</label>
-            <label index="tx_ftm_domain_model_template.extensions_info">Extensions-Info</label>
-            <label index="tx_ftm_domain_model_template.extensions">Extensions</label>
+            <label index="tx_ftm_domain_model_template.tab_typoscript_snippets">TYPOScript Schnipsel</label>
+            <label index="tx_ftm_domain_model_template.typoscript_snippets">TYPOScript Schnipsel</label>
             
             <!-- FTM-Config -->
             <label index="tx_ftm_domain_model_templateconfig">Fluid Template - Basis-Konfiguration</label>
             <label index="tx_ftm_domain_model_templateconfig.doctype">HTML-Doctype</label>
+            <label index="tx_ftm_domain_model_templateconfig.dyn_css">Dynamic CSS</label>
             <label index="tx_ftm_domain_model_templateconfig.base_u_r_l">baseURL</label>
             <label index="tx_ftm_domain_model_templateconfig.link_vars">linkVars</label>
             <label index="tx_ftm_domain_model_templateconfig.disable_charset_header">Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.</label>
@@ -536,12 +498,13 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_templatemenucontainer.wrap">Wrap</label>
             <label index="tx_ftm_domain_model_templatemenucontainer.menu_objects">Menü-Objekte/Menü-Ebenen</label>
 
-            <!-- FTM-Marker -->
-            <label index="tx_ftm_domain_model_templatemarker">Fluid Template - Marker</label>
-            <label index="tx_ftm_domain_model_templatemarker.marker_name">Marker-Name</label>
-            <label index="tx_ftm_domain_model_templatemarker.marker_type">Marker-Typ</label>
-            <label index="tx_ftm_domain_model_templatemarker.marker_description">Marker-Beschreibung</label>
-            <label index="tx_ftm_domain_model_templatemarker.marker_typo_script">Marker-TypoScript</label>
+            <!-- FTM-TYPOScript Snippets -->
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet">TYPOScript-Schnipsel</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.name">Name</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.type">Type</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.description">Beschreibung</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.constants">Constants TYPOScript</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.setup">Setup TYPOScript</label>
 
             <!-- FTM-MenuObjeke -->
             <label index="tx_ftm_domain_model_templatemenuobject">Fluid Template - Menü-Objekte</label>
@@ -561,6 +524,9 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_templatemenustate.std_wrap_html_special_chars">Sonderzeichen des Standard-Wrap in HTML-Codes umwandeln</label>
             <label index="tx_ftm_domain_model_templatemenustate.wrap">Wrap um dieses Element</label>
             <label index="tx_ftm_domain_model_templatemenustate.wrap_html_special_chars">Sonderzeichen des Wrap in HTML-Codes umwandeln</label>
+            <label index="tx_ftm_domain_model_templatemenustate.append_before">Vor</label>
+            <label index="tx_ftm_domain_model_templatemenustate.append_after">Hinter</label>
+            <label index="tx_ftm_domain_model_templatemenustate.do_not_link_it">Nicht verlinken</label>
 
             <!-- FTM-Extensions --> 
             <label index="tx_ftm_domain_model_templateext">Fluid Template Extension</label>
@@ -635,27 +601,19 @@ Hier können Sie beliebig viele Marker für Ihr FTM-Template bereitstellen.
 Alle Informationen zu Markern, deren Verwendung und wie Sie diese Serverübergreifend austauschen können finden Sie %s.
 
 </label>
-            <label index="tx_ftm_backend_informationrow.include_from_template">Aus Vorlage einfügen</label>
-            <label index="tx_ftm_backend_informationrow.confirm_overwrite">Marker wirklich aus Vorlage überschreiben?</label>
-            <label index="tx_ftm_backend_informationrow.no_markers_exist">Es sind noch keine gemerkten Marker vorhanden.</label>
-            <label index="tx_ftm_backend_informationrow.no_saved_markers_exist">Es sind noch keine gemerkten Marker vorhanden.</label>
-            <label index="tx_ftm_backend_informationrow.synchronize_markers_message">Bitte synchronisieren Sie erst Ihre Marker in der Übersicht.</label>
-            <label index="tx_ftm_backend_informationrow.save_marker_in_plugincloud">Marker in PluginCloud merken</label>
-            <label index="tx_ftm_backend_informationrow.click_to_save_marker_in_plugincloud">Hier klicken um den Marker in der PluginCloud zu merken, so dass dieser zu einem späteren Zeitpunkt wiederverwendet werden kann.</label>
-            <label index="tx_ftm_backend_informationrow.warning_savemarkers_headline">Achtung:</label>
-            <label index="tx_ftm_backend_informationrow.warning_savemarkers_message">Bereits existierende Marker mit dem gleichen Namen werden überschrieben!
-Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, alle anderen User die gemerkten Marker sehen können!</label>
             
             <label index="tx_ftm_domain_model_ttaddress.tab_map">Google-Maps</label>
             <label index="tx_ftm_domain_model_ttaddress.map_latitude">Latitude</label>
             <label index="tx_ftm_domain_model_ttaddress.map_longitude">Longitude</label>
             <label index="tx_ftm_domain_model_ttaddress.map_zoom">Zoomfaktor</label>
             <label index="tx_ftm_domain_model_ttaddress.map_tooltip">Tooltip-Text</label>
+            <label index="tx_ftm_domain_model_ttaddress.map_link">Google-Maps Link</label>
             <label index="tx_ftm_domain_model_ttaddress.directions">Anfahrtsbeschreibung</label>
             
             <!-- Template Manager Controller -->
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update verfügbar!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.storage_created_headline">Storage erstellt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.storage_created_message">Storage zu diesem Template wurde erstellt!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_template_damaged">FTM Template-Dataset damaged!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_headline">FTM Root-Template Fehler!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message1">Es wurde ein Problem mit dem Root-Template auf dieser Seite festgestellt!</label>
@@ -685,16 +643,16 @@ Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, al
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline">Snippets wurden ausgelesen!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1">Die Marker Snippets wurden ausgelesen, konnten aber nicht in der %s abgespeichert werden.</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2">Bitte prüfe die Datei/Pfad auf Korrektheit und Schreibrechte: %s</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.marker_saved_headline">Marker wurde gemerkt!</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.marker_saved_message">Marker %s wurde in PluginCloud gemerkt.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_saved_headline">Marker nicht gemerkt!</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_saved_message">Marker %s konnte nicht in der PluginCloud gemerkt werden.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_found">Der einzufügende Marker konnte nicht gefunden werden.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.marker_included_headline">Marker wurde eingefügt</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.marker_included_message">Marker-Vorlage %s wurde erfolgreich in Marker %s eingefügt.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_markers_not_synchronized">Vorlagen konnten nicht gefunden werden, bitte synchronisieren Sie die Marker.</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_included_headline">Marker nicht eingefügt!</label>
-            <label index="tx_ftm_controller_templatemanagercontroller.error_marker_not_included_message">Marker-Vorlage %s konnte nicht in Marker %s eingefügt werden. %s</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_snippet_saved_headline">Marker wurde gemerkt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_snippet_saved_message">Marker %s wurde in PluginCloud gemerkt.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_saved_headline">Marker nicht gemerkt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_saved_message">Marker %s konnte nicht in der PluginCloud gemerkt werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_found">Der einzufügende Marker konnte nicht gefunden werden.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_snippet_included_headline">Marker wurde eingefügt</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.typoscript_snippet_included_message">Marker-Vorlage %s wurde erfolgreich in Marker %s eingefügt.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippets_not_synchronized">Vorlagen konnten nicht gefunden werden, bitte synchronisieren Sie die Marker.</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_included_headline">Marker nicht eingefügt!</label>
+            <label index="tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_included_message">Marker-Vorlage %s konnte nicht in Marker %s eingefügt werden. %s</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline">Snippets wurden ausgelesen!</label>
             <label index="tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1">Die Marker Snippets wurden ausgelesen, konnten aber nicht in der %s abgespeichert werden.</label>
             <label index="tx_ftm_controller_templatemanagercontroller.snippets_read_headline">Snippets wurden ausgelesen!</label>
@@ -740,35 +698,7 @@ Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, al
             <label index="tx_ftm_controller_templatemanagercontroller.patch_available">Es ist ein neuer Patch verfügbar!</label> 
             <label index="tx_ftm_controller_templatemanagercontroller.update_message">Es wird empfohlen den FTM auf die aktuelle Version zu aktualisieren. Es kann u.U. ein paar Stunden dauern bis die neue Version auch über Das TER verfügbar ist.</label>
 
-            <!-- FluidRowViewHelper -->
-           
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.no_backend_layout_linked">Kein Backend-Layout zugewiesen!</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_backend_layout">Backend-Layout bearbeiten</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_exists_and_up_to_date">File exists and is up-to-date</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_exists_and_not_up_to_date">File exists but isn't up-to-date</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_template_record">Template-Datensatz bearbeiten</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.edit_template_file">Template-Datei bearbeiten</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.write_template_record_to_file">Fluid-%s (%s) von Template-Datensatz in Template-Datei schreiben</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.write_template_file_to_record">Fluid-%s (%s) von Template-Datei in Template-Datensatz schreiben</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.file_not_exists">File doesn't exist, please generate it!</label>
-            <label index="tx_ftm_viewhelper_be_fluidrowviewhelper.generate_file">Fluid-%s (%s) re/generieren</label>
-           
-            <!--LessVariableRowViewHelper -->
-            <label index="tx_ftm_viewhelper_be_lessvariablerowviewhelper.edit_template">Template bearbeiten</label>
-           
-            <!--LessVariableStaticRowViewHelper -->
-            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_base_url_as_string">Base-URL als String (automatisch generiert)</label>
-            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_path_to_template_files">Pfad zum den Template-Dateien (automatisch generiert)</label>
-            <label index="tx_ftm_viewhelper_be_lessvariablestaticrowviewhelper.col_dir_name">Verzeichnis-Name im Template-Verzeichnis (automatisch generiert)</label>
             
-            <!--MarkerRowViewHelper -->
-            <label index="tx_ftm_viewhelper_be_markerrowviewhelper.edit_marker">Marker bearbeiten</label>
-               
-            <!--TypoScriptRowViewHelper -->
-            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_exists">File exists</label>
-            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_exists_and_not_up_to_date">File exists but isn't up-to-date</label>
-            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.downlad_typoscript">TypoScript (%s) herunterladen</label>
-            <label index="tx_ftm_viewhelper_be_typoscriptrowviewhelper.file_not_found">File not found</label>
 
             <!-- Template Manager GUI -->
             <!-- Wenn kein Template vorhanden ist -->
@@ -827,13 +757,6 @@ Des Weiteren können über die </label>
             <label index="tx_ftm_domain_model_template.less_col_value">Wert</label>
             <label index="tx_ftm_domain_model_template.less_col_info">Info</label>
             <label index="tx_ftm_domain_model_template.less_col_actions">Aktionen</label>
-
-            <!-- Marker-Form -->
-            <label index="tx_ftm_domain_model_template.marker_headline">Marker</label>
-            <label index="tx_ftm_domain_model_template.marker_col_name">Name</label>
-            <label index="tx_ftm_domain_model_template.marker_col_type">Marker-Typ</label>
-            <label index="tx_ftm_domain_model_template.marker_col_description">Beschreibung</label>
-            <label index="tx_ftm_domain_model_template.marker_col_actions">Aktionen</label>
 
             <!-- Template-Form -->
             <label index="tx_ftm_domain_model_template.template_headline">FTM-Template</label>

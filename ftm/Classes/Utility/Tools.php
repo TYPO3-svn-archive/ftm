@@ -134,6 +134,9 @@ class Tools {
         if($type=="Icons") {
             return "typo3conf/ext/".$themeName."/Resources/Public/Icons/";
         }
+        if($type=="Sass") {
+            return "typo3conf/ext/".$themeName."/Resources/Public/Sass/";
+        }
         if($type=="Less") {
             return "typo3conf/ext/".$themeName."/Resources/Public/Less/";
         }

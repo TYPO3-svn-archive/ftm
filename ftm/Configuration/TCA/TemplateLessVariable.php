@@ -6,7 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_templatelessvariable'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_templatelessvariable']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'variable_title, variable_name, variable_type, category, variable_value, variable_string, variable_color',
+        'showRecordFieldList' => 'sorting, variable_title, variable_name, variable_type, category, variable_value, variable_string, variable_color',
     ),
     'types' => array(
         '1' => array('showitem' => 'sorting, variable_title, variable_name, variable_type, category, variable_value, variable_string, variable_color'),

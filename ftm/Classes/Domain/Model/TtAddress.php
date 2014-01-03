@@ -233,6 +233,13 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $mapTooltip;
     
     /**
+     * mapLink
+     *
+     * @var string
+     */
+    protected $mapLink;
+    
+    /**
      * directions
      *
      * @var string
@@ -912,6 +919,25 @@ class TtAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      */
     public function setMapTooltip($mapTooltip) {
         $this->mapTooltip = $mapTooltip;
+    }
+    
+    /**
+     * Returns the mapLink
+     *
+     * @return string $mapLink
+     */
+    public function getMapLink() {
+        return $this->mapLink;
+    }
+    
+    /**
+     * Sets the mapLink
+     *
+     * @param string $mapLink
+     * @return void
+     */
+    public function setMapLink($mapLink) {
+        $this->mapLink = $mapLink;
     }
     
     /**

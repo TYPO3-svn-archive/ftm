@@ -125,7 +125,7 @@ $TCA['tx_ftm_domain_model_templatemenuobject'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenuobject.std_wrap',
             'config' => array(
                 'type' => 'input',
-                'size' => 30,
+                'size' => 69,
                 'eval' => 'trim'
             ),
         ),
@@ -141,7 +141,7 @@ $TCA['tx_ftm_domain_model_templatemenuobject'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenuobject.wrap',
             'config' => array(
                 'type' => 'input',
-                'size' => 30,
+                'size' => 69,
                 'eval' => 'trim'
             ),
         ),

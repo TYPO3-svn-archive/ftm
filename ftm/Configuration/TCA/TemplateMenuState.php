@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_templatemenustate'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_templatemenustate']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'hidden, menu_state, copy_from_state, std_wrap, std_wrap_html_special_chars, wrap, wrap_html_special_chars',
+        'showRecordFieldList' => 'hidden, menu_state, copy_from_state, std_wrap, std_wrap_html_special_chars, wrap, wrap_html_special_chars, append_before, append_after, do_not_link_it',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden;;1, menu_state, copy_from_state, std_wrap, std_wrap_html_special_chars, wrap, wrap_html_special_chars'),
+        '1' => array('showitem' => 'hidden;;1, menu_state, copy_from_state, std_wrap, std_wrap_html_special_chars, wrap, wrap_html_special_chars, append_before, append_after, do_not_link_it'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -158,7 +158,7 @@ $TCA['tx_ftm_domain_model_templatemenustate'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenustate.std_wrap',
             'config' => array(
                 'type' => 'input',
-                'size' => 30,
+                'size' => 69,
                 'eval' => 'trim'
             ),
         ),
@@ -174,13 +174,38 @@ $TCA['tx_ftm_domain_model_templatemenustate'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenustate.wrap',
             'config' => array(
                 'type' => 'input',
-                'size' => 30,
+                'size' => 69,
                 'eval' => 'trim'
             ),
         ),
         'wrap_html_special_chars' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenustate.wrap_html_special_chars',
+            'config' => array(
+                'type' => 'check',
+            ),
+        ),
+        'append_before' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenustate.append_before',
+            'config' => array(
+                'type' => 'input',
+                'size' => 69,
+                'eval' => 'trim'
+            ),
+        ),
+        'append_after' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenustate.append_after',
+            'config' => array(
+                'type' => 'input',
+                'size' => 69,
+                'eval' => 'trim'
+            ),
+        ),
+        'do_not_link_it' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatemenustate.do_not_link_it',
             'config' => array(
                 'type' => 'check',
             ),

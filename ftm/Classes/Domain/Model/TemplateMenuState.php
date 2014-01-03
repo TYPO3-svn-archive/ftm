@@ -97,6 +97,31 @@ class TemplateMenuState extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @since 1.0.0
      */
     protected $sorting;
+    
+    /**
+     * appendBefore
+     *
+     * @var string
+     * @since 1.1.1
+     */
+    protected $appendBefore;
+    
+    /**
+     * appendAfter
+     *
+     * @var string
+     * @since 1.1.1
+     */
+    protected $appendAfter;
+
+    /**
+     * Menupunkt nicht verlinken
+     *
+     * @var boolean
+     * @since 1.1.1
+     */
+    protected $doNotLinkIt;
+    
 
     /**
      * Returns the hidden
@@ -275,7 +300,70 @@ class TemplateMenuState extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     public function setSorting($sorting) {
         $this->sorting = $sorting;
     }
-
+    
+    /**
+     * Returns the appendBefore
+     *
+     * @return string $appendBefore
+     * @since 1.1.1
+     */
+    public function getAppendBefore() {
+        return $this->appendBefore;
+    }
+    
+    /**
+     * Sets the appendBefore
+     *
+     * @param string $appendBefore
+     * @return void
+     * @since 1.1.1
+     */
+    public function setAppendBefore($appendBefore) {
+        $this->appendBefore = $appendBefore;
+    }
+    
+    /**
+     * Returns the appendAfter
+     *
+     * @return string $appendAfter
+     * @since 1.1.1
+     */
+    public function getAppendAfter() {
+        return $this->appendAfter;
+    }
+    
+    /**
+     * Sets the appendAfter
+     *
+     * @param string $appendAfter
+     * @return void
+     * @since 1.1.1
+     */
+    public function setAppendAfter($appendAfter) {
+        $this->appendAfter = $appendAfter;
+    }
+    
+    /**
+     * Returns the doNotLinkIt
+     *
+     * @return boolean $doNotLinkIt
+     * @since 1.1.1
+     */
+    public function getDoNotLinkIt() {
+        return $this->doNotLinkIt;
+    }
+    
+    /**
+     * Sets the doNotLinkIt
+     *
+     * @param boolean $doNotLinkIt
+     * @return void
+     * @since 1.1.1
+     */
+    public function setDoNotLinkIt($doNotLinkIt) {
+        $this->doNotLinkIt = $doNotLinkIt;
+    }
+    
     /**
      * Returns the data as array
      * @return array
@@ -292,9 +380,12 @@ class TemplateMenuState extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         $data['wrapHtmlSpecialChars']    = $this->getWrapHtmlSpecialChars();
         $data['stdWrap']       = $this->getStdWrap();
         $data['wrap']          = $this->getWrap();
+        $data['appendBefore']  = $this->getAppendBefore();
+        $data['appendAfter']   = $this->getAppendAfter();
+        $data['doNotLinkIt']   = $this->getDoNotLinkIt();
         
         return $data;
     }
-        
+    
 }
 ?>
