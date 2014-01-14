@@ -41,6 +41,12 @@ class PluginService {
     protected $pluginCloudHost = "plugincloud.de";
     
     /**
+     * Script der PluginCloud
+     * @var string
+     */
+    protected $pluginCloudScript = "index.php?id=75";
+    
+    /**
      * Name des Plugins in der PluginCloud
      * @var string
      */
@@ -138,7 +144,7 @@ class PluginService {
             foreach(libxml_get_errors() as $error) {
                 $errorData .= $error->message."\n";
             }
-            var_dump(strip_tags($data));
+            var_dump($this->pluginCloudHost.'/'.$this->pluginCloudScript, strip_tags($data));
             throw new \Exception($errorData."Data is not valid!", E_WARNING);
         }
         

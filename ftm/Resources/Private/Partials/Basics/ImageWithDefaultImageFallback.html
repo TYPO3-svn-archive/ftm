@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+<head>
+    <title>Partials: ImageWithDefaultImageFallback</title>
+    <f:comment>
+
+        Description:
+        ------------
+        Generates a snippet for a Lightbox
+
+        Params:
+        -------
+        images: Property that contains the images
+        identifierPrefix: lowerCamelCase, prefix for classes and hrefs
+
+        maxWidth: Maximum width for the Lightbox image
+        maxHeight: Maximum height for the Lightbox image
+        maxWidthThumb: Maximum width for the thumbnail image
+        maxHeightThumb: Maximum height for the thumbnail image
+
+        defaultImage: Path to default image, like: Images/no-image.png
+        defaultTitle: Title-Text when no title is defined
+        defaultAlt: Alt-Text when no alt is defined
+
+    </f:comment>
+</head>
+<body>
+    <f:section name="Main">
+        <div class="ftm-basics-image">
+
+            <f:if condition="{f:count(subject: images)}">
+                <f:then>
+                    <f:for each="{images}" as="image" iteration="itemIteration">
+                        <f:if condition="{itemIteration.isFirst}">
+                            <f:image src="{image.uid}" maxWidth="{maxWidth}" maxHeight="{maxHeight}"
+                                     alt="{image.originalResource.description}" title="{image.originalResource.title}"
+                                     class="img-thumbnail" treatIdAsReference="1"></f:image>
+                        </f:if>
+                    </f:for >
+                </f:then>
+                <f:else>
+                    <f:image src="{f:uri.resource(path: defaultImage)}" maxWidth="{maxWidth}" maxHeight="{maxHeight}"
+                             alt="{defaultAlt}" title="{defaultTitle}" class="img-thumbnail"></f:image>
+                </f:else>
+            </f:if>
+
+        </div>
+    </f:section>
+</body>
+</html>

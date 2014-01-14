@@ -33,6 +33,13 @@ namespace CodingMs\Ftm\Domain\Model;
  *
  */
 class TemplateTypoScriptSnippet extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+    
+    /**
+     * hidden
+     *
+     * @var \boolean
+     */
+    protected $hidden;
 
     /**
      * name
@@ -73,6 +80,41 @@ class TemplateTypoScriptSnippet extends \TYPO3\CMS\Extbase\DomainObject\Abstract
      * @since 2.0.0
      */
     protected $setup;
+
+    /**
+     * next list uid
+     * temporär, nicht in db
+     * @var int
+     * @since 2.0.0
+     */
+     protected $nextListUid = 0;
+
+    /**
+     * previous list uid
+     * temporär, nicht in db
+     * @var int
+     * @since 2.0.0
+     */
+     protected $previousListUid = 0;
+     
+     /**
+      * Returns the hidden
+      *
+      * @return \boolean $hidden
+      */
+     public function getHidden() {
+         return $this->hidden;
+     }
+     
+     /**
+      * Sets the hidden
+      *
+      * @param \boolean $hidden
+      * @return void
+      */
+     public function setHidden($hidden) {
+         $this->hidden = $hidden;
+     }
 
     /**
      * Returns the name
@@ -178,6 +220,45 @@ class TemplateTypoScriptSnippet extends \TYPO3\CMS\Extbase\DomainObject\Abstract
     public function setSetup($setup) {
         $this->setup = $setup;
     }
+    
+    /**
+     * Returns the nextListUid
+     *
+     * @return int $nextListUid
+     */
+    public function getNextListUid() {
+        return $this->nextListUid;
+    }
+    
+    /**
+     * Sets the nextListUid
+     *
+     * @param int $nextListUid
+     * @return void
+     */
+    public function setNextListUid($nextListUid) {
+        $this->nextListUid = $nextListUid;
+    }
+    
+    /**
+     * Returns the previousListUid
+     *
+     * @return int $previousListUid
+     */
+    public function getPreviousListUid() {
+        return $this->previousListUid;
+    }   
+    
+    /**
+     * Sets the previousListUid
+     *
+     * @param int $previousListUid
+     * @return void
+     */
+    public function setPreviousListUid($previousListUid) {
+        $this->previousListUid = $previousListUid;
+    }
+    
 
     /**
      * Returns the data as array

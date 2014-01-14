@@ -168,14 +168,6 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $typoScriptSnippet;
 
     /**
-     * TypoScriptSnippet
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt>
-     * @since 1.0.0
-    protected $extensions;
-     */
-
-    /**
      * __construct
      *
      * @return void
@@ -202,8 +194,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         $this->fluid         = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->lessVariable  = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->menuContainer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->typoScriptSnippet        = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        //$this->extensions    = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->typoScriptSnippet = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -649,6 +640,35 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @since 1.0.0
      */
     public function getTypoScriptSnippet() {
+        
+        if($this->typoScriptSnippet->count()>0) {
+            // Erst schnell die Uids sammeln
+            $uidArray = array();
+            foreach($this->typoScriptSnippet as $snippet) {
+                $uidArray[] = $snippet->getUid();
+            }
+            
+            $itemCount = 0;
+            foreach($this->typoScriptSnippet as $snippet) {
+                
+                if($itemCount==0) {
+                    $snippet->setPreviousListUid(0);
+                }
+                else {
+                    $snippet->setPreviousListUid($uidArray[$itemCount-1]);
+                }
+                
+                if($itemCount<count($uidArray)) {
+                    $snippet->setNextListUid($uidArray[$itemCount+1]);
+                }
+                else {
+                    $snippet->setNextListUid(0);
+                }
+                
+                $itemCount++;
+            }
+        }
+        
         return $this->typoScriptSnippet;
     }
 
@@ -664,71 +684,9 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     }
 
     /**
-     * Adds a TemplateExt
-     *
-     * @param \CodingMs\Ftm\Domain\Model\TemplateExt $extension
-     * @return void
-     * @since 1.0.0
-    public function addExtension(\CodingMs\Ftm\Domain\Model\TemplateExt $extension) {
-        $this->extensions->attach($extension);
-    }
-     */
-
-    /**
-     * Removes a TemplateExt
-     *
-     * @param \CodingMs\Ftm\Domain\Model\TemplateExt $extensionToRemove The TemplateExt to be removed
-     * @return void
-     * @since 1.0.0
-    public function removeExtension(\CodingMs\Ftm\Domain\Model\TemplateExt $extensionToRemove) {
-        $this->extensions->detach($extensionToRemove);
-    }
-     */
-
-    /**
-     * Returns the extensions
-     *
-     * @param string $extName Name of the extensions
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt> $extensions
-     * @since 1.0.0
-    public function getExtensionByName($extName) {
-        $ext = null;
-        if($this->extensions->count()>0) {
-            foreach($this->extensions as $extension) {
-                if($extension->getExtKey()==$extName) {
-                    return $extension;
-                }
-            }
-        }
-        return $ext;
-    }
-     */
-
-    /**
-     * Returns the extensions
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt> $extensions
-     * @since 1.0.0
-    public function getExtensions() {
-        return $this->extensions;
-    }
-     */
-
-    /**
-     * Sets the extensions
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt> $extensions
-     * @return void
-     * @since 1.0.0
-    public function setExtensions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $extensions) {
-        $this->extensions = $extensions;
-    }
-     */
-
-    /**
      * Returns the Less-ContentLayouts
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateExt> $extensions
+     * @return array $contentLayouts
      * @since 1.0.0
      */
     public function getContentLayouts() {
@@ -830,18 +788,6 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
             }
         }
         $data['menu'] = serialize($tempMenuArray);
-        
-        
-        // Extension-Daten
-        // ------------------------------
-        // $tempExtensionArray = array();
-        // if(!empty($this->extensions)) {
-            // foreach($this->extensions as $tempExtension) {
-                // $tempExtensionArray[$tempExtension->getExtKey()] = $tempExtension->toArray();
-            // }
-        // }
-        // $data['extensions'] = serialize($tempExtensionArray);
-        
         
         return $data;
     }

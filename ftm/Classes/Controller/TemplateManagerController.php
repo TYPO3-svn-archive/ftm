@@ -183,7 +183,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             /**
              * @var \CodingMs\Ftm\Domain\Model\Template
              */
-            $this->fluidTemplate = $this->getTemplate();
+            $this->fluidTemplate = \CodingMs\Ftm\Service\Template::getTemplate($this->pid);
             if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
                 
                 
@@ -192,6 +192,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureYaml');
                 }
                 elseif($this->fluidTemplate->getTemplateType()=='bootstrap') {
+                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
+                }
+                elseif($this->fluidTemplate->getTemplateType()=='bootstrap_3') {
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
                 }
                 else {
@@ -276,6 +279,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // Buttons im Header
             // -------------------------------------------------
             $buttons = $this->getButtons($this->fluidTemplate->getConfig()->getBaseUrl());
+            
+            // TYPOScript-Snippet-List next/prev-uid einsetzen
+            $this->fluidTemplate->setTypoScriptSnippet($this->fluidTemplate->getTypoScriptSnippet());
             
             
             // Pruefen ob das Sys-Template vorhanden ist
@@ -381,7 +387,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     // Pruefen ob Storage vorhanden ist und erstelle ihn ggf.
                     // -------------------------------------------------
-                    if($this->storageService->checkAndCreate($this->getTemplate()->getTemplateDir()) == 'created') {
+                    if($this->storageService->checkAndCreate(\CodingMs\Ftm\Service\Template::getTemplate($this->pid)->getTemplateDir()) == 'created') {
                         $messageText = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.storage_created_message", 'Ftm');
                         $messageHead = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.storage_created_headline", 'Ftm');
                         $messageType = \TYPO3\CMS\Core\Messaging\FlashMessage::OK;
@@ -491,40 +497,6 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         }
 
         $this->redirect('list', 'TemplateManager', NULL, array());
-    }
-        
-    /**
-     * Prueft ob es fuer diese Seite schon ein Template-Object
-     * gibt, wenn nicht wird eins erstellt
-     *
-     * @return \CodingMs\Ftm\Domain\Model\Template
-     */
-    protected function getTemplate() {
-        
-        
-        // Template auslesen, falls vorhanden
-        $fluidTemplate = $this->fluidTemplateRepository->findOneByPid($this->pid);
-        
-        
-        $this->debug.= "read fluidTemplate on pid:".$this->pid." -> ".get_class($fluidTemplate)."<br>";
-        
-        // Wenn es noch keinen gibt, erstelle einen
-        if(!($fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-
-            $this->debug.= "create fluidTemplate on pid:".$this->pid."<br>";
-
-            
-            /**
-             * @ToDo: Hier sollte geschaut werden ob auf 
-             * Eltern-Seiten ein Template existiert
-             */
-            
-            // Template speichern
-            // $this->fluidTemplateRepository->add($fluidTemplate);
-            return null;
-        }
-        
-        return $fluidTemplate;
     }
     
     /**
@@ -968,6 +940,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      */
     protected function checkRequiredExtenstions() {
 
+        /**
+         * @todo
+         * hier beiLess auch dnycss, dyncss_less
+         * bie scss -dnycss_scss prüfen!!
+         */
         
         // Erforderlichen Extensions ermitteln
         $requiredExtensions = explode(';', FTM_REQUIRED_EXTENSIONS);

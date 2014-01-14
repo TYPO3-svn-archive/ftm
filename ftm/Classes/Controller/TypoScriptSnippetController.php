@@ -169,7 +169,7 @@ class TypoScriptSnippetController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
             /**
              * @var \CodingMs\Ftm\Domain\Model\Template
              */
-            $this->fluidTemplate = $this->getTemplate();
+            $this->fluidTemplate = \CodingMs\Ftm\Service\Template::getTemplate($this->pid);
             if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
                 
                 
@@ -178,6 +178,9 @@ class TypoScriptSnippetController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureYaml');
                 }
                 elseif($this->fluidTemplate->getTemplateType()=='bootstrap') {
+                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
+                }
+                elseif($this->fluidTemplate->getTemplateType()=='bootstrap_3') {
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
                 }
                 else {
@@ -201,42 +204,6 @@ class TypoScriptSnippetController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
         );
         
     }
-    
-    /**
-     * Prueft ob es fuer diese Seite schon ein Template-Object
-     * gibt, wenn nicht wird eins erstellt
-     *
-     * @return \CodingMs\Ftm\Domain\Model\Template
-     */
-    protected function getTemplate() {
-        
-        
-        // Template auslesen, falls vorhanden
-        $fluidTemplate = $this->fluidTemplateRepository->findOneByPid($this->pid);
-        
-        
-        $this->debug.= "read fluidTemplate on pid:".$this->pid." -> ".get_class($fluidTemplate)."<br>";
-        
-        // Wenn es noch keinen gibt, erstelle einen
-        if(!($fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-
-            $this->debug.= "create fluidTemplate on pid:".$this->pid."<br>";
-
-            
-            /**
-             * @ToDo: Hier sollte geschaut werden ob auf 
-             * Eltern-Seiten ein Template existiert
-             */
-            
-            // Template speichern
-            // $this->fluidTemplateRepository->add($fluidTemplate);
-            return null;
-        }
-        
-        return $fluidTemplate;
-    }
-
-
     
     /**
      * Merkt sich ein Snippet auf dem FTM-Server
@@ -417,5 +384,42 @@ class TypoScriptSnippetController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
         $this->redirect('list', 'TemplateManager', NULL, array());
     }
 
+        /**
+     * @param   string      $command: The command which has been sent to processDatamap
+     * @param   string      $table: The table we're dealing with
+     * @param   mixed       $id: Either the record UID or a string if a new record has been created
+     * @param   array       $fieldArray: The record row how it has been inserted into the database
+     * @param   object      $reference: A reference to the TCEmain instance
+     * @return  void
+     * 
+     * Erfordert in ext_localconf.php:
+       $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] 
+       = 'EXT:coding_ms_tyma/Classes/Controller/MagentoProductController.php:Tx_CodingMsTyma_Controller_MagentoProductController';
+     * 
+     */
+    public function processDatamap_afterDatabaseOperations($command, $table, $id, &$fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$reference) {
+        
+        // Delete wurde hier nicht auf gefangen
+        if ($command == 'delete' && $table == 'tx_ftm_domain_model_templatetyposcriptsnippet') {
+        }
+        else if ($command == 'update' && $table == 'tx_ftm_domain_model_templatetyposcriptsnippet') {
+        }
+        
+        // Neue Snippets immer automatisch zum Template zuordnen
+        else if ($command == 'new' && $table == 'tx_ftm_domain_model_templatetyposcriptsnippet') {
+            
+            // Zugehöriges Template ermitteln
+            $template = \CodingMs\Ftm\Service\Template::getTemplate($fieldArray['pid']);
+            
+            // MM-Eintrag schreiben
+            $mmArray = array();
+            $mmArray['uid_local'] = (int)$template->getUid();
+            $mmArray['uid_foreign'] = (int)$reference->substNEWwithIDs[$id];
+            $mmArray['sorting'] = 9999;
+            $GLOBALS['TYPO3_DB']->exec_INSERTquery('tx_ftm_domain_model_templatetyposcriptsnippet_mm', $mmArray);
+        }
+        
+    }
+    
 }
 ?>

@@ -1,1 +1,13 @@
 Diese Dateien sind Vorlage-Dateien für die beiden Template-Typen YAML und Bootstrap
+
+Definiert im Template-TCA
+'template_type' => array(
+    'exclude' => 0,
+    'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.template_type',
+    'config' => array(
+        'type' => 'select',
+        'items' => array(
+            array('', ''),
+            array('YAML', 'yaml'),
+            array('Twitter Bootstrap 2.x', 'bootstrap'),
+            array('Twitter Bootstrap 3.x', 'bootstrap_3'),

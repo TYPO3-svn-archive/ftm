@@ -54,7 +54,6 @@ CREATE TABLE tx_ftm_domain_model_template (
     less_variable int(11) unsigned DEFAULT '0' NOT NULL,
     menu_container int(11) unsigned DEFAULT '0' NOT NULL,
     typo_script_snippet int(11) unsigned DEFAULT '0' NOT NULL,
-    extensions int(11) unsigned DEFAULT '0' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,

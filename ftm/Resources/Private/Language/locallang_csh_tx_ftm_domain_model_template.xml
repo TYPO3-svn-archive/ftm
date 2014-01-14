@@ -30,11 +30,6 @@
  
             <label index="menu_container.description">Menues</label>
             
-            <label index="extensions_info.description">Extensions info</label>
-            <label index="extensions.description">Extensions</label>    
-            
-            <!--label index="extensions.description">Unterstützte Extensions</label-->
-            
         </languageKey>
         <languageKey index="de" type="array">
        
@@ -59,12 +54,6 @@
             <label index="less_variable.description">Less-Variablen</label>
  
             <label index="menu_container.description">Menüs</label>
-            
-            <label index="extensions_info.description">Extensions-Info</label>
-            <label index="extensions.description">Extensions</label>    
-            
-            <!--label index="extensions.description">Unterstützte Extensions</label-->
-            
         </languageKey>
     </data>
 </T3locallang>

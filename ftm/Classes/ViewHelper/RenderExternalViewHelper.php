@@ -41,7 +41,8 @@ namespace CodingMs\Ftm\ViewHelper;
  *      />
  *
  * @author Christian Kuhn <lolli@schwarzbu.ch>
- * @TODO: Implement sections
+ *
+ * Sections implemented by Thomas Deuling <typo3@coding.ms>
  */
 class RenderExternalViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\RenderViewHelper {
  
@@ -65,10 +66,11 @@ class RenderExternalViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\RenderViewHe
      *
      * @param string $extensionName Render partial of this extension
      * @param string $partial The partial to render
+     * @param string $section The section to render
      * @param array $arguments Arguments to pass to the partial
      * @return string
      */
-    public function render($extensionName, $partial = NULL, array $arguments = array()) {
+    public function render($extensionName, $partial = NULL, $section='Main', array $arguments = array()) {
         // Overload arguments with own extension local settings (to pass own settings to external partial)
         $arguments = $this->loadSettingsIntoArguments($arguments);
         
@@ -79,8 +81,8 @@ class RenderExternalViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\RenderViewHe
         $controllerContext->setRequest($request);
         
         $this->setPartialRootPath($controllerContext);
-        die($this->getPartialRootPath($controllerContext).$partial);
-        $content = $this->viewHelperVariableContainer->getView()->renderPartial($partial, NULL, $arguments);
+        //die($this->getPartialRootPath($controllerContext).$partial);
+        $content = $this->viewHelperVariableContainer->getView()->renderPartial($partial, $section, $arguments);
         $this->resetPartialRootPath();
         
         return $content;
@@ -114,7 +116,7 @@ class RenderExternalViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\RenderViewHe
     protected function getPartialRootPath(\TYPO3\CMS\Extbase\Mvc\Controller\ControllerContext $controllerContext) {
         $partialRootPath = str_replace(
             '@packageResourcesPath',
-            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($controllerContext->getRequest()->getControllerExtensionKey()) . 'Resources/',
+            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($controllerContext->getRequest()->getControllerExtensionKey()) . 'Resources',
             '@packageResourcesPath/Private/Partials'
         );
         return $partialRootPath;

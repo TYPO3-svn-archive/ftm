@@ -123,7 +123,8 @@ $TCA['tx_ftm_domain_model_template'] = array(
                 'items' => array(
                     array('', ''),
                     array('YAML', 'yaml'),
-                    array('Twitter Bootstrap', 'bootstrap'),
+                    array('Twitter Bootstrap 2.x', 'bootstrap'),
+                    array('Twitter Bootstrap 3.x', 'bootstrap_3'),
                 ),
                 'size' => 1,
                 'maxitems' => 1
@@ -365,7 +366,7 @@ $TCA['tx_ftm_domain_model_template'] = array(
         
         // TYPOScript-Snippets
         'typo_script_snippet_info' => array (
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.typoscript_snippets',
             'config' => array (
                 'type' => 'user',
@@ -375,10 +376,11 @@ $TCA['tx_ftm_domain_model_template'] = array(
             )
         ),
         'typo_script_snippet' => array(
-            'exclude' => 0,
+            'exclude' => 1,
             //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.typoscript_snippet',
             'config' => array(
                 'type' => 'select',
+                // 'type' => 'inline',
                 'size' => 25,
                 'internal_type' => 'db',
                 'allowed' => 'tx_ftm_domain_model_templatetyposcriptsnippet',
@@ -387,6 +389,7 @@ $TCA['tx_ftm_domain_model_template'] = array(
                 'foreign_table_where' => 'ORDER BY tx_ftm_domain_model_templatetyposcriptsnippet.sorting',
                 'foreign_field'  => 'template', 
                 'foreign_sortby' => 'sorting',
+                'foreign_label' => 'name',
                 'minitems' => 0,
                 'maxitems' => 999,
                 'multiple' => 1,

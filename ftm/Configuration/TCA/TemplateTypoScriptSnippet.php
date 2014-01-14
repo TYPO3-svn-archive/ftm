@@ -9,7 +9,7 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, type, description, constants, setup',
     ),
     'types' => array(
-        '1' => array('showitem' => 'typo_script_snippet_save, hidden;;1, name, type, description, constants;;;wizards[t3editorTypoScript], setup;;;wizards[t3editorTypoScript]'),
+        '1' => array('showitem' => 'typo_script_snippet_save, name, type, description, constants;;;wizards[t3editorTypoScript], setup;;;wizards[t3editorTypoScript]'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),

@@ -296,7 +296,8 @@ Please consider, that if you use the FTM with a public-Key, every other user is 
             <label index="tx_ftm_domain_model_template.noTemplateAvailableText">On this page there is no FTM template existing.</label>
             <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateTemplate">Generate a new template on this page right now!</label>
             <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateYamlTemplate">Generate a new YAML template on this page right now!</label>
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrapTemplate">Generate a new Bootstrap template on this page right now!</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrapTemplate">Generate a new Bootstrap 2.x template on this page right now! (deprecated)</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrap3Template">Generate a new Bootstrap 3.x template on this page right now! (recommend)</label>
             
             <label index="tx_ftm_domain_model_template.templateCreatedMessageOkHeadline">Template generated!</label>
             <label index="tx_ftm_domain_model_template.templateCreatedMessageOkMessage">The database structure of the new template has successfully been generated!
@@ -698,7 +699,8 @@ Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, al
             <label index="tx_ftm_domain_model_template.noTemplateAvailableText">Auf dieser Seite ist noch kein Fluid-Template-Manager Template vorhanden.</label>
             <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateTemplate">Jetzt ein neues Template auf dieser Seite erstellen!</label>
             <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateYamlTemplate">Jetzt ein neues YAML-Template auf dieser Seite erstellen!</label>
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrapTemplate">Jetzt ein neues Bootstrap-Template auf dieser Seite erstellen!</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrapTemplate">Jetzt ein neues Bootstrap 2.x Template auf dieser Seite erstellen! (veraltet)</label>
+            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrap3Template">Jetzt ein neues Bootstrap 3.x Template auf dieser Seite erstellen! (empfohlen)</label>
             
             <label index="tx_ftm_domain_model_template.templateCreatedMessageOkHeadline">Template wurde erstellt!</label>
             <label index="tx_ftm_domain_model_template.templateCreatedMessageOkMessage">Die Datenbank-Struktur des neuen Templates wurde erfolgreich erstellt!

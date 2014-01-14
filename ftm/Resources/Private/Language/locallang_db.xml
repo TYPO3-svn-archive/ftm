@@ -315,10 +315,6 @@ All information about markers, using them and how you can share them between ser
 
             <!-- Template Manager GUI -->
             <!-- Wenn kein Template vorhanden ist -->
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableText">On this page there is no FTM template existing.</label>
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateTemplate">Generate a new template on this page right now!</label>
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateYamlTemplate">Generate a new YAML template on this page right now!</label>
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrapTemplate">Generate a new Bootstrap template on this page right now!</label>
             
             <label index="tx_ftm_domain_model_template.templateCreatedMessageOkHeadline">Template generated!</label>
             <label index="tx_ftm_domain_model_template.templateCreatedMessageOkMessage">The database structure of the new template has successfully been generated!
@@ -702,10 +698,6 @@ Alle Informationen zu Markern, deren Verwendung und wie Sie diese Serverübergre
 
             <!-- Template Manager GUI -->
             <!-- Wenn kein Template vorhanden ist -->
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableText">Auf dieser Seite ist noch kein Fluid-Template-Manager Template vorhanden.</label>
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateTemplate">Jetzt ein neues Template auf dieser Seite erstellen!</label>
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateYamlTemplate">Jetzt ein neues YAML-Template auf dieser Seite erstellen!</label>
-            <label index="tx_ftm_domain_model_template.noTemplateAvailableCreateBootstrapTemplate">Jetzt ein neues Bootstrap-Template auf dieser Seite erstellen!</label>
             
             <label index="tx_ftm_domain_model_template.templateCreatedMessageOkHeadline">Template wurde erstellt!</label>
             <label index="tx_ftm_domain_model_template.templateCreatedMessageOkMessage">Die Datenbank-Struktur des neuen Templates wurde erfolgreich erstellt!

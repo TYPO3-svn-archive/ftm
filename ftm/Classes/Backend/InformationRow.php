@@ -59,16 +59,8 @@ class InformationRow {
         // echo "</pre>";
         // die(serialize(&$parentObject['_THIS_UID']));
         
-        // Allgemeine Extension-Informationen
-        if($parameters['field']=="extensions_info") {
-            $infotext = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.extensions_info", "Ftm");
-        }
         
-        else if($parameters['field']=="extension_t3_less_info") {
-            $infotext = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.extension_t3less_info", "Ftm", array($this->wikiLink('Css-Less.html', \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.link_here", "Ftm"))));
-        }
-        
-        else if($parameters['field']=="less_variable_info") {
+        if($parameters['field']=="less_variable_info") {
             $infotext = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.less_variable_info", "Ftm", array('<b>@baseUrl</b>', '<b>@baseUrlTemplate</b>', '<b>@templateDir</b>', '<b>@baseUrlImage</b>', '<b>@{baseUrlTemplate}img/</b>', '<b>@{baseUrl}typo3conf/ext/@{templateDir}/template/img</b>', $this->wikiLink('Css-Less.html', \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.link_here", "Ftm"))));
  
         }
@@ -77,7 +69,9 @@ class InformationRow {
             $infotext = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.typoScript_snippet_info", "Ftm", array($this->wikiLink('TypoScriptSnippets.html', \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.link_here", "Ftm"))));
         }
         
-        else if($parameters['field']=="typo_script_snippet_save") {
+        // Snippets-Zeile zeigen
+        // aber nur wenn der Datensatz schon existiert
+        else if($parameters['field']=="typo_script_snippet_save" && ctype_digit($uid)) {
                
                 
             $script     = '';
@@ -95,19 +89,50 @@ class InformationRow {
                 
                 if(is_array($snippetsArray) && !empty($snippetsArray)) {
                     
-                    $snippetSelection = "<span><strong>" .\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.include_from_template", "Ftm"). "</strong></span><br /><select id=\"ftm_insertSnippetSelect_".$uid."\">";
+                    $snippetSelection = "<span><strong>" .\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.include_from_template", "Ftm"). "</strong></span><br />".LF;
+                    $snippetSelection.= "<select id=\"ftm_insertSnippetSelect_".$uid."\" size=\"10\" onchange=\"ftm_showSnippetPreview_".$uid."(this.id);return false;\">".LF;
                     
                     foreach($snippetsArray as $snippet) {
+                        
+                        // Vorschau
+                        $previewText = "Description:\n";
+                        $previewText.= "----------------------------------------------------------------\n";
+                        $previewText.= base64_decode(strip_tags($snippet['description']));
+                        $previewText.= "\n";
+                        $previewText.= "\n";
+                        $previewText.= "Constants:\n";
+                        $previewText.= "----------------------------------------------------------------\n";
+                        $previewText.= base64_decode($snippet['constants']);
+                        $previewText.= "\n";
+                        $previewText.= "\n";
+                        $previewText.= "Setup:\n";
+                        $previewText.= "----------------------------------------------------------------\n";
+                        $previewText.= base64_decode($snippet['setup']);
+                        $previewText.= "\n";
+                        $previewText.= "\n";
+                        $previewText = htmlentities($previewText);
+                        
                         $snippetDesc = substr(html_entity_decode(strip_tags(base64_decode($snippet['description']))), 0, 40);
                         if(strlen($snippetDesc)==40) {
                             $snippetDesc.= '...';
                         }
-                        $snippetSelection.= "<option value=\"".$snippet['name']."\">".$snippet['name']." (".$snippet['type'].") ".$snippetDesc."</option>";
+                        $snippetSelection.= "<option value=\"".$snippet['name']."\" data-description=\"".$previewText."\">".$snippet['name']." (".$snippet['type'].") ".$snippetDesc."</option>".LF;
                     }
-                    $snippetSelection.= "</select>";
+                    $snippetSelection.= "</select>".LF;
                     
                     // JavaScript zum Anpassen des Insert-Links
                     $script = '<script type="text/javascript">'.LF;
+                    
+                    $script.= 'function ftm_showSnippetPreview_'.$uid.'(select) {'.LF;
+                    $script.= '  var allOptions = document.getElementById(select).getElementsByTagName(\'option\');'.LF;
+                    $script.= '  for(var i=0; i<allOptions.length; i++) {'.LF;
+                    $script.= '    if (allOptions[i].selected ) {'.LF;
+                    // $script.= '        console.log( allOptions[i].getAttribute(\'data-description\') );'.LF;
+                    $script.= '        document.getElementById(\'ftm_insertSnippetPreview_'.$uid.'\').innerHTML = allOptions[i].getAttribute(\'data-description\');'.LF;
+                    $script.= '    }'.LF;
+                    $script.= '  }'.LF;
+                    $script.= '}'.LF;
+                    
                     $script.= 'function ftm_generateInsertSnippetLink_'.$uid.'() {'.LF;
                     $script.= '  var tempValue  = document.getElementById("ftm_insertSnippetSelect_'.$uid.'").value;'.LF;
                     // $script.= '  console.log(tempValue);'.LF;
@@ -124,6 +149,8 @@ class InformationRow {
                     $insertHref = '/typo3/mod.php?M=web_FtmFtm&amp;id='.$pid.'&amp;tx_ftm_web_ftmftm[action]=insertSnippet&amp;tx_ftm_web_ftmftm[controller]=TypoScriptSnippet&amp;tx_ftm_web_ftmftm[snippet]='.$uid; 
                     $insertLink = '<a href="'.$insertHref.'" id="ftm_insertSnippetLink_'.$uid.'" onclick="ftm_generateInsertSnippetLink_'.$uid.'()"><span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-paste-after">&nbsp;</span></a>';
                     
+                    // Vorschau/Beschreibung
+                    $preview = "<div style=\"font-weight:bold; margin-top: 16px\">Preview:</div><textarea id=\"ftm_insertSnippetPreview_".$uid."\" style=\"resize: vertical;display: block;height: 100px;width: 100%;border: 1px solid #666;overflow-y: scroll;\"></textarea>".LF;
                 }
                 else {
                     $snippetSelection = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.no_typoscript_snippet_exists", "Ftm");
@@ -141,7 +168,7 @@ class InformationRow {
             $saveLink = "<a href=\"".$snippetSaveUri."\" title=\"" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.save_typoscript_snippet_in_plugincloud", "Ftm") . "\"><img src=\"".$imagePath."typoscript_snippet_save.png\"> ". \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.save_typoscript_snippet_in_plugincloud", "Ftm")."</a>";
             $infotext = $saveLink." <span>&nbsp;<strong>". \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.klick_to_save_typoscript_snippet_in_plugincloud", "Ftm") ."</strong></span></a><br />";
             $infotext.= "<br /><u>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.warning_save_typoscript_snippets_headline", "Ftm") . "</u> " . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.warning_save_typoscript_snippets_message", "Ftm") . "<br /><br />";
-            $infotext.= $script.$snippetSelection." ".$insertLink."<br /><br />";
+            $infotext.= $script.$snippetSelection." ".$insertLink.$preview."<br /><br />";
         }
         
         return $infotext;

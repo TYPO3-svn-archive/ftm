@@ -1,0 +1,86 @@
+
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+<head>
+    <title>Partials: ImageWithDefaultImageFallback</title>
+    <f:comment>
+
+        Description:
+        ------------
+        Generates a snippet for a Lightbox
+
+        Params:
+        -------
+        images: Property that contains the images
+        identifierPrefix: lowerCamelCase, prefix for classes and hrefs
+
+        maxWidth: Maximum width for the Lightbox image
+        maxHeight: Maximum height for the Lightbox image
+        maxWidthThumb: Maximum width for the thumbnail image
+        maxHeightThumb: Maximum height for the thumbnail image
+
+        defaultImage: Path to default image, like: Images/no-image.png
+        defaultTitle: Title-Text when no title is defined
+        defaultAlt: Alt-Text when no alt is defined
+
+    </f:comment>
+</head>
+<body>
+<f:section name="Main">
+    <div class="ftm-lightbox-imagesonly">
+
+        <doc:partial name="Lightbox/ImagesOnly"
+                     setcion="Main"
+                     description>
+
+            <doc:param name="images"
+                       type="\TYPO3\CMS\Extbase\Persistence\ObjectStorage&lt;\TYPO3\CMS\Extbase\Domain\Model\FileReference&gt;"
+                       description="Property that contains the images" />
+        </doc:partial>
+
+        <f:if condition="{f:count(subject: images)}">
+            <f:then>
+            
+                <f:comment>
+                    Achtung: Hier ist kein Zugriff via products.images.0 möglich!
+                    Aber wir machen eh ein foreach, damit wir alle Bilder in der 
+                    Lightbox nutzen können.
+                </f:comment>
+                
+                <f:for each="{images}" as="image" iteration="itemIteration">
+                    
+                
+                    <!-- ColoBox-Inhalt -->
+                    <div style="display:none">
+                        <div id="{identifierPrefix}Lightbox_{itemIteration.index}">
+                            <f:image src="{image.uid}" maxWidth="{maxWidth}" maxHeight="{maxHeight}" alt="{image.originalResource.description}" title="{image.originalResource.title}" treatIdAsReference="1"></f:image>
+                        </div>
+                    </div>
+                    
+                    <!-- Das eigentliche Bild, falls vorhanden -->
+                    <f:if condition="{itemIteration.isFirst}">
+                        <f:then>
+                            <a href="#{identifierPrefix}Lightbox_{itemIteration.index}" rel="{identifierPrefix}Lightbox" class="lightbox-link-inline thumbnail" title="{image.originalResource.title}">
+                                <f:image src="{image.uid}" maxWidth="{maxWidthThumb}" maxHeight="{maxHeightThumb}" alt="{image.originalResource.description}" title="{image.originalResource.title}" treatIdAsReference="1"></f:image>
+                            </a>
+                        </f:then>
+                        <f:else>
+                            <a href="#{identifierPrefix}Lightbox_{itemIteration.index}" rel="{identifierPrefix}Lightbox" class="lightbox-link-inline thumbnail" title="{image.originalResource.title}" style="display: none">
+                                <f:image src="{image.uid}" maxWidth="{maxWidthThumb}" maxHeight="{maxHeightThumb}" alt="{image.originalResource.description}" title="{image.originalResource.title}" treatIdAsReference="1"></f:image>
+                            </a>
+                        </f:else>
+                    </f:if>
+                
+                </f:for >
+                
+            </f:then>
+            <f:else>
+                <f:image src="{f:uri.resource(path: defaultImage)}" maxWidth="{maxWidthThumb}" maxHeight="{maxHeightThumb}" alt="{defaultAlt}" title="{defaultTitle}"></f:image>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+</body>
+</html>

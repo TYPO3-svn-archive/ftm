@@ -129,7 +129,7 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             /**
              * @var \CodingMs\Ftm\Domain\Model\Template
              */
-            $this->fluidTemplate = $this->getTemplate();
+            $this->fluidTemplate = \CodingMs\Ftm\Service\Template::getTemplate($this->pid);
             if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
                 
                 
@@ -140,6 +140,9 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
                 elseif($this->fluidTemplate->getTemplateType()=='bootstrap') {
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
                 }
+                elseif($this->fluidTemplate->getTemplateType()=='bootstrap_3') {
+                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
+                }
                 else {
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
                 }
@@ -148,41 +151,6 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             
         }
         
-    }
-    
-        
-    /**
-     * Prueft ob es fuer diese Seite schon ein Template-Object
-     * gibt, wenn nicht wird eins erstellt
-     *
-     * @return \CodingMs\Ftm\Domain\Model\Template
-     */
-    protected function getTemplate() {
-        
-        
-        // Template auslesen, falls vorhanden
-        $fluidTemplate = $this->fluidTemplateRepository->findOneByPid($this->pid);
-        
-        
-        $this->debug.= "read fluidTemplate on pid:".$this->pid." -> ".get_class($fluidTemplate)."<br>";
-        
-        // Wenn es noch keinen gibt, erstelle einen
-        if(!($fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-
-            $this->debug.= "create fluidTemplate on pid:".$this->pid."<br>";
-
-            
-            /**
-             * @ToDo: Hier sollte geschaut werden ob auf 
-             * Eltern-Seiten ein Template existiert
-             */
-            
-            // Template speichern
-            // $this->fluidTemplateRepository->add($fluidTemplate);
-            return null;
-        }
-        
-        return $fluidTemplate;
     }
 
     
