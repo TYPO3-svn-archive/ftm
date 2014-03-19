@@ -58,7 +58,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      */
     public function findOneByUidWithoutPid($uid) {
         $query = $this->createQuery();
-        // $query->getQuerySettings()->setRespectStoragePage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(FALSE);
         $query->getQuerySettings()->setRespectEnableFields(FALSE);
         $query->matching($query->equals('uid', $uid));
         return $query->execute()->getFirst();

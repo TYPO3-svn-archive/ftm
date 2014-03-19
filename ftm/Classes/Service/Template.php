@@ -41,9 +41,8 @@ class Template {
      * Object-Manager
      *
      * @var \TYPO3\CMS\Extbase\Object\ObjectManager
-     * @inject
      */
-    protected $objectManager;
+    protected static $objectManager;
 
     /**
      * Template Repository
@@ -59,12 +58,16 @@ class Template {
      * @return \CodingMs\Ftm\Domain\Model\Template
      */
     public static function getTemplate($pid) {
-        
+
+        // Schauen ob der Objekt-Manager schon vorhanden ist
+        if(!(self::$objectManager instanceof \TYPO3\CMS\Extbase\Object\ObjectManager)) {
+            self::$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        }
         
         //$tempFluid = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateFluid');
         
         if(!(self::$templateRepository instanceof \CodingMs\Ftm\Domain\Repository\TemplateRepository)) {
-            self::$templateRepository = new \CodingMs\Ftm\Domain\Repository\TemplateRepository();
+            self::$templateRepository = self::$objectManager->get('CodingMs\\Ftm\\Domain\\Repository\\TemplateRepository');
         }
         
         // Template auslesen, falls vorhanden

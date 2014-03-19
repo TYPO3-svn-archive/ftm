@@ -21,36 +21,12 @@
                 <br />
                 <ul class="ftmActionList">
                     <li><h3><f:translate key="tx_ftm_domain_model_template.template_main_actions"></f:translate></h3></li>
-                    <li><!-- Template bearbeiten -->
-                        <a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&amp;edit[tx_ftm_domain_model_template][{fluidTemplate.uid}]=edit'; return false;" title="{f:translate(key: 'tx_ftm_domain_model_template.template_edit_template')}">
-                            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-open">&nbsp;</span>&nbsp;
-                            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_edit_template"></f:translate></span>
-                            <span class="buttonDescription"></span>
-                        </a>
-                    </li>
-                    <li><!-- TYPOScript re/generieren -->
-                        <f:link.action action="generateTypoScript" controller="TemplateManager" arguments="{typoScriptFile: 'setup.ts' }">
-                            <span class="t3-icon t3-icon-actions t3-icon-actions-document ftm-icon-generate-typoscript">&nbsp;</span>&nbsp;
-                            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_generate_typoscript"></f:translate></span>
-                            <span class="buttonDescription">@todo translate: Diese Aktion muss ausgeführt werden, wenn sich die Konfiguration des Templates veränder hat.
-                                Also wenn Sie Einstellungen um Template-Datensatz geändert haben.</span>
-                        </f:link.action>
-                    </li>
-                    <li><!-- Snippets auslesen -->
-                        <f:link.action action="loadSnippets" controller="TypoScriptSnippet">
-                            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-system-refresh">&nbsp;</span>&nbsp;
-                            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_load_snippets"></f:translate></span>
-                            <span class="buttonDescription"></span>
-                        </f:link.action>
-                    </li>
-                    <li><!-- CSS/LESS re/generieren -->
-                        <f:link.action action="generate" controller="DynCss">
-                            <span class="t3-icon t3-icon-actions t3-icon-actions-document ftm-icon-generate-less-variables">&nbsp;</span>&nbsp;
-                            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_generate_less_variables"></f:translate></span>
-                            <span class="buttonDescription">@todo translate: Diese Aktion muss ausgeführt werden, wenn sich die dynamischen CSS Variablen geändert haben.
-                                Wenn sich also default-Werte geändert haben, neue Variablen dazugekommen sind oder sich bspw. die Reihenfolge verändert hat.</span>
-                        </f:link.action>
-                    </li>
+                    <f:render partial="TemplateManagerButtons/EditTemplate"           arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+                    <f:render partial="TemplateManagerButtons/GenerateTypoScript"     arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+                    <f:render partial="TemplateManagerButtons/GenerateDynCssFiles"    arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+                    <f:render partial="TemplateManagerButtons/LoadTypoScriptSnippets" arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+                    <f:render partial="TemplateManagerButtons/LoadDynCssFiles"        arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+                    <f:render partial="TemplateManagerButtons/LoadFluidFiles"         arguments="{fluidTemplate: fluidTemplate, options: options}"/>
                 </ul>
             </td>
         </tr>

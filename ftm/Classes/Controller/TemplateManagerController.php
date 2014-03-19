@@ -25,6 +25,9 @@ namespace CodingMs\Ftm\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use \TYPO3\CMS\Core\Messaging\FlashMessage;
+
 /**
  *
  *
@@ -150,7 +153,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      * Wird immer aufgerufen wenn irgendeine Action ausgefuehrt wird
      */
     public function initializeAction() {
-        
+
         // Sicherstellen das hier nur ein Admin arbeitet!
         if(!$GLOBALS['BE_USER']->isAdmin()) {
             throw new \Exception("Admin-Authorisation required", 1);
@@ -170,13 +173,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 die("Please select a first-level page in order to create or edit a FTM-Template.");
             }
             else {
-                $this->flashMessageContainer->add("Please select a first-level page in order to create or edit a FTM-Template.", 'Please select a page!', \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
+                $this->flashMessageContainer->add("Please select a first-level page in order to create or edit a FTM-Template.", 'Please select a page!', FlashMessage::WARNING);
             }
             return;
         }
-        
-            
-    
+
         // Fluid Template auslesen, falls noch nicht geschehen
         if(!($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
             
@@ -200,12 +201,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 else {
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
                 }
-                
+
             }
             
         }
-        
-        
+
         // PluginCloud-Service initiieren
         $this->pluginService = $this->objectManager->create(
             'CodingMs\Ftm\Service\PluginService', 
@@ -218,16 +218,14 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         );
         
     }
-    
 
     /**
-     * action list
+     * Displays the Template-Manager
      *
      * @return void
      */
     public function listAction() {
-        
-        
+
         // Auf Root-Seite nichts machen
         // Meldung wurde bereits in initializeAction generiert
         if($this->pid==0) {
@@ -240,7 +238,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         // Preufen ob Updates verfuegbar sind
         $updateMessage = \CodingMs\Ftm\Service\Updates::check('ftm', explode('.', FTM_VERSION));
         if(is_string($updateMessage)) {
-            $this->flashMessageContainer->add($updateMessage, \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_update_available", 'Ftm'), \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
+            /** @todo $updateHeadline anpassen, wenn keine update-check möglich war: file_get_content fails */
+            $updateHeadline = $this->lang('ftm_update_available');
+            $this->flashMessageContainer->add($updateMessage, $updateHeadline, FlashMessage::WARNING);
         } //'FTM Update verfügbar!'
 
        
@@ -288,27 +288,23 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // und erstellt es ggf.
             // -------------------------------------------------
             $sysTemplateStatus = $this->sysTemplateService->checkSysTemplate($this->pid);
+            $translationBaseKey = 'tx_ftm_controller_templatemanagercontroller.';
             if($sysTemplateStatus=='error') {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_headline", 'Ftm'); //FTM Root-Template Fehler!
-                $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message1", 'Ftm') . '<br />'; //Es wurde ein Problem mit dem Root-Template auf dieser Seite festgestellt!
-                $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_root_template_error_message2", 'Ftm'); //Bitte stellen Sie sicher das es nur ein Root-Template auf dieser Seite gibt!
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                $headline = $this->lang('ftm_root_template_error_headline'); //FTM Root-Template Fehler!
+                $message  = $this->lang('ftm_root_template_error_message1') . '<br />'; //Es wurde ein Problem mit dem Root-Template auf dieser Seite festgestellt!
+                $message .= $this->lang('ftm_root_template_error_message2'); //Bitte stellen Sie sicher das es nur ein Root-Template auf dieser Seite gibt!
+                $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
             }
             else if($sysTemplateStatus=='updated') {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_root_template_update_headline", 'Ftm'); //FTM Root-Template aktualisiert!
-                $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_root_template_update_message", 'Ftm'); //Das FTM Root-Template auf dieser Seite wurde aktualisiert!
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-                
-                // Seite neu laden
+                $headline = $this->lang('ftm_root_template_update_headline'); //FTM Root-Template aktualisiert!
+                $message  = $this->lang('ftm_root_template_update_message'); //Das FTM Root-Template auf dieser Seite wurde aktualisiert!
+                $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
                 $this->redirect('list', 'TemplateManager', NULL, array());
             }
             else if($sysTemplateStatus=='created') {
-                
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_root_template_generated_headline", 'Ftm'); //FTM Root-Template erstellt!
-                $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_root_template_generated_message", 'Ftm'); //Es wurde ein FTM Root-Template auf dieser Seite erstellt!
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-                
-                // Seite neu laden
+                $headline = $this->lang('ftm_root_template_generated_headline'); //FTM Root-Template erstellt!
+                $message  = $this->lang('ftm_root_template_generated_message'); //Es wurde ein FTM Root-Template auf dieser Seite erstellt!
+                $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
                 $this->redirect('list', 'TemplateManager', NULL, array());
             }
             // -------------------------------------------------
@@ -318,15 +314,13 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // Sys-Template gefunden
             // -------------------------------------------------
             else if($sysTemplateStatus=='alreadyExist') {
-                
-                
+
                 // Hash neu setzen um zu identifizieren ob 
                 // sich die Konfiguration geaendert hat
                 $templateDataArray = $this->getTemplateDataArray();
                 $this->fluidTemplate->setMd5HashTemplateData(md5(serialize($templateDataArray)));
                 $this->fluidTemplateRepository->update($this->fluidTemplate);
-                
-                
+
                 // Template-Verzeichnis bereits vorhanden
                 $templateName = $this->fluidTemplate->getTemplateDir();
                 if($templateName!="") {
@@ -339,8 +333,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     // Meldungen von erstellten Seiten ausgeben
                     if(trim($pagesMessages)!="" && $pagesMessages!==TRUE) {
-                        $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_pages_generated_headline", 'Ftm'); //FTM Seiten erstellt!
-                        $this->flashMessageContainer->add($pagesMessages, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                        $headline = $this->lang('ftm_pages_generated_headline'); //FTM Seiten erstellt!
+                        $this->flashMessageContainer->add($pagesMessages, $headline, FlashMessage::OK);
                     }
                     // -------------------------------------------------
                     
@@ -349,7 +343,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // Pruefen ob die Template-Verzeichnisstruktur
                     // vorhanden und korrekt ist
                     // -------------------------------------------------
-                    $directoryCheck = \CodingMs\Ftm\Service\TemplateDirectory::checkDirectories($templateName);
+                    /** @todo diesen Block in eigene Methode auslagern  */
+                    $directories = $this->settings['templates']['default']['directories'];
+                    $directoryCheck = \CodingMs\Ftm\Service\TemplateDirectory::checkDirectories($templateName, $directories);
                     if($directoryCheck===TRUE) {
                         $this->debug.= "directory check: TRUE<br>";
                     }
@@ -361,7 +357,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                         }
                     }
                     
-                    $directoryCreate = \CodingMs\Ftm\Service\TemplateDirectory::createDirectories($templateName);
+                    $directoryCreate = \CodingMs\Ftm\Service\TemplateDirectory::createDirectories($templateName, $directories);
                     if($directoryCreate===TRUE) {
                         $this->debug.= "directory create: TRUE<br>";
                     }
@@ -373,7 +369,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                         }
                     }
                     // -------------------------------------------------
-                    
+
                     
                     
                     // Template-Dir ggf nochmal in Sys-
@@ -388,10 +384,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // Pruefen ob Storage vorhanden ist und erstelle ihn ggf.
                     // -------------------------------------------------
                     if($this->storageService->checkAndCreate(\CodingMs\Ftm\Service\Template::getTemplate($this->pid)->getTemplateDir()) == 'created') {
-                        $messageText = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.storage_created_message", 'Ftm');
-                        $messageHead = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.storage_created_headline", 'Ftm');
-                        $messageType = \TYPO3\CMS\Core\Messaging\FlashMessage::OK;
-                        $this->flashMessageContainer->add($messageText, $messageHead, $messageType);
+                        $messageText = $this->lang('storage_created_message');
+                        $messageHead = $this->lang('storage_created_headline');
+                        $this->flashMessageContainer->add($messageText, $messageHead, FlashMessage::OK);
                     }
                     // -------------------------------------------------
                     
@@ -402,9 +397,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     if($this->templateStructureService->checkStructure($this->pid, $this->fluidTemplate)) {
                         // checkStructure returns TRUE wenn etwas erstellt wurde
                         
-                        $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_template_structure_generated_headline", 'Ftm'); //FTM Template-Struktur erstellt!
-                        $messages = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_template_structure_generated_message", 'Ftm'); //FTM Template-Struktur wurde erstellt bzw. aktualisiert.
-                        $this->flashMessageContainer->add($messages, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                        $headline = $this->lang('ftm_template_structure_generated_headline'); //FTM Template-Struktur erstellt!
+                        $messages = $this->lang('ftm_template_structure_generated_message'); //FTM Template-Struktur wurde erstellt bzw. aktualisiert.
+                        $this->flashMessageContainer->add($messages, $headline, FlashMessage::OK);
                         
                         // daher nochmal ein Redirect
                         $this->redirect('list', 'TemplateManager', NULL, array());
@@ -444,8 +439,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     // Meldungen von erstellten Templates ausgeben
                     if(trim($tempMessages)!="") {
-                        $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.fluid_templates_generated_headline", 'Ftm'); //Fluid-Templates erstellt!
-                        $this->flashMessageContainer->add($tempMessages, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                        $headline = $this->lang('fluid_templates_generated_headline'); //Fluid-Templates erstellt!
+                        $this->flashMessageContainer->add($tempMessages, $headline, FlashMessage::OK);
                         
                         // Seite neu laden
                         $this->redirect('list', 'TemplateManager', NULL, array());
@@ -460,14 +455,12 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 // Template-Verzeichnis wurde noch nicht
                 // im FTM-Template angegeben
                 else {
-                    
                     $options['templateDirFound'] = FALSE;
-                    
-                    $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_headline", 'Ftm'); //Kein Template-Verzeichnis gefunden!
-                    $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_message1", 'Ftm') . '<br />'; //In diesem FTM-Template ist noch kein Template-Verzeichnis eingetragen worden.
-                    $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_message2", 'Ftm') . '<br />'; //Bitte editieren Sie den Template-Datensatz, und geben Sie im Feld templateDir den Namen des Verzeichnisses an in dem Ihre Template erstellt werden soll.
-                    $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.warning_no_template_dir_found_message3", 'Ftm'); //Sobald das FTM-Template ein Template-Verzeichnis beinhaltet, wird die benötigte Verzeichnisstruktur gecheckt und ggf. erstellt!.
-                    $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
+                    $headline = $this->lang('warning_no_template_dir_found_headline'); //Kein Template-Verzeichnis gefunden!
+                    $message  = $this->lang('warning_no_template_dir_found_message1') . '<br />'; //In diesem FTM-Template ist noch kein Template-Verzeichnis eingetragen worden.
+                    $message .= $this->lang('warning_no_template_dir_found_message2') . '<br />'; //Bitte editieren Sie den Template-Datensatz, und geben Sie im Feld templateDir den Namen des Verzeichnisses an in dem Ihre Template erstellt werden soll.
+                    $message .= $this->lang('warning_no_template_dir_found_message3'); //Sobald das FTM-Template ein Template-Verzeichnis beinhaltet, wird die benötigte Verzeichnisstruktur gecheckt und ggf. erstellt!.
+                    $this->flashMessageContainer->add($message, $headline, FlashMessage::WARNING);
                 }
             }
             
@@ -508,15 +501,13 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      * @since  1.0.0
      */
     public function generateTypoScriptAction($typoScriptFile) {
-        
-        
+
         // Unterstuetzte TypoScript-dateien
         $validFiles = array();
         $validFiles[] = "constants.ts";
         $validFiles[] = "setup.ts";
         $validFiles[] = "tsConfig.ts";
-        
-        
+
         // TypoScript-Datei ok!?
         if(!in_array($typoScriptFile, $validFiles)) {
             throw new \Exception("Error - TS '".$typoScriptFile."' file isn't valid", 1);
@@ -525,9 +516,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         
         // Pruefen ob FTM-Template vorhanden
         if(!($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_ftm_template_not_exists_headline", 'Ftm'); //TypoScript nicht re-/generiert!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_ftm_template_not_exists_message", 'Ftm', array($typoScriptFile)); //Das $typoScriptFile TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch kein FTM-Template existiert.
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $headline = $this->lang('error_ftm_template_not_exists_headline'); //TypoScript nicht re-/generiert!
+            $message  = $this->lang('error_ftm_template_not_exists_message', array($typoScriptFile)); //Das $typoScriptFile TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch kein FTM-Template existiert.
+            $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
             $this->redirect('list', 'TemplateManager', NULL, array());
         }
         
@@ -542,9 +533,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // Pruefen ob Templates vorhanden sind
             $tempFluid = unserialize($templateDataArray['fluid']);
             if(!is_array($tempFluid) || empty($tempFluid)) {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_fluid_template_not_exists_headline", 'Ftm'); //TypoScript nicht re-/generiert!
-                $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_fluid_template_not_exists_message", 'Ftm', array($typoScriptFile)); //Das $typoScriptFile TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch keine Fluid-Templates existieren.
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
+                $headline = $this->lang('error_fluid_template_not_exists_headline'); //TypoScript nicht re-/generiert!
+                $message  = $this->lang('error_fluid_template_not_exists_message', array($typoScriptFile)); //Das $typoScriptFile TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch keine Fluid-Templates existieren.
+                $this->flashMessageContainer->add($message, $headline, FlashMessage::WARNING);
                 
                 $dataCheckFailed = TRUE;
             }
@@ -557,7 +548,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // if(!is_array($tempFluid) || empty($tempFluid)) {
                 // $headline = 'TypoScript nicht re-/generiert!';
                 // $message  = 'Das '.$typoScriptFile.' TypoScript konnte nicht re-/generiert werden, da auf dieser Seite anscheinend noch keine Fluid-Templates existieren.';
-                // $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
+                // $this->flashMessageContainer->add($message, $headline, FlashMessage::WARNING);
                 // $dataCheckFailed = TRUE;
             // }
 
@@ -588,16 +579,16 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath.$typoScriptFile);
                     if(!file_put_contents($absPath.$typoScriptFile, $typoScript)) {
-                        $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_headline", 'Ftm'); //TypoScript wurde re-/generiert!
-                        $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_message1", 'Ftm', array($typoScriptFile)) . '<br />'; //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der setup.ts abgespeichert werden.
-                        $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_message2", 'Ftm', array($absPath.$typoScriptFile)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath.$typoScriptFile
-                        $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                        $headline = $this->lang('error_typoscript_not_saved_headline'); //TypoScript wurde re-/generiert!
+                        $message  = $this->lang('error_typoscript_not_saved_message1', array($typoScriptFile)) . '<br />'; //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der setup.ts abgespeichert werden.
+                        $message .= $this->lang('error_typoscript_not_saved_message2', array($absPath.$typoScriptFile)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath.$typoScriptFile
+                        $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
                     }
                     else {
                         
                         // MD5-Hash merken
                         $this->fluidTemplate->setMd5HashSetupTs(md5(serialize($templateDataArray)));
-                        $messageOk.= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_file_generated", 'Ftm', array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
+                        $messageOk.= $this->lang('typoscript_file_generated', array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
                     }
                     // ------------------------------------------------
                     
@@ -609,16 +600,16 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath.$typoScriptFile);
                     if(!file_put_contents($absPath.$typoScriptFile, $typoScript)) {
-                        $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_constants_headline", 'Ftm'); //TypoScript wurde re-/generiert!
-                        $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_constants_message1", 'Ftm', array($typoScriptFile)) . '<br />'; //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der constants.ts abgespeichert werden.
-                        $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_constants_message2", 'Ftm', array($typoScriptFile, $absPath.$typoScriptFile)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath.$typoScriptFile
-                        $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                        $headline = $this->lang('error_typoscript_not_saved_in_constants_headline'); //TypoScript wurde re-/generiert!
+                        $message  = $this->lang('error_typoscript_not_saved_in_constants_message1', array($typoScriptFile)) . '<br />'; //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der constants.ts abgespeichert werden.
+                        $message .= $this->lang('error_typoscript_not_saved_in_constants_message2', array($typoScriptFile, $absPath.$typoScriptFile)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath.$typoScriptFile
+                        $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
                     }
                     else {
                         
                         // MD5-Hash merken
                         $this->fluidTemplate->setMd5HashConstantsTs(md5(serialize($templateDataArray)));
-                        $messageOk.= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_file_generated", 'Ftm', array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
+                        $messageOk.= $this->lang('typoscript_file_generated', array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
                     }
                     // ------------------------------------------------
                     
@@ -630,16 +621,16 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath.$typoScriptFile);
                     if(!file_put_contents($absPath.$typoScriptFile, $typoScript)) {
-                        $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_tsconfig_headline", 'Ftm'); //TypoScript wurde re-/generiert!
-                        $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_tsconfig_message1", 'Ftm', array($typoScriptFile)) . '<br />'; //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der tsConfig.ts abgespeichert werden.
-                        $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_not_saved_in_tsconfig_message2", 'Ftm', array($typoScriptFile)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath.$typoScriptFile
-                        $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                        $headline = $this->lang('error_typoscript_not_saved_in_tsconfig_headline'); //TypoScript wurde re-/generiert!
+                        $message  = $this->lang('error_typoscript_not_saved_in_tsconfig_message1', array($typoScriptFile)) . '<br />'; //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der tsConfig.ts abgespeichert werden.
+                        $message .= $this->lang('error_typoscript_not_saved_in_tsconfig_message2', array($typoScriptFile)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath.$typoScriptFile
+                        $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
                     }
                     else {
                         
                         // MD5-Hash merken
                         $this->fluidTemplate->setMd5HashTsConfig(md5(serialize($templateDataArray)));
-                        $messageOk.= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_file_generated", 'Ftm', array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
+                        $messageOk.= $this->lang('typoscript_file_generated', array($typoScriptFile)); //Das $typoScriptFile TypoScript für dieses FTM-Template wurde re-/generiert.
                     }
                     // ------------------------------------------------
                     
@@ -648,14 +639,15 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     if($messageOk!="") {
                         // Template speichern
                         $this->fluidTemplateRepository->update($this->fluidTemplate);
-                        $this->flashMessageContainer->add($messageOk, \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_generated", 'Ftm'), \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                        $headline = $this->lang('typoscript_generated');
+                        $this->flashMessageContainer->add($messageOk, $headline, FlashMessage::OK);
                     }
                    
     
                 }
                 else {
                     $errors = str_replace('|', '<br />', $result['errors']);
-                    $this->flashMessageContainer->add($errors, 'TypoScript konnte nicht re-/generiert werden!', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                    $this->flashMessageContainer->add($errors, 'TypoScript konnte nicht re-/generiert werden!', FlashMessage::ERROR);
                 }
             }
             
@@ -742,14 +734,14 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                             // Geaendertes Template speichern
                             $this->fluidTemplateRepository->update($this->fluidTemplate);
                             
-                            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.template_file_copied_headline", 'Ftm', array(ucfirst($templateType), ucfirst($templateType))); //Fluid-ucfirst($templateType)-Datei wurde erfolgreich in Fluid-ucfirst($templateType)-Datensatz kopiert!
-                            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.template_file_copied_message", 'Ftm', array($templateFile, ucfirst($templateType))); //Die $templateFile.html Fluid-ucfirst($templateType)-Datei wurde erfolgreich kopiert.
-                            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                            $headline = $this->lang('template_file_copied_headline', array(ucfirst($templateType), ucfirst($templateType))); //Fluid-ucfirst($templateType)-Datei wurde erfolgreich in Fluid-ucfirst($templateType)-Datensatz kopiert!
+                            $message  = $this->lang('template_file_copied_message', array($templateFile, ucfirst($templateType))); //Die $templateFile.html Fluid-ucfirst($templateType)-Datei wurde erfolgreich kopiert.
+                            $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
                         }
                         else {
-                            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_template_file_not_found_headline", 'Ftm', array(ucfirst($templateType))); //Fluid-ucfirst($templateType)-Datei konnte nicht kopiert werden!
-                            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_template_file_not_found_message", 'Ftm', array($templateFile, ucfirst($templateType))); //Die $templateFile.html Fluid-ucfirst($templateType)-Datei konnte nicht gefunden werden.
-                            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                            $headline = $this->lang('error_template_file_not_found_headline', array(ucfirst($templateType))); //Fluid-ucfirst($templateType)-Datei konnte nicht kopiert werden!
+                            $message  = $this->lang('error_template_file_not_found_message', array($templateFile, ucfirst($templateType))); //Die $templateFile.html Fluid-ucfirst($templateType)-Datei konnte nicht gefunden werden.
+                            $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
                         }
                     }
                     
@@ -758,15 +750,15 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     else {
                         \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath);
                         if(file_put_contents($absPath, $tempFluid->getTemplateCode())) {
-                            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.fluid_datarecord_copied_headline", 'Ftm', array(ucfirst($templateType), ucfirst($templateType))); //Fluid-ucfirst($templateType)-Datensatz wurde erfolgreich in Fluid-ucfirst($templateType)-Datei kopiert!
-                            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.fluid_datarecord_copied_message", 'Ftm', array($templateFile, ucfirst($templateType))); //Die $templateFile.html Fluid-ucfirst($templateType)-Datei wurde erfolgreich kopiert.
-                            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                            $headline = $this->lang('fluid_datarecord_copied_headline', array(ucfirst($templateType), ucfirst($templateType))); //Fluid-ucfirst($templateType)-Datensatz wurde erfolgreich in Fluid-ucfirst($templateType)-Datei kopiert!
+                            $message  = $this->lang('fluid_datarecord_copied_message', array($templateFile, ucfirst($templateType))); //Die $templateFile.html Fluid-ucfirst($templateType)-Datei wurde erfolgreich kopiert.
+                            $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
                         }
                         else {
-                            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_template_file_not_copied_headline", 'Ftm', array(ucfirst($templateType))); //Fluid-ucfirst($templateType)-Datei konnte nicht kopiert werden!
-                            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_template_file_not_copied_message1", 'Ftm', array($templateFile, ucfirst($templateType))) . '<br />'; //Die $templateFile.html Fluid-ucfirst($templateType)-Datei konnte nicht kopiert werden.
-                            $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_template_file_not_copied_message2", 'Ftm'); //Bitte prüfen Sie den Dateinamen und die Verzeichnisrechte.
-                            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                            $headline = $this->lang('error_template_file_not_copied_headline', array(ucfirst($templateType))); //Fluid-ucfirst($templateType)-Datei konnte nicht kopiert werden!
+                            $message  = $this->lang('error_template_file_not_copied_message1', array($templateFile, ucfirst($templateType))) . '<br />'; //Die $templateFile.html Fluid-ucfirst($templateType)-Datei konnte nicht kopiert werden.
+                            $message .= $this->lang('error_template_file_not_copied_message2'); //Bitte prüfen Sie den Dateinamen und die Verzeichnisrechte.
+                            $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
                         }
                     }
                     
@@ -781,9 +773,9 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         
         
         if(!$found) {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.warning_datarecord_not_found_headline", 'Ftm', array(ucfirst($templateType))); //Fluid-ucfirst($templateType) konnte nicht gefunden werden!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.warning_datarecord_not_found_message", 'Ftm', array($templateFile, ucfirst($templateType), $temp)); //Der Datensatz zum $templateFile.html Fluid-ucfirst($templateType) konnte nicht gefunden werden.$temp
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
+            $headline = $this->lang('warning_datarecord_not_found_headline', array(ucfirst($templateType))); //Fluid-ucfirst($templateType) konnte nicht gefunden werden!
+            $message  = $this->lang('warning_datarecord_not_found_message', array($templateFile, ucfirst($templateType), $temp)); //Der Datensatz zum $templateFile.html Fluid-ucfirst($templateType) konnte nicht gefunden werden.$temp
+            $this->flashMessageContainer->add($message, $headline, FlashMessage::WARNING);
         }
 
 
@@ -872,30 +864,37 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             
             $headline = $this->lang('templateCreatedMessageOkHeadline');
             $message  = $this->lang('templateCreatedMessageOkMessage');
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+            $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
         }
         else {
             $headline = $this->lang('templateCreatedMessageWarningHeadline');
             $message  = $this->lang('templateCreatedMessageWarningMessage');
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
+            $this->flashMessageContainer->add($message, $headline, FlashMessage::WARNING);
         }
     
     
         $this->redirect('list', 'TemplateManager', NULL, array());
     }
 
-
-    
     /**
      * Holt eine Uebersetzung
      * 
      * @param  string $key Schluessel des Sprachwerts
+     * @param  array  $params Replacements
      * @return string Uebersetzung
      */
-    protected function lang($key) {
-        $extName   = 'Ftm';
-        $keyPrefix = 'tx_ftm_domain_model_template';
-        return \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($keyPrefix.".".$key, $extName);
+    protected function lang($key, array $params=array()) {
+        $extName = 'Ftm';
+        $fullkey = 'tx_ftm_domain_model_template.'.$key;
+        $lang    = LocalizationUtility::translate($key, $extName, $params);
+        if(!$lang || $lang=='') {
+            $fullkey = 'tx_ftm_domain_model_templatemanagercontroller.'.$key;
+            $lang = LocalizationUtility::translate($fullkey, $extName, $params);
+        }
+        if(!$lang || $lang=='') {
+            $lang = 'Translation of '.$key.' not found';
+        }
+        return $lang;
     }
 
     /**
@@ -955,7 +954,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         if(!empty($requiredExtensions)) {
             foreach($requiredExtensions as $extension) {
                 if(!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded($extension)) {
-                    $messages[] = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_extension_not_found", 'Ftm', array($extension)); //$extension Extension konnte nicht gefunden werden
+                    $messages[] = $this->lang('error_extension_not_found', array($extension)); //$extension Extension konnte nicht gefunden werden
                 }
             }
         }
@@ -963,27 +962,27 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
             if($this->fluidTemplate->getConfig() instanceof \CodingMs\Ftm\Domain\Model\TemplateConfig) {
                 if(!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('realurl') && $this->fluidTemplate->getConfig()->getSpeakingPaths()=='realurl') {
-                    $messages[] = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_realurl_not_found", 'Ftm'); //RealURL (ab Version 1.12.6) Extension konnte nicht gefunden werden
+                    $messages[] = $this->lang('error_realurl_not_found'); //RealURL (ab Version 1.12.6) Extension konnte nicht gefunden werden
                 }
                 else if(!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('simulatestatic') && $this->fluidTemplate->getConfig()->getSpeakingPaths()=='simulatestatic') {
-                    $messages[] = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_simulatestatic_not_found", 'Ftm'); //simulatestatic Extension konnte nicht gefunden werden
+                    $messages[] = $this->lang('error_simulatestatic_not_found'); //simulatestatic Extension konnte nicht gefunden werden
                 }
             }
             else {
-                $message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.ftm_template_damaged", 'Ftm');
+                $message = $this->lang('ftm_template_damaged');
                 throw new \Exception($message, 1);
             }
         }
         
         if(!empty($messages)) {
             if(count($messages)==1) {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_extension_missing", 'Ftm'); //Erforderliche Extension fehlt!
+                $headline = $this->lang('error_extension_missing'); //Erforderliche Extension fehlt!
             }
             else {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_extensions_missing", 'Ftm'); //Erforderliche Extensions fehlen!
+                $headline = $this->lang('error_extensions_missing'); //Erforderliche Extensions fehlen!
             }
             $message = implode('<br />', $messages);
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
         }
         
     }
@@ -998,12 +997,12 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         // Im Sys-Template setzen/aktualisieren
         $messages = $this->sysTemplateService->setTemplateDir($this->pid, $templateName);
         if(isset($messages['ok']) && !empty($messages['ok'])) {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_files_generated", 'Ftm'); //TypoScript-Datei(en) erstellt!
-            $this->flashMessageContainer->add($messages['ok'], $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+            $headline = $this->lang('typoscript_files_generated'); //TypoScript-Datei(en) erstellt!
+            $this->flashMessageContainer->add($messages['ok'], $headline, FlashMessage::OK);
         }
         if(isset($messages['error']) && !empty($messages['error'])) {
-            $headline =  \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_files_not_generated", 'Ftm'); //TypoScript-Datei(en) konnten nicht erstellt werden!
-            $this->flashMessageContainer->add($messages['error'], $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $headline =  $this->lang('error_typoscript_files_not_generated'); //TypoScript-Datei(en) konnten nicht erstellt werden!
+            $this->flashMessageContainer->add($messages['error'], $headline, FlashMessage::ERROR);
         }
         
         // In den t3_less Constants setzen/aktualisieren

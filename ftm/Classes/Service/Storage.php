@@ -64,7 +64,7 @@ class Storage {
         $relPath = 'typo3conf/ext/'.$extensionDirectory.'/';
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
         if($extensionDirectory=="" || !preg_match('/^[a-zA-Z0-9_]*$/', $extensionDirectory) || !file_exists($absPath)) {
-            throw new \Exception('Invalid template path', 1);
+            throw new \Exception('Invalid template path \''.$extensionDirectory.'\'', 1);
         } 
         
         // Pruefen ob es das Sorage schon gibt

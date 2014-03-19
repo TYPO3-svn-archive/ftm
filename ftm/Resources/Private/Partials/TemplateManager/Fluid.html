@@ -1,27 +1,8 @@
 {namespace ftm=CodingMs\Ftm\ViewHelper}
 <ul class="ftmActionList">
-    <li><!-- Template bearbeiten -->
-        <a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&amp;edit[tx_ftm_domain_model_template][{fluidTemplate.uid}]=edit'; return false;" title="{f:translate(key: 'tx_ftm_domain_model_template.template_edit_template')}">
-            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-open">&nbsp;</span>&nbsp;
-            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_edit_template"></f:translate></span>
-            <span class="buttonDescription"></span>
-        </a>
-    </li>
-    <li><!-- Nur Fluid bearbeiten -->
-        <ftm:be.editLink parameters="edit[tx_ftm_domain_model_template][{fluidTemplate.uid}]=edit&columnsOnly=fluid"
-                         returnUrl="mod.php?M=web_FtmFtm&tx_ftm_web_ftmftm[action]=list&id={options.pid}"
-                         title="{f:translate(key: 'function_links_edit_page_1_restricted')}">
-            <ftm:be.icon icon="actions-document-open" title="{f:translate(key: 'function_links_edit_page_1_restricted')} translate: Fluid-Templates verwalten" />
-            <f:translate key="function_links_edit_page_1_restricted" /> translate: Fluid-Templates verwalten
-        </ftm:be.editLink>
-    </li>
-    <li><!-- Snippets auslesen -->
-        <f:link.action action="loadFiles" controller="Fluid">
-            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-system-refresh">&nbsp;</span>&nbsp;
-            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_load_snippets"></f:translate></span>
-            <span class="buttonDescription"></span>
-        </f:link.action>
-    </li>
+    <f:render partial="TemplateManagerButtons/EditTemplate"      arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <f:render partial="TemplateManagerButtons/EditTemplateFluid" arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <f:render partial="TemplateManagerButtons/LoadFluidFiles"    arguments="{fluidTemplate: fluidTemplate, options: options}"/>
 </ul>
 <br />
 <br />

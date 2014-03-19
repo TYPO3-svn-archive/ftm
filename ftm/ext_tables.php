@@ -42,8 +42,10 @@ if(!defined('FTM_REQUIRED_EXTENSIONS')) {
 }
 
 
-
-
+/**
+ * @todo: Eigene CSS-Styles einbinden
+$TBE_STYLES['styleSheetFile_post'] = t3lib_extMgm::extRelPath($_EXTKEY).'res/css/backend.css';
+ */
 
 
 // Include flex forms

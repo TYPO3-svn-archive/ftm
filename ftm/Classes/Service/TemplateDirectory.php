@@ -38,90 +38,37 @@ namespace CodingMs\Ftm\Service;
 class TemplateDirectory {
     
     /**
-     * Benoetigte Verzeichnis Struktur
-     * @var array
-     * @since 1.0.0
-     */
-    public static $directories = array(
-        'Configuration'               => 'Hier liegt das gesamte Template',
-        'Configuration/TCA'           => 'Hier liegt das gesamte Template',
-        'Configuration/TypoScript'    => 'Hier liegt das gesamte Template',
-        'Documentation'               => 'Hier liegt das gesamte Template',
-        'Initialisation'              => 'Hier liegt das gesamte Template',
-        'Initialisation/Files'        => 'Hier liegt das gesamte Template',
-        'Initialisation/Extensions'   => 'Hier liegt das gesamte Template',
-        'Meta'                        => 'Hier liegt das gesamte Template',
-        'Resources'                   => 'Hier liegt das gesamte Template',
-        'Resources/Private'           => 'Hier liegt das gesamte Template',
-        'Resources/Private/DynCss'      => 'Hier liegt das generierte dynamische CSS',
-        'Resources/Private/DynCss/Files'=> 'Hier liegen die einzelnen Source-Dateien des dynamischen CSS',
-        'Resources/Private/Language'  => 'Hier liegt das gesamte Template',
-        'Resources/Private/Layouts'   => 'Hier liegt das gesamte Template',
-        'Resources/Private/Partials'  => 'Hier liegt das gesamte Template',
-        'Resources/Private/Templates' => 'Hier liegt das gesamte Template',
-        'Resources/Private/TypoScript' => 'Hier liegt das gesamte TYPOScript',
-        'Resources/Private/TypoScript/Constants' => 'Hier liegen alle TYPOScript Konstanten',
-        'Resources/Private/TypoScript/Library' => 'Hier liegen alle TYPOScript Snippets',
-        'Resources/Private/TypoScript/Setup' => 'Hier liegt das gesamte TYPOScript Setup',
-        'Resources/Public'             => 'Hier liegt das gesamte Template',
-        'Resources/Public/Fonts'       => 'Hier liegt das gesamte Template',
-        'Resources/Public/Icons'       => 'Hier liegt das gesamte Template',
-        'Resources/Public/Images'      => 'Hier liegt das gesamte Template',
-        'Resources/Public/JavaScript'  => 'Hier liegt das gesamte Template',
-        'Resources/Public/Sass'        => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less'        => 'Hier liegt das gesamte LESS des Templates',
-        'Resources/Public/Less/BasicLess'     => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/BasicLess/ContentLayouts' => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/BasicLess/GridElementLayouts' => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/BasicLayout'   => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/Modifications' => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/Areas'         => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/Navigations'   => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/Layouts'       => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/Templates'     => 'Hier liegt das gesamte Template',
-        'Resources/Public/Less/Partials'      => 'Hier liegt das gesamte Template',
-        'Resources/Public/Stylesheets' => 'Hier liegt das gesamte Template',
-        'Resources/Public/Contrib'     => 'Hier liegt das gesamte Template',
-        'Resources/Public/Extensions'  => 'Hier liegt das gesamte Template',
-    );
-    
-    /**
-     * @ToDo: auch das 0_lessBasics etc erstellen und die Dateien reinkopieren
-     */
-    
-    /**
-     * Prueft die Template Verzeichnisstruktur
+     * Prüft die Template Verzeichnisstruktur
      * 
-     * @todo Hier muss auch der dcncss-Typ berücksichtigt werden
      * @author     Thomas Deuling <typo3@coding.ms>
-     * @param      string Verzeichnis-Name im Ext-Verzeichnis
+     * @param      string $templateName Template/Verzeichnis-Name im Ext-Verzeichnis
      * @return     mixed TRUE wenn alle Verzeichnisse vorhanden sind, ansonsten ein Array mit den vermissten Verzeichnissen
      * @since      1.0.0
      */
-    public static function checkDirectories($templateName) {
+    public static function checkDirectories($templateName='', array $directories=array()) {
         
         $success = TRUE;
         $missingDirectories = array();
-        
+        $directoryBase = 'typo3conf/ext/';
+
         // Zuerst pruefen ob es das Projekt-Verzeichnis gibt
-        $relPath = "typo3conf/ext/".$templateName;
+        $relPath = $directoryBase.$templateName;
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
         if(!is_dir($absPath)) {
             $success = FALSE;
-            $directory = 'root';
-            $missingDirectories[$directory] = 'Hier liegen alle Website-Daten';
+            $missingDirectories[$absPath] = $templateName;
         }
         
         // Dann alle anderen Verzeichnisse pruefen 
-        if(!empty(self::$directories) && $success) {
-            foreach(self::$directories as $directory => $description) {
+        if(!empty($directories) && $success) {
+            foreach($directories as $tempDirectory) {
                 
-                $relPath = "typo3conf/ext/".$templateName."/".$directory;
+                $relPath = $directoryBase.$templateName."/".$tempDirectory;
                 $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
                 
                 if(!is_dir($absPath)) {
                     $success = FALSE;
-                    $missingDirectories[$directory] = $description;
+                    $missingDirectories[$absPath] = $tempDirectory;
                 }
                 
             }
@@ -140,24 +87,23 @@ class TemplateDirectory {
      * 
      * @todo Hier muss auch der dcncss-Typ berücksichtigt werden
      * @author     Thomas Deuling <typo3@coding.ms>
-     * @param      string Verzeichnis-Name im Ext-Verzeichnis
+     * @param      string $templateName Verzeichnis-Name im Ext-Verzeichnis
      * @return     mixed TRUE wenn alle Verzeichnisse vorhanden sind bzw. erstellt wurden, ansonsten ein Array mit den vermissten/nicht erstellten Verzeichnissen
      * @since      1.0.0
      */
-    public static function createDirectories($templateName) {
+    public static function createDirectories($templateName='', array $directories=array()) {
         
         $success = TRUE;
         $missingDirectories = array();
-        
+        $directoryBase = 'typo3conf/ext/';
         
         // Zuerst pruefen ob es das Projekt-Verzeichnis gibt
-        $relPath = "typo3conf/ext/".$templateName;
+        $relPath = $directoryBase.$templateName;
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
         if(!is_dir($absPath)) {
             if(!mkdir($absPath)) {
                 $success = FALSE;
-                $directory = 'root';
-                $missingDirectories[$directory] = 'Hier liegen alle Website-Daten';
+                $missingDirectories[$absPath] = $templateName;
             }
             else {
                 chmod($absPath, 0777);
@@ -165,16 +111,16 @@ class TemplateDirectory {
         }
         
         // Dann alle anderen Verzeichnisse pruefen 
-        if(!empty(self::$directories) && $success) {
-            foreach(self::$directories as $directory => $description) {
+        if(!empty($directories) && $success) {
+            foreach($directories as $tempDirectory) {
                 
-                $relPath = "typo3conf/ext/".$templateName."/".$directory;
+                $relPath = $directoryBase.$templateName."/".$tempDirectory;
                 $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
                 
                 if(!is_dir($absPath)) {
                     if(!mkdir($absPath)) {
                         $success = FALSE;
-                        $missingDirectories[$directory] = $description;
+                        $missingDirectories[$absPath] = $tempDirectory;
                     }
                     else {
                         chmod($absPath, 0777);

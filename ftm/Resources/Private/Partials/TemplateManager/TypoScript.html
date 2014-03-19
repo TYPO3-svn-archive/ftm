@@ -1,20 +1,7 @@
 {namespace ftm=CodingMs\Ftm\ViewHelper}
 <ul class="ftmActionList">
-    <li><!-- Template bearbeiten -->
-        <a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&amp;edit[tx_ftm_domain_model_template][{fluidTemplate.uid}]=edit'; return false;" title="{f:translate(key: 'tx_ftm_domain_model_template.template_edit_template')}">
-            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-open">&nbsp;</span>&nbsp;
-            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_edit_template"></f:translate></span>
-            <span class="buttonDescription"></span>
-        </a>
-    </li>
-    <li><!-- TYPOScript re/generieren -->
-        <f:link.action action="generateTypoScript" controller="TemplateManager" arguments="{typoScriptFile: 'setup.ts' }">
-            <span class="t3-icon t3-icon-actions t3-icon-actions-document ftm-icon-generate-typoscript">&nbsp;</span>&nbsp;
-            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_generate_typoscript"></f:translate></span>
-            <span class="buttonDescription">@todo translate: Diese Aktion muss ausgeführt werden, wenn sich die Konfiguration des Templates veränder hat.
-                Also wenn Sie Einstellungen um Template-Datensatz geändert haben.</span>
-        </f:link.action>
-    </li>
+    <f:render partial="TemplateManagerButtons/EditTemplate"       arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <f:render partial="TemplateManagerButtons/GenerateTypoScript" arguments="{fluidTemplate: fluidTemplate, options: options}"/>
 </ul>
 <br />
 <br />

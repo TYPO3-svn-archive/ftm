@@ -264,4 +264,51 @@ module.tx_ftm {
         partialRootPath  = EXT:ftm/Resources/Private/Partials/
         layoutRootPath   = EXT:ftm/Resources/Private/Layouts/
     }
+    settings {
+
+        # Templates, this array will be readed for
+        # the Create-Template options
+        templates {
+            default {
+                directories {
+                    1000 = Configuration
+                    1100 = Configuration/PageTS
+                    1200 = Configuration/TCA
+                    1300 = Configuration/TypoScript
+                    1310 = Configuration/TypoScript/Library
+                    2000 = Documentation
+                    3000 = Initialisation
+                    3100 = Initialisation/Files
+                    3200 = Initialisation/Extensions
+                    4000 = Meta
+                    5000 = Resources
+                    5100 = Resources/Private
+                    5110 = Resources/Private/DynCss
+                    5111 = Resources/Private/DynCss/Files
+                    51110 = Resources/Private/DynCss/Files/GridElementLayouts
+                    51111 = Resources/Private/DynCss/Files/ContentLayouts
+                    51112 = Resources/Private/DynCss/Files/ImageHoverEffects
+
+
+                    5120 = Resources/Private/Extensions
+                    5130 = Resources/Private/Language
+                    5140 = Resources/Private/Layouts
+                    5150 = Resources/Private/Partials
+                    5160 = Resources/Private/Templates
+                    5170 = Resources/Private/TypoScript
+                    5171 = Resources/Private/TypoScript/Constants
+                    5172 = Resources/Private/TypoScript/Library
+                    5172 = Resources/Private/TypoScript/Setup
+                    5200 = Resources/Public
+                    5210 = Resources/Public/Fonts
+                    5220 = Resources/Public/Icons
+                    5230 = Resources/Public/Images
+                    5240 = Resources/Public/JavaScript
+                    5250 = Resources/Public/Stylesheets
+                    5260 = Resources/Public/Contrib
+                    5270 = Resources/Public/Extensions
+                }
+            }
+        }
+    }
 }

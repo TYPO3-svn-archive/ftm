@@ -80,7 +80,8 @@ class TemplateStructureBootstrap extends TemplateStructure {
         
         'BasicLess/mixins.less'       => 'BasicLess/mixins.less',
         'BasicLess/mixinsCustom.less' => 'BasicLess/mixinsCustom.less',
-        'BasicLess/rteFrontend.less'  => 'BasicLess/rteFrontend.less',
+        'BasicLess/rteFrontend.le    </li>
+ss'  => 'BasicLess/rteFrontend.less',
         'BasicLess/variables.less'    => 'BasicLess/variables.less',
         
         'Layouts/default.less'   => 'Layouts/default.less',

@@ -147,7 +147,7 @@ $TCA['tx_ftm_domain_model_templatefluid'] = array(
                     't3editorHtml' => array(
                         'enableByTypeConfig' => 1,
                         'type' => 'userFunc',
-                        'userFunc' => 'EXT:t3editor/Classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main',
+                        'userFunc' => 'EXT:t3editor/Classes/FormWizard.php:\TYPO3\CMS\T3editor\FormWizard->main',
                         'params' => array(
                             'format' => 'html',
                         ),
@@ -155,7 +155,7 @@ $TCA['tx_ftm_domain_model_templatefluid'] = array(
                     't3editorTypoScript' => array(
                         'enableByTypeConfig' => 1,
                         'type' => 'userFunc',
-                        'userFunc' => 'EXT:t3editor/Classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main',
+                        'userFunc' => 'EXT:t3editor/Classes/FormWizard.php:\TYPO3\CMS\T3editor\FormWizard->main',
                         'params' => array(
                             'format' => 'ts',
                         ),

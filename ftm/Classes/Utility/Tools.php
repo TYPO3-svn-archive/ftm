@@ -135,22 +135,22 @@ class Tools {
             return "typo3conf/ext/".$themeName."/Resources/Public/Icons/";
         }
         if($type=="Sass") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Sass/";
+            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
         }
         if($type=="Less") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Less/";
+            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
         }
         if($type=="LessBasic") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/";
+            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
         }
         if($type=="LessGridElementLayouts") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/GridElementLayouts/";
+            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/GridElementLayouts/";
         }
         if($type=="LessContentLayouts") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/ContentLayouts/";
+            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files//ContentLayouts/";
         }
         if($type=="LessImageHoverEffects") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Less/BasicLess/ImageHoverEffects/";
+            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/ImageHoverEffects/";
         }
         if($type=="FluidTemplates") {
             return "typo3conf/ext/".$themeName."/Resources/Private/";
