@@ -5,7 +5,7 @@ namespace CodingMs\Ftm\Domain\Model;
  *  Copyright notice
  *
  *  (c) 2013 Thomas Deuling <typo3@coding.ms>, coding.ms
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -32,38 +32,7 @@ namespace CodingMs\Ftm\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class TemplateTypoScriptSnippet extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
-    
-    /**
-     * hidden
-     *
-     * @var \boolean
-     */
-    protected $hidden;
-
-    /**
-     * name
-     *
-     * @var \string
-     * @since 2.0.0
-     */
-    protected $name;
-
-    /**
-     * type
-     *
-     * @var \integer
-     * @since 2.0.0
-     */
-    protected $type;
-
-    /**
-     * description
-     *
-     * @var \string
-     * @since 2.0.0
-     */
-    protected $description;
+class TemplateTypoScriptSnippet extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
 
     /**
      * constants
@@ -80,104 +49,6 @@ class TemplateTypoScriptSnippet extends \TYPO3\CMS\Extbase\DomainObject\Abstract
      * @since 2.0.0
      */
     protected $setup;
-
-    /**
-     * next list uid
-     * temporär, nicht in db
-     * @var int
-     * @since 2.0.0
-     */
-     protected $nextListUid = 0;
-
-    /**
-     * previous list uid
-     * temporär, nicht in db
-     * @var int
-     * @since 2.0.0
-     */
-     protected $previousListUid = 0;
-     
-     /**
-      * Returns the hidden
-      *
-      * @return \boolean $hidden
-      */
-     public function getHidden() {
-         return $this->hidden;
-     }
-     
-     /**
-      * Sets the hidden
-      *
-      * @param \boolean $hidden
-      * @return void
-      */
-     public function setHidden($hidden) {
-         $this->hidden = $hidden;
-     }
-
-    /**
-     * Returns the name
-     *
-     * @return \string $name
-     * @since 2.0.0
-     */
-    public function getName() {
-        return $this->name;
-    }
-
-    /**
-     * Sets the name
-     *
-     * @param \string $name
-     * @return void
-     * @since 2.0.0
-     */
-    public function setName($name) {
-        $this->name = $name;
-    }
-
-    /**
-     * Returns the type
-     *
-     * @return \integer $type
-     * @since 2.0.0
-     */
-    public function getType() {
-        return $this->type;
-    }
-
-    /**
-     * Sets the type
-     *
-     * @param \integer $type
-     * @return void
-     * @since 2.0.0
-     */
-    public function setType($type) {
-        $this->type = $type;
-    }
-
-    /**
-     * Returns the description
-     *
-     * @return \string $description
-     * @since 2.0.0
-     */
-    public function getDescription() {
-        return $this->description;
-    }
-
-    /**
-     * Sets the description
-     *
-     * @param \string $description
-     * @return void
-     * @since 2.0.0
-     */
-    public function setDescription($description) {
-        $this->description = $description;
-    }
 
     /**
      * Returns the constants
@@ -220,45 +91,6 @@ class TemplateTypoScriptSnippet extends \TYPO3\CMS\Extbase\DomainObject\Abstract
     public function setSetup($setup) {
         $this->setup = $setup;
     }
-    
-    /**
-     * Returns the nextListUid
-     *
-     * @return int $nextListUid
-     */
-    public function getNextListUid() {
-        return $this->nextListUid;
-    }
-    
-    /**
-     * Sets the nextListUid
-     *
-     * @param int $nextListUid
-     * @return void
-     */
-    public function setNextListUid($nextListUid) {
-        $this->nextListUid = $nextListUid;
-    }
-    
-    /**
-     * Returns the previousListUid
-     *
-     * @return int $previousListUid
-     */
-    public function getPreviousListUid() {
-        return $this->previousListUid;
-    }   
-    
-    /**
-     * Sets the previousListUid
-     *
-     * @param int $previousListUid
-     * @return void
-     */
-    public function setPreviousListUid($previousListUid) {
-        $this->previousListUid = $previousListUid;
-    }
-    
 
     /**
      * Returns the data as array
@@ -266,16 +98,11 @@ class TemplateTypoScriptSnippet extends \TYPO3\CMS\Extbase\DomainObject\Abstract
      * @since 2.0.0
      */
     public function toArray() {
-        
-        $data = array();
-        $data['type']        = $this->getType();
-        $data['name']        = $this->getName();
+        $data = parent::toArray();
         $data['constants']   = $this->getConstants();
         $data['setup']       = $this->getSetup();
-        $data['description'] = $this->getDescription();
-        
         return $data;
     }
-    
+
 }
 ?>

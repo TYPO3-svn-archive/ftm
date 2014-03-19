@@ -202,9 +202,10 @@ class SendMail {
      * @param string $templateName Der Dateiname des Templates
      * @param array $emailData Daten die in der E-Mail ersetzt werden sollen
      * @param array $settings Einstellungen der jeweiligen Extension
-     * @return void
+     * @return array
      */
     static public function renderEmail($templatePath='ftm/Resources/Private/Templates/', $templateName = 'default', array $emailData=array(), array $settings=array()) {
+
         $emailView = new \TYPO3\CMS\Fluid\View\StandaloneView();
         // $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
         
@@ -212,10 +213,10 @@ class SendMail {
         // Template-Pfad an die Sub-Extension anpassen
         // $templateRootPath = str_replace("coding_ms_base", $this->baseSettings['belongsToExtension'], $extbaseFrameworkConfiguration['view']['templateRootPath']);
         // Zur Sicherheit den Pfad replacen
-        $templatePath = str_replace('typo3conf/ext/', '', $templatePath);
-        if(strstr($templatePath, 'fileadmin')===FALSE) {
-            $templatePath = 'typo3conf/ext/'.$templatePath;
-        }
+//        $templatePath = str_replace('typo3conf/ext/', '', $templatePath);
+//        if(strstr($templatePath, 'fileadmin')===FALSE) {
+//            $templatePath = 'typo3conf/ext/'.$templatePath;
+//        }
         $templateRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($templatePath);
         $templatePathAndFilename = $templateRootPath.'Email/' . $templateName . '.html';
         

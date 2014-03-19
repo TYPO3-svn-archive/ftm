@@ -157,8 +157,6 @@ class BaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     protected function pushMessage($type='OK', $languageKey='', $extensionKey='Ftm') {
         \CodingMs\Ftm\Utility\Console::log('BaseController->pushMessage('.$type.', '.$languageKey.', '.$extensionKey.')');
 
-        Log::
-
         // Valide Typen
         $validTypes = array();
         $validTypes['NOTICE']  = '\TYPO3\CMS\Core\Messaging\FlashMessage::NOTICE';

@@ -29,6 +29,13 @@ CREATE TABLE tt_address (
 );
 
 #
+# Table structure for table 'fe_users'
+#
+CREATE TABLE fe_users (
+    tx_ftm_action_hash varchar(255) DEFAULT '' NOT NULL,
+);
+
+#
 # Table structure for table 'tx_ftm_domain_model_template'
 #
 CREATE TABLE tx_ftm_domain_model_template (
@@ -52,6 +59,7 @@ CREATE TABLE tx_ftm_domain_model_template (
     language int(11) unsigned DEFAULT '0' NOT NULL,
     fluid int(11) unsigned DEFAULT '0' NOT NULL,
     less_variable int(11) unsigned DEFAULT '0' NOT NULL,
+    dyn_css_file int(11) unsigned DEFAULT '0' NOT NULL,
     menu_container int(11) unsigned DEFAULT '0' NOT NULL,
     typo_script_snippet int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -520,10 +528,12 @@ CREATE TABLE tx_ftm_domain_model_templatetyposcriptsnippet (
     template int(11) unsigned DEFAULT '0' NOT NULL,
 
     name varchar(255) DEFAULT '' NOT NULL,
-    type int(11) DEFAULT '0' NOT NULL,
+    type varchar(255) DEFAULT '' NOT NULL,
     description text NOT NULL,
     constants text NOT NULL,
     setup text NOT NULL,
+    public_readable tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    public_writeable tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,
@@ -560,6 +570,67 @@ CREATE TABLE tx_ftm_domain_model_templatetyposcriptsnippet (
 # Table structure for table 'tx_ftm_domain_model_templatetyposcriptsnippet_mm'
 #
 CREATE TABLE tx_ftm_domain_model_templatetyposcriptsnippet_mm (
+    uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+    KEY uid_local (uid_local),
+    KEY uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_ftm_domain_model_templatedyncssfile'
+#
+CREATE TABLE tx_ftm_domain_model_templatedyncssfile (
+
+    uid int(11) NOT NULL auto_increment,
+    pid int(11) DEFAULT '0' NOT NULL,
+
+    template int(11) unsigned DEFAULT '0' NOT NULL,
+
+    name varchar(255) DEFAULT '' NOT NULL,
+    type varchar(255) DEFAULT '' NOT NULL,
+    description text NOT NULL,
+    dyn_css text NOT NULL,
+    public_readable tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    public_writeable tinyint(4) unsigned DEFAULT '0' NOT NULL,
+
+    tstamp int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting int(11) unsigned DEFAULT '0' NOT NULL,
+    crdate int(11) unsigned DEFAULT '0' NOT NULL,
+    cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
+    deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    starttime int(11) unsigned DEFAULT '0' NOT NULL,
+    endtime int(11) unsigned DEFAULT '0' NOT NULL,
+
+    t3ver_oid int(11) DEFAULT '0' NOT NULL,
+    t3ver_id int(11) DEFAULT '0' NOT NULL,
+    t3ver_wsid int(11) DEFAULT '0' NOT NULL,
+    t3ver_label varchar(255) DEFAULT '' NOT NULL,
+    t3ver_state tinyint(4) DEFAULT '0' NOT NULL,
+    t3ver_stage int(11) DEFAULT '0' NOT NULL,
+    t3ver_count int(11) DEFAULT '0' NOT NULL,
+    t3ver_tstamp int(11) DEFAULT '0' NOT NULL,
+    t3ver_move_id int(11) DEFAULT '0' NOT NULL,
+
+    t3_origuid int(11) DEFAULT '0' NOT NULL,
+    sys_language_uid int(11) DEFAULT '0' NOT NULL,
+    l10n_parent int(11) DEFAULT '0' NOT NULL,
+    l10n_diffsource mediumblob,
+
+    PRIMARY KEY (uid),
+    KEY parent (pid),
+    KEY t3ver_oid (t3ver_oid,t3ver_wsid),
+    KEY language (l10n_parent,sys_language_uid)
+
+);
+
+#
+# Table structure for table 'tx_ftm_domain_model_templatedyncssfile_mm'
+#
+CREATE TABLE tx_ftm_domain_model_templatedyncssfile_mm (
     uid_local int(11) unsigned DEFAULT '0' NOT NULL,
     uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,

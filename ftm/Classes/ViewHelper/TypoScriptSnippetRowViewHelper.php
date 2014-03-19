@@ -54,34 +54,41 @@ class TypoScriptSnippetRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Ab
       
         // Link im neuen Fenster oeffnen
         $actions = array();
-        $uid = $snippet->getUid();
+        $uid     = $snippet->getUid();
         $nextUid = $snippet->getNextListUid();
         $prevUid = $snippet->getPreviousListUid();
-        $table = 'tx_ftm_domain_model_templatetyposcriptsnippet';
+        $table   = 'tx_ftm_domain_model_templatetyposcriptsnippet';
         $spaceIcon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('empty-empty', array('style' => 'background-position: 0 10px;'));
         
         
         $title = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_viewhelper_be_typoscriptsnippetrowviewhelper.edit_typoscript_snippet", "Ftm");
-        $icon  = 'actions-document-open';
-        
-        
+
+
+        // Bearbeiten
+        $editIcon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-document-open');
         $editOnClick = \TYPO3\CMS\Backend\Utility\BackendUtility::editOnClick('&edit['.$table.']['.$uid.']=edit');
-        $actions[] = "<a href=\"#\" onclick=\"".$editOnClick."\">".\TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon($icon, array('title' => $title))."</a>";
+        $actions[] = '<a href="#" onclick="'.$editOnClick.'" title="'.$title.'">'.$editIcon.'</a>';
         
         
         // Move-Up
         if ($prevUid) {
             $params = '&cmd['.$table.']['.$prevUid.'][move]=-'.$uid;
-            $actions['moveUp'] = '<a href="#" onclick="' . htmlspecialchars(('return jumpToUrl(\'' . $GLOBALS['SOBE']->doc->issueCommand($params, -1) . '\');')) . '" title="' . $GLOBALS['LANG']->getLL('moveUp', TRUE) . '">' . \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-move-up') .'</a>';
+            $moveUpIcon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-move-up');
+            $moveUpTitle = $GLOBALS['LANG']->getLL('moveUp', TRUE);
+            $moveUpOnClick = htmlspecialchars(('return jumpToUrl(\''.$GLOBALS['SOBE']->doc->issueCommand($params, -1).'\');'));
+            $actions['moveUp'] = '<a href="#" onclick="'.$moveUpOnClick.'" title="'.$moveUpTitle.'">'.$moveUpIcon.'</a>';
         } 
         else {
             $actions['moveUp'] = $spaceIcon;
         }
-        
+
+        // Move-Down
         if ($nextUid) {
-            // Down
             $params = '&cmd['.$table.']['.$uid.'][move]=-' . $nextUid;
-            $actions['moveDown'] = '<a href="#" onclick="' . htmlspecialchars(('return jumpToUrl(\'' . $GLOBALS['SOBE']->doc->issueCommand($params, -1) . '\');')) . '" title="' . $GLOBALS['LANG']->getLL('moveDown', TRUE) . '">' . \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-move-down') .'</a>';
+            $moveDownIcon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-move-down');
+            $moveDownTitle = $GLOBALS['LANG']->getLL('moveDown', TRUE);
+            $moveDownOnClick = htmlspecialchars(('return jumpToUrl(\''.$GLOBALS['SOBE']->doc->issueCommand($params, -1).'\');'));
+            $actions['moveDown'] = '<a href="#" onclick="'.$moveDownOnClick.'" title="'.$moveDownTitle.'">'.$moveDownIcon.'</a>';
         } else {
             $actions['moveDown'] = $spaceIcon;
         }
@@ -109,23 +116,27 @@ class TypoScriptSnippetRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Ab
             $uid, 
             (' ' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:labels.referencesToRecord')), 
             $refCount
-        ). \TYPO3\CMS\Backend\Utility\BackendUtility::translationCount(
+        );
+        $refCountMsg.= \TYPO3\CMS\Backend\Utility\BackendUtility::translationCount(
                 $table, 
                 $uid, 
                 (' ' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:labels.translationsOfRecord')
             )
         );
-        $actions['delete'] = '<a href="#" onclick="' . htmlspecialchars(('if (confirm(' . $GLOBALS['LANG']->JScharCode(($GLOBALS['LANG']->getLL('deleteWarning') . ' "' . $title . '" ' . $refCountMsg)) . ')) {jumpToUrl(\'' . $GLOBALS['SOBE']->doc->issueCommand($params, -1) . '\');} return false;')) . '" title="' . $GLOBALS['LANG']->getLL('delete', TRUE) . '">' . \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-edit-delete') . '</a>';
+
+        // Löschen-Icon/Link
+        $deleteOnClickQuestion = $GLOBALS['LANG']->getLL('deleteWarning').' "'.$title.'" '.$refCountMsg;
+        $deleteOnClickQuestion = $GLOBALS['LANG']->JScharCode($deleteOnClickQuestion);
+        $deleteOnClick = htmlspecialchars(('if (confirm('.$deleteOnClickQuestion.')) {jumpToUrl(\''.$GLOBALS['SOBE']->doc->issueCommand($params, -1).'\');} return false;'));
+        $deleteTitle = $GLOBALS['LANG']->getLL('delete', TRUE);
+        $deleteIcon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-edit-delete');
+        $actions['delete'] = '<a href="#" onclick="'.$deleteOnClick.'" title="'.$deleteTitle.'">'.$deleteIcon.'</a>';
                 
         
         
         
         // Actions
         $tableCells[] = implode("&nbsp;", $actions);
-        
-   
-        
-        
         return '<td>'.implode('</td><td>', $tableCells).'</td>';
     }
 

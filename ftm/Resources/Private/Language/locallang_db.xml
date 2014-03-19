@@ -25,7 +25,7 @@
             <label index="tx_ftm_domain_model_template.fluid_headline_with_info">Fluid templates (first template is default!)</label>
             <label index="tx_ftm_domain_model_template.tab_menu">Menues</label>
             <label index="tx_ftm_domain_model_template.menu_container">Menues</label>
-            <label index="tx_ftm_domain_model_template.tab_less">Dynamic CSS</label>
+            <label index="tx_ftm_domain_model_template.tab_dyncss">Dynamic CSS</label>
             <label index="tx_ftm_domain_model_template.less_variable_info">Dynamic CSS info</label>
             <label index="tx_ftm_domain_model_template.less_variable">Dynamic CSS variables</label>
             <label index="tx_ftm_domain_model_template.tab_extensions">Extensions</label>
@@ -111,13 +111,18 @@
             <label index="tx_ftm_domain_model_templatemenucontainer.wrap">Wrap</label>
             <label index="tx_ftm_domain_model_templatemenucontainer.menu_objects">Menu objects/Menu levels</label>
 
-            <!-- FTM-TYPOScript Snippets -->
+            <!-- FTM-TYPOScript Snippets
             <label index="tx_ftm_domain_model_templatetyposcriptsnippet">TYPOScript-Snippets</label>
             <label index="tx_ftm_domain_model_templatetyposcriptsnippet.name">Name</label>
             <label index="tx_ftm_domain_model_templatetyposcriptsnippet.type">Type</label>
             <label index="tx_ftm_domain_model_templatetyposcriptsnippet.description">Description</label>
-            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.constants">Constants TypoScript</label>
-            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.setup">Setup TypoScript</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.constants">Constants TYPOScript</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.setup">Setup TYPOScript</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.public_readable">Public visible for everyone</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.public_writeable">Public editable for everyone</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.tab_typoscript">TYPOScript</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.tab_description">Beschreibung/Dokumentation</label>
+            <label index="tx_ftm_domain_model_templatetyposcriptsnippet.tab_synchronization">Synchronisation</label> -->
 
             <!-- FTM-MenuObjeke -->
             <label index="tx_ftm_domain_model_templatemenuobject">Fluid Template - Menu objects</label>
@@ -411,7 +416,7 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_template.fluid_headline_with_info">Fluid-Templates (das erste Template ist das default-Template!)</label>
             <label index="tx_ftm_domain_model_template.tab_menu">Menüs</label>
             <label index="tx_ftm_domain_model_template.menu_container">Menüs</label>
-            <label index="tx_ftm_domain_model_template.tab_less">Dynamisches CSS</label>
+            <label index="tx_ftm_domain_model_template.tab_dyncss">Dynamisches CSS</label>
             <label index="tx_ftm_domain_model_template.less_variable_info">Dynamisches CSS Variablen-Info</label>
             <label index="tx_ftm_domain_model_template.less_variable">Dynamische CSS-Variablen</label>
             <label index="tx_ftm_domain_model_template.tab_extensions">Extensions</label>

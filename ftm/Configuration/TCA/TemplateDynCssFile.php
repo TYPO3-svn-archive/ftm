@@ -3,16 +3,16 @@ if (!defined ('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-$TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
-    'ctrl' => $TCA['tx_ftm_domain_model_templatetyposcriptsnippet']['ctrl'],
+$TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
+    'ctrl' => $TCA['tx_ftm_domain_model_templatedyncssfile']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, type, description, constants, setup, public_readable, public_writeable',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, type, description, dyn_css, public_readable, public_writeable',
     ),
     'types' => array(
         '1' => array('showitem' =>
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_typoscript, name, type, constants;;;wizards[t3editorTypoScript], setup;;;wizards[t3editorTypoScript] ,'.
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_description, description,'.
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_synchronization, typo_script_snippet_save, public_readable, public_writeable, typo_script_snippet_load'
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_dyncss, name, type, dyn_css;;;wizards[t3editorCss] ,'.
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_description, description,'.
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_synchronization, dyn_css_file_save, public_readable, public_writeable, dyn_css_file_load'
         ),
     ),
     'palettes' => array(
@@ -41,8 +41,8 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
                 'items' => array(
                     array('', 0),
                 ),
-                'foreign_table' => 'tx_ftm_domain_model_templatetyposcriptsnippet',
-                'foreign_table_where' => 'AND tx_ftm_domain_model_templatetyposcriptsnippet.pid=###CURRENT_PID### AND tx_ftm_domain_model_templatetyposcriptsnippet.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_ftm_domain_model_templatedyncssfile',
+                'foreign_table_where' => 'AND tx_ftm_domain_model_templatedyncssfile.pid=###CURRENT_PID### AND tx_ftm_domain_model_templatedyncssfile.sys_language_uid IN (-1,0)',
             ),
         ),
         'l10n_diffsource' => array(
@@ -100,7 +100,7 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
 
         'name' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.name',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.name',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -109,11 +109,10 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
         ),
         'type' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.type',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.type',
             'config' => array(
                 'type' => 'select',
                 'items' => array(
-                    array('Constants', 'constants'),
                     array('Marker', 'marker'),
                     array('Extension', 'extension'),
                     array('Menu', 'menu'),
@@ -127,7 +126,7 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
         ),
         'description' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.description',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.description',
             'config' => array(
                 'type' => 'text',
                 'cols' => 40,
@@ -146,9 +145,9 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
             ),
             'defaultExtras' => 'fixed-font',
         ),
-        'constants' => array(
+        'dyn_css' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.constants',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.dyn_css',
             'config' => array(
                 'type' => 'text',
                 'cols' => 112,
@@ -163,77 +162,49 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
                             'format' => 'html',
                         ),
                     ),*/
-                    't3editorTypoScript' => array(
+                    't3editorCss' => array(
                         'enableByTypeConfig' => 1,
                         'type' => 'userFunc',
                         'userFunc' => 'EXT:t3editor/Classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main',
                         'params' => array(
-                            'format' => 'ts',
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        'setup' => array(
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.setup',
-            'config' => array(
-                'type' => 'text',
-                'cols' => 112,
-                'rows' => 36,
-                'eval' => 'trim',
-                'wizards' => array(
-                    /*'t3editorHtml' => array(
-                        'enableByTypeConfig' => 1,
-                        'type' => 'userFunc',
-                        'userFunc' => 'EXT:t3editor/classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main',
-                        'params' => array(
-                            'format' => 'html',
-                        ),
-                    ),*/
-                    't3editorTypoScript' => array(
-                        'enableByTypeConfig' => 1,
-                        'type' => 'userFunc',
-                        'userFunc' => 'EXT:t3editor/Classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main',
-                        'params' => array(
-                            'format' => 'ts',
+                            'format' => 'css',
                         ),
                     ),
                 ),
             ),
         ),
 
-        // TYPOScript-Snippet speichern
-        'typo_script_snippet_save' => array (
+        // DynCss-Datei speichern
+        'dyn_css_file_save' => array (
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.save_snippet',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.save_file',
             'config' => array (
                 'type' => 'user',
-                'userFunc' => 'CodingMs\Ftm\Backend\TypoScriptSnippetSaveRow->renderField',
+                'userFunc' => 'CodingMs\Ftm\Backend\DynCssFileSaveRow->renderField',
                 'param1' => 'typo_script_snippet'
 
             )
         ),
         'public_readable' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.public_readable',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.public_readable',
             'config' => array(
                 'type' => 'check',
             ),
         ),
         'public_writeable' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.public_writeable',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.public_writeable',
             'config' => array(
                 'type' => 'check',
             ),
         ),
-        'typo_script_snippet_load' => array (
+        'dyn_css_file_load' => array (
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.load_snippet',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.load_file',
             'config' => array (
                 'type' => 'user',
-                'userFunc' => 'CodingMs\Ftm\Backend\TypoScriptSnippetLoadRow->renderField',
+                'userFunc' => 'CodingMs\Ftm\Backend\DynCssFileLoadRow->renderField',
                 'param1' => 'typo_script_snippet'
 
             )
@@ -250,9 +221,7 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
 
 if(isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['compat_version'])) {
     if((float)$GLOBALS['TYPO3_CONF_VARS']['SYS']['compat_version']<6) {
-        $TCA['tx_ftm_domain_model_templatetyposcriptsnippet']['columns']['constants']['config']['wizards']['t3editorTypoScript']['userFunc'] =
-        'EXT:t3editor/classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main';
-        $TCA['tx_ftm_domain_model_templatetyposcriptsnippet']['columns']['setup']['config']['wizards']['t3editorTypoScript']['userFunc'] = 
+        $TCA['tx_ftm_domain_model_templatedyncssfile']['columns']['dyn_css']['config']['wizards']['t3editorCss']['userFunc'] =
         'EXT:t3editor/classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main';
     }
 }

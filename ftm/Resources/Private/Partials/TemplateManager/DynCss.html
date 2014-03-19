@@ -1,4 +1,38 @@
 {namespace ftm=CodingMs\Ftm\ViewHelper}
+<ul class="ftmActionList">
+    <li><!-- Template bearbeiten -->
+        <a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&amp;edit[tx_ftm_domain_model_template][{fluidTemplate.uid}]=edit'; return false;" title="{f:translate(key: 'tx_ftm_domain_model_template.template_edit_template')}">
+            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-open">&nbsp;</span>&nbsp;
+            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_edit_template"></f:translate></span>
+            <span class="buttonDescription"></span>
+        </a>
+    </li>
+    <li><!-- Nur Snippets bearbeiten -->
+        <ftm:be.editLink parameters="edit[tx_ftm_domain_model_template][{fluidTemplate.uid}]=edit&columnsOnly=typo_script_snippet_info,typo_script_snippet"
+                         returnUrl="mod.php?M=web_FtmFtm&tx_ftm_web_ftmftm[action]=list&id={options.pid}"
+                         title="{f:translate(key: 'function_links_edit_page_1_restricted')}">
+            <ftm:be.icon icon="actions-document-open" title="{f:translate(key: 'function_links_edit_page_1_restricted')} translate: Snippets verwalten" />
+            <f:translate key="function_links_edit_page_1_restricted" /> translate: Snippets verwalten
+        </ftm:be.editLink>
+    </li>
+    <li><!-- TYPOScript re/generieren -->
+        <f:link.action action="generateTypoScript" controller="TemplateManager" arguments="{typoScriptFile: 'setup.ts' }">
+            <span class="t3-icon t3-icon-actions t3-icon-actions-document ftm-icon-generate-typoscript">&nbsp;</span>&nbsp;
+            <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_generate_typoscript"></f:translate></span>
+            <span class="buttonDescription">@todo translate: Diese Aktion muss ausgeführt werden, wenn sich die Konfiguration des Templates veränder hat.
+                Also wenn Sie Einstellungen um Template-Datensatz geändert haben.</span>
+        </f:link.action>
+    </li>
+    <li><!-- DynCss-Files auslesen -->
+        <f:link.action action="loadFiles" controller="DynCss">
+            <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-system-refresh">&nbsp;</span>&nbsp;
+            <span class="buttonLabel"><f:translate key="tx_ftm_templatedyncssfile.synchronize_dyn_css_files"></f:translate></span>
+            <span class="buttonDescription"></span>
+        </f:link.action>
+    </li>
+</ul>
+<br />
+<br />
 
 <!--
     @todo: hier einen Link zum erstellen, 

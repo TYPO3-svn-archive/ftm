@@ -38,16 +38,22 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
      * E-Mail/Benutzername mit dem sich der Benutzer anmeldet
      * 
      * @var string
-     * @validate \TYPO3\CMS\Extbase\Validation\Validator\EmailAddressValidator
      */
     protected $email;
-    
+
     /**
      * Vorname
-     * 
-     * @var string 
+     *
+     * @var string
      */
     protected $firstName;
+
+    /**
+     * Aktions-Hash
+     *
+     * @var string
+     */
+    protected $actionHash;
     
     /**
      * Nachname
@@ -237,6 +243,25 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
      */
     public function setLastName($lastName) {
         $this->lastName = $lastName;
+    }
+
+    /**
+     * Gets the ActionHash
+     *
+     * @return string
+     */
+    public function getActionHash() {
+        return $this->actionHash;
+    }
+
+    /**
+     * Sets the ActionHash
+     *
+     * @param string $actionHash
+     * @return void
+     */
+    public function setActionHash($actionHash) {
+        $this->actionHash = $actionHash;
     }
 
     /**

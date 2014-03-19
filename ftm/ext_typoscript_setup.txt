@@ -61,13 +61,17 @@ config.tx_extbase.persistence.classes {
         # Tx_Ftm_FrontendUser // erstmal Type = 0 => Standard, damit normale Datensaetze gefunden werden (mit extbaseType=0)
         # ..AND (fe_users.tx_extbase_type='Tx_Ftm_FrontendUser')
         # -> Wenn nun spezielle Datensaetze gebraucht werden, muss dieses Feld wieder gesetzt werden
-        recordType = 
+        recordType =
+        columns {
+            tx_ftm_action_hash.mapOnProperty = actionHash
+        }
     }
 
     CodingMs\Ftm\Domain\Model\FrontendUserGroup.mapping {
         tableName = fe_groups
         # Hier muss u.U. der Typ vom Extension-Model stehen, bspw. DogOwner, damit der Typ beim Registrieren direkt uebernommen wird
-        recordType = Tx_Ftm_FrontendUserGroup
+        recordType =
+        #Tx_Ftm_FrontendUserGroup
     }
 
     # tt_address fuer Zugriff mappen

@@ -30,14 +30,10 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '2.0.0',
 	'constraints' => array(
 		'depends' => array(
-			'extbase' => '4.7.7',
-			'fluid' => '4.7.7',
-			//'t3_less' => '1.0.7',
 			't3editor' => '4.7.7',
 			'static_info_tables' => '2.3.1',
-			'gridelements' => '1.4.0',
-			'typo3' => '6.1.0-6.2.99',
-            //'sassify' => '1.2.2'
+			'gridelements' => '2.0.2',
+            'extbase' => '6.1.0-6.2.99',
 		),
 		'conflicts' => array(
 		),

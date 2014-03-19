@@ -152,6 +152,14 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $lessVariable;
 
     /**
+     * DynCss-Files
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateDynCssFile>
+     * @since 1.0.0
+     */
+    protected $dynCssFile;
+
+    /**
      * Menu-Container
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateMenuContainer>
@@ -193,6 +201,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         $this->language      = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->fluid         = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->lessVariable  = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->dynCssFile    = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->menuContainer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->typoScriptSnippet = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
@@ -479,6 +488,49 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      */
     public function setLessVariable(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $lessVariable) {
         $this->lessVariable = $lessVariable;
+    }
+
+    /**
+     * Adds a TemplateDynCssFile
+     *
+     * @param \CodingMs\Ftm\Domain\Model\TemplateDynCssFile $dynCssFile
+     * @return void
+     * @since 2.0.0
+     */
+    public function addDynCssFile(\CodingMs\Ftm\Domain\Model\TemplateDynCssFile $dynCssFile) {
+        $this->dynCssFile->attach($dynCssFile);
+    }
+
+    /**
+     * Removes a TemplateDynCssFile
+     *
+     * @param \CodingMs\Ftm\Domain\Model\TemplateDynCssFile $dynCssFileToRemove The TemplateDynCssFile to be removed
+     * @return void
+     * @since 2.0.0
+     */
+    public function removeDynCssFile(\CodingMs\Ftm\Domain\Model\TemplateDynCssFile $dynCssFileToRemove) {
+        $this->dynCssFile->detach($dynCssFileToRemove);
+    }
+
+    /**
+     * Returns the dynCssFile
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateDynCssFile> $dynCssFile
+     * @since 2.0.0
+     */
+    public function getDynCssFile() {
+        return $this->dynCssFile;
+    }
+
+    /**
+     * Sets the dynCssFile
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateDynCssFile> $dynCssFile
+     * @return void
+     * @since 2.0.0
+     */
+    public function setDynCssFile(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $dynCssFile) {
+        $this->dynCssFile = $dynCssFile;
     }
 
     /**

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>database</type>
+        <description>Language labels for database tables/fields belonging to extension 'ftm'</description>
+    </meta>
+    <data type="array">
+
+        <!-- English -->
+        <languageKey index="default" type="array">
+
+            <!-- FTM-TYPOScript Snippets -->
+            <label index="tx_ftm_templatetyposcriptsnippet">TYPOScript-Snippets</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.name">Name</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.type">Snippet-Type</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.description">Description/Documentation in ReST</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.constants">Constants TYPOScript</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.setup">Setup TYPOScript</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.public_readable">Public visible for everyone</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.public_writeable">Public editable for everyone</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.tab_typoscript">TYPOScript</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.tab_description">Description/Documentation</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.tab_synchronization">Synchronization</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.save_snippet">Save snippet in PluginCloud</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.load_snippet">Load snippet from PluginCloud</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.own_snippets">Own snippets</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.foreign_snippets">Foreign snippets</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.preview">Preview</label>
+
+            <label index="tx_ftm_templatetyposcriptsnippet.typoscript_snippet_info">
+                Here you can optionally add TYPOScript snippets for your FTM template.
+
+                All information about TYPOScript snippets, using them and how you can share them between servers you'll find %s.
+
+            </label>
+            <label index="tx_ftm_templatetyposcriptsnippet.include_from_plugincloud">Include from PluginCloud-Template</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.include_now">Include selected Snippet</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.confirm_overwrite">Really overwrite TYPOScript snippet from PluginCloud-Template?</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.no_typoscript_snippet_exists">There are no TYPOScript snippets existing.</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.no_saved_typoscript_snippet_exists">There are no saved TYPOScript snippets existing.</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.synchronize_typoscript_snippets_message">Please synchronize your TYPOScript snippets in the scheme first.</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.save_typoscript_snippet_in_plugincloud">Save TYPOScript snippet in PluginCloud. Be sure that this snippet is locally saved before pushing it to Server!</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.click_to_save_typoscript_snippet_in_plugincloud">Click here to save TYPOScript snippet in the PluginCloud for using it later again.</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.warning_save_typoscript_snippets_headline">Warning:</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.warning_save_typoscript_snippets_message">Existing TYPOScript snippets with the same name will be overwritten!
+                Please consider, that if you use the FTM with a public-Key, every other user is able to see the saved TYPOScript snippets.</label>
+
+        </languageKey>
+
+        <!-- Deutsch -->
+        <languageKey index="de" type="array">
+
+            <!-- FTM-TYPOScript Snippets -->
+            <label index="tx_ftm_templatetyposcriptsnippet">TYPOScript-Schnipsel</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.name">Name</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.type">Snippet-Typ</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.description">Beschreibung/Dokumentation in ReST</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.constants">Constants TYPOScript</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.setup">Setup TYPOScript</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.public_readable">Öffentlich sichtbar für alle</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.public_writeable">Öffentlich bearbeitbar für alle</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.tab_typoscript">TYPOScript</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.tab_description">Beschreibung/Dokumentation</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.tab_synchronization">Synchronisation</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.save_snippet">Snippet in PluginCloud speichern</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.load_snippet">Snippet aus PluginCloud laden</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.own_snippets">Eigene Snippets</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.foreign_snippets">Fremde Snippets</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.preview">Vorschau</label>
+
+            <label index="tx_ftm_templatetyposcriptsnippet.typoscript_snippet_info">
+                Hier können Sie beliebig viele TYPOScript-Schnipsel für Ihr FTM-Template bereitstellen.
+
+                Alle Informationen zu TYPOScript-Schnipseln, deren Verwendung und wie Sie diese Serverübergreifend austauschen können finden Sie %s.
+
+            </label>
+            <label index="tx_ftm_templatetyposcriptsnippet.include_from_plugincloud">Aus PluginCloud-Vorlage einfügen</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.include_now">Ausgewähltes Snippet einfügen</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.confirm_overwrite">TYPOScript-Schnipsel wirklich aus PluginCloud-Vorlage überschreiben?</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.no_typoscript_snippet_exists">Es sind noch keine gemerkten TYPOScript-Schnipsel vorhanden.</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.no_saved_typoscript_snippet_exists">Es sind noch keine gemerkten TYPOScript-Schnipsel vorhanden.</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.synchronize_typoscript_snippets_message">Bitte synchronisieren Sie erst Ihre TYPOScript-Schnipsel in der Übersicht.</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.save_typoscript_snippet_in_plugincloud">TYPOScript-Schnipsel in PluginCloud merken. Das Schnipsel muss erst lokal gespeichert sein, bevor Sie es zum Server senden!</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.click_to_save_typoscript_snippet_in_plugincloud">Hier klicken um den TYPOScript-Schnipsel in der PluginCloud zu merken, so dass dieser zu einem späteren Zeitpunkt wiederverwendet werden kann.</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.warning_save_typoscript_snippets_headline">Achtung:</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.warning_save_typoscript_snippets_message">Bereits existierende TYPOScript-Schnipsel mit dem gleichen Namen werden überschrieben!
+                Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, alle anderen User die gemerkten TYPOScript-Schnipsel sehen können!</label>
+
+        </languageKey>
+
+    </data>
+</T3locallang>

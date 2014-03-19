@@ -144,7 +144,7 @@ class PluginService {
             foreach(libxml_get_errors() as $error) {
                 $errorData .= $error->message."\n";
             }
-            var_dump($this->pluginCloudHost.'/'.$this->pluginCloudScript, strip_tags($data));
+            var_dump('PluginService: '.$this->pluginCloudHost.'/'.$this->pluginCloudScript, strip_tags($data));
             throw new \Exception($errorData."Data is not valid!", E_WARNING);
         }
         

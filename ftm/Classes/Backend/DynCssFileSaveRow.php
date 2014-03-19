@@ -25,13 +25,12 @@ namespace CodingMs\Ftm\Backend;
 ***************************************************************/
 
 /**
- * Class that renders a selection field for Fluid FCE template selection
- * Abgeschaut bei FCESelector der fed-Extension
+ * Save a DynCss file
  *
  * @package    TYPO3
  * @subpackage    ftm
  */
-class InformationRow {
+class DynCssFileSaveRow {
 
     /**
      * Render a Flexible Content Element type selection field
@@ -41,37 +40,28 @@ class InformationRow {
      * @return string
      */
     public function renderField(array &$parameters, &$parentObject) {
-            
-            
+
         // Vars
         $uid   = $parameters["row"]["uid"];
         $pid   = $parameters["row"]["pid"];
         $name  = $parameters['itemFormElName'];
         $value = $parameters['itemFormElValue'];
         $imagePath = "/typo3conf/ext/ftm/Resources/Public/Icons/";
-        
-        // foreach ($parameters as $key => $value) {
-            // $select .= $key."<br>";
-        // }
-        
-        // echo "<pre>";
-        // var_dump(&$parameters["row"]);
-        // echo "</pre>";
-        // die(serialize(&$parentObject['_THIS_UID']));
-        
-        
-        if($parameters['field']=="less_variable_info") {
-            $infotext = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.less_variable_info", "Ftm", array('<b>@baseUrl</b>', '<b>@baseUrlTemplate</b>', '<b>@templateDir</b>', '<b>@baseUrlImage</b>', '<b>@{baseUrlTemplate}img/</b>', '<b>@{baseUrl}typo3conf/ext/@{templateDir}/template/img</b>', $this->wikiLink('Css-Less.html', \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.link_here", "Ftm"))));
- 
-        }
-        
-        else if($parameters['field']=="typo_script_snippet_info") {
-            $infotext = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_templatetyposcriptsnippet.typoscript_snippet_info", "Ftm", array($this->wikiLink('TypoScriptSnippets.html', \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_informationrow.link_here", "Ftm"))));
-        }
-        
 
-        
-        return $infotext;
+        $snippetSaveUri = "/typo3/mod.php";
+        $snippetSaveUri.= "?M=web_FtmFtm";
+        $snippetSaveUri.= "&id=".$pid."";
+        $snippetSaveUri.= "&tx_ftm_web_ftmftm[action]=saveFile";
+        $snippetSaveUri.= "&tx_ftm_web_ftmftm[controller]=DynCss";
+        $snippetSaveUri.= "&tx_ftm_web_ftmftm[file]=".$uid."";
+
+        $langPrefix = 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.';
+        $linkTitle = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."save_dyn_css_file_in_plugincloud", "Ftm");
+        $linkLabel = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."save_dyn_css_file_in_plugincloud", "Ftm");
+
+        $saveLink = "<a href=\"".$snippetSaveUri."\" title=\"".$linkTitle."\"><img src=\"".$imagePath."dyncss_file_save.png\"> <span>".$linkLabel."</span></a><br /><br />";
+
+        return $saveLink;
     }
 
 

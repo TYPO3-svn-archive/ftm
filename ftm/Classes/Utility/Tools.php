@@ -187,6 +187,6 @@ class Tools {
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
         return file_put_contents($absPath."log.txt", $logString."\n", FILE_APPEND);
     }
-    
+
 }
 ?>

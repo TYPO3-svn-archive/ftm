@@ -1,11 +1,11 @@
 <?php
-namespace CodingMs\Ftm\Domain\Repository;
+namespace CodingMs\Ftm\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Thomas Deuling <typo3@coding.ms>, coding.ms
- *  
+ *  (c) 2013 Thomas Deuling <typo3@coding.ms>, coding.ms
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -32,15 +32,45 @@ namespace CodingMs\Ftm\Domain\Repository;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class FrontendUserGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
 
+    /**
+     * dynCss
+     *
+     * @var \string
+     * @since 2.0.0
+     */
+    protected $dynCss;
 
-    public function findAllByUidWithoutPid($userGroupId) {
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        $query->matching($query->equals('uid', $userGroupId));
-        return $query->execute()->getFirst();
+    /**
+     * Returns the dynCss
+     *
+     * @return \string $dynCss
+     */
+    public function getDynCss() {
+        return $this->dynCss;
     }
-    
+
+    /**
+     * Sets the dynCss
+     *
+     * @param \string $dynCss
+     * @return void
+     */
+    public function setDynCss($dynCss) {
+        $this->dynCss = $dynCss;
+    }
+
+    /**
+     * Returns the data as array
+     * @return array
+     * @since 2.0.0
+     */
+    public function toArray() {
+        $data = parent::toArray();
+        $data['dynCss'] = $this->getDynCss();
+        return $data;
+    }
+
 }
 ?>

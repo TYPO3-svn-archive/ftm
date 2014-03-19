@@ -53,6 +53,8 @@ class TemplateDirectory {
         'Meta'                        => 'Hier liegt das gesamte Template',
         'Resources'                   => 'Hier liegt das gesamte Template',
         'Resources/Private'           => 'Hier liegt das gesamte Template',
+        'Resources/Private/DynCss'      => 'Hier liegt das generierte dynamische CSS',
+        'Resources/Private/DynCss/Files'=> 'Hier liegen die einzelnen Source-Dateien des dynamischen CSS',
         'Resources/Private/Language'  => 'Hier liegt das gesamte Template',
         'Resources/Private/Layouts'   => 'Hier liegt das gesamte Template',
         'Resources/Private/Partials'  => 'Hier liegt das gesamte Template',

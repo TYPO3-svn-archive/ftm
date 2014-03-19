@@ -25,6 +25,8 @@ namespace CodingMs\Ftm\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
 /**
  *
  *
@@ -52,8 +54,16 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * Template Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\TemplateRepository
+     * @inject
      */
     protected $fluidTemplateRepository;
+
+    /**
+     * PluginCloud-Service
+     *
+     * @var \CodingMs\Ftm\Service\PluginService
+     */
+    protected $pluginService;
 
     /**
      * Extension-Konfiguration
@@ -96,13 +106,13 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * Wird immer aufgerufen wenn irgendeine Action ausgefuehrt wird
      */
     public function initializeAction() {
-        
+
         // Sicherstellen das hier nur ein Admin arbeitet!
         if(!$GLOBALS['BE_USER']->isAdmin()) {
             throw new \Exception("Admin-Authorisation required", 1);
         }
-        
-        
+
+        // TYPO3-Version ermitteln
         $this->typo3Version = \CodingMs\Ftm\Utility\Tools::getTypo3Version();
         
         // Extension-Konfiguration auslesen
@@ -150,6 +160,17 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             }
             
         }
+
+        // PluginCloud-Service initiieren
+        $this->pluginService = $this->objectManager->create(
+            'CodingMs\Ftm\Service\PluginService',
+            $this->extConf['pluginCloudHost'],
+            $this->extConf['pluginCloudScript'],
+            $this->extConf['pcKey'],
+            $this->extConf['user'],
+            $this->extConf['password'],
+            $this->extConf['allowLog']
+        );
         
     }
 
@@ -165,8 +186,8 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         
         // Pruefen ob FTM-Template vorhanden
         if(!($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message", 'Ftm'); //Die Less-Variablen konnte re-/generiert werden, da auf dieser Seite anscheinen noch kein FTM-Template existiert.
+            $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
+            $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message", 'Ftm'); //Die Less-Variablen konnte re-/generiert werden, da auf dieser Seite anscheinen noch kein FTM-Template existiert.
             $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
         }
         
@@ -193,9 +214,9 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
                 $this->saveVariablesFile($variables, $folderAbs, $dynCssType);
             }
             else {
-                $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
-                $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message1", 'Ftm') . '<br />'; //Die Less-Variablen konnte re-/generiert werden, es gab einen Fehler beim Aufruf des Generierungs-WebServices.
-                $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message2", 'Ftm'); //Bitte versuchen Sie es später noch einmal. Sollte der Fehler erneut auftreten kontaktieren Sie das Entwicklungs-Team.
+                $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
+                $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message1", 'Ftm') . '<br />'; //Die Less-Variablen konnte re-/generiert werden, es gab einen Fehler beim Aufruf des Generierungs-WebServices.
+                $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message2", 'Ftm'); //Bitte versuchen Sie es später noch einmal. Sollte der Fehler erneut auftreten kontaktieren Sie das Entwicklungs-Team.
                 $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
             }
             
@@ -214,7 +235,7 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected function lang($key) {
         $extName   = 'Ftm';
         $keyPrefix = 'tx_ftm_domain_model_template';
-        return \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($keyPrefix.".".$key, $extName);
+        return LocalizationUtility::translate($keyPrefix.".".$key, $extName);
     }
 
 /**
@@ -287,20 +308,69 @@ class DynCssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         // Versuche Datei zu aktualisieren
         \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath);
         if(!file_put_contents($absPath, $data)) {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_headline", 'Ftm'); //Less-Variablen wurden re-/generiert!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1", 'Ftm') . '<br />'; //Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..Less/BasicLess/variables.less abgespeichert werden.
-            $message .= \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message2", 'Ftm', array($absPath)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath
+            $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_headline", 'Ftm'); //Less-Variablen wurden re-/generiert!
+            $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1", 'Ftm') . '<br />'; //Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..Less/BasicLess/variables.less abgespeichert werden.
+            $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message2", 'Ftm', array($absPath)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath
             $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
             $success = FALSE;
         }
         else {
-            $headline = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.less_variables_generated_headline", 'Ftm'); //Less-Variablen wurden re-/generiert!
-            $message  = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.less_variables_generated_message", 'Ftm'); //Die Less-Variablen für dieses FTM-Template wurde re-/generiert.
+            $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.less_variables_generated_headline", 'Ftm'); //Less-Variablen wurden re-/generiert!
+            $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.less_variables_generated_message", 'Ftm'); //Die Less-Variablen für dieses FTM-Template wurde re-/generiert.
             $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
             $success = TRUE;
         }
         
         return $success;
+    }
+
+    /**
+     * Liest alle DynCss-Dateien vom FTM-Server
+     *
+     * @author Thomas Deuling <typo3@coding.ms>
+     * @return void
+     * @since 2.0.0
+     */
+    public function loadFilesAction() {
+
+        // Infos fuer WebService ermitteln
+        $data = array();
+        $data['typo3Version'] = $this->typo3Version;
+        $data['ftmVersion']   = FTM_VERSION;
+
+        $result = $this->pluginService->executeAction("loadDynCssFiles", $data);
+        if($result['status']=='success') {
+
+            // Pfad ermitteln
+            $filepath   = "uploads/tx_ftm/";
+            $relPath    = $filepath;
+            $absPath    = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
+
+            // TypoScriptSnippets schreiben
+            $snippetFile       = "dynCssFiles.serialized";
+            $snippetsSerialized = $result['dynCssFiles'];
+
+            \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath.$snippetFile);
+            if(!file_put_contents($absPath.$snippetFile, $snippetsSerialized)) {
+                $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline", 'Ftm');
+                $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1", 'Ftm', array($snippetFile)) . '<br />';
+                $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2", 'Ftm', array($absPath.$snippetFile));
+                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            }
+            else {
+                $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.snippets_read_headline", 'Ftm');
+                $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.snippets_read_message", 'Ftm');
+                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+            }
+        }
+        else {
+            $errors = '<br />'.str_replace('|', '<br />', $result['errors']);
+            $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_headline", 'Ftm');
+            $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_message", 'Ftm');
+            $this->flashMessageContainer->add($message.$errors, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+        }
+
+        $this->redirect('list', 'TemplateManager', NULL, array());
     }
 
 }

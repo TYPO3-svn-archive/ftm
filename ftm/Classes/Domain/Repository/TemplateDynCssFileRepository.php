@@ -4,7 +4,7 @@ namespace CodingMs\Ftm\Domain\Repository;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Thomas Deuling <typo3@coding.ms>, coding.ms
+ *  (c) 2013 Thomas Deuling <typo3@coding.ms>, coding.ms
  *  
  *  All rights reserved
  *
@@ -32,15 +32,7 @@ namespace CodingMs\Ftm\Domain\Repository;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class FrontendUserGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class TemplateDynCssFileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-
-    public function findAllByUidWithoutPid($userGroupId) {
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        $query->matching($query->equals('uid', $userGroupId));
-        return $query->execute()->getFirst();
-    }
-    
 }
 ?>

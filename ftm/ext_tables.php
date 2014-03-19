@@ -16,7 +16,7 @@ if(!isset($configuration) || $configuration['disableBackendModule']!='1') {
         '999',    // Position
         array(
             'TemplateManager'   => 'list,createTemplate,generateTypoScript,generateFluid,acceptDisclaimer',
-            'DynCss'            => 'generate',
+            'DynCss'            => 'generate,loadFiles,saveFile,insertFile',
             'TypoScriptSnippet' => 'saveSnippet,insertSnippet,loadSnippets',
         ),
         array(
@@ -366,7 +366,7 @@ $TCA['tx_ftm_domain_model_templatemenustate'] = array(
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_templatetyposcriptsnippet');
 $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
     'ctrl' => array(
-        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatetyposcriptsnippet',
+        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xml:tx_ftm_templatetyposcriptsnippet',
         
         'label' => 'name',
         'label_alt' => 'type',
@@ -396,9 +396,46 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
     ),
 );
 
+/**
+ * Fluid Template-TYPOScript Snippets
+ */
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ftm_domain_model_templatedyncssfile', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_templatedyncssfile.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_templatedyncssfile');
+$TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
+    'ctrl' => array(
+        'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncss.xml:tx_ftm_templatedyncssfile',
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_ftm_domain_model_log', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_log.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_ftm_domain_model_log');
+        'label' => 'name',
+        'label_alt' => 'type',
+        'label_alt_force' => TRUE,
+
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'sortby' => 'sorting',
+        'dividers2tabs' => TRUE,
+
+        'versioningWS' => 2,
+        'versioning_followPages' => TRUE,
+        'origUid' => 't3_origuid',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'delete' => 'deleted',
+        'enablecolumns' => array(
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ),
+        'searchFields' => 'name,type,description,dyn_css,',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateDynCssFile.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templatedyncssfile.gif'
+    ),
+);
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ftm_domain_model_log', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_log.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_log');
 $TCA['tx_ftm_domain_model_log'] = array(
     'ctrl' => array(
         'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_log',

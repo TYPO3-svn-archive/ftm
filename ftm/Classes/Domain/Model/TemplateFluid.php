@@ -32,7 +32,7 @@ namespace CodingMs\Ftm\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class TemplateFluid extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class TemplateFluid extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
 
     /**
      * Typ des Templates: Layout, Partial, Template
@@ -185,8 +185,8 @@ class TemplateFluid extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @since 1.0.0
      */
     public function toArray() {
-        
-        $data = array();
+
+        $data = parent::toArray();
         $data['templateFile']  = $this->getTemplateFile();
         $data['templateType']  = $this->getTemplateType();
         $data['templateCode']  = $this->getTemplateCode();

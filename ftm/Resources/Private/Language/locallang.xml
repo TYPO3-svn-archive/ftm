@@ -11,7 +11,7 @@
             <label index="tx_ftm_domain_model_templatemanager">Fluid Template Manager (FTM)</label>
             
             
-            <label index="tx_ftm_domain_model_template.tab_less">Dynamic CSS</label>
+            <label index="tx_ftm_domain_model_template.tab_dyncss">Dynamic CSS</label>
             <label index="tx_ftm_domain_model_template.template_main_actions">Main actions:</label>
             <label index="tx_ftm_domain_model_template.template_edit_template">Edit FTM-Template</label>
             <label index="tx_ftm_domain_model_template.template_generate_typoscript">(Re)generate TypoScript (constants, setup and tsConfig)</label>
@@ -158,22 +158,7 @@ Thus you can always generate current variables by yourself. %s could be %s or - 
 Further information about Less in the FTM you'll find %s.
 
 </label>
-            <label index="tx_ftm_backend_informationrow.typoscript_snippet_info">
-Here you can optionally add TYPOScript snippets for your FTM template.
 
-All information about TYPOScript snippets, using them and how you can share them between servers you'll find %s.
-
-</label>
-            <label index="tx_ftm_backend_informationrow.include_from_template">Include from template</label>
-            <label index="tx_ftm_backend_informationrow.confirm_overwrite">Really overwrite TYPOScript snippet from template?</label>
-            <label index="tx_ftm_backend_informationrow.no_typoscript_snippet_exists">There are no TYPOScript snippets existing.</label>
-            <label index="tx_ftm_backend_informationrow.no_saved_typoscript_snippet_exists">There are no saved TYPOScript snippets existing.</label>
-            <label index="tx_ftm_backend_informationrow.synchronize_typoscript_snippets_message">Please synchronize your TYPOScript snippets in the scheme first.</label>
-            <label index="tx_ftm_backend_informationrow.save_typoscript_snippet_in_plugincloud">Save TYPOScript snippet in PluginCloud. Be sure that this snippet is locally saved before pushing it to Server!</label>
-            <label index="tx_ftm_backend_informationrow.click_to_save_typoscript_snippet_in_plugincloud">Click here to save TYPOScript snippet in the PluginCloud for using it later again.</label>
-            <label index="tx_ftm_backend_informationrow.warning_save_typoscript_snippets_headline">Warning:</label>
-            <label index="tx_ftm_backend_informationrow.warning_save_typoscript_snippets_message">Existing TYPOScript snippets with the same name will be overwritten!
-Please consider, that if you use the FTM with a public-Key, every other user is able to see the saved TYPOScript snippets.</label>
             
             <!-- Template Manager Controller -->
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update available!</label>
@@ -374,7 +359,7 @@ Furthermore... </label>
             
             <!-- FTM -->
             <label index="tx_ftm_domain_model_templatemanager">Fluid Template Manager (FTM)</label>
-            <label index="tx_ftm_domain_model_template.tab_less">Dynamisches CSS</label>
+            <label index="tx_ftm_domain_model_template.tab_dyncss">Dynamisches CSS</label>
             <label index="tx_ftm_domain_model_template.template_main_actions">Hauptaktionen:</label>
             <label index="tx_ftm_domain_model_template.template_edit_template">FTM-Template bearbeiten</label>
             <label index="tx_ftm_domain_model_template.template_generate_typoscript">TYPOScript (constants, setup und tsConfig) re/generieren</label>
@@ -561,22 +546,7 @@ Somit können also auch selbst immer aktuelle Variablen generiert werden, %s kö
 Weitere Informationen zum Less im FTM finden Sie %s
 
 </label>
-            <label index="tx_ftm_backend_informationrow.typoscript_snippet_info">
-Hier können Sie beliebig viele TYPOScript-Schnipsel für Ihr FTM-Template bereitstellen.
 
-Alle Informationen zu TYPOScript-Schnipseln, deren Verwendung und wie Sie diese Serverübergreifend austauschen können finden Sie %s.
-
-</label>
-            <label index="tx_ftm_backend_informationrow.include_from_template">Aus Vorlage einfügen</label>
-            <label index="tx_ftm_backend_informationrow.confirm_overwrite">TYPOScript-Schnipsel wirklich aus Vorlage überschreiben?</label>
-            <label index="tx_ftm_backend_informationrow.no_typoscript_snippet_exists">Es sind noch keine gemerkten TYPOScript-Schnipsel vorhanden.</label>
-            <label index="tx_ftm_backend_informationrow.no_saved_typoscript_snippet_exists">Es sind noch keine gemerkten TYPOScript-Schnipsel vorhanden.</label>
-            <label index="tx_ftm_backend_informationrow.synchronize_typoscript_snippets_message">Bitte synchronisieren Sie erst Ihre TYPOScript-Schnipsel in der Übersicht.</label>
-            <label index="tx_ftm_backend_informationrow.save_typoscript_snippet_in_plugincloud">TYPOScript-Schnipsel in PluginCloud merken. Das Schnipsel muss erst lokal gespeichert sein, bevor Sie es zum Server senden!</label>
-            <label index="tx_ftm_backend_informationrow.click_to_save_typoscript_snippet_in_plugincloud">Hier klicken um den TYPOScript-Schnipsel in der PluginCloud zu merken, so dass dieser zu einem späteren Zeitpunkt wiederverwendet werden kann.</label>
-            <label index="tx_ftm_backend_informationrow.warning_save_typoscript_snippets_headline">Achtung:</label>
-            <label index="tx_ftm_backend_informationrow.warning_save_typoscript_snippets_message">Bereits existierende TYPOScript-Schnipsel mit dem gleichen Namen werden überschrieben!
-Beachten Sie bitte auch, das wenn Sie den FTM mit einem public-Key verwenden, alle anderen User die gemerkten TYPOScript-Schnipsel sehen können!</label>
             
             <!-- Template Manager Controller -->
             <label index="tx_ftm_controller_templatemanagercontroller.ftm_update_available">FTM Update verfügbar!</label>
