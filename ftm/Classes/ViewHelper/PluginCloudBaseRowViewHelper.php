@@ -2,25 +2,26 @@
 namespace CodingMs\Ftm\ViewHelper;
 
 /**
- * Shows one TypoScriptSnippet row
+ * Shows one PluginCloud-Dataset row
  *
  * @package    TYPO3
  * @subpackage ftm
  * @author     Thomas Deuling <typo3@coding.ms>
  * @since      1.0.0
  */
-class TypoScriptSnippetRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class PluginCloudBaseRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
     /**
      * TypoScriptSnippet Row
      *
      * @param  \CodingMs\Ftm\Domain\Model\Template $fluidTemplate
-     * @param  \CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet $snippet
+     * @param  \CodingMs\Ftm\Domain\Model\PluginCloudBase $snippet
+     * @param  string $type
      * @author Thomas Deuling <typo3@coding.ms>
-     * @return HTML
+     * @return string HTML
      * @since  1.0.0
      */
-    public function render(\CodingMs\Ftm\Domain\Model\Template $fluidTemplate, \CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet $snippet) {
+    public function render(\CodingMs\Ftm\Domain\Model\Template $fluidTemplate, \CodingMs\Ftm\Domain\Model\PluginCloudBase $snippet, $type='') {
             
         $tableCells = array();
         $returnHtml = '';
@@ -37,7 +38,14 @@ class TypoScriptSnippetRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Ab
         $imagePath  = "/typo3conf/ext/ftm/Resources/Public/Icons/";
 
         // TS-Icon
-        $tableCells[] = "<a><img src=\"/typo3conf/ext/ftm/Resources/Public/Icons/typoscript_snippet.png\"></a>";
+        if($type=='typoScriptSnippet') {
+            $table   = 'tx_ftm_domain_model_templatetyposcriptsnippet';
+            $tableCells[] = "<a><img src=\"/typo3conf/ext/ftm/Resources/Public/Icons/typoscript_snippet.png\"></a>";
+        }
+        else if($type=='dynCssFile') {
+            $table   = 'tx_ftm_domain_model_templatedyncssfile';
+            $tableCells[] = "<a><img src=\"/typo3conf/ext/ftm/Resources/Public/Icons/dyncss_file.png\"></a>";
+        }
 
         // Snippet-Name
         $tableCells[] = $snippetName;
@@ -57,7 +65,6 @@ class TypoScriptSnippetRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Ab
         $uid     = $snippet->getUid();
         $nextUid = $snippet->getNextListUid();
         $prevUid = $snippet->getPreviousListUid();
-        $table   = 'tx_ftm_domain_model_templatetyposcriptsnippet';
         $spaceIcon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('empty-empty', array('style' => 'background-position: 0 10px;'));
         
         

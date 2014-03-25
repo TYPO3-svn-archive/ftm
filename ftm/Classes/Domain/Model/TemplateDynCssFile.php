@@ -35,12 +35,38 @@ namespace CodingMs\Ftm\Domain\Model;
 class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
 
     /**
+     * Variablen
+     *
+     * @var \string
+     * @since 2.0.0
+     */
+    protected $variables;
+    /**
      * dynCss
      *
      * @var \string
      * @since 2.0.0
      */
     protected $dynCss;
+
+    /**
+     * Returns the variables
+     *
+     * @return \string $variables
+     */
+    public function getVariables() {
+        return $this->variables;
+    }
+
+    /**
+     * Sets the variables
+     *
+     * @param \string $variables
+     * @return void
+     */
+    public function setVariables($variables) {
+        $this->variables = $variables;
+    }
 
     /**
      * Returns the dynCss
@@ -68,6 +94,7 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
      */
     public function toArray() {
         $data = parent::toArray();
+        $data['variables'] = $this->getVariables();
         $data['dynCss'] = $this->getDynCss();
         return $data;
     }

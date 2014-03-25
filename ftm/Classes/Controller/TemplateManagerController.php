@@ -163,7 +163,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $this->typo3Version = \CodingMs\Ftm\Utility\Tools::getTypo3Version();
         
         // Extension-Konfiguration auslesen
-        $this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ftm']);
+        $this->extConf = \CodingMs\Ftm\Service\ExtensionConfiguration::getConfiguration();
         \CodingMs\Ftm\Service\ExtensionConfiguration::validate($this->extConf);
         
         // Aktuelle Page auslesen
@@ -249,7 +249,6 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $options['ftmVersion'] = FTM_VERSION;
         $options['pid']        = $this->pid;
         $options['wikiUrl']    = 'http://fluid-template-manager.de/documentation/';
-        $options['twitterUrl'] = 'http://fluid-template-manager.de/iframes/TwitterStream/';
         $options['disclaimerNotAccepted'] = TRUE;
         
         

@@ -528,6 +528,7 @@ CREATE TABLE tx_ftm_domain_model_templatetyposcriptsnippet (
     template int(11) unsigned DEFAULT '0' NOT NULL,
 
     name varchar(255) DEFAULT '' NOT NULL,
+    filename varchar(255) DEFAULT '' NOT NULL,
     type varchar(255) DEFAULT '' NOT NULL,
     description text NOT NULL,
     constants text NOT NULL,
@@ -590,8 +591,10 @@ CREATE TABLE tx_ftm_domain_model_templatedyncssfile (
     template int(11) unsigned DEFAULT '0' NOT NULL,
 
     name varchar(255) DEFAULT '' NOT NULL,
+    filename varchar(255) DEFAULT '' NOT NULL,
     type varchar(255) DEFAULT '' NOT NULL,
     description text NOT NULL,
+    variables text NOT NULL,
     dyn_css text NOT NULL,
     public_readable tinyint(4) unsigned DEFAULT '0' NOT NULL,
     public_writeable tinyint(4) unsigned DEFAULT '0' NOT NULL,

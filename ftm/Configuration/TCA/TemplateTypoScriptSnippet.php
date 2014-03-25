@@ -6,11 +6,11 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_templatetyposcriptsnippet']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, type, description, constants, setup, public_readable, public_writeable',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, filename, type, description, constants, setup, public_readable, public_writeable',
     ),
     'types' => array(
         '1' => array('showitem' =>
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_typoscript, name, type, constants;;;wizards[t3editorTypoScript], setup;;;wizards[t3editorTypoScript] ,'.
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_typoscript, name, filename, type, constants;;;wizards[t3editorTypoScript], setup;;;wizards[t3editorTypoScript] ,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_description, description,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_synchronization, typo_script_snippet_save, public_readable, public_writeable, typo_script_snippet_load'
         ),
@@ -107,6 +107,15 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
                 'eval' => 'trim'
             ),
         ),
+        'filename' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.filename',
+            'config' => array(
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ),
+        ),
         'type' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.type',
@@ -155,14 +164,6 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
                 'rows' => 12,
                 'eval' => 'trim',
                 'wizards' => array(
-                    /*'t3editorHtml' => array(
-                        'enableByTypeConfig' => 1,
-                        'type' => 'userFunc',
-                        'userFunc' => 'EXT:t3editor/classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main',
-                        'params' => array(
-                            'format' => 'html',
-                        ),
-                    ),*/
                     't3editorTypoScript' => array(
                         'enableByTypeConfig' => 1,
                         'type' => 'userFunc',
@@ -184,14 +185,6 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
                 'rows' => 36,
                 'eval' => 'trim',
                 'wizards' => array(
-                    /*'t3editorHtml' => array(
-                        'enableByTypeConfig' => 1,
-                        'type' => 'userFunc',
-                        'userFunc' => 'EXT:t3editor/classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main',
-                        'params' => array(
-                            'format' => 'html',
-                        ),
-                    ),*/
                     't3editorTypoScript' => array(
                         'enableByTypeConfig' => 1,
                         'type' => 'userFunc',

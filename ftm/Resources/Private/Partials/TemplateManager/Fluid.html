@@ -13,18 +13,19 @@
             <td nowrap="nowrap" class="" colspan="6"><span class="c-table"><f:translate key="tx_ftm_domain_model_template.fluid_headline"></f:translate></span> (<f:count subject="{fluidTemplate.fluid}" />) </td>
         </tr>
         <tr class="c-headLine">
-            <td nowrap="nowrap" class="col-icon"></td>
-            <td nowrap="nowrap" class="col-type"><a><f:translate key="tx_ftm_domain_model_template.fluid_col_type"></f:translate></a></td>
-            <td nowrap="nowrap" class="col-filename"><a><f:translate key="tx_ftm_domain_model_template.fluid_col_filename"></f:translate></a></td>
-            <td nowrap="nowrap" class="col-backendLayout"><a><f:translate key="tx_ftm_domain_model_template.fluid_col_backend_layout"></f:translate></a></td>
-            <td nowrap="nowrap" class="col-info"><a><f:translate key="tx_ftm_domain_model_template.fluid_col_info"></f:translate></a></td>
-            <td nowrap="nowrap" class="col-actions"><a><f:translate key="tx_ftm_domain_model_template.fluid_col_actions"></f:translate></a></td>
+            <td nowrap="nowrap" class="col-icon">
+                <ftm:be.editLink parameters="&edit[tx_ftm_domain_model_templatefluid][{options.pid}]=new" returnUrl="mod.php?M=web_FtmFtm&tx_ftm_web_ftmftm[action]=list&id={options.pid}" title="{f:translate(key: 'function_links_new_haiku')}">
+                    <ftm:be.icon icon="actions-document-new" title="{f:translate(key: 'function_links_new_haiku')} @todo translate: neues Snippet erstellen" />
+                </ftm:be.editLink>
+            </td>
+            <f:render partial="TemplateManager/PluginCloudBaseRowHeader"/>
         </tr>
     </thead>
     <tbody>
         <f:for each="{fluidTemplate.fluid}" as="template" iteration="rowIteration">
             <tr class="db_list_normal {f:if(condition: rowIteration.isFirst, then: 'firstcol')} {f:if(condition: rowIteration.isLast, then: 'lastcol')}">
-                <ftm:fluidRow fluidTemplate="{fluidTemplate}" template="{template}"></ftm:fluidRow>
+                <!..ftm:fluidRow fluidTemplate="{fluidTemplate}" template="{template}"></ftm:fluidRow-->
+                <ftm:pluginCloudBaseRow fluidTemplate="{fluidTemplate}" snippet="{template}" type="fluid" />
             </tr>
         </f:for>
     </tbody>

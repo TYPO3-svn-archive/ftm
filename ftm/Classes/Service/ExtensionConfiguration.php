@@ -37,7 +37,7 @@ class ExtensionConfiguration {
 
 
     /**
-     * Backuped eine Datei
+     * Prüft ob die Konfiguration valide ist
      *
      * @param array Array mit der Extension-Configuration
      * @return  void
@@ -64,6 +64,10 @@ class ExtensionConfiguration {
             throw new \Exception("Extension configuration isnt valid! password not found! Default value is noPassword.", 1);
         }
         
+    }
+
+    public static function getConfiguration() {
+        return unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ftm']);
     }
     
 }

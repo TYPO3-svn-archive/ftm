@@ -6,11 +6,11 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_templatedyncssfile']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, type, description, dyn_css, public_readable, public_writeable',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, filename, type, description, variables, dyn_css, public_readable, public_writeable',
     ),
     'types' => array(
         '1' => array('showitem' =>
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_dyncss, name, type, dyn_css;;;wizards[t3editorCss] ,'.
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_dyncss, name, filename, type, variables;;;wizards[t3editorCss], dyn_css;;;wizards[t3editorCss] ,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_description, description,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_synchronization, dyn_css_file_save, public_readable, public_writeable, dyn_css_file_load'
         ),
@@ -107,6 +107,15 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
                 'eval' => 'trim'
             ),
         ),
+        'filename' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatedyncssfile.filename',
+            'config' => array(
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ),
+        ),
         'type' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.type',
@@ -145,29 +154,43 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
             ),
             'defaultExtras' => 'fixed-font',
         ),
-        'dyn_css' => array(
+        'variables' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.dyn_css',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.variables',
             'config' => array(
                 'type' => 'text',
                 'cols' => 112,
                 'rows' => 12,
                 'eval' => 'trim',
                 'wizards' => array(
-                    /*'t3editorHtml' => array(
-                        'enableByTypeConfig' => 1,
-                        'type' => 'userFunc',
-                        'userFunc' => 'EXT:t3editor/Classes/FormWizard.php:\TYPO3\CMS\T3editor\FormWizard->main',
-                        'params' => array(
-                            'format' => 'html',
-                        ),
-                    ),*/
                     't3editorCss' => array(
                         'enableByTypeConfig' => 1,
                         'type' => 'userFunc',
                         'userFunc' => 'EXT:t3editor/Classes/FormWizard.php:\TYPO3\CMS\T3editor\FormWizard->main',
                         'params' => array(
                             'format' => 'css',
+                            'style' => 'width: 98%; height: 300px',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'dyn_css' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.dyn_css',
+            'config' => array(
+                'type' => 'text',
+                'cols' => 112,
+                'rows' => 16,
+                'eval' => 'trim',
+                'wizards' => array(
+                    't3editorCss' => array(
+                        'enableByTypeConfig' => 1,
+                        'type' => 'userFunc',
+                        'userFunc' => 'EXT:t3editor/Classes/FormWizard.php:\TYPO3\CMS\T3editor\FormWizard->main',
+                        'params' => array(
+                            'format' => 'css',
+                            'style' => 'width: 98%; height: 600px',
                         ),
                     ),
                 ),

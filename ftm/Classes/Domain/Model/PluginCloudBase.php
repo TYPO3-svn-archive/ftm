@@ -50,6 +50,14 @@ class PluginCloudBase extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $name;
 
     /**
+     * filename
+     *
+     * @var \string
+     * @since 2.0.0
+     */
+    protected $filename;
+
+    /**
      * type
      *
      * @var \string
@@ -135,6 +143,27 @@ class PluginCloudBase extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      */
     public function setName($name) {
         $this->name = $name;
+    }
+
+    /**
+     * Returns the filename
+     *
+     * @return \string $filename
+     * @since 2.0.0
+     */
+    public function getFilename() {
+        return $this->filename;
+    }
+
+    /**
+     * Sets the filename
+     *
+     * @param \string $filename
+     * @return void
+     * @since 2.0.0
+     */
+    public function setFilename($filename) {
+        $this->filename = $filename;
     }
 
     /**
@@ -268,6 +297,7 @@ class PluginCloudBase extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         $data = array();
         $data['type']        = $this->getType();
         $data['name']        = $this->getName();
+        $data['filename']        = $this->getFilename();
         $data['description']     = $this->getDescription();
         $data['publicReadable']  = $this->getPublicReadable();
         $data['publicWriteable'] = $this->getPublicWriteable();

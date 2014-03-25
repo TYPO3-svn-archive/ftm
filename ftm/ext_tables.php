@@ -394,7 +394,7 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
         ),
         'searchFields' => 'name,type,description,constants,setup,',
         'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateTypoScriptSnippet.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templatetyposcriptsnippet.gif'
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templatetyposcriptsnippet.png'
     ),
 );
 

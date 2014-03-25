@@ -12,6 +12,7 @@
             <!-- FTM-TYPOScript Snippets -->
             <label index="tx_ftm_templatetyposcriptsnippet">TYPOScript-Snippets</label>
             <label index="tx_ftm_templatetyposcriptsnippet.name">Name</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.filename">Filename</label>
             <label index="tx_ftm_templatetyposcriptsnippet.type">Snippet-Type</label>
             <label index="tx_ftm_templatetyposcriptsnippet.description">Description/Documentation in ReST</label>
             <label index="tx_ftm_templatetyposcriptsnippet.constants">Constants TYPOScript</label>
@@ -53,6 +54,7 @@
             <!-- FTM-TYPOScript Snippets -->
             <label index="tx_ftm_templatetyposcriptsnippet">TYPOScript-Schnipsel</label>
             <label index="tx_ftm_templatetyposcriptsnippet.name">Name</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.filename">Dateiname</label>
             <label index="tx_ftm_templatetyposcriptsnippet.type">Snippet-Typ</label>
             <label index="tx_ftm_templatetyposcriptsnippet.description">Beschreibung/Dokumentation in ReST</label>
             <label index="tx_ftm_templatetyposcriptsnippet.constants">Constants TYPOScript</label>

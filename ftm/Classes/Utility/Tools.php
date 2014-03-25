@@ -123,43 +123,57 @@ class Tools {
      * @param string Verzeichnis-Typ
      * @param string Name des Themes/Theme-Verzeichnis, falls noetig
      */
-    public static function getDirectory($type, $themeName='') {
+    public static function getDirectory($type, $themeName='', $abs=FALSE) {
+
+        $directory = '';
 
         if($type=="TypoScript") {
-            return "typo3conf/ext/".$themeName."/Configuration/TypoScript/";
+            $directory = "typo3conf/ext/".$themeName."/Configuration/TypoScript/";
+        }
+        if($type=="TypoScriptLibrary") {
+            $directory = "typo3conf/ext/".$themeName."/Configuration/TypoScript/Library/";
         }
         if($type=="Stylesheets") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Stylesheets/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Public/Stylesheets/";
         }
         if($type=="Icons") {
-            return "typo3conf/ext/".$themeName."/Resources/Public/Icons/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Public/Icons/";
+        }
+        if($type=="DynCss") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/";
+        }
+        if($type=="DynCssFiles") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
+        }
+        if($type=="DynCssVariables") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/Variables/";
         }
         if($type=="Sass") {
-            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
         }
         if($type=="Less") {
-            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
         }
         if($type=="LessBasic") {
-            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
         }
         if($type=="LessGridElementLayouts") {
-            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/GridElementLayouts/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/GridElementLayouts/";
         }
         if($type=="LessContentLayouts") {
-            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files//ContentLayouts/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files//ContentLayouts/";
         }
         if($type=="LessImageHoverEffects") {
-            return "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/ImageHoverEffects/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/ImageHoverEffects/";
         }
         if($type=="FluidTemplates") {
-            return "typo3conf/ext/".$themeName."/Resources/Private/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/";
         }
         if($type=="TemplateStructureBootstrap") {
-            return "typo3conf/ext/ftm/Resources/Private/Theme/Bootstrap/";
+            $directory = "typo3conf/ext/ftm/Resources/Private/Theme/Bootstrap/";
         }
         if($type=="TemplateStructureYaml") {
-            return "typo3conf/ext/ftm/Resources/Private/Theme/Yaml/";
+            $directory = "typo3conf/ext/ftm/Resources/Private/Theme/Yaml/";
         }
         if($type=="Backup") {
             
@@ -173,6 +187,20 @@ class Tools {
             return $relPath;
         }
 
+        // Absoluten Pfad zurückgeben!?
+        if($abs) {
+
+            $absDirectory =  \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($directory);
+            if($absDirectory) {
+                return $absDirectory;
+            }
+            else {
+                throw new \Exception('Tools::getDirectory \''.$type.'\' in \''.$themeName.'\ not found');
+            }
+        }
+
+        return $directory;
+
     }
     
     /**
@@ -180,7 +208,7 @@ class Tools {
      * 
      * Usage: \CodingMs\Ftm\Utility\Tools::writeLog("some text");
      * 
-     * @param string Zeile zum Loggen
+     * @param string $logString Zeile zum Loggen
      */
     public static function writeLog($logString) {
         $relPath = "uploads/tx_ftm/";

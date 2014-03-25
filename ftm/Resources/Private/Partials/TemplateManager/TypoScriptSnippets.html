@@ -23,19 +23,16 @@
         <tr class="c-headLine">
             <td nowrap="nowrap" class="col-icon">
                 <ftm:be.editLink parameters="&edit[tx_ftm_domain_model_templatetyposcriptsnippet][{options.pid}]=new" returnUrl="mod.php?M=web_FtmFtm&tx_ftm_web_ftmftm[action]=list&id={options.pid}" title="{f:translate(key: 'function_links_new_haiku')}">
-                    <ftm:be.icon icon="t3-icon-document-new" title="{f:translate(key: 'function_links_new_haiku')} @todo translate: neues Snippet erstellen" />
+                    <ftm:be.icon icon="actions-document-new" title="{f:translate(key: 'function_links_new_haiku')} @todo translate: neues Snippet erstellen" />
                 </ftm:be.editLink>
             </td>
-            <td nowrap="nowrap" ><a><f:translate key="tx_ftm_domain_model_template.typoscript_snippet_col_name"></f:translate></a></td>
-            <td nowrap="nowrap" ><a><f:translate key="tx_ftm_domain_model_template.typoscript_snippet_col_type"></f:translate></a></td>
-            <td nowrap="nowrap" ><a><f:translate key="tx_ftm_domain_model_template.typoscript_snippet_col_description"></f:translate></a></td>
-            <td nowrap="nowrap" class="col-actions"><a><f:translate key="tx_ftm_domain_model_template.typoscript_snippet_col_actions"></f:translate></a></td>
+            <f:render partial="TemplateManager/PluginCloudBaseRowHeader"/>
         </tr>
     </thead>
     <tbody>
         <f:for each="{fluidTemplate.typoScriptSnippet}" as="snippet" iteration="rowIteration">
             <tr class="db_list_normal {f:if(condition: rowIteration.isFirst, then: 'firstcol')} {f:if(condition: rowIteration.isLast, then: 'lastcol')}">
-                <ftm:typoScriptSnippetRow fluidTemplate="{fluidTemplate}" snippet="{snippet}"></ftm:typoScriptSnippetRow>
+                <ftm:pluginCloudBaseRow fluidTemplate="{fluidTemplate}" snippet="{snippet}" type="typoScriptSnippet" />
             </tr>
         </f:for>
     </tbody>

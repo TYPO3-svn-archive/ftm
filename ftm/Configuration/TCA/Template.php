@@ -273,47 +273,47 @@ $TCA['tx_ftm_domain_model_template'] = array(
                 
             )
         ),
-        'less_variable' => array(
-            'exclude' => 0,
-            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.less_variable',
-            'config' => array(
-                'type' => 'select',
-                'size' => 25,
-                'internal_type' => 'db',
-                'allowed' => 'tx_ftm_domain_model_templatelessvariable',
-                'foreign_table'       =>          'tx_ftm_domain_model_templatelessvariable',
-                'MM' => 'tx_ftm_domain_model_templatelessvariable_mm',
-                'foreign_table_where' => 'AND tx_ftm_domain_model_templatelessvariable.pid=###CURRENT_PID### ORDER BY tx_ftm_domain_model_templatelessvariable.variable_name', //sorting',
-                'foreign_field'  => 'template', 
-                'foreign_sortby' => 'sorting',
-                'minitems' => 0,
-                'maxitems' => 999,
-                'multiple' => 1,
-                'wizards' => array(
-                    '_PADDING' => 1,
-                    '_VERTICAL' => 1,
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit', // @todo: Translation
-                        'script' => 'wizard_edit.php',
-                        'icon' => 'edit2.gif',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        ),
-                    'add' => Array(
-                        'type' => 'script',
-                        'title' => 'Create new', // @todo: Translation
-                        'icon' => 'add.gif',
-                        'params' => array(
-                            'table' => 'tx_ftm_domain_model_templatelessvariable',
-                            'pid' => '###CURRENT_PID###',
-                            'setValue' => 'prepend'
-                            ),
-                        'script' => 'wizard_add.php',
-                    ),
-                ),
-            ),
-        ),
+//        'less_variable' => array(
+//            'exclude' => 0,
+//            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.less_variable',
+//            'config' => array(
+//                'type' => 'select',
+//                'size' => 25,
+//                'internal_type' => 'db',
+//                'allowed' => 'tx_ftm_domain_model_templatelessvariable',
+//                'foreign_table'       =>          'tx_ftm_domain_model_templatelessvariable',
+//                'MM' => 'tx_ftm_domain_model_templatelessvariable_mm',
+//                'foreign_table_where' => 'AND tx_ftm_domain_model_templatelessvariable.pid=###CURRENT_PID### ORDER BY tx_ftm_domain_model_templatelessvariable.variable_name', //sorting',
+//                'foreign_field'  => 'template',
+//                'foreign_sortby' => 'sorting',
+//                'minitems' => 0,
+//                'maxitems' => 999,
+//                'multiple' => 1,
+//                'wizards' => array(
+//                    '_PADDING' => 1,
+//                    '_VERTICAL' => 1,
+//                    'edit' => array(
+//                        'type' => 'popup',
+//                        'title' => 'Edit', // @todo: Translation
+//                        'script' => 'wizard_edit.php',
+//                        'icon' => 'edit2.gif',
+//                        'popup_onlyOpenIfSelected' => 1,
+//                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+//                        ),
+//                    'add' => Array(
+//                        'type' => 'script',
+//                        'title' => 'Create new', // @todo: Translation
+//                        'icon' => 'add.gif',
+//                        'params' => array(
+//                            'table' => 'tx_ftm_domain_model_templatelessvariable',
+//                            'pid' => '###CURRENT_PID###',
+//                            'setValue' => 'prepend'
+//                            ),
+//                        'script' => 'wizard_add.php',
+//                    ),
+//                ),
+//            ),
+//        ),
         'dyn_css_file' => array(
             'exclude' => 0,
             //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.less_variable',
@@ -329,7 +329,7 @@ $TCA['tx_ftm_domain_model_template'] = array(
                 'foreign_sortby' => 'sorting',
                 'minitems' => 0,
                 'maxitems' => 999,
-                'multiple' => 1,
+                'multiple' => 0,
                 'wizards' => array(
                     '_PADDING' => 1,
                     '_VERTICAL' => 1,
@@ -437,7 +437,7 @@ $TCA['tx_ftm_domain_model_template'] = array(
                 'foreign_label' => 'name',
                 'minitems' => 0,
                 'maxitems' => 999,
-                'multiple' => 1,
+                'multiple' => 0,
                 'wizards' => array(
                     '_PADDING' => 1,
                     '_VERTICAL' => 1,

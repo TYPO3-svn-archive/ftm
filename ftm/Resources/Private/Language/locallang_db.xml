@@ -29,7 +29,6 @@
             <label index="tx_ftm_domain_model_template.less_variable_info">Dynamic CSS info</label>
             <label index="tx_ftm_domain_model_template.less_variable">Dynamic CSS variables</label>
             <label index="tx_ftm_domain_model_template.tab_extensions">Extensions</label>
-            <label index="tx_ftm_domain_model_template.tab_documentation">Documentation</label>
             <label index="tx_ftm_domain_model_template.tab_typoscript">TYPOScript</label>
             <label index="tx_ftm_domain_model_template.tab_typoscript_snippets">TYPOScript snippets</label>
             <label index="tx_ftm_domain_model_template.typoscript_snippets">TYPOScript snippets</label>
@@ -353,11 +352,6 @@ Data will no be forwarded to third parties.</label>
 
             <!-- Fluid-Form -->
             <label index="tx_ftm_domain_model_template.fluid_headline">Fluid template</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_type">Type</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_filename">Filename</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_backend_layout">Backend layout</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_info">Info</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_actions">Actions</label>
 
             <!-- Languages-Form -->
             <label index="tx_ftm_domain_model_template.languages_headline">Languages:</label>
@@ -366,11 +360,6 @@ Furthermore... </label>
 
             <!-- Less-Form -->
             <label index="tx_ftm_domain_model_template.less_headline">Less variables</label>
-            <label index="tx_ftm_domain_model_template.less_col_type">Type</label>
-            <label index="tx_ftm_domain_model_template.less_col_name">Name</label>
-            <label index="tx_ftm_domain_model_template.less_col_value">Value</label>
-            <label index="tx_ftm_domain_model_template.less_col_info">Info</label>
-            <label index="tx_ftm_domain_model_template.less_col_actions">Actions</label>
 
             <!-- Template-Form -->
             <label index="tx_ftm_domain_model_template.template_headline">FTM template</label>
@@ -385,15 +374,8 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_template.template_load_snippets">Update saved snippets (markers etc.)</label>
             <label index="tx_ftm_domain_model_template.template_generate_less_variables">(Re)generate Less-files/variables</label>
 
-            <!-- Twitter-Form -->
-            <label index="tx_ftm_domain_model_template.twitter_headline">FTM news</label>
-            <label index="tx_ftm_domain_model_template.twitter_text">Here you will always find the current topics about the FTM.</label>
-
             <!-- TYPOScript-Form -->
             <label index="tx_ftm_domain_model_template.typoscript">Fluid Template - TYPOScript</label>
-            <label index="tx_ftm_domain_model_template.typoscript_col_filename">File name</label>
-            <label index="tx_ftm_domain_model_template.typoscript_col_status">State</label>
-            <label index="tx_ftm_domain_model_template.typoscript_col_actions">Actions</label>
 
         </languageKey>
         <languageKey index="de" type="array">
@@ -420,7 +402,6 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_template.less_variable_info">Dynamisches CSS Variablen-Info</label>
             <label index="tx_ftm_domain_model_template.less_variable">Dynamische CSS-Variablen</label>
             <label index="tx_ftm_domain_model_template.tab_extensions">Extensions</label>
-            <label index="tx_ftm_domain_model_template.tab_documentation">Dokumentation</label>
             <label index="tx_ftm_domain_model_template.tab_typoscript">TYPOScript</label>
             <label index="tx_ftm_domain_model_template.tab_typoscript_snippets">TYPOScript Schnipsel</label>
             <label index="tx_ftm_domain_model_template.typoscript_snippets">TYPOScript Schnipsel</label>
@@ -736,11 +717,6 @@ Es werden keinerlei Daten an Dritte weitergegeben.</label>
 
             <!-- Fluid-Form -->
             <label index="tx_ftm_domain_model_template.fluid_headline">Fluid-Template</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_type">Typ</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_filename">Filename</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_backend_layout">Backend-Layout</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_info">Info</label>
-            <label index="tx_ftm_domain_model_template.fluid_col_actions">Aktionen</label>
 
             <!-- Languages-Form -->
             <label index="tx_ftm_domain_model_template.languages_headline">Languages:</label>
@@ -749,11 +725,6 @@ Des Weiteren können über die </label>
 
             <!-- Less-Form -->
             <label index="tx_ftm_domain_model_template.less_headline">Less-Variablen</label>
-            <label index="tx_ftm_domain_model_template.less_col_type">Typ</label>
-            <label index="tx_ftm_domain_model_template.less_col_name">Name</label>
-            <label index="tx_ftm_domain_model_template.less_col_value">Wert</label>
-            <label index="tx_ftm_domain_model_template.less_col_info">Info</label>
-            <label index="tx_ftm_domain_model_template.less_col_actions">Aktionen</label>
 
             <!-- Template-Form -->
             <label index="tx_ftm_domain_model_template.template_headline">FTM-Template</label>
@@ -768,15 +739,8 @@ Des Weiteren können über die </label>
             <label index="tx_ftm_domain_model_template.template_load_snippets">Gemerkte Snippets (Marker, etc.) aktualisieren</label>
             <label index="tx_ftm_domain_model_template.template_generate_less_variables">Less-Dateien/Variablen re/generieren</label>
 
-            <!-- Twitter-Form -->
-            <label index="tx_ftm_domain_model_template.twitter_headline">FTM News</label>
-            <label index="tx_ftm_domain_model_template.twitter_text">Hier findest Du immer die aktuellsten Themen zum FTM.</label>
-
             <!-- TYPOScript-Form -->
             <label index="tx_ftm_domain_model_template.typoscript">Fluid Template - TYPOScript</label>
-            <label index="tx_ftm_domain_model_template.typoscript_col_filename">Dateiname</label>
-            <label index="tx_ftm_domain_model_template.typoscript_col_status">Status</label>
-            <label index="tx_ftm_domain_model_template.typoscript_col_actions">Aktionen</label>
 
         </languageKey>
     </data>

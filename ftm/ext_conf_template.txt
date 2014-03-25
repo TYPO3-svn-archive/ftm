@@ -18,3 +18,12 @@ allowLog = 0
 
 # cat=basic; type=boolean; label=Disable FTM Backend-Module!?
 disableBackendModule = 0
+
+# cat=autoSave; type=boolean; label=Rewrite TypoScript-Snippet file, when the related Dataset has updated?!
+rewriteTypoScriptSnippetFileAfterUpdateDataset = 0
+
+# cat=autoSave; type=boolean; label=Rewrite Fluid-Template file, when the related Dataset has updated?!
+rewriteFluidTemplateFileAfterUpdateDataset = 0
+
+# cat=autoSave; type=boolean; label=Rewrite DynCss file, when the related Dataset has updated?!
+rewriteDynCssFileAfterUpdateDataset = 0

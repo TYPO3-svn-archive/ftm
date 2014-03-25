@@ -288,6 +288,7 @@ module.tx_ftm {
                     51110 = Resources/Private/DynCss/Files/GridElementLayouts
                     51111 = Resources/Private/DynCss/Files/ContentLayouts
                     51112 = Resources/Private/DynCss/Files/ImageHoverEffects
+                    51113 = Resources/Private/DynCss/Files/Variables
 
 
                     5120 = Resources/Private/Extensions
