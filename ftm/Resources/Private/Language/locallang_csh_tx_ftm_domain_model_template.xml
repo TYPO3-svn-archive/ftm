@@ -20,14 +20,7 @@
             <label index="fluid_headline_with_info.description">Fluid templates (the first template will be used as default!)</label>
 
             <label index="typo_script_snippet.description">TYPOScript snippets</label> 
-            <!--
-                Nicht verwenden, damit das ?-Symbol nicht erscheint.
-                Alternativ haben wir ja unsere Info-Row ;)
-                label index="less_variable.description">Less-Variablen</label-->
 
-            <label index="less_variable_info.description">Less variables info</label>
-            <label index="less_variable.description">Less variables</label>
- 
             <label index="menu_container.description">Menues</label>
             
         </languageKey>
@@ -45,14 +38,7 @@
             <label index="fluid_headline_with_info.description">Fluid-Templates (das erste Template ist das default-Template!)</label>
 
             <label index="typo_script_snippet.description">TYPOScript-Schnipsel</label> 
-            <!--
-                Nicht verwenden, damit das ?-Symbol nicht erscheint.
-                Alternativ haben wir ja unsere Info-Row ;)
-                label index="less_variable.description">Less-Variablen</label-->
 
-            <label index="less_variable_info.description">Less-Variablen-Info</label>
-            <label index="less_variable.description">Less-Variablen</label>
- 
             <label index="menu_container.description">Menüs</label>
         </languageKey>
     </data>

@@ -1,0 +1,1 @@
+options.clearCache.all = 1

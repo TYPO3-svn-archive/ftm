@@ -59,7 +59,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @validate NotEmpty
      * @since 1.1.0
      */
-    protected $templateMode = '';
+    protected $templateMode = 'development';
 
     /**
      * Directory where the Templates-Files are located
@@ -144,14 +144,6 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     protected $fluid;
 
     /**
-     * Less-Variables
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateLessVariable>
-     * @since 1.0.0
-     */
-    protected $lessVariable;
-
-    /**
      * DynCss-Files
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateDynCssFile>
@@ -200,7 +192,6 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
          */
         $this->language      = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->fluid         = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->lessVariable  = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->dynCssFile    = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->menuContainer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->typoScriptSnippet = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -445,49 +436,6 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      */
     public function setMeta(\CodingMs\Ftm\Domain\Model\TemplateMeta $meta) {
         $this->meta = $meta;
-    }
-
-    /**
-     * Adds a TemplateLessVariable
-     *
-     * @param \CodingMs\Ftm\Domain\Model\TemplateLessVariable $lessVariable
-     * @return void
-     * @since 1.0.0
-     */
-    public function addLessVariable(\CodingMs\Ftm\Domain\Model\TemplateLessVariable $lessVariable) {
-        $this->lessVariable->attach($lessVariable);
-    }
-
-    /**
-     * Removes a TemplateLessVariable
-     *
-     * @param \CodingMs\Ftm\Domain\Model\TemplateLessVariable $lessVariableToRemove The TemplateLessVariable to be removed
-     * @return void
-     * @since 1.0.0
-     */
-    public function removeLessVariable(\CodingMs\Ftm\Domain\Model\TemplateLessVariable $lessVariableToRemove) {
-        $this->lessVariable->detach($lessVariableToRemove);
-    }
-
-    /**
-     * Returns the lessVariable
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateLessVariable> $lessVariable
-     * @since 1.0.0
-     */
-    public function getLessVariable() {
-        return $this->lessVariable;
-    }
-
-    /**
-     * Sets the lessVariable
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CodingMs\Ftm\Domain\Model\TemplateLessVariable> $lessVariable
-     * @return void
-     * @since 1.0.0
-     */
-    public function setLessVariable(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $lessVariable) {
-        $this->lessVariable = $lessVariable;
     }
 
     /**
@@ -742,7 +690,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @since 1.0.0
      */
     public function getContentLayouts() {
-        $templateDir = \CodingMs\Ftm\Utility\Tools::getDirectory("LessContentLayouts", $this->getTemplateDir());
+        $templateDir = \CodingMs\Ftm\Utility\Tools::getDirectory("DynCssContentLayouts", $this->getTemplateDir());
         $directory   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($templateDir);
         $contentLayouts = array();
         if($handleLess=opendir($directory)) {
@@ -778,9 +726,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
         $data['config']         = serialize($this->config->toArray());
         $data['meta']           = serialize($this->meta->toArray());
         $data['contentLayouts'] = serialize($this->getContentLayouts());
-        
-        
-        
+
         // Language
         // ------------------------------
         $tempLanguageArray = array();
@@ -796,19 +742,17 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
             }
         }
         $data['language'] = serialize($tempLanguageArray);
-        
-        
-        // Less-Variablen
+
+        // DynCss
         // ------------------------------
-        $tempLessVariableArray = array();
-        if(!empty($this->lessVariable)) {
-            foreach($this->lessVariable as $tempLessVariable) {
-                $tempLessVariableArray[] = $tempLessVariable->toArray();
+        $tempDynCssArray = array();
+        if(!empty($this->dynCssFile)) {
+            foreach($this->dynCssFile as $tempDynCssFile) {
+                $tempDynCssArray[] = $tempDynCssFile->toArray();
             }
         }
-        $data['lessVariable'] = serialize($tempLessVariableArray);
-        $data['dyncssVariable'] = serialize($tempLessVariableArray);
-        
+        $data['dynCssFiles'] = serialize($tempDynCssArray);
+
         // Fluid-Template-Daten
         // ------------------------------
         $tempFluidArray = array();
@@ -818,8 +762,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
             }
         }
         $data['fluid'] = serialize($tempFluidArray);
-        
-        
+
         // TypoScriptSnippet-Daten
         // ------------------------------
         $tempTypoScriptSnippetArray = array();
@@ -829,8 +772,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
             }
         }
         $data['typoScriptSnippets'] = serialize($tempTypoScriptSnippetArray);
-        
-        
+
         // Menu-Daten
         // ------------------------------
         $tempMenuArray = array();

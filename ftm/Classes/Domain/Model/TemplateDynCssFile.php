@@ -37,14 +37,15 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
     /**
      * Variablen
      *
-     * @var \string
+     * @var string
      * @since 2.0.0
      */
     protected $variables;
+
     /**
      * dynCss
      *
-     * @var \string
+     * @var string
      * @since 2.0.0
      */
     protected $dynCss;
@@ -52,7 +53,7 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
     /**
      * Returns the variables
      *
-     * @return \string $variables
+     * @return string $variables
      */
     public function getVariables() {
         return $this->variables;
@@ -61,7 +62,7 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
     /**
      * Sets the variables
      *
-     * @param \string $variables
+     * @param string $variables
      * @return void
      */
     public function setVariables($variables) {
@@ -71,7 +72,7 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
     /**
      * Returns the dynCss
      *
-     * @return \string $dynCss
+     * @return string $dynCss
      */
     public function getDynCss() {
         return $this->dynCss;
@@ -80,7 +81,7 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
     /**
      * Sets the dynCss
      *
-     * @param \string $dynCss
+     * @param string $dynCss
      * @return void
      */
     public function setDynCss($dynCss) {

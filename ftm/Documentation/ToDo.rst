@@ -30,5 +30,7 @@ ToDo
     Sprach-Variablen für die GridLayouts/Bootstrap-Erweiterung, Header-Strings passen auch noch nicht ganz.
     Irgendwo eine Liste/Guide/Reihenfolge angeben, was wie gemacht werden soll: quasi vorgehen bis zu fertige seite; gerne mit Diagramm
 
+* TypoScript-Snippet:Typ TCA-Row könnte onchange hinter der Select den Ort der Speicherung anzeigen.
+
 .. include:: ./Snippets/PoweredBy.rst
 

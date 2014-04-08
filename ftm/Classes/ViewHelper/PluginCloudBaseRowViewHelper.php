@@ -25,8 +25,7 @@ class PluginCloudBaseRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abst
             
         $tableCells = array();
         $returnHtml = '';
-                
-                
+
         // Snippet-Daten
         $snippetType = $snippet->getType();
         $snippetName = $snippet->getName();

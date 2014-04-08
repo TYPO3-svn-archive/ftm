@@ -14,8 +14,7 @@ return array(
     'CodingMs\Ftm\Domain\Model\TemplateMeta'           => $extensionClassesPath.'Domain/Model/TemplateMeta.php',
     'CodingMs\Ftm\Domain\Model\TemplateFluid'          => $extensionClassesPath.'Domain/Model/TemplateFluid.php',
     'CodingMs\Ftm\Domain\Model\TemplateTypoScriptSnippet'         => $extensionClassesPath.'Domain/Model/TemplateTypoScriptSnippet.php',
-    'CodingMs\Ftm\Domain\Model\TemplateLessVariable'   => $extensionClassesPath.'Domain/Model/TemplateLessVariable.php',
-    
+
     'CodingMs\Ftm\Domain\Model\TemplateMenuContainer'  => $extensionClassesPath.'Domain/Model/TemplateMenuContainer.php',
     'CodingMs\Ftm\Domain\Model\TemplateMenuObject'     => $extensionClassesPath.'Domain/Model/TemplateMenuObject.php',
     'CodingMs\Ftm\Domain\Model\TemplateMenuState'      => $extensionClassesPath.'Domain/Model/TemplateMenuState.php',
@@ -49,8 +48,6 @@ return array(
     'CodingMs\Ftm\Backend\GridElementClassesRow'     => $extensionClassesPath.'Backend/GridElementClassesRow.php',
     
     // Hooks
-    'CodingMs\Ftm\Hooks\CacheMenu'              => $extensionClassesPath.'Hooks/CacheMenu.php',
-    
     // Services
     'CodingMs\Ftm\Service\PluginConnector'      => $extensionClassesPath.'Service/PluginConnector.php',
     'CodingMs\Ftm\Service\PluginService'        => $extensionClassesPath.'Service/PluginService.php',
@@ -60,8 +57,7 @@ return array(
     'CodingMs\Ftm\Service\Fluid'                => $extensionClassesPath.'Service/Fluid.php',
     'CodingMs\Ftm\Service\TemplateStructure'          => $extensionClassesPath.'Service/TemplateStructure.php',
     'CodingMs\Ftm\Service\TemplateStructureYaml'      => $extensionClassesPath.'Service/TemplateStructureYaml.php',
-    'CodingMs\Ftm\Service\TemplateStructureBootstrap' => $extensionClassesPath.'Service/TemplateStructureBootstrap.php',
-    'CodingMs\Ftm\Service\ClearCache'           => $extensionClassesPath.'Service/ClearCache.php',
+    //'CodingMs\Ftm\Service\TemplateStructureBootstrap' => $extensionClassesPath.'Service/TemplateStructureBootstrap.php',
     'CodingMs\Ftm\Service\Backup'               => $extensionClassesPath.'Service/Backup.php',
     'CodingMs\Ftm\Service\TypoScript'           => $extensionClassesPath.'Service/TypoScript.php',
     
@@ -74,8 +70,6 @@ return array(
     'CodingMs\Ftm\ViewHelper\RenderExternalViewHelper'   => $extensionClassesPath.'ViewHelper/RenderExternalViewHelper.php',
     'CodingMs\Ftm\ViewHelper\FluidRowViewHelper'         => $extensionClassesPath.'ViewHelper/FluidRowViewHelper.php',
     'CodingMs\Ftm\ViewHelper\TypoScriptSnippetRowViewHelper'        => $extensionClassesPath.'ViewHelper/TypoScriptSnippetRowViewHelper.php',
-    'CodingMs\Ftm\ViewHelper\LessVariableRowViewHelper'  => $extensionClassesPath.'ViewHelper/LessVariableRowViewHelper.php',
-    'CodingMs\Ftm\ViewHelper\LessVariableStaticRowViewHelper' => $extensionClassesPath.'ViewHelper/LessVariableStaticRowViewHelper.php',
     'CodingMs\Ftm\ViewHelper\Be\Buttons\IconViewHelper'       => $extensionClassesPath.'ViewHelper/Be/Buttons/IconViewHelper.php',
     
 );

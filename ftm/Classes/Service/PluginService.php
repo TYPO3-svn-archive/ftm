@@ -63,6 +63,12 @@ class PluginService {
      * @var string
      */
     protected $token = '';
+
+    /**
+     * Debugging
+     * @var bool
+     */
+    protected $debug = TRUE;
     
     /**
      * Loggen erlauben?!
@@ -100,7 +106,11 @@ class PluginService {
             '<?xml version="1.0" encoding="UTF-8" ?>'.
             '<data>'.$dataXml.'</data>';
         }
-        
+
+        if($this->debug) {
+            echo htmlspecialchars($dataXml);
+            echo "<br /><br />";
+        }
         
         // Send Request
         $result = $this->pluginConnector->sendRequest($this->token, $action, $dataXml, $dataType);
@@ -124,7 +134,12 @@ class PluginService {
     }
     
     protected function transformXML($data) {
-            
+
+        if($this->debug) {
+            echo "'".htmlspecialchars($data)."'";
+            echo "<br /><br />";
+        }
+
         libxml_use_internal_errors(TRUE);
         $xmlObject = simplexml_load_string($data);
         
@@ -144,7 +159,11 @@ class PluginService {
             foreach(libxml_get_errors() as $error) {
                 $errorData .= $error->message."\n";
             }
-            var_dump('PluginService: '.$this->pluginCloudHost.'/'.$this->pluginCloudScript, strip_tags($data));
+            if($this->debug) {
+                echo "'".htmlspecialchars($data)."'";
+                echo "<br /><br />";
+            }
+            var_dump('PluginService: '.$this->pluginCloudHost.'/'.$this->pluginCloudScript);
             throw new \Exception($errorData."Data is not valid!", E_WARNING);
         }
         

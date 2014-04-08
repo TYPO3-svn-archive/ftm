@@ -6,14 +6,14 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_template'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_template']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'site_name, template_mode, template_type, template_dir, config, meta, language, fluid, typo_script_snippet, less_variable_info, less_variable, dyn_css_files, menu_container', // , extensions_info, extensions
+        'showRecordFieldList' => 'site_name, template_mode, template_type, template_dir, config, meta, language, fluid, typo_script_snippet, dyn_css_info, dyn_css_files, menu_container', // , extensions_info, extensions
     ),
     'types' => array(
         '1' => array('showitem' => 'site_name, template_mode, template_type, template_dir, config, meta, language,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_fluid, fluid,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_typoscript_snippets, typo_script_snippet_info, typo_script_snippet,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_menu, menu_container,'.
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_dyncss, less_variable_info, less_variable, dyn_css_file'),
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_dyncss, dyn_css_info, dyn_css_file'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -123,15 +123,18 @@ $TCA['tx_ftm_domain_model_template'] = array(
             'exclude' => 0,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.template_type',
             'config' => array(
-                'type' => 'select',
-                'items' => array(
-                    array('', ''),
-                    array('YAML', 'yaml'),
-                    array('Twitter Bootstrap 2.x', 'bootstrap'),
-                    array('Twitter Bootstrap 3.x', 'bootstrap_3'),
-                ),
-                'size' => 1,
-                'maxitems' => 1
+                #'type' => 'select',
+                #'items' => array(
+                #    array('', ''),
+                #    array('YAML', 'yaml'),
+                #    array('Twitter Bootstrap 2.x', 'bootstrap'),
+                #    array('Twitter Bootstrap 3.x', 'bootstrap_3'),
+                #),
+                #'size' => 1,
+                #'maxitems' => 1
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim,required'
             ),
         ),
         'template_dir' => array(
@@ -262,67 +265,26 @@ $TCA['tx_ftm_domain_model_template'] = array(
             ),
         ),
         
-        // Less-Variablen
-        'less_variable_info' => array (
+        // DynCss
+        'dyn_css_info' => array (
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.less_variable', 
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.dyn_css_info',
             'config' => array (
                 'type' => 'user',
                 'userFunc' => 'CodingMs\Ftm\Backend\InformationRow->renderField',
-                'param1' => 'less_variable'
+                'param1' => 'dyn_css_info'
                 
             )
         ),
-//        'less_variable' => array(
-//            'exclude' => 0,
-//            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.less_variable',
-//            'config' => array(
-//                'type' => 'select',
-//                'size' => 25,
-//                'internal_type' => 'db',
-//                'allowed' => 'tx_ftm_domain_model_templatelessvariable',
-//                'foreign_table'       =>          'tx_ftm_domain_model_templatelessvariable',
-//                'MM' => 'tx_ftm_domain_model_templatelessvariable_mm',
-//                'foreign_table_where' => 'AND tx_ftm_domain_model_templatelessvariable.pid=###CURRENT_PID### ORDER BY tx_ftm_domain_model_templatelessvariable.variable_name', //sorting',
-//                'foreign_field'  => 'template',
-//                'foreign_sortby' => 'sorting',
-//                'minitems' => 0,
-//                'maxitems' => 999,
-//                'multiple' => 1,
-//                'wizards' => array(
-//                    '_PADDING' => 1,
-//                    '_VERTICAL' => 1,
-//                    'edit' => array(
-//                        'type' => 'popup',
-//                        'title' => 'Edit', // @todo: Translation
-//                        'script' => 'wizard_edit.php',
-//                        'icon' => 'edit2.gif',
-//                        'popup_onlyOpenIfSelected' => 1,
-//                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-//                        ),
-//                    'add' => Array(
-//                        'type' => 'script',
-//                        'title' => 'Create new', // @todo: Translation
-//                        'icon' => 'add.gif',
-//                        'params' => array(
-//                            'table' => 'tx_ftm_domain_model_templatelessvariable',
-//                            'pid' => '###CURRENT_PID###',
-//                            'setValue' => 'prepend'
-//                            ),
-//                        'script' => 'wizard_add.php',
-//                    ),
-//                ),
-//            ),
-//        ),
         'dyn_css_file' => array(
             'exclude' => 0,
-            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.less_variable',
+            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.dyn_css_file',
             'config' => array(
                 'type' => 'select',
                 'size' => 25,
                 'internal_type' => 'db',
                 'allowed' => 'tx_ftm_domain_model_templatedyncssfile',
-                'foreign_table'       =>          'tx_ftm_domain_model_templatedyncssfile',
+                'foreign_table' => 'tx_ftm_domain_model_templatedyncssfile',
                 'MM' => 'tx_ftm_domain_model_templatedyncssfile_mm',
                 'foreign_table_where' => 'AND tx_ftm_domain_model_templatedyncssfile.pid=###CURRENT_PID### ORDER BY tx_ftm_domain_model_templatedyncssfile.name', //sorting',
                 'foreign_field'  => 'template',
@@ -362,8 +324,8 @@ $TCA['tx_ftm_domain_model_template'] = array(
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.fluid_headline_with_info',
             'config' => array(
                 'type' => 'inline',
-                'foreign_table'       =>          'tx_ftm_domain_model_templatefluid',
-                'foreign_table_where' => 'ORDER BY tx_ftm_domain_model_templatefluid.sorting',
+                'foreign_table'       =>     'tx_ftm_domain_model_templatefluid',
+                'foreign_table_where' => 'AND tx_ftm_domain_model_templatefluid.pid=###CURRENT_PID### ORDER BY tx_ftm_domain_model_templatefluid.sorting',
                 'foreign_field'  => 'template',
                 'foreign_sortby' => 'sorting',
        
@@ -431,8 +393,8 @@ $TCA['tx_ftm_domain_model_template'] = array(
                 'allowed' => 'tx_ftm_domain_model_templatetyposcriptsnippet',
                 'foreign_table'       =>          'tx_ftm_domain_model_templatetyposcriptsnippet',
                 'MM' => 'tx_ftm_domain_model_templatetyposcriptsnippet_mm',
-                'foreign_table_where' => 'ORDER BY tx_ftm_domain_model_templatetyposcriptsnippet.sorting',
-                'foreign_field'  => 'template', 
+                'foreign_table_where' => 'AND tx_ftm_domain_model_templatetyposcriptsnippet.pid=###CURRENT_PID### ORDER BY tx_ftm_domain_model_templatetyposcriptsnippet.sorting',
+                'foreign_field'  => 'template',
                 'foreign_sortby' => 'sorting',
                 'foreign_label' => 'name',
                 'minitems' => 0,
@@ -454,7 +416,7 @@ $TCA['tx_ftm_domain_model_template'] = array(
                         'title' => 'Create new', // @todo: Translation
                         'icon' => 'add.gif',
                         'params' => array(
-                            'table' => 'tx_ftm_domain_model_templatelessvariable',
+                            'table' => 'tx_ftm_domain_model_templatetyposcriptsnippet',
                             'pid' => '###CURRENT_PID###',
                             'setValue' => 'prepend'
                             ),

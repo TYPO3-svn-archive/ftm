@@ -222,7 +222,8 @@ class TemplateStructure {
      * @return mixed boolean wenn alles aktuell ist, ansonsten die Meldungens
      */
     public function checkStructure($pid, $fluidTemplate) {
-        
+
+        return FALSE;
         
         // Benoetigten Verzeichnisse pruefen
         // $this->checkRequiredDirectories();

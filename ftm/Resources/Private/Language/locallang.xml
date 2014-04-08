@@ -64,15 +64,6 @@
             <label index="tx_ftm_domain_model_templatefluid.backend_layout">Backend layout</label>
             <label index="tx_ftm_domain_model_templatefluid.template_code">Template code</label>
 
-            <!-- FTM-LessVariable -->
-            <label index="tx_ftm_domain_model_templatelessvariable">Fluid Template - Less variables</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_title">Variable title/Description</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_name">Variable name</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.category">Category</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_type">Variable type</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_value">Variable value</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_color">Variable color</label>
-
             <!-- FTM-MenuContainer -->
             <label index="tx_ftm_domain_model_templatemenucontainer">Fluid Template - Menu container</label>
             <label index="tx_ftm_domain_model_templatemenucontainer.menu_name">Menu/Marker name</label>
@@ -429,15 +420,6 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_templatefluid.template_file">Template-(Datei)name</label>
             <label index="tx_ftm_domain_model_templatefluid.backend_layout">Backend-Layout</label>
             <label index="tx_ftm_domain_model_templatefluid.template_code">Template-Code</label>
-
-            <!-- FTM-LessVariable -->
-            <label index="tx_ftm_domain_model_templatelessvariable">Fluid Template - Less-Variablen</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_title">Variablen-Title/Beschreibung</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_name">Variablen-Name</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.category">Kategorie</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_type">Variablen-Typ</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_value">Variablen-Wert</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_color">Variablen-Farbe</label>
 
             <!-- FTM-MenuContainer -->
             <label index="tx_ftm_domain_model_templatemenucontainer">Fluid Template - Menü-Container</label>

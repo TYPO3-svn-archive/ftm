@@ -27,6 +27,7 @@ namespace CodingMs\Ftm\Controller;
 
 use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use \TYPO3\CMS\Core\Messaging\FlashMessage;
+use \CodingMs\Ftm\Utility\Tools;
 
 /**
  *
@@ -139,6 +140,12 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     protected $sessionHandler = null;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @inject
+     */
+    public $objectManager;
+
+    /**
      * injectTemplateRepository
      *
      * @param \CodingMs\Ftm\Domain\Repository\TemplateRepository $fluidTemplateRepository
@@ -167,6 +174,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         \CodingMs\Ftm\Service\ExtensionConfiguration::validate($this->extConf);
         
         // Aktuelle Page auslesen
+        // Auf Page:0 nichts machen
         $this->pid = intval(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'));
         if($this->pid==0) {
             if($this->typo3Version>=6) {
@@ -177,34 +185,24 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             }
             return;
         }
-
-        // Fluid Template auslesen, falls noch nicht geschehen
-        if(!($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-            
-            /**
-             * @var \CodingMs\Ftm\Domain\Model\Template
-             */
-            $this->fluidTemplate = \CodingMs\Ftm\Service\Template::getTemplate($this->pid);
-            if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
-                
-                
-                // Strukture-Service, entsprechend des Template-Typens erstellen
-                if($this->fluidTemplate->getTemplateType()=='yaml') {
-                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureYaml');
+        else {
+            // Ansonsten rekursive die Rootline durchsuchen
+            $rootlinePids = Tools::getRootlinePids($this->pid);
+            for($i=0 ; $i<count($rootlinePids) ; $i++) {
+                /**
+                 * @var \CodingMs\Ftm\Domain\Model\Template
+                 */
+                $this->fluidTemplate = \CodingMs\Ftm\Service\Template::getTemplate($rootlinePids[$i]);
+                if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
+                    // Page-Uid merken
+                    $this->pid = $rootlinePids[$i];
+                    break;
                 }
-                elseif($this->fluidTemplate->getTemplateType()=='bootstrap') {
-                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
-                }
-                elseif($this->fluidTemplate->getTemplateType()=='bootstrap_3') {
-                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
-                }
-                else {
-                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
-                }
-
             }
-            
         }
+
+        // Template-Structure-Service
+        $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
 
         // PluginCloud-Service initiieren
         $this->pluginService = $this->objectManager->create(
@@ -231,8 +229,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         if($this->pid==0) {
             return;
         }
-        
-        
+
+        //
         $this->checkRequiredExtenstions();
         
         // Preufen ob Updates verfuegbar sind
@@ -255,15 +253,8 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         // Pruefen ob es auf der aktuelle Seite schon ein
         // Template-Datensatz gibt
         if($this->fluidTemplate===null) {
-            $options['templateOnCurrentPage'] = FALSE;
-            
-            /**
-             * @ToDo: Hier muss geprueft werden, ob ein Template auf einer
-             * hoeheren Ebene/Seite existiert!
-             * Ein neues Template zu erstellen sollte dann verboten werden!
-             */
-            $this->debug.="no template on this pid: ".$this->pid."<br>";
-           
+            $this->redirect('newTheme');
+            return;
         }
         else {
             
@@ -287,32 +278,35 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // und erstellt es ggf.
             // -------------------------------------------------
             $sysTemplateStatus = $this->sysTemplateService->checkSysTemplate($this->pid);
+
             $translationBaseKey = 'tx_ftm_controller_templatemanagercontroller.';
-            if($sysTemplateStatus=='error') {
-                $headline = $this->lang('ftm_root_template_error_headline'); //FTM Root-Template Fehler!
-                $message  = $this->lang('ftm_root_template_error_message1') . '<br />'; //Es wurde ein Problem mit dem Root-Template auf dieser Seite festgestellt!
-                $message .= $this->lang('ftm_root_template_error_message2'); //Bitte stellen Sie sicher das es nur ein Root-Template auf dieser Seite gibt!
-                $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
-            }
-            else if($sysTemplateStatus=='updated') {
-                $headline = $this->lang('ftm_root_template_update_headline'); //FTM Root-Template aktualisiert!
-                $message  = $this->lang('ftm_root_template_update_message'); //Das FTM Root-Template auf dieser Seite wurde aktualisiert!
-                $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
-                $this->redirect('list', 'TemplateManager', NULL, array());
-            }
-            else if($sysTemplateStatus=='created') {
-                $headline = $this->lang('ftm_root_template_generated_headline'); //FTM Root-Template erstellt!
-                $message  = $this->lang('ftm_root_template_generated_message'); //Es wurde ein FTM Root-Template auf dieser Seite erstellt!
-                $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
-                $this->redirect('list', 'TemplateManager', NULL, array());
-            }
+
+//            if($sysTemplateStatus=='error') {
+//                $headline = $this->lang('ftm_root_template_error_headline'); //FTM Root-Template Fehler!
+//                $message  = $this->lang('ftm_root_template_error_message1') . '<br />'; //Es wurde ein Problem mit dem Root-Template auf dieser Seite festgestellt!
+//                $message .= $this->lang('ftm_root_template_error_message2'); //Bitte stellen Sie sicher das es nur ein Root-Template auf dieser Seite gibt!
+//                $this->flashMessageContainer->add($message, $headline, FlashMessage::ERROR);
+//            }
+//            else if($sysTemplateStatus=='updated') {
+//                $headline = $this->lang('ftm_root_template_update_headline'); //FTM Root-Template aktualisiert!
+//                $message  = $this->lang('ftm_root_template_update_message'); //Das FTM Root-Template auf dieser Seite wurde aktualisiert!
+//                $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
+//                $this->redirect('list', 'TemplateManager', NULL, array());
+//            }
+//            else if($sysTemplateStatus=='created') {
+//                $headline = $this->lang('ftm_root_template_generated_headline'); //FTM Root-Template erstellt!
+//                $message  = $this->lang('ftm_root_template_generated_message'); //Es wurde ein FTM Root-Template auf dieser Seite erstellt!
+//                $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
+//                $this->redirect('list', 'TemplateManager', NULL, array());
+//            }
             // -------------------------------------------------
             
             
             
             // Sys-Template gefunden
             // -------------------------------------------------
-            else if($sysTemplateStatus=='alreadyExist') {
+            //else
+            if($sysTemplateStatus=='alreadyExist') {
 
                 // Hash neu setzen um zu identifizieren ob 
                 // sich die Konfiguration geaendert hat
@@ -328,7 +322,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // Pruefen ob die erforderlichen Pages vorhanden
                     // sind und erstelle Sie ggf.
                     // -------------------------------------------------
-                    $pagesMessages = $this->pagesService->checkPages($this->pid);
+                    /**
+                     * @todo: Pages müssen anders erstelltn werden
+                     * via. Button oder Distribution
+                     */
+                    $pagesMessages = ""; //$this->pagesService->checkPages($this->pid);
                     
                     // Meldungen von erstellten Seiten ausgeben
                     if(trim($pagesMessages)!="" && $pagesMessages!==TRUE) {
@@ -338,36 +336,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // -------------------------------------------------
                     
                     
-                    
-                    // Pruefen ob die Template-Verzeichnisstruktur
-                    // vorhanden und korrekt ist
-                    // -------------------------------------------------
-                    /** @todo diesen Block in eigene Methode auslagern  */
-                    $directories = $this->settings['templates']['default']['directories'];
-                    $directoryCheck = \CodingMs\Ftm\Service\TemplateDirectory::checkDirectories($templateName, $directories);
-                    if($directoryCheck===TRUE) {
-                        $this->debug.= "directory check: TRUE<br>";
-                    }
-                    else {
-                        if(!empty($directoryCreate)) {
-                            foreach($directoryCreate as $directory => $description) {
-                                $this->debug.= "directory '".$directory."' not found<br>";
-                            }
-                        }
-                    }
-                    
-                    $directoryCreate = \CodingMs\Ftm\Service\TemplateDirectory::createDirectories($templateName, $directories);
-                    if($directoryCreate===TRUE) {
-                        $this->debug.= "directory create: TRUE<br>";
-                    }
-                    else {
-                        if(!empty($directoryCreate)) {
-                            foreach($directoryCreate as $directory => $description) {
-                                $this->debug.= "couldnt create directory '".$directory."'. Please check permissions for directory /typo3conf/ext/".$templateName."/<br>";
-                            }
-                        }
-                    }
-                    // -------------------------------------------------
+
 
                     
                     
@@ -558,7 +527,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             
             // TypoScript generieren
             if(!$dataCheckFailed) {
-                         
+
                 $result = $this->pluginService->executeAction("generateTypoScript", $templateDataArray);
                 if($result['status']=='success') {
                     
@@ -782,100 +751,6 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     }
 
     /**
-     * Erstellt ein Template-Datensatz auf der aktuellen Seite
-     *
-     * @author Thomas Deuling <typo3@coding.ms>
-     * @param  string $templateType empty, yaml or bootstrap
-     * @return void
-     * @since 1.0.0
-     */
-    public function createTemplateAction($templateType='') {
-        
-        
-        // Template auslesen, falls vorhanden
-        $fluidTemplate = $this->fluidTemplateRepository->findOneByPid($this->pid);
-        
-        
-        $this->debug.= "read fluidTemplate on pid:".$this->pid." -> ".get_class($fluidTemplate)."<br>";
-        
-        // Wenn es noch keinen gibt, erstelle einen
-        if(!($fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-
-            $this->debug.= "create fluidTemplate on pid:".$this->pid."<br>";
-
-            
-            // Template erstellen und Standard-Werte einsetzen
-            $fluidTemplate = $this->objectManager->create('CodingMs\Ftm\Domain\Model\Template');
-            $fluidTemplate->setPid($this->pid);
-            $fluidTemplate->setTemplateType($templateType);
-            
-            
-            // Template-Config
-            $fluidTemplateConfig = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateConfig');
-            $fluidTemplateConfig->setPid($this->pid);
-            $fluidTemplateConfig->setDefaults();
-            $fluidTemplate->setConfig($fluidTemplateConfig);
-            
-            
-            // Template-Meta
-            $fluidTemplateMeta = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateMeta');
-            $fluidTemplateMeta->setPid($this->pid);
-            $fluidTemplateMeta->setDefaults();
-            $fluidTemplate->setMeta($fluidTemplateMeta);
-            
-            
-            /**
-             * @ToDo
-             * hier noch infos für den Einstieg anzegien
-             * 
-             * Dein Template wurde mit einer Grundkonfiguration erstellt.
-             * Bearbeite nun den FTP-Datensatz und gebe als erstes ein Template-Verzeichnis an, in dem Dein Template liegen soll
-             * Benenne dieses Verzeichnis mit bedacht. Am besten wählst Du einen Namen der die 
-             * 
-             * ..
-             * Wechselst Du jetzt wieder in die Übersichts-Ansicht des Template-Managers erstellt dieser automatisiert deine neuen Template-Verzeichnis Struktur
-             */
-             
-             
-            // Extensions:t3_less
-            // -----------------------------
-            // $fluidTemplateExt     = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateExt');
-            // $fluidTemplateExtConf = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateExtT3Less');
-            // $fluidTemplateExtConf->setPid($this->pid);
-            // $fluidTemplateExt->setPid($this->pid);
-            // $fluidTemplateExt->setExtKey('t3_less');
-            // $fluidTemplateExt->setExtName('LESS for TYPO3');
-            // $fluidTemplateExt->setExtVersion('1.0.7');
-            // $fluidTemplateExt->setExtConfT3Less($fluidTemplateExtConf);
-            // $fluidTemplate->addExtension($fluidTemplateExt);
-            
-            /**
-             * @ToDo: import.less by default einsetzen
-             */
-            
-            // -----------------------------
-            
-            
-            // Template speichern/persistieren
-            // -----------------------------
-            $this->fluidTemplateRepository->add($fluidTemplate);
-            // -----------------------------
-            
-            $headline = $this->lang('templateCreatedMessageOkHeadline');
-            $message  = $this->lang('templateCreatedMessageOkMessage');
-            $this->flashMessageContainer->add($message, $headline, FlashMessage::OK);
-        }
-        else {
-            $headline = $this->lang('templateCreatedMessageWarningHeadline');
-            $message  = $this->lang('templateCreatedMessageWarningMessage');
-            $this->flashMessageContainer->add($message, $headline, FlashMessage::WARNING);
-        }
-    
-    
-        $this->redirect('list', 'TemplateManager', NULL, array());
-    }
-
-    /**
      * Holt eine Uebersetzung
      * 
      * @param  string $key Schluessel des Sprachwerts
@@ -1023,6 +898,244 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         // Geaendertes Template speichern
         $this->fluidTemplateRepository->update($this->fluidTemplate);
         
+    }
+
+    /**
+     * Maske anzeigen um ein neues Theme zuerstellen
+     */
+    public function newThemeAction() {
+
+
+        $templateTypes = array();
+        if(!empty($this->settings['templates'])) {
+            foreach($this->settings['templates'] as $templateKey=> $tempateData) {
+                $templateTypes[$templateKey] = $templateKey;
+            }
+        }
+        else {
+            throw new \Exception('No template types found');
+        }
+        $this->view->assign('templateTypes', $templateTypes);
+    }
+
+    /**
+     * Neues Theme generieren
+     */
+    public function createThemeAction() {
+
+        $templateDir = '';
+        if($this->request->hasArgument('templateDir')) {
+            $templateDir = $this->request->getArgument('templateDir');
+        }
+        $templateType = '';
+        if($this->request->hasArgument('templateType')) {
+            $templateType = $this->request->getArgument('templateType');
+        }
+        $siteName = '';
+        if($this->request->hasArgument('siteName')) {
+            $siteName = $this->request->getArgument('siteName');
+        }
+        $installTheme = FALSE;
+        if($this->request->hasArgument('installTheme')) {
+            $installTheme = $this->request->getArgument('installTheme')=='install' ? TRUE : FALSE;
+        }
+        $createDirectories = FALSE;
+        if($this->request->hasArgument('createDirectories')) {
+            $createDirectories = $this->request->getArgument('createDirectories')=='create' ? TRUE : FALSE;
+        }
+        $createFtmDataset = FALSE;
+        if($this->request->hasArgument('createFtmDataset')) {
+            $createFtmDataset = $this->request->getArgument('createFtmDataset')=='create' ? TRUE : FALSE;
+        }
+
+        if($templateDir=='theme_' || trim($templateDir)=='') {
+            $this->addFlashMessage('Bitte geben Sie einen Extension/Theme-Key an!', 'Das Theme konnte nicht erstellt werden', FlashMessage::ERROR);
+            $this->redirect('newTheme');
+        }
+
+        // Theme-Verzeichnis prüfen
+        $relPath = "typo3conf/ext/".$templateDir;
+        $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
+        if(is_dir($absPath)) {
+            $this->addFlashMessage('Ein Theme mit diesem Extension/Theme-Key existiert bereits!', 'Das Theme konnte nicht erstellt werden', FlashMessage::ERROR);
+            $this->redirect('newTheme');
+        }
+        else if(!mkdir($absPath)) {
+            $this->addFlashMessage('Das Extension/Theme-Verzeichnis konnte nicht erstellt werden!', 'Das Theme konnte nicht erstellt werden', FlashMessage::ERROR);
+            $this->redirect('newTheme');
+        }
+
+        // und es ein gültiger Template-Type ist
+        if(!array_key_exists($templateType, $this->settings['templates'])) {
+            $this->addFlashMessage('Bitte wählen Sie einen Template-Typ aus!', 'Das Theme konnte nicht erstellt werden', FlashMessage::ERROR);
+            $this->redirect('newTheme');
+        }
+
+
+        // Template-Verzeichnisstruktur erstellen
+        // -------------------------------------------------
+        if($createDirectories) {
+            $directories = $this->settings['templates'][$templateType]['directories'];
+            $directoryCheck = \CodingMs\Ftm\Service\TemplateDirectory::checkDirectories($templateDir, $directories);
+            if($directoryCheck===TRUE) {
+                $this->debug.= "directory check: TRUE<br>";
+            }
+            else {
+                if(!empty($directoryCreate)) {
+                    foreach($directoryCreate as $directory => $description) {
+                        $this->debug.= "directory '".$directory."' not found<br>";
+                    }
+                }
+            }
+
+            $directoryCreate = \CodingMs\Ftm\Service\TemplateDirectory::createDirectories($templateDir, $directories);
+            if($directoryCreate===TRUE) {
+                $this->debug.= "directory create: TRUE<br>";
+            }
+            else {
+                if(!empty($directoryCreate)) {
+                    foreach($directoryCreate as $directory => $description) {
+                        $this->debug.= "couldnt create directory '".$directory."'. Please check permissions for directory /typo3conf/ext/".$templateDir."/<br>";
+                    }
+                }
+            }
+            $this->addFlashMessage('Die Verzeichnisstruktur für das Theme wurde erfolgreich erstellt.', 'Verzeichnisstruktur erstellt!', FlashMessage::OK);
+        }
+        // -------------------------------------------------
+
+        // Create Theme-Files
+        // -------------------------------------------------
+
+        if(!empty($this->settings['templates'][$templateType]['files'])) {
+            $filesNotFound = array();
+            $filesNotCopied = array();
+            foreach($this->settings['templates'][$templateType]['files'] as $file) {
+
+                // Source
+                $relPathSource = "typo3conf/ext/ftm/Resources/Private/Theme/".$templateType;
+                $absPathSource = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPathSource);
+                if(file_exists($absPathSource.$file['from'])) {
+
+                    // Target
+                    $relPathTarget = "typo3conf/ext/".$templateDir;
+                    $absPathTarget = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPathTarget);
+                    if(!copy($absPathSource.$file['from'], $absPathTarget.$file['to'])) {
+                        $filesNotCopied[] = $file['from'];
+                    }
+                    else {
+                        // Replace-Variables
+                        $fileContent = file_get_contents($absPathTarget.$file['to']);
+                        $fileContent = str_replace("###templateDir###", $templateDir, $fileContent);
+                        file_put_contents($absPathTarget.$file['to'], $fileContent);
+                    }
+                }
+                else {
+                    $filesNotFound[] = $file['from'];
+                }
+
+            }
+
+            // Files not copied?!
+            if(!empty($filesNotCopied)) {
+                $message = 'Folgende Dateien konnten nicht kopiert werden:<br />';
+                foreach($filesNotCopied as $file) {
+                    $message.= $file.'<br />';
+                }
+                $this->addFlashMessage($message, 'Es konnten nicht alle Dateien kopiert werden', FlashMessage::ERROR);
+            }
+
+            // Files not found?!
+            if(!empty($filesNotFound)) {
+                $message = 'Folgende Dateien konnten nicht gefunden werden:<br />';
+                foreach($filesNotFound as $file) {
+                    $message.= $file.'<br />';
+                }
+                $this->addFlashMessage($message, 'Es konnten nicht alle Dateien kopiert werden', FlashMessage::ERROR);
+            }
+        }
+        // -------------------------------------------------
+
+
+        // Template-Datensatz erstellen und Standard-Werte einsetzen
+        // -------------------------------------------------
+        if($createFtmDataset) {
+            $fluidTemplate = new \CodingMs\Ftm\Domain\Model\Template();
+            $fluidTemplate->setPid($this->pid);
+            $fluidTemplate->setTemplateDir($templateDir);
+            $fluidTemplate->setTemplateType($templateType);
+            $fluidTemplate->setTemplateMode('development');
+            $fluidTemplate->setSiteName($siteName);
+
+            // Template-Config
+            $fluidTemplateConfig = new \CodingMs\Ftm\Domain\Model\TemplateConfig();
+            $fluidTemplateConfig->setPid($this->pid);
+            $fluidTemplateConfig->setDefaults();
+            if(!empty($_SERVER['HTTPS'])) {
+                $baseUrl = 'https://'.$_SERVER['SERVER_NAME'].'/';
+            }
+            else {
+                $baseUrl = 'http://'.$_SERVER['SERVER_NAME'].'/';
+            }
+            $fluidTemplateConfig->setBaseURL($baseUrl);
+            $fluidTemplate->setConfig($fluidTemplateConfig);
+
+            // Template-Meta
+            $fluidTemplateMeta = new \CodingMs\Ftm\Domain\Model\TemplateMeta();
+            $fluidTemplateMeta->setPid($this->pid);
+            $fluidTemplateMeta->setDefaults();
+            $fluidTemplate->setMeta($fluidTemplateMeta);
+
+            // Template speichern/persistieren
+            $this->fluidTemplateRepository->add($fluidTemplate);
+
+            $this->addFlashMessage('Der FTM-Datensatz wurde erfolgreich erstellt.', 'FTM-Datensatz erstellt!', FlashMessage::OK);
+        }
+        // -------------------------------------------------
+
+
+        // Template-Extension installieren
+        // -------------------------------------------------
+        if($installTheme) {
+            $this->installTheme($templateDir);
+        }
+
+
+//        $headline = $this->lang('templateCreatedMessageOkHeadline');
+//        $message  = $this->lang('templateCreatedMessageOkMessage');
+//        $this->addFlashMessage($message, $headline, FlashMessage::OK);
+
+        // Im Fehlerfall
+//        else {
+//            $headline = $this->lang('templateCreatedMessageWarningHeadline');
+//            $message  = $this->lang('templateCreatedMessageWarningMessage');
+//            $this->flashMessageContainer->add($message, $headline, FlashMessage::WARNING);
+//        }
+
+        $this->redirect('list');
+    }
+
+    protected function installTheme($extension) {
+        /**
+         * @var \TYPO3\CMS\Extensionmanager\Service\ExtensionManagementService $managementService
+         */
+        $managementService = $this->objectManager->get('TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService');
+
+        /**
+         * @var \TYPO3\CMS\Extensionmanager\Utility\ExtensionModelUtility $extensionModelUtility
+         */
+        $extensionModelUtility = $this->objectManager->get('TYPO3\\CMS\\Extensionmanager\\Utility\\ExtensionModelUtility');
+
+        /**
+         * @var \TYPO3\CMS\Extensionmanager\Utility\InstallUtility $installUtility
+         */
+        $installUtility = $this->objectManager->get('TYPO3\\CMS\\Extensionmanager\\Utility\\InstallUtility');
+
+        // install
+        $managementService->resolveDependenciesAndInstall(
+            $extensionModelUtility->mapExtensionArrayToModel(
+                $installUtility->enrichExtensionWithDetails($extension)
+            )
+        );
     }
 
 }

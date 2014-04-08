@@ -94,7 +94,7 @@ class SysTemplate {
      * @since      22.11.2013
      */
     public function checkSysTemplate($pid) {
-        
+        return "alreadyExist";
         
         /**
          * @ToDo: Hier muss auch geprueft werden ob ein fremdes Root-Template auf dieser Seite liegt!
@@ -207,7 +207,7 @@ class SysTemplate {
      * @since      22.11.2013
      */
     public function setTemplateDir($pid, $templateDir) {
-        
+        return array('ok'=>array(), 'error'=>array());
         
         // Template auslesen
         $rootTemplate = $this->sysTemplateRepository->findOneRootTemplateByPidAndVersion($pid, FTM_VERSION);
@@ -215,7 +215,7 @@ class SysTemplate {
         
         // Pruefen ob es ein Template gibt
         if($rootTemplate instanceof \CodingMs\Ftm\Domain\Model\SysTemplate) {
-            
+
             /**
              * @TODO: pruefen ob es das Verzeichnis wirklich gibt
              */
@@ -233,24 +233,25 @@ class SysTemplate {
             $constantsTsFile       = "constants.ts";
             $constantsCustomTsFile = "constantsCustom.ts";
             
-            
-            // Setup erstellen 
-            $setup = "### FTM-START ###\n";
-            $setup.= "### Don't change this includes!\n";
-            $setup.= "### Please use the setupCustom.ts for adding own TypoScript.\n";
-            $setup.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:".$relPath.$setupTsFile."\">\n";
-            $setup.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:".$relPath.$setupCustomTsFile."\">\n";
-            $setup.= "### FTM-END ###\n";
-            $rootTemplate->setConfig($setup);
-            
-            // Constants erstellen
-            $constants = "### FTM-START ###\n";
-            $constants.= "### Don't change this includes!\n";
-            $constants.= "### Please use the constantsCustom.ts for adding own constants.\n";
-            $constants.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:".$relPath.$constantsTsFile."\">\n";
-            $constants.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:".$relPath.$constantsCustomTsFile."\">\n";
-            $constants.= "### FTM-END ###\n";
-            $rootTemplate->setConstants($constants);
+
+            // NICHT MEHR SETZEN!!!
+//            // Setup erstellen
+//            $setup = "### FTM-START ###\n";
+//            $setup.= "### Don't change this includes!\n";
+//            $setup.= "### Please use the setupCustom.ts for adding own TypoScript.\n";
+//            $setup.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:".$relPath.$setupTsFile."\">\n";
+//            $setup.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:".$relPath.$setupCustomTsFile."\">\n";
+//            $setup.= "### FTM-END ###\n";
+//            $rootTemplate->setConfig($setup);
+//
+//            // Constants erstellen
+//            $constants = "### FTM-START ###\n";
+//            $constants.= "### Don't change this includes!\n";
+//            $constants.= "### Please use the constantsCustom.ts for adding own constants.\n";
+//            $constants.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:".$relPath.$constantsTsFile."\">\n";
+//            $constants.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:".$relPath.$constantsCustomTsFile."\">\n";
+//            $constants.= "### FTM-END ###\n";
+//            $rootTemplate->setConstants($constants);
          
         
             // FTM-Seite bearbeiten

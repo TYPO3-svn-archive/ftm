@@ -71,7 +71,7 @@ class PagesRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        $query->getQuerySettings()->setRespectEnableFields(FALSE);
+        //$query->getQuerySettings()->setRespectEnableFields(FALSE);
         
         $constraints   = array();
         $constraints[] = $query->equals('uid', $uid);

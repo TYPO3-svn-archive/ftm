@@ -1,8 +1,8 @@
 <li>
-    <f:link.action action="generateTypoScript" controller="TemplateManager" arguments="{typoScriptFile: 'setup.ts' }">
+    <f:link.action action="generateTypoScript" controller="TypoScript" arguments="{template: fluidTemplate.uid}">
         <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-system-refresh ftm-icon-generate-typoscript">&nbsp;</span>&nbsp;
         <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_generate_typoscript"></f:translate></span>
-            <span class="buttonDescription">@todo translate: Diese Aktion muss ausgeführt werden, wenn sich die Konfiguration des Templates veränder hat.
+            <span class="buttonDescription">Diese Aktion muss ausgeführt werden, wenn sich die Konfiguration des Templates verändert hat.
                 Also wenn Sie Einstellungen um Template-Datensatz geändert haben.</span>
     </f:link.action>
 </li>

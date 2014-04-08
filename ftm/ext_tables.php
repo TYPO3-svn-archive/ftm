@@ -15,9 +15,10 @@ if(!isset($configuration) || $configuration['disableBackendModule']!='1') {
         'ftm',    // Submodule key
         '999',    // Position
         array(
-            'TemplateManager'   => 'list,createTemplate,generateTypoScript,generateFluid,acceptDisclaimer',
+            'TemplateManager'   => 'list,generateTypoScript,generateFluid,acceptDisclaimer,newTheme,createTheme',
             'DynCss'            => 'generate,loadFiles,saveFile,insertFile',
             'TypoScriptSnippet' => 'saveSnippet,insertSnippet,loadSnippets',
+            'TypoScript'        => 'generateTypoScript',
         ),
         array(
             'access' => 'user,group',
@@ -201,7 +202,11 @@ $TCA['tx_ftm_domain_model_templatelanguage'] = array(
 $TCA['tx_ftm_domain_model_templatefluid'] = array(
     'ctrl' => array(
         'title'    => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatefluid',
-        'label' => 'template_title',
+
+        'label' => 'type',
+        'label_alt' => 'name',
+        'label_alt_force' => TRUE,
+
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -223,43 +228,6 @@ $TCA['tx_ftm_domain_model_templatefluid'] = array(
         'searchFields' => 'template_title,template_type,template_file,template_code,',
         'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateFluid.php',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templatefluid.gif'
-    ),
-);
-
-/**
- * Less - Variablen
- */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ftm_domain_model_templatelessvariable', 'EXT:ftm/Resources/Private/Language/locallang_csh_tx_ftm_domain_model_templatelessvariable.xml');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ftm_domain_model_templatelessvariable');
-$TCA['tx_ftm_domain_model_templatelessvariable'] = array(
-    'ctrl' => array(
-        'title'    => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templatelessvariable',
-        
-        'label' => 'variable_name',
-        'label_alt' => 'variable_title',
-        'label_alt_force' => true,
-        
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
-        'sortby' => 'sorting',
-        'dividers2tabs' => TRUE,
-
-        'versioningWS' => 2,
-        'versioning_followPages' => TRUE,
-        'origUid' => 't3_origuid',
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
-        'delete' => 'deleted',
-        'enablecolumns' => array(
-            'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ),
-        'searchFields' => 'variable_name,variable_type,variable_value,',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateLessVariable.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templatelessvariable.gif'
     ),
 );
 
@@ -370,8 +338,8 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
     'ctrl' => array(
         'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xml:tx_ftm_templatetyposcriptsnippet',
         
-        'label' => 'name',
-        'label_alt' => 'type',
+        'label' => 'type',
+        'label_alt' => 'name',
         'label_alt_force' => TRUE,
         
         'tstamp' => 'tstamp',
@@ -379,6 +347,8 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
         'cruser_id' => 'cruser_id',
         'sortby' => 'sorting',
         'dividers2tabs' => TRUE,
+
+        'requestUpdate' => 'type',
 
         'versioningWS' => 2,
         'versioning_followPages' => TRUE,
@@ -407,8 +377,8 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
     'ctrl' => array(
         'title' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncss.xml:tx_ftm_templatedyncssfile',
 
-        'label' => 'name',
-        'label_alt' => 'type',
+        'label' => 'type',
+        'label_alt' => 'name',
         'label_alt_force' => TRUE,
 
         'tstamp' => 'tstamp',

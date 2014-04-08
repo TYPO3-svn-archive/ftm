@@ -1,0 +1,57 @@
+{namespace ftm=CodingMs\Ftm\ViewHelper}
+
+<f:layout name="Default"></f:layout>
+
+<f:section name="content">
+    
+
+    <f:form action="createTheme" name="theme">
+
+        <fieldset>
+            <legend>Neues Theme erstellen:</legend>
+            <table class="theme-form-table">
+                <colgroup>
+                    <col width="300">
+                    <col width="300">
+                    <col width="300">
+                </colgroup>
+
+                <tr>
+                    <td><label for="templateDir">Theme/Extension-Key</label></td>
+                    <td><f:form.textfield id="templateDir" name="templateDir" value="theme_" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label for="siteName">Theme/Site-Name</label></td>
+                    <td><f:form.textfield id="siteName" name="siteName" value="FTM Theme" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label for="templateType">Theme-Typ</label></td>
+                    <td><f:form.select id="templateType" name="templateType" options="{templateTypes}" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label for="createDirectories">Theme-Verzeichnisstruktur generieren?!</label></td>
+                    <td><f:form.checkbox id="createDirectories" name="createDirectories" value="create" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label for="createFtmDataset">FTM-Konfigurationsdatensatz erstellen?!</label></td>
+                    <td><f:form.checkbox id="createFtmDataset" name="createFtmDataset" value="create" /></td>
+                    <td>Wenn Sie keinen FTM-Datensatz anlegen, wird lediglich (je nach Einstellung) ein neues Theme erstellt. Sie können es dann nicht auf dieser Seite verwenden.</td>
+                </tr>
+                <tr>
+                    <td><label for="installTheme">Theme-Extension direkt installieren?!</label></td>
+                    <td><f:form.checkbox id="installTheme" name="installTheme" value="install" /></td>
+                    <td>Dies ist erforderlich wenn Sie direkt mit der Entwicklung in diesem System loslegen wollen.</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><f:form.submit value="Jetzt erstellen" /></td>
+                </tr>
+            </table>
+        </fieldset>
+    </f:form>
+
+</f:section>

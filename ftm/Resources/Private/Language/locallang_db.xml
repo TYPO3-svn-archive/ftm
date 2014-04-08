@@ -86,15 +86,6 @@
             <label index="tx_ftm_domain_model_templatefluid.backend_layout">Backend layout</label>
             <label index="tx_ftm_domain_model_templatefluid.template_code">Template code</label>
 
-            <!-- FTM-LessVariable -->
-            <label index="tx_ftm_domain_model_templatelessvariable">Fluid Template - Less variables</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_title">Variable title/Description</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_name">Variable name</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.category">Category</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_type">Variable type</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_value">Variable value</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_color">Variable color</label>
-
             <!-- FTM-MenuContainer -->
             <label index="tx_ftm_domain_model_templatemenucontainer">Fluid Template - Menu container</label>
             <label index="tx_ftm_domain_model_templatemenucontainer.menu_name">Menu/Marker name</label>
@@ -145,31 +136,6 @@
             <label index="tx_ftm_domain_model_templatemenustate.append_after">After</label>
             <label index="tx_ftm_domain_model_templatemenustate.do_not_link_it">Do not link it</label>
 
-            <!-- FTM-Extensions --> 
-            <label index="tx_ftm_domain_model_templateext">Fluid Template Extension</label>
-            <label index="tx_ftm_domain_model_templateext.hidden">Disable extension</label>
-            <label index="tx_ftm_domain_model_templateext.ext_key">Extension key</label>
-            <label index="tx_ftm_domain_model_templateext.ext_name">Extension name</label>
-            <label index="tx_ftm_domain_model_templateext.ext_version">Extension version</label>
-            <label index="tx_ftm_domain_model_templateext.ext_conf_t3_less">Extension configuration T3-Less</label>
-
-            <!-- FTM-Extension: t3less -->
-            <label index="tx_ftm_domain_model_templateextt3less">Fluid Template Extension T3less</label>
-            <label index="tx_ftm_domain_model_templateextt3less.extension_t3_less_info">Extension T3-Less info</label>
-            <label index="tx_ftm_domain_model_templateextt3less.path_to_less_files">Path to Less files</label>
-            <label index="tx_ftm_domain_model_templateextt3less.output_folder">Output folder</label>
-            <label index="tx_ftm_domain_model_templateextt3less.less_files">Less files</label>
-
-            <!-- FTM-Extension: t3less-Files --> 
-            <label index="tx_ftm_domain_model_templateextt3lessfiles">Fluid Template Extension T3less Files</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.name">File name</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.media">The media attribute. Like “screen”, “print” or media queries like “only screen and (max-device-width: 480px)”</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.title">The title attribute. A title for this stylesheet like “general” or “iehacks” or something else</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.compress">Options are 1 (activated) or 0 (deactivated). This setting is for usage of page.config.compressCss</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.force_on_top">Options are 1 (activated) or 0 (deactivated). With this setting you can force to include this file at the top of your html-markup</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.all_wrap">If you want to wrap the included file, please use “allWrap”. Example: &lt;!--[if IE]&gt; | &lt;![endif]--&gt;</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.exclude_from_concatenation">Options are 1 (activated) or 0 (deactivated). This setting is for usage of page.config.concatenateCss</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.exclude_from_page_renderer">With this setting you can exclude this file from pagerenderer. If activated, the file will not be included to your page. </label>
 
             <!-- GridElements FlexForm -->
             <label index="tx_ftm_flexform_gridelements.css_classes">CSS-classes (user defined)</label>
@@ -456,15 +422,6 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_templatefluid.backend_layout">Backend-Layout</label>
             <label index="tx_ftm_domain_model_templatefluid.template_code">Template-Code</label>
 
-            <!-- FTM-LessVariable -->
-            <label index="tx_ftm_domain_model_templatelessvariable">Fluid Template - Less-Variablen</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_title">Variablen-Title/Beschreibung</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_name">Variablen-Name</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.category">Kategorie</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_type">Variablen-Typ</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_value">Variablen-Wert</label>
-            <label index="tx_ftm_domain_model_templatelessvariable.variable_color">Variablen-Farbe</label>
-
             <!-- FTM-MenuContainer -->
             <label index="tx_ftm_domain_model_templatemenucontainer">Fluid Template - Menü-Container</label>
             <label index="tx_ftm_domain_model_templatemenucontainer.menu_name">Menü/Marker-Name</label>
@@ -509,32 +466,6 @@ Furthermore... </label>
             <label index="tx_ftm_domain_model_templatemenustate.append_before">Vor</label>
             <label index="tx_ftm_domain_model_templatemenustate.append_after">Hinter</label>
             <label index="tx_ftm_domain_model_templatemenustate.do_not_link_it">Nicht verlinken</label>
-
-            <!-- FTM-Extensions --> 
-            <label index="tx_ftm_domain_model_templateext">Fluid Template Extension</label>
-            <label index="tx_ftm_domain_model_templateext.hidden">Extension deaktivieren</label>
-            <label index="tx_ftm_domain_model_templateext.ext_key">Extension Key</label>
-            <label index="tx_ftm_domain_model_templateext.ext_name">Extension Name</label>
-            <label index="tx_ftm_domain_model_templateext.ext_version">Extension Version</label>
-            <label index="tx_ftm_domain_model_templateext.ext_conf_t3_less">Extension Configuration T3-Less</label>
-
-            <!-- FTM-Extension: t3less -->
-            <label index="tx_ftm_domain_model_templateextt3less">Fluid Template Extension T3less</label>
-            <label index="tx_ftm_domain_model_templateextt3less.extension_t3_less_info">Extension T3-Less Info</label>
-            <label index="tx_ftm_domain_model_templateextt3less.path_to_less_files">Path To Less Files</label>
-            <label index="tx_ftm_domain_model_templateextt3less.output_folder">Output Folder</label>
-            <label index="tx_ftm_domain_model_templateextt3less.less_files">Less Files</label>
-
-            <!-- FTM-Extension: t3less-Files --> 
-            <label index="tx_ftm_domain_model_templateextt3lessfiles">Fluid Template Extension T3less Files</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.name">File name</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.media">The media attribute. Like “screen”, “print” or media queries like “only screen and (max-device-width: 480px)”</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.title">The title attribute. A title for this stylesheet like “general” or “iehacks” or something else</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.compress">Options are 1 (activated) or 0 (deactivated). This setting is for usage of page.config.compressCss</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.force_on_top">Options are 1 (activated) or 0 (deactivated). With this setting you can force to include this file at the top of your html-markup</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.all_wrap">If you want to wrap the included file, please use “allWrap”. Example: &lt;!--[if IE]&gt; | &lt;![endif]--&gt;</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.exclude_from_concatenation">Options are 1 (activated) or 0 (deactivated). This setting is for usage of page.config.concatenateCss</label>
-            <label index="tx_ftm_domain_model_templateextt3lessfiles.exclude_from_page_renderer">With this setting you can exclude this file from pagerenderer. If activated, the file will not be included to your page. </label>
 
             <!-- GridElements FlexForm -->
             <label index="tx_ftm_flexform_gridelements.css_classes">CSS-Klassen (benutzerdefinierte)</label>

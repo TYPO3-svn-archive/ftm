@@ -14,9 +14,9 @@
         </tr>
         <tr class="c-headLine">
             <td nowrap="nowrap" class="col-icon">
-                <ftm:be.editLink parameters="&edit[tx_ftm_domain_model_templatefluid][{options.pid}]=new" returnUrl="mod.php?M=web_FtmFtm&tx_ftm_web_ftmftm[action]=list&id={options.pid}" title="{f:translate(key: 'function_links_new_haiku')}">
-                    <ftm:be.icon icon="actions-document-new" title="{f:translate(key: 'function_links_new_haiku')} @todo translate: neues Snippet erstellen" />
-                </ftm:be.editLink>
+                <a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&edit[tx_ftm_domain_model_templatefluid][{options.pid}]=new'; return false;">
+                    <ftm:be.icon icon="actions-document-new" title="Neues Fluid-Template erstellen" />
+                </a>
             </td>
             <f:render partial="TemplateManager/PluginCloudBaseRowHeader"/>
         </tr>
@@ -24,7 +24,6 @@
     <tbody>
         <f:for each="{fluidTemplate.fluid}" as="template" iteration="rowIteration">
             <tr class="db_list_normal {f:if(condition: rowIteration.isFirst, then: 'firstcol')} {f:if(condition: rowIteration.isLast, then: 'lastcol')}">
-                <!..ftm:fluidRow fluidTemplate="{fluidTemplate}" template="{template}"></ftm:fluidRow-->
                 <ftm:pluginCloudBaseRow fluidTemplate="{fluidTemplate}" snippet="{template}" type="fluid" />
             </tr>
         </f:for>

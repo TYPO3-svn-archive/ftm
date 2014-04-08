@@ -79,10 +79,11 @@ class GridElementClassesRow {
         // Hidden-Field zum Speichern
         $hidden = '<input type="hidden" name="'.htmlspecialchars($name).'" value="'.htmlspecialchars($value).'" id="ftm_gridElementClasses_'.$uid.'"/>';
         
-        $templateDir = \CodingMs\Ftm\Utility\Tools::getDirectory("LessGridElementLayouts", $ftmTemplateDir);
+        $templateDir = \CodingMs\Ftm\Utility\Tools::getDirectory("DynCssGridElementLayouts", $ftmTemplateDir);
         $directory   = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($templateDir);
-        
-        // Select-Boxen bauen    
+
+        // Select-Boxen bauen
+        $select = '';
         for($i=0; $i<=3; $i++) {
             $options = array();
             $select.= '<select name="'.htmlspecialchars($name).'['.$i.']"  class="formField select" onchange="ftm_updateGridElementClasses_'.$uid.'(this.value, '.$i.')">' . LF;
@@ -112,7 +113,7 @@ class GridElementClassesRow {
         
         $notice1 = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_gridelementclassesrow.directory_notice", "Ftm", array("<b>".$templateDir."</b>"));
         //$notice1 = 'Options were created from '.$templateDir.' directory.';
-        $notice2 = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_gridelementclassesrow.documentation_notice", "Ftm", array('<a href="http://fluid-template-manager.de/documentation/Css-Less.html" target="_blank"><u>http://fluid-template-manager.de/documentation/Css-Less.html</u></a>'));
+        $notice2 = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate("tx_ftm_backend_gridelementclassesrow.documentation_notice", "Ftm", array('<a href="http://fluid-template-manager.de/documentation/DynCss.html" target="_blank"><u>http://fluid-template-manager.de/documentation/Css-Less.html</u></a>'));
         //$notice2 = 'How to manage the provided classes, you can read here: .';
         
         return '<div>'.$select.$hidden.$script.'<br />'.$notice1.'<br/>'.$notice2.'</div>'.LF;

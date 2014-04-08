@@ -108,7 +108,11 @@ class DynCssController extends PluginCloudBaseController {
      * @since      22.11.2013
      */
     protected function generateLess($fluidTemplate, $folder='') {
-        
+
+        /**
+         * @todo: diese müssen in die Constants verschoben werden
+         */
+
         // Default-Variablen
         $lessVariable = "/* FTM - Less-Defaults: */\n";
         $lessVariable.= "@baseUrl         = \"".$this->fluidTemplate->getConfig()->getBaseUrl()."\";\n";

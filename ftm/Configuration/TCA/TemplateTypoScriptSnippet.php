@@ -10,7 +10,7 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
     ),
     'types' => array(
         '1' => array('showitem' =>
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_typoscript, name, filename, type, constants;;;wizards[t3editorTypoScript], setup;;;wizards[t3editorTypoScript] ,'.
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_typoscript, name, type, filename, constants;;;wizards[t3editorTypoScript], setup;;;wizards[t3editorTypoScript] ,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_description, description,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.tab_synchronization, typo_script_snippet_save, public_readable, public_writeable, typo_script_snippet_load'
         ),
@@ -122,16 +122,16 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
             'config' => array(
                 'type' => 'select',
                 'items' => array(
-                    array('Constants', 'constants'),
-                    array('Marker', 'marker'),
-                    array('Extension', 'extension'),
-                    array('Menu', 'menu'),
-                    array('Theme', 'theme'),
-                    array('Other', 'other'),
+                    array('Constants', 'Constants'),
+                    array('Library', 'Library'),
+                    array('Plugin', 'Plugin'),
+                    array('UserTS', 'UserTS'),
+                    array('PageTS', 'PageTS'),
                 ),
                 'size' => 1,
                 'maxitems' => 1,
-                'eval' => ''
+                'eval' => '',
+                //'onChange' => 'reload'
             ),
         ),
         'description' => array(
@@ -156,6 +156,13 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
             'defaultExtras' => 'fixed-font',
         ),
         'constants' => array(
+            'displayCond' => array(
+                'OR' => array(
+                    'FIELD:type:=:Constants',
+                    'FIELD:type:=:Library',
+                    'FIELD:type:=:Plugin',
+                ),
+            ),
             'exclude' => 0,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.constants',
             'config' => array(
@@ -177,8 +184,16 @@ $TCA['tx_ftm_domain_model_templatetyposcriptsnippet'] = array(
             ),
         ),
         'setup' => array(
+            'displayCond' => array(
+                'OR' => array(
+                    'FIELD:type:=:Library',
+                    'FIELD:type:=:Plugin',
+                    'FIELD:type:=:UserTS',
+                    'FIELD:type:=:PageTS',
+                ),
+            ),
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.setup',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatetyposcriptsnippet.xlf:tx_ftm_templatetyposcriptsnippet.typo_script',
             'config' => array(
                 'type' => 'text',
                 'cols' => 112,

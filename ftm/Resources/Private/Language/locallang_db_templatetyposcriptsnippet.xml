@@ -17,6 +17,7 @@
             <label index="tx_ftm_templatetyposcriptsnippet.description">Description/Documentation in ReST</label>
             <label index="tx_ftm_templatetyposcriptsnippet.constants">Constants TYPOScript</label>
             <label index="tx_ftm_templatetyposcriptsnippet.setup">Setup TYPOScript</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.typo_script">TypoScript</label>
             <label index="tx_ftm_templatetyposcriptsnippet.public_readable">Public visible for everyone</label>
             <label index="tx_ftm_templatetyposcriptsnippet.public_writeable">Public editable for everyone</label>
             <label index="tx_ftm_templatetyposcriptsnippet.tab_typoscript">TYPOScript</label>
@@ -59,6 +60,7 @@
             <label index="tx_ftm_templatetyposcriptsnippet.description">Beschreibung/Dokumentation in ReST</label>
             <label index="tx_ftm_templatetyposcriptsnippet.constants">Constants TYPOScript</label>
             <label index="tx_ftm_templatetyposcriptsnippet.setup">Setup TYPOScript</label>
+            <label index="tx_ftm_templatetyposcriptsnippet.typo_script">TypoScript</label>
             <label index="tx_ftm_templatetyposcriptsnippet.public_readable">Öffentlich sichtbar für alle</label>
             <label index="tx_ftm_templatetyposcriptsnippet.public_writeable">Öffentlich bearbeitbar für alle</label>
             <label index="tx_ftm_templatetyposcriptsnippet.tab_typoscript">TYPOScript</label>

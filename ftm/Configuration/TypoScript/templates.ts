@@ -1,0 +1,1 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ftm/Configuration/TypoScript/Templates/default.ts">

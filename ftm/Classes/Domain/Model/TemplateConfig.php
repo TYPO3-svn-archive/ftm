@@ -41,7 +41,7 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @validate NotEmpty
      * @since 1.0.0
      */
-    protected $doctype;
+    protected $doctype = 'html5';
     
     /**
      * Legt den Typ des dynamischen CSS fest
@@ -50,7 +50,7 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @validate NotEmpty
      * @since 2.0.0
      */
-    protected $dynCss;
+    protected $dynCss = 'less';
     
     /**
      * Legt die BaseURL fest
@@ -68,7 +68,7 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @validate NotEmpty
      * @since 1.0.0
      */
-    protected $linkVars;
+    protected $linkVars = 'L';
 
     /**
      * Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.
@@ -77,7 +77,7 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @validate NotEmpty
      * @since 1.0.0
      */
-    protected $disableCharsetHeader;
+    protected $disableCharsetHeader = 0;
 
     /**
      * Gibt die Zeichenkodierung für die Ausgabe an. Dieser Wert wird in den Meta-Tag und im HTTP-Header (nur bei config.disableCharsetHeader = 0) verwendet.
@@ -86,7 +86,7 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @validate NotEmpty
      * @since 1.0.0
      */
-    protected $metaCharset;
+    protected $metaCharset = 'UTF-8';
     
     /**
      * sys_language_uid

@@ -177,13 +177,16 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
 
                 // Strukture-Service, entsprechend des Template-Typens erstellen
                 if($this->fluidTemplate->getTemplateType()=='yaml') {
-                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureYaml');
+                    //$this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureYaml');
+                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
                 }
                 elseif($this->fluidTemplate->getTemplateType()=='bootstrap') {
-                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
+                    //$this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
+                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
                 }
                 elseif($this->fluidTemplate->getTemplateType()=='bootstrap_3') {
-                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
+                    //$this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructureBootstrap');
+                    $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
                 }
                 else {
                     $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
@@ -245,28 +248,75 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
              * auch ob nicht aus dem verzeichnis ausgebrochen wird
              */
 
-            // TypoScript-Snippet: Auto-Save aktiviert
+            // TypoScript-Snippet: Auto-Save activated?!
             if($table == 'tx_ftm_domain_model_templatetyposcriptsnippet' && $extConf['rewriteTypoScriptSnippetFileAfterUpdateDataset']) {
-                $setupDir = \CodingMs\Ftm\Utility\Tools::getDirectory('TypoScriptLibrary', $template->getTemplateDir(), TRUE);
-                $setup = $this->getProcessDatamapValue($fieldArray, $reference, 'filename');
-                file_put_contents($setupDir.$saveInFilename, $setup);
+
+                $saveInFilename = $this->getProcessDatamapValue($fieldArray, $reference, 'filename');
+                $type = $this->getProcessDatamapValue($fieldArray, $reference, 'type');
+
+                // Saving TS-Setup
+                if($type=='Library' || $type=='Plugin') {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'TypoScriptLibrary', 'setup', $saveInFilename)==0) {
+                        throw new \Exception('Could not save '.$saveInFilename);
+                    }
+                }
+
+                // Saving TS-Constants
+                if($type=='Constants' || $type=='Library' || $type=='Plugin') {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'TypoScriptConstants', 'constants', $saveInFilename)==0) {
+                        throw new \Exception('Could not save '.$saveInFilename);
+                    }
+                }
+
+                // Saving UserTS
+                if($type=='UserTS') {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'TypoScriptUser', 'setup', $saveInFilename)==0) {
+                        throw new \Exception('Could not save '.$saveInFilename);
+                    }
+                }
+
+                // Saving PageTS
+                if($type=='PageTS') {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'TypoScriptPage', 'setup', $saveInFilename)==0) {
+                        throw new \Exception('Could not save '.$saveInFilename);
+                    }
+                }
+
             }
 
 
-            // DynCss-File: Auto-Save aktiviert
+            // DynCss-File: Auto-Save activated?!
             if($table == 'tx_ftm_domain_model_templatedyncssfile' && $extConf['rewriteDynCssFileAfterUpdateDataset']) {
 
-                $dynCssDir = \CodingMs\Ftm\Utility\Tools::getDirectory('DynCssFiles', $template->getTemplateDir(), TRUE);
-                $dynCss = $this->getProcessDatamapValue($fieldArray, $reference, 'dyn_css');
-                file_put_contents($dynCssDir.$saveInFilename, $dynCss);
+                $saveInFilename = $this->getProcessDatamapValue($fieldArray, $reference, 'filename');
+                $type = $this->getProcessDatamapValue($fieldArray, $reference, 'type');
 
-                $dynCssVariablesDir = \CodingMs\Ftm\Utility\Tools::getDirectory('DynCssVariables', $template->getTemplateDir(), TRUE);
-                $dynCssVariables = $this->getProcessDatamapValue($fieldArray, $reference, 'variables');
-                file_put_contents($dynCssVariablesDir.$saveInFilename, $dynCssVariables);
+                // Saving DynCss-GridElementsLayouts
+                if($type=='GridElementLayouts') {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DynCssGridElementLayouts', 'dyn_css', $saveInFilename)==0) {
+                        throw new \Exception('Could not save '.$saveInFilename);
+                    }
+                }
 
-                    /**
-                     * @todo import.less neu schreiben
-                     */
+                // Saving DynCss-ContentLayouts
+                else if($type=='ContentLayouts') {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DynCssContentLayouts', 'dyn_css', $saveInFilename)==0) {
+                        throw new \Exception('Could not save '.$saveInFilename);
+                    }
+                }
+
+                // Saving other
+                else if($type!='Variables') {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DynCssFiles', 'dyn_css', $saveInFilename)==0) {
+                        throw new \Exception('Could not save '.$saveInFilename);
+                    }
+                }
+
+                // Always saving variables
+                if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DynCssVariables', 'variables', $saveInFilename)==0) {
+                    throw new \Exception('Could not save '.$saveInFilename);
+                }
+
             }
 
 
@@ -301,6 +351,49 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
 
     }
 
+    public function processCmdmap_preProcess($command, $table, $id, $value) {
+
+        $tables = array();
+        $tables[] = 'tx_ftm_domain_model_templatetyposcriptsnippet';
+        $tables[] = 'tx_ftm_domain_model_templatedyncssfile';
+        $tables[] = 'tx_ftm_domain_model_templatefluidfile';
+
+        if ($command == 'delete' && in_array($table, $tables)) {
+
+            var_dump($command, $table, $id, $value);
+            exit;
+
+            // Extension-Konfiguration
+            $extConf = \CodingMs\Ftm\Service\ExtensionConfiguration::getConfiguration();
+
+            // DynCss-File: Auto-Save activated?!
+            if($table == 'tx_ftm_domain_model_templatedyncssfile' && $extConf['rewriteDynCssFileAfterUpdateDataset']) {
+
+                $saveInFilename = $this->getProcessDatamapValue($fieldArray, $reference, 'filename');
+                $type = $this->getProcessDatamapValue($fieldArray, $reference, 'type');
+
+                var_dump($saveInFilename, $type);
+                exit;
+            }
+
+        }
+
+        // Update wurde hier nicht aufgefangen
+        else if ($command == 'update' && in_array($table, $tables)) {
+        }
+
+        // New wurde hier nicht aufgefangen
+        else if ($command == 'new' && in_array($table, $tables)) {
+        }
+
+    }
+
+    /**
+     * @param $fieldArray
+     * @param $reference
+     * @param $key
+     * @return string
+     */
     protected function getProcessDatamapValue($fieldArray, $reference, $key) {
         if(isset($fieldArray[$key]) && trim($fieldArray[$key])!='') {
             return $fieldArray[$key];
@@ -309,6 +402,17 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             return $reference->checkValue_currentRecord[$key];
         }
         return '';
+    }
+    protected function saveProcessDatamapFile($fieldArray, $reference, $template, $dirKey, $field, $filename) {
+        $dir = \CodingMs\Ftm\Utility\Tools::getDirectory($dirKey, $template->getTemplateDir(), TRUE);
+        $content = $this->getProcessDatamapValue($fieldArray, $reference, $field);
+        if(trim($content)!='') {
+            return file_put_contents($dir.$filename, $content);
+        }
+        else {
+            @unlink($dir.$filename);
+            return 1;
+        }
     }
 
 }

@@ -133,12 +133,22 @@ class Tools {
         if($type=="TypoScriptLibrary") {
             $directory = "typo3conf/ext/".$themeName."/Configuration/TypoScript/Library/";
         }
+        if($type=="TypoScriptConstants") {
+            $directory = "typo3conf/ext/".$themeName."/Configuration/TypoScript/Constants/";
+        }
+        if($type=="TypoScriptPage") {
+            $directory = "typo3conf/ext/".$themeName."/Configuration/PageTS/";
+        }
+        if($type=="TypoScriptUser") {
+            $directory = "typo3conf/ext/".$themeName."/Configuration/UserTS/";
+        }
         if($type=="Stylesheets") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Public/Stylesheets/";
         }
         if($type=="Icons") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Public/Icons/";
         }
+
         if($type=="DynCss") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/";
         }
@@ -148,24 +158,13 @@ class Tools {
         if($type=="DynCssVariables") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/Variables/";
         }
-        if($type=="Sass") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
-        }
-        if($type=="Less") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
-        }
-        if($type=="LessBasic") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
-        }
-        if($type=="LessGridElementLayouts") {
+        if($type=="DynCssGridElementLayouts") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/GridElementLayouts/";
         }
-        if($type=="LessContentLayouts") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files//ContentLayouts/";
+        if($type=="DynCssContentLayouts") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/ContentLayouts/";
         }
-        if($type=="LessImageHoverEffects") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/ImageHoverEffects/";
-        }
+
         if($type=="FluidTemplates") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Private/";
         }

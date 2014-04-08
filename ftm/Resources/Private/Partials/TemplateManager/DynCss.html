@@ -4,6 +4,9 @@
     <f:render partial="TemplateManagerButtons/EditTemplateTypoScriptSnippets" arguments="{fluidTemplate: fluidTemplate, options: options}"/>
     <f:render partial="TemplateManagerButtons/GenerateTypoScript"             arguments="{fluidTemplate: fluidTemplate, options: options}"/>
     <f:render partial="TemplateManagerButtons/LoadDynCssFiles"                arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <li>Lösche Dateien ohne Datensatz</li>
+    <li>Update Dateien aus Datensatz-Definitionen</li>
+    <li>Update Datensatz-Definitionen aus Dateien</li>
 </ul>
 <br />
 <br />
@@ -26,21 +29,20 @@
     <thead>
         <tr class="t3-row-header">
             <td nowrap="nowrap" class="col-icon"><span class="t3-icon t3-icon-actions t3-icon-actions-view t3-icon-view-list-collapse collapseIcon">&nbsp;</span></td>
-            <td nowrap="nowrap" class="" colspan="6"><span class="c-table"><f:translate key="tx_ftm_domain_model_template.less_headline"></f:translate></span> (<f:count subject="{fluidTemplate.lessVariable}" />) </td>
+            <td nowrap="nowrap" class="" colspan="6"><span class="c-table"><f:translate key="tx_ftm_domain_model_template.less_headline"></f:translate></span> (<f:count subject="{fluidTemplate.dynCssFile}" />) </td>
         </tr>
         <tr class="c-headLine">
             <td nowrap="nowrap" class="col-icon">
-                <ftm:be.editLink parameters="&edit[tx_ftm_domain_model_templatedyncssfile][{options.pid}]=new" returnUrl="mod.php?M=web_FtmFtm&tx_ftm_web_ftmftm[action]=list&id={options.pid}" title="{f:translate(key: 'function_links_new_haiku')}">
-                    <ftm:be.icon icon="actions-document-new" title="{f:translate(key: 'function_links_new_haiku')} @todo translate: neues Snippet erstellen" />
-                </ftm:be.editLink>
+                <a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&edit[tx_ftm_domain_model_templatedyncssfile][{options.pid}]=new'; return false;">
+                    <ftm:be.icon icon="actions-document-new" title="Neue DynCss-Datei erstellen" />
+                </a>
             </td>
             <f:render partial="TemplateManager/PluginCloudBaseRowHeader"/>
         </tr>
     </thead>
     <tbody>
         <f:for each="{fluidTemplate.dynCssFile}" as="dynCssFile" iteration="rowIteration">
-            <tr class="db_list_normal  {f:if(condition: rowIteration.isLast, then: 'lastcol')}"><!-- {f:if(condition: rowIteration.isFirst, then: 'firstcol')} -->
-                <!--ftm:lessVariableRow fluidTemplate="{fluidTemplate}" lessVariable="{lessVariable}"></ftm:lessVariableRow-->
+            <tr class="db_list_normal {f:if(condition: rowIteration.isFirst, then: 'firstcol')} {f:if(condition: rowIteration.isLast, then: 'lastcol')}">
                 <ftm:pluginCloudBaseRow fluidTemplate="{fluidTemplate}" snippet="{dynCssFile}" type="dynCssFile" />
             </tr>
         </f:for>
