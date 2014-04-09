@@ -40,7 +40,7 @@ class ExtensionConfiguration {
      * Prüft ob die Konfiguration valide ist
      *
      * @param array Array mit der Extension-Configuration
-     * @return  void
+     * @return array
      */
     public static function validate(array $extConf=array()) {
         
@@ -63,11 +63,12 @@ class ExtensionConfiguration {
         if(!isset($extConf['password']) || trim($extConf['password'])=='') {
             throw new \Exception("Extension configuration isnt valid! password not found! Default value is noPassword.", 1);
         }
-        
+
+        return $extConf;
     }
 
     public static function getConfiguration() {
-        return unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ftm']);
+        return self::validate(unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ftm']));
     }
     
 }

@@ -19,6 +19,9 @@ allowLog = 0
 # cat=basic; type=boolean; label=Disable FTM Backend-Module!?
 disableBackendModule = 0
 
+# autoSave
+####################################################
+
 # cat=autoSave; type=boolean; label=Rewrite TypoScript-Snippet file, when the related Dataset has updated?!
 rewriteTypoScriptSnippetFileAfterUpdateDataset = 0
 
@@ -27,3 +30,59 @@ rewriteFluidTemplateFileAfterUpdateDataset = 0
 
 # cat=autoSave; type=boolean; label=Rewrite DynCss file, when the related Dataset has updated?!
 rewriteDynCssFileAfterUpdateDataset = 0
+
+# backendLayouts
+####################################################
+
+# cat=backendLayouts; type=string; label=Define the default BackendLayout
+backendLayoutDefault = MenuContentSidebar
+
+
+# cat=backendLayouts; type=boolean; label=Disable default BackendLayout?!
+backendLayoutDisableDefault = 0
+
+# cat=backendLayouts; type=boolean; label=Disable Content BackendLayout?!
+backendLayoutDisableContent = 0
+
+# cat=backendLayouts; type=boolean; label=Disable ContentEmpty BackendLayout?!
+backendLayoutDisableContentEmpty = 0
+
+# cat=backendLayouts; type=boolean; label=Disable ContentMenu BackendLayout?!
+backendLayoutDisableContentMenu = 0
+
+# cat=backendLayouts; type=boolean; label=Disable ContentMenuSidebar BackendLayout?!
+backendLayoutDisableContentMenuSidebar = 0
+
+# cat=backendLayouts; type=boolean; label=Disable ContentSidebar BackendLayout?!
+backendLayoutDisableContentSidebar = 0
+
+# cat=backendLayouts; type=boolean; label=Disable ContentSidebarMenu BackendLayout?!
+backendLayoutDisableContentSidebarMenu = 0
+
+# cat=backendLayouts; type=boolean; label=Disable ContentSpecial BackendLayout?!
+backendLayoutDisableContentSpecial = 0
+
+# cat=backendLayouts; type=boolean; label=Disable ContentStartsite BackendLayout?!
+backendLayoutDisableContentStartsite = 0
+
+
+# cat=backendLayouts; type=boolean; label=Disable MenuContent BackendLayout?!
+backendLayoutDisableMenuContent = 0
+
+# cat=backendLayouts; type=boolean; label=Disable MenuContentSidebar BackendLayout?!
+backendLayoutDisableMenuContentSidebar = 0
+
+# cat=backendLayouts; type=boolean; label=Disable MenuSidebarContent BackendLayout?!
+backendLayoutDisableMenuSidebarContent = 0
+
+
+# cat=backendLayouts; type=boolean; label=Disable SidebarContent BackendLayout?!
+backendLayoutDisableSidebarContent = 0
+
+# cat=backendLayouts; type=boolean; label=Disable SidebarContentMenu BackendLayout?!
+backendLayoutDisableSidebarContentMenu = 0
+
+# cat=backendLayouts; type=boolean; label=Disable SidebarMenuContent BackendLayout?!
+backendLayoutDisableSidebarMenuContent = 0
+
+####################################################

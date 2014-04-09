@@ -171,7 +171,6 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         
         // Extension-Konfiguration auslesen
         $this->extConf = \CodingMs\Ftm\Service\ExtensionConfiguration::getConfiguration();
-        \CodingMs\Ftm\Service\ExtensionConfiguration::validate($this->extConf);
         
         // Aktuelle Page auslesen
         // Auf Page:0 nichts machen
@@ -952,6 +951,10 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             $this->addFlashMessage('Bitte geben Sie einen Extension/Theme-Key an!', 'Das Theme konnte nicht erstellt werden', FlashMessage::ERROR);
             $this->redirect('newTheme');
         }
+
+        /**
+         * @todo: generateBaseTypoScript-flag integrieren
+         */
 
         // Theme-Verzeichnis prüfen
         $relPath = "typo3conf/ext/".$templateDir;

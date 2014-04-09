@@ -148,8 +148,7 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $this->typo3Version = \CodingMs\Ftm\Utility\Tools::getTypo3Version();
 
         // Extension-Konfiguration auslesen
-        $this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ftm']);
-        \CodingMs\Ftm\Service\ExtensionConfiguration::validate($this->extConf);
+        $this->extConf = \CodingMs\Ftm\Service\ExtensionConfiguration::getConfiguration();
 
         // Aktuelle Page auslesen
         $this->pid = intval(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'));

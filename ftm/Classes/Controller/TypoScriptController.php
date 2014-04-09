@@ -29,6 +29,7 @@ use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use \TYPO3\CMS\Core\Messaging\FlashMessage;
 use \CodingMs\Ftm\Utility\Tools;
 use \CodingMs\Ftm\Domain\Model\Template;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  *
@@ -65,11 +66,20 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     protected $setupDepth = 0;
 
     /**
+     * Extension-Konfiguration
+     *
+     * @var array
+     */
+    protected $extConf;
+
+    /**
      * Generates a Template base TypoScript
      * @param Template $template
      */
     public function generateTypoScriptAction(Template $template) {
 
+        // Extension-Konfiguration auslesen
+        $this->extConf = \CodingMs\Ftm\Service\ExtensionConfiguration::getConfiguration();
 
         $constantsSuccess = $this->generateConstants($template);
         $setupSuccess = $this->generateSetup($template);
@@ -91,7 +101,7 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->generateConstantRecursive($constantsArray);
         $this->constants.= "}\n";
         $this->constants.= "<INCLUDE_TYPOSCRIPT: source=\"DIR:EXT:".$template->getTemplateDir()."/Configuration/TypoScript/Constants/\">\n";
-        $this->constants.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:EXT:".$template->getTemplateDir()."/Configuration/constantsCustom.ts\">\n";
+        $this->constants.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:EXT:".$template->getTemplateDir()."/Configuration/TypoScript/constantsCustom.ts\">\n";
 
         // Save Configuration/constants.ts
         $dir = \CodingMs\Ftm\Utility\Tools::getDirectory('TypoScript', $template->getTemplateDir(), TRUE);
@@ -145,17 +155,51 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->setup.= "      stdWrap.cObject {\n";
         $this->setup.= "        data = levelfield:-1, backend_layout_next_level, slide\n";
         $this->setup.= "        override.field = backend_layout\n";
-        $this->setup.= "        split {\n";
-        $this->setup.= "          token = file__\n";
-        $this->setup.= "          1.current = 1\n";
-        $this->setup.= "          1.wrap = |\n";
-        $this->setup.= "        }\n";
-        $this->setup.= "        wrap = {\$plugin.tx_themes.resourcesPrivatePath}Templates/|.html\n";
+
+        // Include BackendLayouts
+        $default = 'MenuContentSidebar';
+        if(isset($this->extConf['backendLayoutDefault'])) {
+            $default = $this->extConf['backendLayoutDefault'];
+        }
+
+        $path = GeneralUtility::getFileAbsFileName('EXT:ftm/Resources/Private/BackendLayouts/');
+        $filesOfDirectory = GeneralUtility::getFilesInDir($path, 'ts', TRUE, 1);
+        foreach ($filesOfDirectory as $file) {
+
+            $name = basename($file, ".ts");
+            $key = GeneralUtility::camelCaseToLowerCaseUnderscored($name);
+
+            if(isset($this->extConf['backendLayoutDisable'.$name]) && (int)$this->extConf['backendLayoutDisable'.$name]===0) {
+                $this->setup.= "        ftm__".$key." = TEXT\n";
+                $this->setup.= "        ftm__".$key.".value = {\$plugin.tx_themes.resourcesPrivatePath}Templates/".$name.".html\n";
+                $this->setup.= "        ftm__".$key.".insertData = 1\n";
+            }
+
+            if($name==$default) {
+                if(isset($this->extConf['backendLayoutDisableDefault']) && (int)$this->extConf['backendLayoutDisableDefault']===0) {
+                    $key = 'default';
+                    $this->setup.= "        ".$key." = TEXT\n";
+                    $this->setup.= "        ".$key.".value = {\$plugin.tx_themes.resourcesPrivatePath}Templates/".$name.".html\n";
+                    $this->setup.= "        ".$key.".insertData = 1\n";
+                }
+            }
+
+        }
+
+        //$this->setup.= "        split {\n";
+        //$this->setup.= "          token = file__\n";
+        //$this->setup.= "          1.current = 1\n";
+        //$this->setup.= "          1.wrap = |\n";
+        //$this->setup.= "        }\n";
+        //$this->setup.= "        wrap = {\$plugin.tx_themes.resourcesPrivatePath}Templates/|.html\n";
         $this->setup.= "      }\n";
+
+        // Wenn keine BackendLayouts gefunden wurden
         $this->setup.= "      stdWrap.ifEmpty.cObject = TEXT\n";
         $this->setup.= "      stdWrap.ifEmpty.cObject {\n";
         $this->setup.= "        value = {\$plugin.tx_themes.resourcesPrivatePath}Error.html\n";
         $this->setup.= "      }\n";
+
         $this->setup.= "    }\n";
         $this->setup.= "    layoutRootPath = {\$plugin.tx_themes.resourcesPrivatePath}Layouts/\n";
         $this->setup.= "    partialRootPath = {\$plugin.tx_themes.resourcesPrivatePath}Partials/\n";
@@ -171,7 +215,7 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->setup.= "page.includeCSS {\n";
         $this->setup.= "  import = {\$plugin.tx_themes.resourcesPrivatePath}DynCss/import.less\n";
         $this->setup.= "}\n";
-        $this->setup.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:EXT:".$template->getTemplateDir()."/Configuration/setupCustom.ts\">\n";
+        $this->setup.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:EXT:".$template->getTemplateDir()."/Configuration/TypoScript/setupCustom.ts\">\n";
 
         // Save Configuration/setup.ts
         $dir = \CodingMs\Ftm\Utility\Tools::getDirectory('TypoScript', $template->getTemplateDir(), TRUE);

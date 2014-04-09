@@ -49,113 +49,177 @@ module.tx_ftm.settings {
                 # Basic-Files
                 basic001 {
                     from = /ext_icon.gif
-                    to = /ext_icon.gif
+                    to   = /ext_icon.gif
                 }
                 basic002 {
                     from = /ext_emconf.php
-                    to = /ext_emconf.php
+                    to   = /ext_emconf.php
                 }
                 basic003 {
                     from = /ext_localconf.php
-                    to = /ext_localconf.php
+                    to   = /ext_localconf.php
                 }
                 basic004 {
                     from = /Meta/theme.yaml
-                    to = /Meta/theme.yaml
+                    to   = /Meta/theme.yaml
                 }
                 # BackendLayouts
                 backendLayoutLang {
                     from = /Resources/Private/BackendLayouts/locallang.xml
-                    to = /Resources/Private/BackendLayouts/locallang.xml
+                    to   = /Resources/Private/BackendLayouts/locallang.xml
                 }
                 backendLayout001 {
                     from = /Resources/Private/BackendLayouts/Content.ts
-                    to = /Resources/Private/BackendLayouts/Content.ts
+                    to   = /Resources/Private/BackendLayouts/Content.ts
                 }
                 backendLayout002 {
                     from = /Resources/Private/BackendLayouts/ContentMenu.ts
-                    to = /Resources/Private/BackendLayouts/ContentMenu.ts
+                    to   = /Resources/Private/BackendLayouts/ContentMenu.ts
                 }
                 backendLayout003 {
                     from = /Resources/Private/BackendLayouts/ContentMenuSidebar.ts
-                    to = /Resources/Private/BackendLayouts/ContentMenuSidebar.ts
+                    to   = /Resources/Private/BackendLayouts/ContentMenuSidebar.ts
                 }
                 backendLayout004 {
                     from = /Resources/Private/BackendLayouts/ContentSidebar.ts
-                    to = /Resources/Private/BackendLayouts/ContentSidebar.ts
+                    to   = /Resources/Private/BackendLayouts/ContentSidebar.ts
                 }
                 backendLayout005 {
                     from = /Resources/Private/BackendLayouts/ContentSidebarMenu.ts
-                    to = /Resources/Private/BackendLayouts/ContentSidebarMenu.ts
+                    to   = /Resources/Private/BackendLayouts/ContentSidebarMenu.ts
                 }
                 backendLayout006 {
                     from = /Resources/Private/BackendLayouts/MenuContent.ts
-                    to = /Resources/Private/BackendLayouts/MenuContent.ts
+                    to   = /Resources/Private/BackendLayouts/MenuContent.ts
                 }
                 backendLayout007 {
                     from = /Resources/Private/BackendLayouts/MenuContentSidebar.ts
-                    to = /Resources/Private/BackendLayouts/MenuContentSidebar.ts
+                    to   = /Resources/Private/BackendLayouts/MenuContentSidebar.ts
                 }
                 backendLayout008 {
                     from = /Resources/Private/BackendLayouts/MenuSidebarContent.ts
-                    to = /Resources/Private/BackendLayouts/MenuSidebarContent.ts
+                    to   = /Resources/Private/BackendLayouts/MenuSidebarContent.ts
                 }
                 backendLayout009 {
                     from = /Resources/Private/BackendLayouts/SidebarContent.ts
-                    to = /Resources/Private/BackendLayouts/SidebarContent.ts
+                    to   = /Resources/Private/BackendLayouts/SidebarContent.ts
                 }
                 backendLayout010 {
                     from = /Resources/Private/BackendLayouts/SidebarContentMenu.ts
-                    to = /Resources/Private/BackendLayouts/SidebarContentMenu.ts
+                    to   = /Resources/Private/BackendLayouts/SidebarContentMenu.ts
                 }
                 backendLayout011 {
                     from = /Resources/Private/BackendLayouts/SidebarContent.ts
-                    to = /Resources/Private/BackendLayouts/SidebarMenuContent.ts
+                    to   = /Resources/Private/BackendLayouts/SidebarMenuContent.ts
                 }
                 backendLayoutImage001 {
-                    from = /Resources/Private/BackendLayouts/Content.jpg
-                    to = /Resources/Private/BackendLayouts/Content.jpg
+                    from = /Resources/Public/BackendLayouts/Content.jpg
+                    to   = /Resources/Public/BackendLayouts/Content.jpg
                 }
                 backendLayoutImage002 {
-                    from = /Resources/Private/BackendLayouts/ContentMenu.jpg
-                    to = /Resources/Private/BackendLayouts/ContentMenu.jpg
+                    from = /Resources/Public/BackendLayouts/ContentMenu.jpg
+                    to   = /Resources/Public/BackendLayouts/ContentMenu.jpg
                 }
                 backendLayoutImage003 {
-                    from = /Resources/Private/BackendLayouts/ContentMenuSidebar.jpg
-                    to = /Resources/Private/BackendLayouts/ContentMenuSidebar.jpg
+                    from = /Resources/Public/BackendLayouts/ContentMenuSidebar.jpg
+                    to   = /Resources/Public/BackendLayouts/ContentMenuSidebar.jpg
                 }
                 backendLayoutImage004 {
-                    from = /Resources/Private/BackendLayouts/ContentSidebar.jpg
-                    to = /Resources/Private/BackendLayouts/ContentSidebar.jpg
+                    from = /Resources/Public/BackendLayouts/ContentSidebar.jpg
+                    to   = /Resources/Public/BackendLayouts/ContentSidebar.jpg
                 }
                 backendLayoutImage005 {
-                    from = /Resources/Private/BackendLayouts/ContentSidebarMenu.jpg
-                    to = /Resources/Private/BackendLayouts/ContentSidebarMenu.jpg
+                    from = /Resources/Public/BackendLayouts/ContentSidebarMenu.jpg
+                    to   = /Resources/Public/BackendLayouts/ContentSidebarMenu.jpg
                 }
                 backendLayoutImage006 {
-                    from = /Resources/Private/BackendLayouts/MenuContent.jpg
-                    to = /Resources/Private/BackendLayouts/MenuContent.jpg
+                    from = /Resources/Public/BackendLayouts/MenuContent.jpg
+                    to   = /Resources/Public/BackendLayouts/MenuContent.jpg
                 }
                 backendLayoutImage007 {
-                    from = /Resources/Private/BackendLayouts/MenuContentSidebar.jpg
-                    to = /Resources/Private/BackendLayouts/MenuContentSidebar.jpg
+                    from = /Resources/Public/BackendLayouts/MenuContentSidebar.jpg
+                    to   = /Resources/Public/BackendLayouts/MenuContentSidebar.jpg
                 }
                 backendLayoutImage008 {
-                    from = /Resources/Private/BackendLayouts/MenuSidebarContent.jpg
-                    to = /Resources/Private/BackendLayouts/MenuSidebarContent.jpg
+                    from = /Resources/Public/BackendLayouts/MenuSidebarContent.jpg
+                    to   = /Resources/Public/BackendLayouts/MenuSidebarContent.jpg
                 }
                 backendLayoutImage009 {
-                    from = /Resources/Private/BackendLayouts/SidebarContent.jpg
-                    to = /Resources/Private/BackendLayouts/SidebarContent.jpg
+                    from = /Resources/Public/BackendLayouts/SidebarContent.jpg
+                    to   = /Resources/Public/BackendLayouts/SidebarContent.jpg
                 }
                 backendLayoutImage010 {
-                    from = /Resources/Private/BackendLayouts/SidebarContentMenu.jpg
-                    to = /Resources/Private/BackendLayouts/SidebarContentMenu.jpg
+                    from = /Resources/Public/BackendLayouts/SidebarContentMenu.jpg
+                    to   = /Resources/Public/BackendLayouts/SidebarContentMenu.jpg
                 }
                 backendLayoutImage011 {
-                    from = /Resources/Private/BackendLayouts/SidebarContent.jpg
-                    to = /Resources/Private/BackendLayouts/SidebarMenuContent.jpg
+                    from = /Resources/Public/BackendLayouts/SidebarMenuContent.jpg
+                    to   = /Resources/Public/BackendLayouts/SidebarMenuContent.jpg
                 }
+                # Fluid-Layouts
+                fluidLayout001 {
+                    from = /Resources/Private/Layouts/Default.html
+                    to   = /Resources/Private/Layouts/Default.html
+                }
+                # Fluid-Partials
+                fluidPartial001 {
+                    from = /Resources/Private/Partials/MainContent.html
+                    to   = /Resources/Private/Partials/MainContent.html
+                }
+                fluidPartial002 {
+                    from = /Resources/Private/Partials/MenuContent.html
+                    to   = /Resources/Private/Partials/MenuContent.html
+                }
+                fluidPartial003 {
+                    from = /Resources/Private/Partials/SidebarContent.html
+                    to   = /Resources/Private/Partials/SidebarContent.html
+                }
+                # Fluid-Templates
+                fluidTemplate001 {
+                    from = /Resources/Private/Templates/Content.html
+                    to   = /Resources/Private/Templates/Content.html
+                }
+                fluidTemplate002 {
+                    from = /Resources/Private/Templates/ContentMenu.html
+                    to   = /Resources/Private/Templates/ContentMenu.html
+                }
+                fluidTemplate003 {
+                    from = /Resources/Private/Templates/ContentMenuSidebar.html
+                    to   = /Resources/Private/Templates/ContentMenuSidebar.html
+                }
+                fluidTemplate004 {
+                    from = /Resources/Private/Templates/ContentSidebar.html
+                    to   = /Resources/Private/Templates/ContentSidebar.html
+                }
+                fluidTemplate005 {
+                    from = /Resources/Private/Templates/ContentSidebarMenu.html
+                    to   = /Resources/Private/Templates/ContentSidebarMenu.html
+                }
+                fluidTemplate006 {
+                    from = /Resources/Private/Templates/MenuContent.html
+                    to   = /Resources/Private/Templates/MenuContent.html
+                }
+                fluidTemplate007 {
+                    from = /Resources/Private/Templates/MenuContentSidebar.html
+                    to   = /Resources/Private/Templates/MenuContentSidebar.html
+                }
+                fluidTemplate008 {
+                    from = /Resources/Private/Templates/MenuSidebarContent.html
+                    to   = /Resources/Private/Templates/MenuSidebarContent.html
+                }
+                fluidTemplate009 {
+                    from = /Resources/Private/Templates/SidebarContent.html
+                    to   = /Resources/Private/Templates/SidebarContent.html
+                }
+                fluidTemplate010 {
+                    from = /Resources/Private/Templates/SidebarContentMenu.html
+                    to   = /Resources/Private/Templates/SidebarContentMenu.html
+                }
+                fluidTemplate011 {
+                    from = /Resources/Private/Templates/SidebarContent.html
+                    to   = /Resources/Private/Templates/SidebarMenuContent.html
+                }
+
             }
 
             # Base for the constants.ts generation
@@ -163,20 +227,20 @@ module.tx_ftm.settings {
                 configuration {
                     siteName {
                         comment = cat=metaDefaults; type=string; label= Default author email
-                        value = FTM-Theme
+                        value   = FTM-Theme
                     }
                     colors {
                         link {
                             comment = cat=siteColors; type=color; label= Link color
-                            value = #FF8700
+                            value   = #FF8700
                         }
                         primary {
                             comment = cat=siteColors; type=color; label= Primary color
-                            value = #FF8700
+                            value   = #FF8700
                         }
                         secondary {
                             comment = cat=siteColors; type=color; label= Secondary color
-                            value = #EFEFEF
+                            value   = #EFEFEF
                         }
                     }
                     meta {
