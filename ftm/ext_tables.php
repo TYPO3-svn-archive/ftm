@@ -32,7 +32,7 @@ if(!isset($configuration) || $configuration['disableBackendModule']!='1') {
 /***************
  * BackendLayoutDataProvider
  */
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'][$_EXTKEY] =
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider']['pagets'] =
     'CodingMs\Ftm\Hooks\Options\BackendLayoutDataProvider';
 
 //= 'EXT:ftm/Classes/Controller/PluginCloudBaseController.php:CodingMs\Ftm\Controller\PluginCloudBaseController';

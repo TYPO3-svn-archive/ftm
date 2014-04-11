@@ -151,10 +151,10 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->setup.= "  10 = FLUIDTEMPLATE\n";
         $this->setup.= "  10 {\n";
         $this->setup.= "    file {\n";
-        $this->setup.= "      stdWrap.cObject = TEXT\n";
+        $this->setup.= "      stdWrap.cObject = CASE\n";
         $this->setup.= "      stdWrap.cObject {\n";
-        $this->setup.= "        data = levelfield:-1, backend_layout_next_level, slide\n";
-        $this->setup.= "        override.field = backend_layout\n";
+        $this->setup.= "        key.data = levelfield:-1, backend_layout_next_level, slide\n";
+        $this->setup.= "        key.override.field = backend_layout\n";
 
         // Include BackendLayouts
         $default = 'MenuContentSidebar';
@@ -170,9 +170,9 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             $key = GeneralUtility::camelCaseToLowerCaseUnderscored($name);
 
             if(isset($this->extConf['backendLayoutDisable'.$name]) && (int)$this->extConf['backendLayoutDisable'.$name]===0) {
-                $this->setup.= "        ftm__".$key." = TEXT\n";
-                $this->setup.= "        ftm__".$key.".value = {\$plugin.tx_themes.resourcesPrivatePath}Templates/".$name.".html\n";
-                $this->setup.= "        ftm__".$key.".insertData = 1\n";
+                $this->setup.= "        pagets__".$key." = TEXT\n";
+                $this->setup.= "        pagets__".$key.".value = {\$plugin.tx_themes.resourcesPrivatePath}Templates/".$name.".html\n";
+                $this->setup.= "        pagets__".$key.".insertData = 1\n";
             }
 
             if($name==$default) {
@@ -197,7 +197,7 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         // Wenn keine BackendLayouts gefunden wurden
         $this->setup.= "      stdWrap.ifEmpty.cObject = TEXT\n";
         $this->setup.= "      stdWrap.ifEmpty.cObject {\n";
-        $this->setup.= "        value = {\$plugin.tx_themes.resourcesPrivatePath}Error.html\n";
+        $this->setup.= "        value = {\$plugin.tx_themes.resourcesPrivatePath}Templates/Error.html\n";
         $this->setup.= "      }\n";
 
         $this->setup.= "    }\n";

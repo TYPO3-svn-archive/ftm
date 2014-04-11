@@ -32,7 +32,7 @@ module.tx_ftm.settings {
                 5150 = Resources/Private/Partials
                 5160 = Resources/Private/Templates
                 # Hier liegen die Konfigurationen der Backend-Layouts
-                5170 = Resources/Private/BackendLayouts
+                #5170 = Resources/Private/BackendLayouts
 
                 5200 = Resources/Public
                 5210 = Resources/Public/Fonts
@@ -43,7 +43,7 @@ module.tx_ftm.settings {
                 5260 = Resources/Public/Contrib
                 5270 = Resources/Public/Extensions
                 # Hier liegen die Bilder der Backend-Layouts
-                5280 = Resources/Public/BackendLayouts
+                #5280 = Resources/Public/BackendLayouts
             }
             files {
                 # Basic-Files
@@ -63,162 +63,7 @@ module.tx_ftm.settings {
                     from = /Meta/theme.yaml
                     to   = /Meta/theme.yaml
                 }
-                # BackendLayouts
-                backendLayoutLang {
-                    from = /Resources/Private/BackendLayouts/locallang.xml
-                    to   = /Resources/Private/BackendLayouts/locallang.xml
-                }
-                backendLayout001 {
-                    from = /Resources/Private/BackendLayouts/Content.ts
-                    to   = /Resources/Private/BackendLayouts/Content.ts
-                }
-                backendLayout002 {
-                    from = /Resources/Private/BackendLayouts/ContentMenu.ts
-                    to   = /Resources/Private/BackendLayouts/ContentMenu.ts
-                }
-                backendLayout003 {
-                    from = /Resources/Private/BackendLayouts/ContentMenuSidebar.ts
-                    to   = /Resources/Private/BackendLayouts/ContentMenuSidebar.ts
-                }
-                backendLayout004 {
-                    from = /Resources/Private/BackendLayouts/ContentSidebar.ts
-                    to   = /Resources/Private/BackendLayouts/ContentSidebar.ts
-                }
-                backendLayout005 {
-                    from = /Resources/Private/BackendLayouts/ContentSidebarMenu.ts
-                    to   = /Resources/Private/BackendLayouts/ContentSidebarMenu.ts
-                }
-                backendLayout006 {
-                    from = /Resources/Private/BackendLayouts/MenuContent.ts
-                    to   = /Resources/Private/BackendLayouts/MenuContent.ts
-                }
-                backendLayout007 {
-                    from = /Resources/Private/BackendLayouts/MenuContentSidebar.ts
-                    to   = /Resources/Private/BackendLayouts/MenuContentSidebar.ts
-                }
-                backendLayout008 {
-                    from = /Resources/Private/BackendLayouts/MenuSidebarContent.ts
-                    to   = /Resources/Private/BackendLayouts/MenuSidebarContent.ts
-                }
-                backendLayout009 {
-                    from = /Resources/Private/BackendLayouts/SidebarContent.ts
-                    to   = /Resources/Private/BackendLayouts/SidebarContent.ts
-                }
-                backendLayout010 {
-                    from = /Resources/Private/BackendLayouts/SidebarContentMenu.ts
-                    to   = /Resources/Private/BackendLayouts/SidebarContentMenu.ts
-                }
-                backendLayout011 {
-                    from = /Resources/Private/BackendLayouts/SidebarContent.ts
-                    to   = /Resources/Private/BackendLayouts/SidebarMenuContent.ts
-                }
-                backendLayoutImage001 {
-                    from = /Resources/Public/BackendLayouts/Content.jpg
-                    to   = /Resources/Public/BackendLayouts/Content.jpg
-                }
-                backendLayoutImage002 {
-                    from = /Resources/Public/BackendLayouts/ContentMenu.jpg
-                    to   = /Resources/Public/BackendLayouts/ContentMenu.jpg
-                }
-                backendLayoutImage003 {
-                    from = /Resources/Public/BackendLayouts/ContentMenuSidebar.jpg
-                    to   = /Resources/Public/BackendLayouts/ContentMenuSidebar.jpg
-                }
-                backendLayoutImage004 {
-                    from = /Resources/Public/BackendLayouts/ContentSidebar.jpg
-                    to   = /Resources/Public/BackendLayouts/ContentSidebar.jpg
-                }
-                backendLayoutImage005 {
-                    from = /Resources/Public/BackendLayouts/ContentSidebarMenu.jpg
-                    to   = /Resources/Public/BackendLayouts/ContentSidebarMenu.jpg
-                }
-                backendLayoutImage006 {
-                    from = /Resources/Public/BackendLayouts/MenuContent.jpg
-                    to   = /Resources/Public/BackendLayouts/MenuContent.jpg
-                }
-                backendLayoutImage007 {
-                    from = /Resources/Public/BackendLayouts/MenuContentSidebar.jpg
-                    to   = /Resources/Public/BackendLayouts/MenuContentSidebar.jpg
-                }
-                backendLayoutImage008 {
-                    from = /Resources/Public/BackendLayouts/MenuSidebarContent.jpg
-                    to   = /Resources/Public/BackendLayouts/MenuSidebarContent.jpg
-                }
-                backendLayoutImage009 {
-                    from = /Resources/Public/BackendLayouts/SidebarContent.jpg
-                    to   = /Resources/Public/BackendLayouts/SidebarContent.jpg
-                }
-                backendLayoutImage010 {
-                    from = /Resources/Public/BackendLayouts/SidebarContentMenu.jpg
-                    to   = /Resources/Public/BackendLayouts/SidebarContentMenu.jpg
-                }
-                backendLayoutImage011 {
-                    from = /Resources/Public/BackendLayouts/SidebarMenuContent.jpg
-                    to   = /Resources/Public/BackendLayouts/SidebarMenuContent.jpg
-                }
-                # Fluid-Layouts
-                fluidLayout001 {
-                    from = /Resources/Private/Layouts/Default.html
-                    to   = /Resources/Private/Layouts/Default.html
-                }
-                # Fluid-Partials
-                fluidPartial001 {
-                    from = /Resources/Private/Partials/MainContent.html
-                    to   = /Resources/Private/Partials/MainContent.html
-                }
-                fluidPartial002 {
-                    from = /Resources/Private/Partials/MenuContent.html
-                    to   = /Resources/Private/Partials/MenuContent.html
-                }
-                fluidPartial003 {
-                    from = /Resources/Private/Partials/SidebarContent.html
-                    to   = /Resources/Private/Partials/SidebarContent.html
-                }
-                # Fluid-Templates
-                fluidTemplate001 {
-                    from = /Resources/Private/Templates/Content.html
-                    to   = /Resources/Private/Templates/Content.html
-                }
-                fluidTemplate002 {
-                    from = /Resources/Private/Templates/ContentMenu.html
-                    to   = /Resources/Private/Templates/ContentMenu.html
-                }
-                fluidTemplate003 {
-                    from = /Resources/Private/Templates/ContentMenuSidebar.html
-                    to   = /Resources/Private/Templates/ContentMenuSidebar.html
-                }
-                fluidTemplate004 {
-                    from = /Resources/Private/Templates/ContentSidebar.html
-                    to   = /Resources/Private/Templates/ContentSidebar.html
-                }
-                fluidTemplate005 {
-                    from = /Resources/Private/Templates/ContentSidebarMenu.html
-                    to   = /Resources/Private/Templates/ContentSidebarMenu.html
-                }
-                fluidTemplate006 {
-                    from = /Resources/Private/Templates/MenuContent.html
-                    to   = /Resources/Private/Templates/MenuContent.html
-                }
-                fluidTemplate007 {
-                    from = /Resources/Private/Templates/MenuContentSidebar.html
-                    to   = /Resources/Private/Templates/MenuContentSidebar.html
-                }
-                fluidTemplate008 {
-                    from = /Resources/Private/Templates/MenuSidebarContent.html
-                    to   = /Resources/Private/Templates/MenuSidebarContent.html
-                }
-                fluidTemplate009 {
-                    from = /Resources/Private/Templates/SidebarContent.html
-                    to   = /Resources/Private/Templates/SidebarContent.html
-                }
-                fluidTemplate010 {
-                    from = /Resources/Private/Templates/SidebarContentMenu.html
-                    to   = /Resources/Private/Templates/SidebarContentMenu.html
-                }
-                fluidTemplate011 {
-                    from = /Resources/Private/Templates/SidebarContent.html
-                    to   = /Resources/Private/Templates/SidebarMenuContent.html
-                }
+
 
             }
 
