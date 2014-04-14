@@ -105,7 +105,7 @@ Inhaltsverzeichnis
     TypoScript
     MultiLanguage
     Css-Less
-    DynCss
+    Dyncss
     Extensions
     Faq
     Troubleshooting

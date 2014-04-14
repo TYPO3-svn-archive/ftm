@@ -9,7 +9,7 @@ $TCA['tx_ftm_domain_model_templateconfig'] = array(
         'showRecordFieldList' => 'doctype, use_html5_js, base_u_r_l, link_vars, disable_charset_header, meta_charset, prefix_local_anchors, speaking_paths, google_analytics_tracking_code, language_uid, language_title, language, locale_all, spam_protect_email_addresses, spam_protect_email_addresses_at_subst, spam_protect_email_addresses_last_dot_subst',
     ),
     'types' => array(
-        '1' => array('showitem' => 'doctype, base_u_r_l, dyn_css, use_html5_js, link_vars, disable_charset_header, meta_charset, prefix_local_anchors, speaking_paths, google_analytics_tracking_code, --div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateconfig.tab_language_and_localization, language_uid, language_title, language, locale_all,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateconfig.tab_spam_protect, spam_protect_email_addresses, spam_protect_email_addresses_at_subst, spam_protect_email_addresses_last_dot_subst'),
+        '1' => array('showitem' => 'doctype, base_u_r_l, dyncss, use_html5_js, link_vars, disable_charset_header, meta_charset, prefix_local_anchors, speaking_paths, google_analytics_tracking_code, --div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateconfig.tab_language_and_localization, language_uid, language_title, language, locale_all,--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateconfig.tab_spam_protect, spam_protect_email_addresses, spam_protect_email_addresses_at_subst, spam_protect_email_addresses_last_dot_subst'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -112,9 +112,9 @@ $TCA['tx_ftm_domain_model_templateconfig'] = array(
                 'eval' => 'required'
             ),
         ),
-        'dyn_css' => array(
+        'dyncss' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateconfig.dyn_css',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_templateconfig.dyncss',
             'config' => array(
                 'type' => 'select',
                 'items' => array(

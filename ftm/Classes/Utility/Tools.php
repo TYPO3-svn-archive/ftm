@@ -149,20 +149,20 @@ class Tools {
             $directory = "typo3conf/ext/".$themeName."/Resources/Public/Icons/";
         }
 
-        if($type=="DynCss") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/";
+        if($type=="Dyncss") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/Dyncss/";
         }
-        if($type=="DynCssLibraries") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Library/";
+        if($type=="DyncssLibraries") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/Dyncss/Library/";
         }
-        if($type=="DynCssVariables") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Library/Variables/";
+        if($type=="DyncssVariables") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/Dyncss/Library/Variables/";
         }
-        if($type=="DynCssGridElementLayouts") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Library/GridElementLayouts/";
+        if($type=="DyncssGridElementLayouts") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/Dyncss/Library/GridElementLayouts/";
         }
-        if($type=="DynCssContentLayouts") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Library/ContentLayouts/";
+        if($type=="DyncssContentLayouts") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/Dyncss/Library/ContentLayouts/";
         }
 
         if($type=="FluidTemplates") {

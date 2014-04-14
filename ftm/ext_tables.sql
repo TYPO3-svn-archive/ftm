@@ -59,7 +59,7 @@ CREATE TABLE tx_ftm_domain_model_template (
     language int(11) unsigned DEFAULT '0' NOT NULL,
     fluid int(11) unsigned DEFAULT '0' NOT NULL,
     less_variable int(11) unsigned DEFAULT '0' NOT NULL,
-    dyn_css_file int(11) unsigned DEFAULT '0' NOT NULL,
+    dyncss_file int(11) unsigned DEFAULT '0' NOT NULL,
     menu_container int(11) unsigned DEFAULT '0' NOT NULL,
     typo_script_snippet int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -107,7 +107,7 @@ CREATE TABLE tx_ftm_domain_model_templateconfig (
     base_u_r_l varchar(255) DEFAULT '' NOT NULL,
     link_vars varchar(255) DEFAULT '' NOT NULL,
     disable_charset_header varchar(255) DEFAULT '' NOT NULL,
-    dyn_css varchar(255) DEFAULT '' NOT NULL,
+    dyncss varchar(255) DEFAULT '' NOT NULL,
     meta_charset varchar(255) DEFAULT '' NOT NULL,
     language_uid int(11) DEFAULT '0' NOT NULL,
     language varchar(255) DEFAULT '' NOT NULL,
@@ -527,7 +527,7 @@ CREATE TABLE tx_ftm_domain_model_templatedyncssfile (
     type varchar(255) DEFAULT '' NOT NULL,
     description text NOT NULL,
     variables text NOT NULL,
-    dyn_css text NOT NULL,
+    dyncss text NOT NULL,
     public_readable tinyint(4) unsigned DEFAULT '0' NOT NULL,
     public_writeable tinyint(4) unsigned DEFAULT '0' NOT NULL,
 

@@ -32,7 +32,7 @@ namespace CodingMs\Ftm\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
+class TemplateDyncssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
 
     /**
      * Variablen
@@ -43,12 +43,12 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
     protected $variables;
 
     /**
-     * dynCss
+     * dyncss
      *
      * @var string
      * @since 2.0.0
      */
-    protected $dynCss;
+    protected $dyncss;
 
     /**
      * Returns the variables
@@ -70,22 +70,22 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
     }
 
     /**
-     * Returns the dynCss
+     * Returns the dyncss
      *
-     * @return string $dynCss
+     * @return string $dyncss
      */
-    public function getDynCss() {
-        return $this->dynCss;
+    public function getDyncss() {
+        return $this->dyncss;
     }
 
     /**
-     * Sets the dynCss
+     * Sets the dyncss
      *
-     * @param string $dynCss
+     * @param string $dyncss
      * @return void
      */
-    public function setDynCss($dynCss) {
-        $this->dynCss = $dynCss;
+    public function setDyncss($dyncss) {
+        $this->dyncss = $dyncss;
     }
 
     /**
@@ -96,7 +96,7 @@ class TemplateDynCssFile extends \CodingMs\Ftm\Domain\Model\PluginCloudBase {
     public function toArray() {
         $data = parent::toArray();
         $data['variables'] = $this->getVariables();
-        $data['dynCss'] = $this->getDynCss();
+        $data['dyncss'] = $this->getDyncss();
         return $data;
     }
 

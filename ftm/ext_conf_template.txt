@@ -28,8 +28,8 @@ rewriteTypoScriptSnippetFileAfterUpdateDataset = 0
 # cat=autoSave; type=boolean; label=Rewrite Fluid-Template file, when the related Dataset has updated?!
 rewriteFluidTemplateFileAfterUpdateDataset = 0
 
-# cat=autoSave; type=boolean; label=Rewrite DynCss file, when the related Dataset has updated?!
-rewriteDynCssFileAfterUpdateDataset = 0
+# cat=autoSave; type=boolean; label=Rewrite Dyncss file, when the related Dataset has updated?!
+rewriteDyncssFileAfterUpdateDataset = 0
 
 # backendLayouts
 ####################################################

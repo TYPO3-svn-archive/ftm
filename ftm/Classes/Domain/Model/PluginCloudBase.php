@@ -71,7 +71,7 @@ class PluginCloudBase extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @var \string
      * @since 2.0.0
      */
-    protected $description;
+    protected $description='';
 
     /**
      * public readable
@@ -79,7 +79,7 @@ class PluginCloudBase extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @var \boolean
      * @since 2.0.0
      */
-    protected $publicReadable;
+    protected $publicReadable=FALSE;
 
     /**
      * public writeable
@@ -87,7 +87,7 @@ class PluginCloudBase extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @var \boolean
      * @since 2.0.0
      */
-    protected $publicWriteable;
+    protected $publicWriteable=FALSE;
 
     /**
      * next list uid

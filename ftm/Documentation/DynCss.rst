@@ -1,7 +1,7 @@
 =============================
 Dynamisches CSS im FTM >1.1.1
 =============================
-`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `CSS/LESS im FTM <http://fluid-template-manager.de/documentation/DynCss.html>`_
+`Fluid-Template-Manager.de <http://www.fluid-template-manager.de>`_ / `Dokumentation <http://www.fluid-template-manager.de/documentation>`_ / `CSS/LESS im FTM <http://fluid-template-manager.de/documentation/Dyncss.html>`_
 
 
 Lesen Sie hier wie Sie Ihre FTM-Templates mit dynamischen CSS optimieren und flexibel halten. 
@@ -18,7 +18,7 @@ Der FTM verwendet für die verwendung von dynamischen CSS die Extension `dyncss 
 Dies bietet uns die Möglichkeit durch die Verwendung von dyncss-Adaptern gleich mehrere dynamische CSS-Sprachen zu unterstützen.
 So gibt es aktuell die folgenden Adapter:
 
-.. list-table:: DynCss-Adapter
+.. list-table:: Dyncss-Adapter
     :name: dyncssadapter_listtoolbarfunctions
     :class: listtoolbarfunctions
     :widths: 40 30 30
@@ -27,19 +27,19 @@ So gibt es aktuell die folgenden Adapter:
     * - Beschreibung
       - GitHub-Link
       - TYPO3-Link
-    * - DynCss-Basispaket
+    * - Dyncss-Basispaket
       - `dyncss <https://github.com/kaystrobach/TYPO3.dyncss>`_
       - `dyncss <http://typo3.org/extensions/repository/view/dyncss>`_
-    * - DynCss - Sass and Scss Parser
+    * - Dyncss - Sass and Scss Parser
       - `dyncss <https://github.com/kaystrobach/TYPO3.dyncss_phpsass>`_
       - `dyncss <http://typo3.org/extensions/repository/view/dyncss_phpsass>`_
-    * - DynCss - Turbine Parser
+    * - Dyncss - Turbine Parser
       - `dyncss <https://github.com/kaystrobach/TYPO3.dyncss_turbine>`_
       - `dyncss <http://typo3.org/extensions/repository/view/dyncss_turbine>`_
-    * - DynCss - SCSS Parser
+    * - Dyncss - SCSS Parser
       - `dyncss <https://github.com/kaystrobach/TYPO3.dyncss_scss>`_
       - `dyncss <http://typo3.org/extensions/repository/view/dyncss_scss>`_
-    * - DynCss  - LESS Parser
+    * - Dyncss  - LESS Parser
       - `dyncss <https://github.com/kaystrobach/TYPO3.dyncss_less>`_
       - `dyncss <http://typo3.org/extensions/repository/view/dyncss_less>`_
 

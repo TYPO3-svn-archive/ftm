@@ -25,12 +25,12 @@ namespace CodingMs\Ftm\Backend;
 ***************************************************************/
 
 /**
- * Loads a DynCss file
+ * Loads a Dyncss file
  *
  * @package    TYPO3
  * @subpackage    ftm
  */
-class DynCssFileLoadRow {
+class DyncssFileLoadRow {
 
     /**
      * Render a Flexible Content Element type selection field
@@ -67,8 +67,8 @@ class DynCssFileLoadRow {
         $insertLink = '';
         $snippetFolder = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName("uploads/tx_ftm/");
 
-        if(@file_exists($snippetFolder.'dynCssFiles.serialized')) {
-            $snippetsSerialized = file_get_contents($snippetFolder.'dynCssFiles.serialized');
+        if(@file_exists($snippetFolder.'dyncssFiles.serialized')) {
+            $snippetsSerialized = file_get_contents($snippetFolder.'dyncssFiles.serialized');
             $snippetsArray = unserialize($snippetsSerialized);
 
             if(is_array($snippetsArray) && !empty($snippetsArray)) {
@@ -88,9 +88,9 @@ class DynCssFileLoadRow {
                     $previewText.= base64_decode(strip_tags($snippet['description']));
                     $previewText.= "\n";
                     $previewText.= "\n";
-                    $previewText.= "DynCss:\n";
+                    $previewText.= "Dyncss:\n";
                     $previewText.= "----------------------------------------------------------------\n";
-                    $previewText.= base64_decode($snippet['dynCss']);
+                    $previewText.= base64_decode($snippet['dyncss']);
                     $previewText.= "\n";
                     $previewText.= "\n";
                     $previewText = htmlentities($previewText);
@@ -163,7 +163,7 @@ class DynCssFileLoadRow {
                 $preview.= "<textarea id=\"ftm_insertSnippetPreview_".$uid."\" style=\"".$previewStyles."\"></textarea>".LF;
             }
             else {
-                $snippetSelection = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."no_dyn_css_file_exists", "Ftm");
+                $snippetSelection = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."no_dyncss_file_exists", "Ftm");
             }
         }
         else {
@@ -171,9 +171,9 @@ class DynCssFileLoadRow {
             $syncHref.= '?M=web_FtmFtm';
             $syncHref.= '&amp;id='.$pid.'';
             $syncHref.= '&amp;tx_ftm_web_ftmftm[action]=loadFiles';
-            $syncHref.= '&amp;tx_ftm_web_ftmftm[controller]=DynCss';
-            $noSnippetsLabel = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."no_saved_dyn_css_file_exists", "Ftm");
-            $syncLinkLabel = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."synchronize_dyn_css_files_message", "Ftm");
+            $syncHref.= '&amp;tx_ftm_web_ftmftm[controller]=Dyncss';
+            $noSnippetsLabel = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."no_saved_dyncss_file_exists", "Ftm");
+            $syncLinkLabel = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."synchronize_dyncss_files_message", "Ftm");
             $snippetSelection = $noSnippetsLabel." <a href=\"".$syncHref."\"><span style=\"color: red\">".$syncLinkLabel."</span></a>";
         }
 

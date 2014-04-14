@@ -38,6 +38,20 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 class Dyncss {
 
     /**
+     * Collected messages
+     * @var string
+     */
+    protected $messages = array();
+
+    /**
+     * Template Repository
+     *
+     * @var \CodingMs\Ftm\Domain\Repository\TemplateRepository
+     * @inject
+     */
+    protected $templateRepository;
+
+    /**
      * Dyncss File Repository
      *
      * @var \CodingMs\Ftm\Domain\Repository\TemplateDyncssFileRepository
@@ -46,20 +60,33 @@ class Dyncss {
     protected $templateDyncssFileRepository;
 
     /**
+     * Persistence-manager
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+     * @inject
+     */
+    protected $persistenceManager;
+
+    /**
      * Auto-creates datasets for each Dyncss library file
      * @param Template $template
      */
-    public static function autoCreateDatasets(\CodingMs\Ftm\Domain\Model\Template $template) {
+    public function autoCreateDatasets(\CodingMs\Ftm\Domain\Model\Template $template) {
 
         // Zuerst pruefen ob es das Template-Verzeichnis gibt
-        $relPath = \CodingMs\Ftm\Utility\Tools::getDirectory("DynCssLibraries", $template->getTemplateDir());
+        $relPath = \CodingMs\Ftm\Utility\Tools::getDirectory("DyncssLibraries", $template->getTemplateDir());
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
 
         if(file_exists($absPath)) {
             $files = GeneralUtility::getFilesInDir($absPath);
             if(!empty($files)) {
-                foreach($files as $file) {
-                    var_dump($file);
+                foreach($files as $filename) {
+
+                    $type = 'Library';
+                    $dyncss = file_get_contents($absPath.$filename);
+
+                    $this->createDataset($template, $filename, $type, $dyncss);
+
                 }
             }
 
@@ -70,8 +97,29 @@ class Dyncss {
 
     }
 
-    public static function dyncssDatasetExists($filename='', $type='') {
+    public function createDataset(\CodingMs\Ftm\Domain\Model\Template $template, $filename='', $type='', $dyncss='', $variables='') {
+        if(!$template->getDyncssFileExists($filename, 'Library')) {
+            $dynCssFile = new \CodingMs\Ftm\Domain\Model\TemplateDyncssFile();
+            $dynCssFile->setPid($template->getPid());
+            $dynCssFile->setName($type.':'.$filename);
+            $dynCssFile->setType($type);
+            $dynCssFile->setFilename($filename);
+            $dynCssFile->setDyncss($dyncss);
 
+            $this->templateDyncssFileRepository->add($dynCssFile);
+
+            // Add new dyncss file to template
+            $template->addDyncssFile($dynCssFile);
+            $this->templateRepository->update($template);
+            $this->persistenceManager->persistAll();
+
+            // Collect message
+            $this->messages['success'][] = $type.':'.$filename.' created';
+        }
+    }
+
+    public function getMessages($type='success') {
+        return $this->messages['success'];
     }
     
 }

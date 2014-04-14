@@ -20,11 +20,11 @@ module.tx_ftm.settings {
                 4000 = Meta
                 5000 = Resources
                 5100 = Resources/Private
-                5110 = Resources/Private/DynCss
-                5111 = Resources/Private/DynCss/Library
-                51110 = Resources/Private/DynCss/Library/GridElementLayouts
-                51111 = Resources/Private/DynCss/Library/ContentLayouts
-                51113 = Resources/Private/DynCss/Library/Variables
+                5110 = Resources/Private/Dyncss
+                5111 = Resources/Private/Dyncss/Library
+                51110 = Resources/Private/Dyncss/Library/GridElementLayouts
+                51111 = Resources/Private/Dyncss/Library/ContentLayouts
+                51113 = Resources/Private/Dyncss/Library/Variables
 
                 5120 = Resources/Private/Extensions
                 5130 = Resources/Private/Language

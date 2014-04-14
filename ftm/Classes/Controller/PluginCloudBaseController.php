@@ -284,35 +284,35 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             }
 
 
-            // DynCss-File: Auto-Save activated?!
-            if($table == 'tx_ftm_domain_model_templatedyncssfile' && $extConf['rewriteDynCssFileAfterUpdateDataset']) {
+            // Dyncss-File: Auto-Save activated?!
+            if($table == 'tx_ftm_domain_model_templatedyncssfile' && $extConf['rewriteDyncssFileAfterUpdateDataset']) {
 
                 $saveInFilename = $this->getProcessDatamapValue($fieldArray, $reference, 'filename');
                 $type = $this->getProcessDatamapValue($fieldArray, $reference, 'type');
 
-                // Saving DynCss-GridElementsLayouts
+                // Saving Dyncss-GridElementsLayouts
                 if($type=='GridElementLayouts') {
-                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DynCssGridElementLayouts', 'dyn_css', $saveInFilename)==0) {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DyncssGridElementLayouts', 'dyncss', $saveInFilename)==0) {
                         throw new \Exception('Could not save '.$saveInFilename);
                     }
                 }
 
-                // Saving DynCss-ContentLayouts
+                // Saving Dyncss-ContentLayouts
                 else if($type=='ContentLayouts') {
-                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DynCssContentLayouts', 'dyn_css', $saveInFilename)==0) {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DyncssContentLayouts', 'dyncss', $saveInFilename)==0) {
                         throw new \Exception('Could not save '.$saveInFilename);
                     }
                 }
 
                 // Saving other
                 else if($type!='Variables') {
-                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DynCssFiles', 'dyn_css', $saveInFilename)==0) {
+                    if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DyncssFiles', 'dyncss', $saveInFilename)==0) {
                         throw new \Exception('Could not save '.$saveInFilename);
                     }
                 }
 
                 // Always saving variables
-                if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DynCssVariables', 'variables', $saveInFilename)==0) {
+                if($this->saveProcessDatamapFile($fieldArray, $reference, $template, 'DyncssVariables', 'variables', $saveInFilename)==0) {
                     throw new \Exception('Could not save '.$saveInFilename);
                 }
 
@@ -326,7 +326,7 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
 //             * speichern auch in dateien geschrieben werden sollen
 //             */
 //
-//            var_dump($themeDir, $fieldArray, $extConf['rewriteDynCssFileAfterUpdateDataset'], $saveInFilename, $reference->checkValue_currentRecord['pid'], $reference->checkValue_currentRecord);
+//            var_dump($themeDir, $fieldArray, $extConf['rewriteDyncssFileAfterUpdateDataset'], $saveInFilename, $reference->checkValue_currentRecord['pid'], $reference->checkValue_currentRecord);
 //            exit;
         }
 
@@ -365,8 +365,8 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             // Extension-Konfiguration
             $extConf = \CodingMs\Ftm\Service\ExtensionConfiguration::getConfiguration();
 
-            // DynCss-File: Auto-Save activated?!
-            if($table == 'tx_ftm_domain_model_templatedyncssfile' && $extConf['rewriteDynCssFileAfterUpdateDataset']) {
+            // Dyncss-File: Auto-Save activated?!
+            if($table == 'tx_ftm_domain_model_templatedyncssfile' && $extConf['rewriteDyncssFileAfterUpdateDataset']) {
 
                 $saveInFilename = $this->getProcessDatamapValue($fieldArray, $reference, 'filename');
                 $type = $this->getProcessDatamapValue($fieldArray, $reference, 'type');

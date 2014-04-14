@@ -34,5 +34,32 @@ namespace CodingMs\Ftm\Domain\Repository;
  */
 class TemplateDyncssFileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
+
+    /**
+     * Ermittelt alle Adressen der uebergebenen Gruppen
+     *
+     * @param array $addressGroups TtAddress-Groups
+     * @return CodingMs\Ftm\Domain\Model\TtAddress
+    public function findAllByFilename($sortBy='name') {
+        $query = $this->createQuery();
+        $query->matching($query->in('addressgroup', $addressGroups));
+
+        $sorting = array();
+        if($sortBy=='name') {
+            $sorting['name'] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+        }
+        else if($sortBy=='cityThenName') {
+            $sorting['city'] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+            $sorting['name'] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+        }
+        else {
+            $sorting['name'] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+        }
+        $query->setOrderings($sorting);
+
+        return $query->execute();
+    }
+     */
+
 }
 ?>

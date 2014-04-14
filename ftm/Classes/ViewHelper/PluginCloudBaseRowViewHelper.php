@@ -41,7 +41,7 @@ class PluginCloudBaseRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abst
             $table   = 'tx_ftm_domain_model_templatetyposcriptsnippet';
             $tableCells[] = "<a><img src=\"/typo3conf/ext/ftm/Resources/Public/Icons/typoscript_snippet.png\"></a>";
         }
-        else if($type=='dynCssFile') {
+        else if($type=='dyncssFile') {
             $table   = 'tx_ftm_domain_model_templatedyncssfile';
             $tableCells[] = "<a><img src=\"/typo3conf/ext/ftm/Resources/Public/Icons/dyncss_file.png\"></a>";
         }

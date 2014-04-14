@@ -50,7 +50,7 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @validate NotEmpty
      * @since 2.0.0
      */
-    protected $dynCss = 'less';
+    protected $dyncss = 'less';
     
     /**
      * Legt die BaseURL fest
@@ -199,46 +199,46 @@ class TemplateConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     }
     
     /**
-     * Returns the dynCss
+     * Returns the dyncss
      *
-     * @return string $dynCss
+     * @return string $dyncss
      * @since 2.0.0
      */
-    public function getDynCss() {
-        return $this->dynCss;
+    public function getDyncss() {
+        return $this->dyncss;
     }
     
     /**
-     * Returns the dynCss
+     * Returns the dyncss
      *
-     * @return string $dynCss
+     * @return string $dyncss
      * @since 2.0.0
      */
-    public function getDynCssFolder() {
-        $parts = explode('_', $this->dynCss);
+    public function getDyncssFolder() {
+        $parts = explode('_', $this->dyncss);
         return ucfirst($parts[1]);
     }
     
     /**
-     * Returns the dynCss
+     * Returns the dyncss
      *
-     * @return string $dynCss
+     * @return string $dyncss
      * @since 2.0.0
      */
-    public function getDynCssType() {
-        $parts = explode('_', $this->dynCss);
+    public function getDyncssType() {
+        $parts = explode('_', $this->dyncss);
         return $parts[0];
     }
     
     /**
-     * Sets the dynCss
+     * Sets the dyncss
      *
-     * @param string $dynCss
+     * @param string $dyncss
      * @return void
      * @since 2.0.0
      */
-    public function setDynCss($dynCss) {
-        $this->dynCss = $dynCss;
+    public function setDyncss($dyncss) {
+        $this->dyncss = $dyncss;
     }
     
 

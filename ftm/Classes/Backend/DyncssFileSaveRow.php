@@ -25,12 +25,12 @@ namespace CodingMs\Ftm\Backend;
 ***************************************************************/
 
 /**
- * Save a DynCss file
+ * Save a Dyncss file
  *
  * @package    TYPO3
  * @subpackage    ftm
  */
-class DynCssFileSaveRow {
+class DyncssFileSaveRow {
 
     /**
      * Render a Flexible Content Element type selection field
@@ -52,12 +52,12 @@ class DynCssFileSaveRow {
         $snippetSaveUri.= "?M=web_FtmFtm";
         $snippetSaveUri.= "&id=".$pid."";
         $snippetSaveUri.= "&tx_ftm_web_ftmftm[action]=saveFile";
-        $snippetSaveUri.= "&tx_ftm_web_ftmftm[controller]=DynCss";
+        $snippetSaveUri.= "&tx_ftm_web_ftmftm[controller]=Dyncss";
         $snippetSaveUri.= "&tx_ftm_web_ftmftm[file]=".$uid."";
 
         $langPrefix = 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.';
-        $linkTitle = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."save_dyn_css_file_in_plugincloud", "Ftm");
-        $linkLabel = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."save_dyn_css_file_in_plugincloud", "Ftm");
+        $linkTitle = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."save_dyncss_file_in_plugincloud", "Ftm");
+        $linkLabel = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($langPrefix."save_dyncss_file_in_plugincloud", "Ftm");
 
         $saveLink = "<a href=\"".$snippetSaveUri."\" title=\"".$linkTitle."\"><img src=\"".$imagePath."dyncss_file_save.png\"> <span>".$linkLabel."</span></a><br /><br />";
 

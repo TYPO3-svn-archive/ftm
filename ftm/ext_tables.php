@@ -16,7 +16,7 @@ if(!isset($configuration) || $configuration['disableBackendModule']!='1') {
         '999',    // Position
         array(
             'TemplateManager'   => 'list,generateTypoScript,generateFluid,acceptDisclaimer,newTheme,createTheme',
-            'DynCss'            => 'generate,loadFiles,saveFile,insertFile',
+            'Dyncss'            => 'generate,loadFiles,saveFile,insertFile',
             'TypoScriptSnippet' => 'saveSnippet,insertSnippet,loadSnippets',
             'TypoScript'        => 'generateTypoScript',
         ),
@@ -409,8 +409,8 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'name,type,description,dyn_css,',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateDynCssFile.php',
+        'searchFields' => 'name,type,description,dyncss,',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/TemplateDyncssFile.php',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ftm_domain_model_templatedyncssfile.gif'
     ),
 );

@@ -6,14 +6,14 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_template'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_template']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'site_name, template_mode, template_type, template_dir, config, meta, language, fluid, typo_script_snippet, dyn_css_info, dyn_css_files, menu_container', // , extensions_info, extensions
+        'showRecordFieldList' => 'site_name, template_mode, template_type, template_dir, config, meta, language, fluid, typo_script_snippet, dyncss_info, dyncss_files, menu_container', // , extensions_info, extensions
     ),
     'types' => array(
         '1' => array('showitem' => 'site_name, template_mode, template_type, template_dir, config, meta, language,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_fluid, fluid,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_typoscript_snippets, typo_script_snippet_info, typo_script_snippet,'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_menu, menu_container,'.
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_dyncss, dyn_css_info, dyn_css_file'),
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.tab_dyncss, dyncss_info, dyncss_file'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -265,20 +265,20 @@ $TCA['tx_ftm_domain_model_template'] = array(
             ),
         ),
         
-        // DynCss
-        'dyn_css_info' => array (
+        // Dyncss
+        'dyncss_info' => array (
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.dyn_css_info',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.dyncss_info',
             'config' => array (
                 'type' => 'user',
                 'userFunc' => 'CodingMs\Ftm\Backend\InformationRow->renderField',
-                'param1' => 'dyn_css_info'
+                'param1' => 'dyncss_info'
                 
             )
         ),
-        'dyn_css_file' => array(
+        'dyncss_file' => array(
             'exclude' => 0,
-            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.dyn_css_file',
+            //'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db.xml:tx_ftm_domain_model_template.dyncss_file',
             'config' => array(
                 'type' => 'select',
                 'size' => 25,

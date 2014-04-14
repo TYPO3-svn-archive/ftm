@@ -6,13 +6,13 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
     'ctrl' => $TCA['tx_ftm_domain_model_templatedyncssfile']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, type, filename, description, variables, dyn_css, public_readable, public_writeable',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, type, filename, description, variables, dyncss, public_readable, public_writeable',
     ),
     'types' => array(
         '1' => array('showitem' =>
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_dyncss, name, type, filename, variables;;;wizards[t3editorCss], dyn_css;;;wizards[t3editorCss],'.
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_dyncss, name, type, filename, variables;;;wizards[t3editorCss], dyncss;;;wizards[t3editorCss],'.
             '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_description, description,'.
-            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_synchronization, dyn_css_file_save, public_readable, public_writeable, dyn_css_file_load'
+            '--div--;LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.tab_synchronization, dyncss_file_save, public_readable, public_writeable, dyncss_file_load'
         ),
     ),
     'palettes' => array(
@@ -178,7 +178,7 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
                 ),
             ),
         ),
-        'dyn_css' => array(
+        'dyncss' => array(
             'displayCond' => array(
                 'OR' => array(
                     'FIELD:type:=:Menu',
@@ -188,7 +188,7 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
                 ),
             ),
             'exclude' => 0,
-            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.dyn_css',
+            'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.dyncss',
             'config' => array(
                 'type' => 'text',
                 'cols' => 112,
@@ -208,13 +208,13 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
             ),
         ),
 
-        // DynCss-Datei speichern
-        'dyn_css_file_save' => array (
+        // Dyncss-Datei speichern
+        'dyncss_file_save' => array (
             'exclude' => 0,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.save_file',
             'config' => array (
                 'type' => 'user',
-                'userFunc' => 'CodingMs\Ftm\Backend\DynCssFileSaveRow->renderField',
+                'userFunc' => 'CodingMs\Ftm\Backend\DyncssFileSaveRow->renderField',
                 'param1' => 'typo_script_snippet'
 
             )
@@ -233,12 +233,12 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
                 'type' => 'check',
             ),
         ),
-        'dyn_css_file_load' => array (
+        'dyncss_file_load' => array (
             'exclude' => 0,
             'label' => 'LLL:EXT:ftm/Resources/Private/Language/locallang_db_templatedyncssfile.xlf:tx_ftm_templatedyncssfile.load_file',
             'config' => array (
                 'type' => 'user',
-                'userFunc' => 'CodingMs\Ftm\Backend\DynCssFileLoadRow->renderField',
+                'userFunc' => 'CodingMs\Ftm\Backend\DyncssFileLoadRow->renderField',
                 'param1' => 'typo_script_snippet'
 
             )
@@ -255,7 +255,7 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
 
 if(isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['compat_version'])) {
     if((float)$GLOBALS['TYPO3_CONF_VARS']['SYS']['compat_version']<6) {
-        $TCA['tx_ftm_domain_model_templatedyncssfile']['columns']['dyn_css']['config']['wizards']['t3editorCss']['userFunc'] =
+        $TCA['tx_ftm_domain_model_templatedyncssfile']['columns']['dyncss']['config']['wizards']['t3editorCss']['userFunc'] =
         'EXT:t3editor/classes/class.tx_t3editor_tceforms_wizard.php:tx_t3editor_tceforms_wizard->main';
     }
 }

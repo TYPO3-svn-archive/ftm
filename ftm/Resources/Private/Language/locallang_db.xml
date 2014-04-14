@@ -38,7 +38,7 @@
             
             <!-- FTM-Config -->
             <label index="tx_ftm_domain_model_templateconfig">Fluid Template - Basic configuration</label>
-            <label index="tx_ftm_domain_model_templateconfig.dyn_css">Dynamic CSS</label>
+            <label index="tx_ftm_domain_model_templateconfig.dyncss">Dynamic CSS</label>
             <label index="tx_ftm_domain_model_templateconfig.doctype">HTML doctype</label>
             <label index="tx_ftm_domain_model_templateconfig.base_u_r_l">baseURL</label>
             <label index="tx_ftm_domain_model_templateconfig.link_vars">linkVars</label>
@@ -375,7 +375,7 @@ Furthermore... </label>
             <!-- FTM-Config -->
             <label index="tx_ftm_domain_model_templateconfig">Fluid Template - Basis-Konfiguration</label>
             <label index="tx_ftm_domain_model_templateconfig.doctype">HTML-Doctype</label>
-            <label index="tx_ftm_domain_model_templateconfig.dyn_css">Dynamic CSS</label>
+            <label index="tx_ftm_domain_model_templateconfig.dyncss">Dynamic CSS</label>
             <label index="tx_ftm_domain_model_templateconfig.base_u_r_l">baseURL</label>
             <label index="tx_ftm_domain_model_templateconfig.link_vars">linkVars</label>
             <label index="tx_ftm_domain_model_templateconfig.disable_charset_header">Verhindert das der Charset-Header (content-type:text/html; charset...) gesendet wird.</label>

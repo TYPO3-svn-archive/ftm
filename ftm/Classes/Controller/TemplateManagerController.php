@@ -96,6 +96,14 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
      * @var \CodingMs\Ftm\Service\TemplateStructure
      */
     protected $templateStructureService;
+
+    /**
+     * Dynncss-Service
+     *
+     * @var \CodingMs\Ftm\Service\Dyncss
+     * @inject
+     */
+    protected $dyncssService;
     
     /**
      * Extension-Konfiguration
@@ -415,8 +423,13 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     // -------------------------------------------------
 
 
-                    \CodingMs\Ftm\Service\Dyncss::autoCreateDatasets($this->fluidTemplate);
-                    exit;
+
+
+                    $this->dyncssService->autoCreateDatasets($this->fluidTemplate);
+                    $successMessages = $this->dyncssService->getMessages('success');
+                    if(!empty($successMessages)) {
+                        $this->addFlashMessage(implode('<br/>', $successMessages), 'Dyncss erfolgreich erstellt', FlashMessage::OK);
+                    }
 
                     
                 }

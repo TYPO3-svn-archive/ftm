@@ -223,10 +223,10 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->setup.= "  }\n";
         $this->setup.= "}\n";
 
-        // Include DynCss
-        $this->setup.= $this->getCommentLine('Include DynCss');
+        // Include Dyncss
+        $this->setup.= $this->getCommentLine('Include Dyncss');
         $this->setup.= "page.includeCSS {\n";
-        $this->setup.= "  import = {\$plugin.tx_themes.resourcesPrivatePath}DynCss/import.less\n";
+        $this->setup.= "  import = {\$plugin.tx_themes.resourcesPrivatePath}Dyncss/import.less\n";
         $this->setup.= "}\n";
 
         // Include custom setup

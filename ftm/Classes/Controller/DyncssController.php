@@ -34,7 +34,7 @@ use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class DynCssController extends PluginCloudBaseController {
+class DyncssController extends PluginCloudBaseController {
     
     /**
      * Erstellt das dynamische CSS für ein FTM-Template
@@ -54,25 +54,25 @@ class DynCssController extends PluginCloudBaseController {
         
         else {
             
-            // DynCss-Typ
-            $dynCssType = $this->fluidTemplate->getConfig()->getDynCssType();
+            // Dyncss-Typ
+            $dyncssType = $this->fluidTemplate->getConfig()->getDyncssType();
             
             // Ziel-Verzeichnis identifizieren
-            $folderName = $this->fluidTemplate->getConfig()->getDynCssFolder();
+            $folderName = $this->fluidTemplate->getConfig()->getDyncssFolder();
             $folderAbs = \CodingMs\Ftm\Utility\Tools::getDirectory($folderName."Basic", $this->fluidTemplate->getTemplateDir());
             
             // Dynamisches CSS erstellen
             $variables = '';
-            if($dynCssType=='less') {
+            if($dyncssType=='less') {
                 $variables = $this->generateLess($this->fluidTemplate);
             }
-            else if($dynCssType=='scss') {
+            else if($dyncssType=='scss') {
                 $variables = $this->generateScss($this->fluidTemplate);
             }
             
             if($variables!='') {
                 // Variablen Speichern
-                $this->saveVariablesFile($variables, $folderAbs, $dynCssType);
+                $this->saveVariablesFile($variables, $folderAbs, $dyncssType);
             }
             else {
                 $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
@@ -190,7 +190,7 @@ class DynCssController extends PluginCloudBaseController {
     }
 
     /**
-     * Liest alle DynCss-Dateien vom FTM-Server
+     * Liest alle Dyncss-Dateien vom FTM-Server
      *
      * @author Thomas Deuling <typo3@coding.ms>
      * @return void
@@ -203,7 +203,7 @@ class DynCssController extends PluginCloudBaseController {
         $data['typo3Version'] = $this->typo3Version;
         $data['ftmVersion']   = FTM_VERSION;
 
-        $result = $this->pluginService->executeAction("loadDynCssFiles", $data);
+        $result = $this->pluginService->executeAction("loadDyncssFiles", $data);
         if($result['status']=='success') {
 
             // Pfad ermitteln
@@ -212,8 +212,8 @@ class DynCssController extends PluginCloudBaseController {
             $absPath    = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
 
             // TypoScriptSnippets schreiben
-            $snippetFile       = "dynCssFiles.serialized";
-            $snippetsSerialized = $result['dynCssFiles'];
+            $snippetFile       = "dyncssFiles.serialized";
+            $snippetsSerialized = $result['dyncssFiles'];
 
             \CodingMs\Ftm\Service\Backup::backupFile($this->fluidTemplate, $absPath.$snippetFile);
             if(!file_put_contents($absPath.$snippetFile, $snippetsSerialized)) {
