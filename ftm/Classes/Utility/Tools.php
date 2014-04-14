@@ -152,7 +152,7 @@ class Tools {
         if($type=="Dyncss") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Private/Dyncss/";
         }
-        if($type=="DyncssLibraries") {
+        if($type=="DyncssLibrary") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Private/Dyncss/Library/";
         }
         if($type=="DyncssVariables") {

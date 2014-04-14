@@ -154,7 +154,7 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
     /**
      * Gets the Page-Id
      * 
-     * @return void
+     * @return int
      */
     public function getPid() {
         return $this->pid;

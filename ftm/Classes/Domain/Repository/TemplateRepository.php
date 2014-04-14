@@ -49,26 +49,5 @@ class TemplateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         return $query->execute()->getFirst();
     }
     
-    /**
-     * 
-     * 
-     * @return 
-     */
-    public function findAllForClearCache() {
-        
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        
-        $constraints   = array();
-        $constraints[] = $query->equals('hidden', '0');
-        $constraints[] = $query->equals('deleted', '0');
-        
-        $query->matching(
-            $query->logicalAnd($constraints)
-        );
-        
-        return $query->execute();
-    }
-
 }
 ?>

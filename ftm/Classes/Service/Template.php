@@ -24,6 +24,8 @@ namespace CodingMs\Ftm\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \CodingMs\Ftm\Utility\Tools;
+
 /**
  * Fluid Funktionen
  * Sorgt z.B. dafuer, das die Template-Dateien, die nur
@@ -39,60 +41,52 @@ class Template {
 
     /**
      * Object-Manager
-     *
      * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @inject
      */
-    protected static $objectManager;
+    protected $objectManager;
 
     /**
      * Template Repository
-     *
      * @var \CodingMs\Ftm\Domain\Repository\TemplateRepository
+     * @inject
      */
-    protected static $templateRepository;
+    protected $templateRepository;
 
     /**
-     * Prueft ob es fuer diese Seite schon ein Template-Object
-     * gibt, wenn nicht wird eins erstellt
-     *
-     * @return \CodingMs\Ftm\Domain\Model\Template
+     * Prepare the service
      */
-    public static function getTemplate($pid) {
+    public function __construct() {
 
-        // Schauen ob der Objekt-Manager schon vorhanden ist
-        if(!(self::$objectManager instanceof \TYPO3\CMS\Extbase\Object\ObjectManager)) {
-            self::$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        // Create Objects in case of Hook executing
+        if(!($this->objectManager instanceof \TYPO3\CMS\Extbase\Object\ObjectManager)) {
+            $this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
         }
-        
-        //$tempFluid = $this->objectManager->create('CodingMs\Ftm\Domain\Model\TemplateFluid');
-        
-        if(!(self::$templateRepository instanceof \CodingMs\Ftm\Domain\Repository\TemplateRepository)) {
-            self::$templateRepository = self::$objectManager->get('CodingMs\\Ftm\\Domain\\Repository\\TemplateRepository');
+        if(!($this->templateRepository instanceof \CodingMs\Ftm\Domain\Repository\TemplateRepository)) {
+            $this->templateRepository = $this->objectManager->get('CodingMs\\Ftm\\Domain\\Repository\\TemplateRepository');
         }
-        
-        // Template auslesen, falls vorhanden
-        $fluidTemplate = self::$templateRepository->findOneByPid($pid);
-        
-        
-        // Wenn es noch keinen gibt, erstelle einen
-        if(!($fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
-
-
-            
-            /**
-             * @ToDo: Hier sollte geschaut werden ob auf 
-             * Eltern-Seiten ein Template existiert
-             */
-            
-            // Template speichern
-            // $this->fluidTemplateRepository->add($fluidTemplate);
-            return null;
-        }
-        
-        return $fluidTemplate;
     }
-   
-    
+
+    /**
+     * @param $pid
+     * @return NULL|\CodingMs\Ftm\Domain\Model\Template
+     */
+    public function getTemplate($pid) {
+
+        // Ansonsten rekursive die Rootline durchsuchen
+        $rootlinePids = Tools::getRootlinePids($pid);
+        for($i=0 ; $i<count($rootlinePids) ; $i++) {
+            /**
+             * @var \CodingMs\Ftm\Domain\Model\Template
+             */
+            $template = $this->templateRepository->findOneByPid($rootlinePids[$i]);
+            if($template instanceof \CodingMs\Ftm\Domain\Model\Template) {
+                return $template;
+            }
+        }
+        return NULL;
+    }
+
 }
 
 ?>

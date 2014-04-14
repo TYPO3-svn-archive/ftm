@@ -123,12 +123,12 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
                 'type' => 'select',
                 'items' => array(
 
-                    array('Libraryd', 'Variables'),
+                    array('Library (Resources\Private\Dyncss\Library)',                               'Library'),
                     array('Variables', 'Variables'),
                     array('Menu', 'Menu'),
                     array('Plugin', 'Plugin'),
-                    array('ContentLayouts',     'ContentLayouts'),
-                    array('GridElementLayouts', 'GridElementLayouts'),
+                    array('ContentLayouts (Resources\Private\Dyncss\Library\ContentLayouts)',         'ContentLayouts'),
+                    array('GridElementLayouts (Resources\Private\Dyncss\Library\GridElementLayouts)', 'GridElementLayouts'),
 
                 ),
                 'size' => 1,

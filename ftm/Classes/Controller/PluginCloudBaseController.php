@@ -65,12 +65,12 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     protected $fluidTemplateTypoScriptSnippetRepository;
 
     /**
-     * GridLayout Repository
+     * Dyncss-File Repository
      *
-     * @var \CodingMs\Ftm\Domain\Repository\GridLayoutRepository
+     * @var \CodingMs\Ftm\Domain\Repository\TemplateDyncssFileRepository
      * @inject
      */
-    protected $gridLayoutRepository;
+    protected $templateDyncssFileRepository;
 
     /**
      * PluginCloud-Service
@@ -88,11 +88,35 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     protected $fluidService;
 
     /**
+     * Template-Service
+     *
+     * @var \CodingMs\Ftm\Service\Template
+     * @inject
+     */
+    protected $templateService;
+
+    /**
      * TemplateStructure-Service
      *
      * @var \CodingMs\Ftm\Service\TemplateStructure
      */
     protected $templateStructureService;
+
+    /**
+     * Object-Manager
+     *
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @inject
+     */
+    protected $objectManager;
+
+    /**
+     * Persistence-manager
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+     * @inject
+     */
+    protected $persistenceManager;
 
     /**
      * Extension-Konfiguration
@@ -170,7 +194,7 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
             /**
              * @var \CodingMs\Ftm\Domain\Model\Template
              */
-            $this->fluidTemplate = \CodingMs\Ftm\Service\Template::getTemplate($this->pid);
+            $this->fluidTemplate = $this->templateService->getTemplate($this->pid);
             if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
 
 
@@ -234,7 +258,8 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         else if ($command == 'update' && in_array($table, $tables)) {
 
             // Zugehöriges Template und Verzeichnis ermitteln
-            $template = \CodingMs\Ftm\Service\Template::getTemplate($reference->checkValue_currentRecord['pid']);
+            $templateService = new \CodingMs\Ftm\Service\Template();
+            $template = $templateService->getTemplate($reference->checkValue_currentRecord['pid']);
 
             // Extension-Konfiguration
             $extConf = \CodingMs\Ftm\Service\ExtensionConfiguration::getConfiguration();
@@ -338,7 +363,8 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
              */
 
             // Zugehöriges Template ermitteln
-            $template = \CodingMs\Ftm\Service\Template::getTemplate($fieldArray['pid']);
+            $templateService = new \CodingMs\Ftm\Service\Template();
+            $template = $templateService->getTemplate($reference->checkValue_currentRecord['pid']);
 
             // MM-Eintrag schreiben
             $mmArray = array();
@@ -359,20 +385,26 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
 
         if ($command == 'delete' && in_array($table, $tables)) {
 
-            var_dump($command, $table, $id, $value);
-            exit;
-
             // Extension-Konfiguration
             $extConf = \CodingMs\Ftm\Service\ExtensionConfiguration::getConfiguration();
 
-            // Dyncss-File: Auto-Save activated?!
-            if($table == 'tx_ftm_domain_model_templatedyncssfile' && $extConf['rewriteDyncssFileAfterUpdateDataset']) {
+            // Dyncss
+            if($table == 'tx_ftm_domain_model_templatedyncssfile') {
+                $dyncssService = new \CodingMs\Ftm\Service\Dyncss();
+                $dyncssFile = $dyncssService->getDatasetByUid($id);
+                if($dyncssFile instanceof \CodingMs\Ftm\Domain\Model\TemplateDyncssFile) {
+                    // Delete the file
+                    if($extConf['deleteDyncssFileAfterDeleteDataset']) {
+                        $dyncssService->deleteFile($dyncssFile);
+                    }
+                    // Delete the dataset
+                    $dyncssService->deleteDataset($dyncssFile);
 
-                $saveInFilename = $this->getProcessDatamapValue($fieldArray, $reference, 'filename');
-                $type = $this->getProcessDatamapValue($fieldArray, $reference, 'type');
+                }
+                else {
+                    throw new \Exception('Couldn\'t find Dyncss file with uid:'.$id);
+                }
 
-                var_dump($saveInFilename, $type);
-                exit;
             }
 
         }
@@ -414,5 +446,23 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         }
     }
 
+    protected function prepareControllerForHookProcess() {
+
+
+        // Create Objects in case of Hook executing
+        if(!($this->objectManager instanceof \TYPO3\CMS\Extbase\Object\ObjectManager)) {
+            $this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        }
+
+        if(!($this->templateDyncssFileRepository instanceof \CodingMs\Ftm\Domain\Repository\TemplateDyncssFileRepository)) {
+            $this->templateDyncssFileRepository = $this->objectManager->get('CodingMs\\Ftm\\Domain\\Repository\\TemplateDyncssFileRepository');
+        }
+
+        if(!($this->persistenceManager instanceof \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager)) {
+            $this->persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
+        }
+
+
+    }
 }
 ?>

@@ -19,17 +19,35 @@ allowLog = 0
 # cat=basic; type=boolean; label=Disable FTM Backend-Module!?
 disableBackendModule = 0
 
-# autoSave
+# autoUpdate
 ####################################################
 
-# cat=autoSave; type=boolean; label=Rewrite TypoScript-Snippet file, when the related Dataset has updated?!
+# cat=autoUpdate; type=boolean; label=Rewrite TypoScript-Snippet file, when the related Dataset has updated?!
 rewriteTypoScriptSnippetFileAfterUpdateDataset = 0
 
-# cat=autoSave; type=boolean; label=Rewrite Fluid-Template file, when the related Dataset has updated?!
+# cat=autoUpdate; type=boolean; label=Rewrite Fluid-Template file, when the related Dataset has updated?!
 rewriteFluidTemplateFileAfterUpdateDataset = 0
 
-# cat=autoSave; type=boolean; label=Rewrite Dyncss file, when the related Dataset has updated?!
+# cat=autoUpdate; type=boolean; label=Rewrite Dyncss file, when the related Dataset has updated?!
 rewriteDyncssFileAfterUpdateDataset = 0
+
+# autoDelete
+####################################################
+
+# cat=autoDelete; type=boolean; label=Delete TypoScript-Snippet file, when the related Dataset has deleted?!
+deleteTypoScriptSnippetFileAfterDeleteDataset = 0
+
+# cat=autoDelete; type=boolean; label=Delete Fluid-Template file, when the related Dataset has deleted?!
+deleteFluidTemplateFileAfterDeleteDataset = 0
+
+# cat=autoDelete; type=boolean; label=Delete Dyncss file, when the related Dataset has deleted?!
+deleteDyncssFileAfterDeleteDataset = 0
+
+# autoCreate
+####################################################
+
+# cat=autoCreate; type=boolean; label=Auto create Dyncss dataset by file detection?!
+autoCreateDyncssDatasetOnFileDetection = 0
 
 # backendLayouts
 ####################################################

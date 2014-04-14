@@ -60,6 +60,14 @@ class Dyncss {
     protected $templateDyncssFileRepository;
 
     /**
+     * Object-Manager
+     *
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @inject
+     */
+    protected $objectManager;
+
+    /**
      * Persistence-manager
      *
      * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
@@ -67,45 +75,63 @@ class Dyncss {
      */
     protected $persistenceManager;
 
+    public function __construct() {
+
+        // Create Objects in case of Hook executing
+        if(!($this->objectManager instanceof \TYPO3\CMS\Extbase\Object\ObjectManager)) {
+            $this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        }
+        if(!($this->templateDyncssFileRepository instanceof \CodingMs\Ftm\Domain\Repository\TemplateDyncssFileRepository)) {
+            $this->templateDyncssFileRepository = $this->objectManager->get('CodingMs\\Ftm\\Domain\\Repository\\TemplateDyncssFileRepository');
+        }
+        if(!($this->persistenceManager instanceof \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager)) {
+            $this->persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
+        }
+        if(!($this->templateRepository instanceof \CodingMs\Ftm\Domain\Repository\TemplateRepository)) {
+            $this->templateRepository = $this->objectManager->get('CodingMs\\Ftm\\Domain\\Repository\\TemplateRepository');
+        }
+
+    }
+
     /**
      * Auto-creates datasets for each Dyncss library file
      * @param Template $template
      */
     public function autoCreateDatasets(\CodingMs\Ftm\Domain\Model\Template $template) {
+        $this->autoCreateDatasetsByType($template, 'DyncssLibrary', 'Library');
+        $this->autoCreateDatasetsByType($template, 'DyncssContentLayouts', 'ContentLayouts');
+        $this->autoCreateDatasetsByType($template, 'DyncssGridElementLayouts', 'GridElementLayouts');
+    }
+
+    protected function autoCreateDatasetsByType(\CodingMs\Ftm\Domain\Model\Template $template, $directory, $type) {
 
         // Zuerst pruefen ob es das Template-Verzeichnis gibt
-        $relPath = \CodingMs\Ftm\Utility\Tools::getDirectory("DyncssLibraries", $template->getTemplateDir());
+        $relPath = \CodingMs\Ftm\Utility\Tools::getDirectory($directory, $template->getTemplateDir());
         $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
 
         if(file_exists($absPath)) {
             $files = GeneralUtility::getFilesInDir($absPath);
             if(!empty($files)) {
                 foreach($files as $filename) {
-
-                    $type = 'Library';
                     $dyncss = file_get_contents($absPath.$filename);
-
                     $this->createDataset($template, $filename, $type, $dyncss);
-
                 }
             }
-
         }
         else {
-            throw new \Exception('Dyncss library directory not found!');
+            throw new \Exception($directory.' directory not found!');
         }
 
     }
 
     public function createDataset(\CodingMs\Ftm\Domain\Model\Template $template, $filename='', $type='', $dyncss='', $variables='') {
-        if(!$template->getDyncssFileExists($filename, 'Library')) {
+        if(!$template->getDyncssFileExists($filename, $type)) {
             $dynCssFile = new \CodingMs\Ftm\Domain\Model\TemplateDyncssFile();
             $dynCssFile->setPid($template->getPid());
             $dynCssFile->setName($type.':'.$filename);
             $dynCssFile->setType($type);
             $dynCssFile->setFilename($filename);
             $dynCssFile->setDyncss($dyncss);
-
             $this->templateDyncssFileRepository->add($dynCssFile);
 
             // Add new dyncss file to template
@@ -118,8 +144,58 @@ class Dyncss {
         }
     }
 
+    /**
+     * Returns the collected Messages
+     * @param string $type
+     * @return array
+     */
     public function getMessages($type='success') {
-        return $this->messages['success'];
+        if(isset($this->messages[$type])) {
+            return $this->messages[$type];
+        }
+        return array();
+    }
+
+    /**
+     * Deletes a dyncss file dataset
+     * @param \CodingMs\Ftm\Domain\Model\TemplateDyncssFile $templateDyncssFile
+     */
+    public function deleteDataset(\CodingMs\Ftm\Domain\Model\TemplateDyncssFile $dynCssFile) {
+        $this->templateDyncssFileRepository->remove($dynCssFile);
+        $this->persistenceManager->persistAll();
+    }
+
+    /**
+     * Deletes a dyncss file dataset
+     * @param \CodingMs\Ftm\Domain\Model\TemplateDyncssFile $dyncssFile
+     */
+    public function deleteFile(\CodingMs\Ftm\Domain\Model\TemplateDyncssFile $dyncssFile) {
+
+        $templateService = new \CodingMs\Ftm\Service\Template();
+        $template = $templateService->getTemplate($dyncssFile->getPid());
+
+        if($template!==NULL) {
+            // Zuerst pruefen ob es das Template-Verzeichnis gibt
+            $relPath = \CodingMs\Ftm\Utility\Tools::getDirectory('Dyncss'.$dyncssFile->getType(), $template->getTemplateDir());
+            $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
+
+            if(file_exists($absPath.$dyncssFile->getFilename())) {
+                return unlink($absPath.$dyncssFile->getFilename());
+            }
+
+        }
+        else {
+            throw new \Exception('Coundn\'t find template of Dyncss file on rootline '.$dyncssFile->getPid());
+        }
+        return FALSE;
+    }
+
+    /**
+     * @param $uid
+     * @return object
+     */
+    public function getDatasetByUid($uid) {
+        return $this->templateDyncssFileRepository->findByIdentifier($uid);
     }
     
 }

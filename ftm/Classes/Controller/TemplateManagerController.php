@@ -184,32 +184,23 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         // Auf Page:0 nichts machen
         $this->pid = intval(\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id'));
         if($this->pid==0) {
-            if($this->typo3Version>=6) {
-                die("Please select a first-level page in order to create or edit a FTM-Template.");
-            }
-            else {
-                $this->flashMessageContainer->add("Please select a first-level page in order to create or edit a FTM-Template.", 'Please select a page!', FlashMessage::WARNING);
-            }
+//            if($this->typo3Version>=6) {
+//                die("Please select a first-level page in order to create or edit a FTM-Template.");
+//            }
+//            else {
+                $this->addFlashMessage("Please select a first-level page in order to create or edit a FTM-Template.", 'Please select a page!', FlashMessage::WARNING);
+//            }
             return;
         }
         else {
-            // Ansonsten rekursive die Rootline durchsuchen
-            $rootlinePids = Tools::getRootlinePids($this->pid);
-            for($i=0 ; $i<count($rootlinePids) ; $i++) {
-                /**
-                 * @var \CodingMs\Ftm\Domain\Model\Template
-                 */
-                $this->fluidTemplate = \CodingMs\Ftm\Service\Template::getTemplate($rootlinePids[$i]);
-                if($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template) {
-                    // Page-Uid merken
-                    $this->pid = $rootlinePids[$i];
-                    break;
-                }
-            }
+
+            $templateService = new \CodingMs\Ftm\Service\Template();
+            $this->fluidTemplate = $templateService->getTemplate($this->pid);
+
         }
 
         // Template-Structure-Service
-        $this->templateStructureService = $this->objectManager->create('CodingMs\Ftm\Service\TemplateStructure');
+        $this->templateStructureService = $this->objectManager->get('CodingMs\\Ftm\\Service\\TemplateStructure');
 
         // PluginCloud-Service initiieren
         $this->pluginService = $this->objectManager->create(
@@ -358,7 +349,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                     
                     // Pruefen ob Storage vorhanden ist und erstelle ihn ggf.
                     // -------------------------------------------------
-                    if($this->storageService->checkAndCreate(\CodingMs\Ftm\Service\Template::getTemplate($this->pid)->getTemplateDir()) == 'created') {
+                    if($this->storageService->checkAndCreate($this->fluidTemplate->getTemplateDir()) == 'created') {
                         $messageText = $this->lang('storage_created_message');
                         $messageHead = $this->lang('storage_created_headline');
                         $this->flashMessageContainer->add($messageText, $messageHead, FlashMessage::OK);
@@ -424,11 +415,13 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
 
 
 
-
-                    $this->dyncssService->autoCreateDatasets($this->fluidTemplate);
-                    $successMessages = $this->dyncssService->getMessages('success');
-                    if(!empty($successMessages)) {
-                        $this->addFlashMessage(implode('<br/>', $successMessages), 'Dyncss erfolgreich erstellt', FlashMessage::OK);
+                    // Dyncss dataset creation on file detection
+                    if($this->extConf['autoCreateDyncssDatasetOnFileDetection']) {
+                        $this->dyncssService->autoCreateDatasets($this->fluidTemplate);
+                        $successMessages = $this->dyncssService->getMessages('success');
+                        if(!empty($successMessages)) {
+                            $this->addFlashMessage(implode('<br />', $successMessages), 'Dyncss erfolgreich erstellt', FlashMessage::OK);
+                        }
                     }
 
                     
