@@ -325,7 +325,7 @@ Data will no be forwarded to third parties.</label>
 Furthermore... </label>
 
             <!-- Less-Form -->
-            <label index="tx_ftm_domain_model_template.less_headline">Less variables</label>
+            <label index="tx_ftm_domain_model_template.dyncss_headline">Dyncss files</label>
 
             <!-- Template-Form -->
             <label index="tx_ftm_domain_model_template.template_headline">FTM template</label>
@@ -655,7 +655,7 @@ Es werden keinerlei Daten an Dritte weitergegeben.</label>
 Des Weiteren können über die </label>
 
             <!-- Less-Form -->
-            <label index="tx_ftm_domain_model_template.less_headline">Less-Variablen</label>
+            <label index="tx_ftm_domain_model_template.dyncss_headline">Dyncss-Dateien</label>
 
             <!-- Template-Form -->
             <label index="tx_ftm_domain_model_template.template_headline">FTM-Template</label>

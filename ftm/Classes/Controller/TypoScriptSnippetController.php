@@ -71,19 +71,19 @@ class TypoScriptSnippetController extends PluginCloudBaseController {
                 $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline", 'Ftm');
                 $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1", 'Ftm', array($snippetFile)). '<br />';
                 $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2", 'Ftm', array($absPath.$snippetFile));
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
             }
 
             $messages = '<br />'.str_replace('|', '<br />', $result['messages']);
             $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_snippet_saved_headline", 'Ftm');
             $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_snippet_saved_message", 'Ftm', array($snippet->getName()));
-            $this->flashMessageContainer->add($message.$messages, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+            $this->addFlashMessage($message.$messages, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         }
         else {
             $errors = '<br />'.str_replace('|', '<br />', $result['errors']);
             $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_saved_headline", 'Ftm');
             $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_saved_message", 'Ftm', array($snippet->getName()));
-            $this->flashMessageContainer->add($message.$errors, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $this->addFlashMessage($message.$errors, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
         }
         
         $editParams = "&edit[tx_ftm_domain_model_templatetyposcriptsnippet][".$snippet->getUid()."]=edit";
@@ -131,7 +131,7 @@ class TypoScriptSnippetController extends PluginCloudBaseController {
                         
                         $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_snippet_included_headline", 'Ftm');
                         $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.typoscript_snippet_included_message", 'Ftm', array($snippetName, $snippet->getName())) . '<br />';
-                        $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                        $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
                         
                         $error = '';
                         break;
@@ -150,7 +150,7 @@ class TypoScriptSnippetController extends PluginCloudBaseController {
         if($error!='') {
             $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_included_headline", 'Ftm');
             $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_typoscript_snippet_not_included_message", 'Ftm', array($snippetName, $snippet->getName(), $error));
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
         }
         
         $editParams = "&edit[tx_ftm_domain_model_templatetyposcriptsnippet][".$snippet->getUid()."]=edit";
@@ -198,19 +198,19 @@ class TypoScriptSnippetController extends PluginCloudBaseController {
                 $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline", 'Ftm');
                 $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1", 'Ftm', array($snippetFile)) . '<br />';
                 $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2", 'Ftm', array($absPath.$snippetFile));
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
             }
             else {
                 $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.snippets_read_headline", 'Ftm');
                 $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.snippets_read_message", 'Ftm');
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
             }
         }
         else {
             $errors = '<br />'.str_replace('|', '<br />', $result['errors']);
             $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_headline", 'Ftm');
             $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_message", 'Ftm');
-            $this->flashMessageContainer->add($message.$errors, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $this->addFlashMessage($message.$errors, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
         }
         
         $this->redirect('list', 'TemplateManager', NULL, array());

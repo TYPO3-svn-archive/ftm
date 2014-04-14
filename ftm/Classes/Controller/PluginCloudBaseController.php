@@ -181,7 +181,7 @@ class PluginCloudBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                 die("Please select a first-level page in order to create or edit a FTM-Template.");
             }
             else {
-                $this->flashMessageContainer->add("Please select a first-level page in order to create or edit a FTM-Template.", 'Please select a page!', \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
+                $this->addFlashMessage("Please select a first-level page in order to create or edit a FTM-Template.", 'Please select a page!', \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING);
             }
             return;
         }

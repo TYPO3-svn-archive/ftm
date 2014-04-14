@@ -49,7 +49,7 @@ class DyncssController extends PluginCloudBaseController {
         if(!($this->fluidTemplate instanceof \CodingMs\Ftm\Domain\Model\Template)) {
             $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
             $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message", 'Ftm'); //Die Less-Variablen konnte re-/generiert werden, da auf dieser Seite anscheinen noch kein FTM-Template existiert.
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
         }
         
         else {
@@ -78,7 +78,7 @@ class DyncssController extends PluginCloudBaseController {
                 $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
                 $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message1", 'Ftm') . '<br />'; //Die Less-Variablen konnte re-/generiert werden, es gab einen Fehler beim Aufruf des Generierungs-WebServices.
                 $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message2", 'Ftm'); //Bitte versuchen Sie es später noch einmal. Sollte der Fehler erneut auftreten kontaktieren Sie das Entwicklungs-Team.
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
             }
             
             
@@ -176,13 +176,13 @@ class DyncssController extends PluginCloudBaseController {
             $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_headline", 'Ftm'); //Less-Variablen wurden re-/generiert!
             $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message1", 'Ftm') . '<br />'; //Die Less-Variablen für dieses FTM-Template wurde re-/generiert, konnte aber nicht in der ..Less/BasicLess/variables.less abgespeichert werden.
             $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_saved_message2", 'Ftm', array($absPath)); //Bitte prüfen die Datei/Pfad auf Korrektheit und Schreibrechte: $absPath
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
             $success = FALSE;
         }
         else {
             $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.less_variables_generated_headline", 'Ftm'); //Less-Variablen wurden re-/generiert!
             $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.less_variables_generated_message", 'Ftm'); //Die Less-Variablen für dieses FTM-Template wurde re-/generiert.
-            $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+            $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
             $success = TRUE;
         }
         
@@ -220,19 +220,19 @@ class DyncssController extends PluginCloudBaseController {
                 $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_headline", 'Ftm');
                 $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message1", 'Ftm', array($snippetFile)) . '<br />';
                 $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_saved_message2", 'Ftm', array($absPath.$snippetFile));
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+                $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
             }
             else {
                 $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.snippets_read_headline", 'Ftm');
                 $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.snippets_read_message", 'Ftm');
-                $this->flashMessageContainer->add($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+                $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
             }
         }
         else {
             $errors = '<br />'.str_replace('|', '<br />', $result['errors']);
             $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_headline", 'Ftm');
             $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_snippets_not_read_message", 'Ftm');
-            $this->flashMessageContainer->add($message.$errors, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            $this->addFlashMessage($message.$errors, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
         }
 
         $this->redirect('list', 'TemplateManager', NULL, array());
