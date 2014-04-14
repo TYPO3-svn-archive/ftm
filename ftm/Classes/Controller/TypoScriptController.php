@@ -43,7 +43,7 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     /**
      * @var string File-Extension, empty string or _preview
      */
-    protected $preview = '_preview';
+    protected $preview = ''; //'_preview';
 
     /**
      * @var string Generated Constants
@@ -97,6 +97,7 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     protected function generateConstants(Template $template) {
 
         $constantsArray = $this->settings['templates'][$template->getTemplateType()]['constants'];
+        $this->constants.= $this->getCommentHeader('constants', 'Constants for theme: '.$template->getTemplateDir());
         $this->constants.= "plugin.tx_themes {\n";
         $this->generateConstantRecursive($constantsArray);
         $this->constants.= "}\n";
@@ -143,9 +144,20 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     protected function generateSetup(Template $template) {
 
+        $this->setup.= $this->getCommentHeader('setup', 'Setup for theme: '.$template->getTemplateDir());
+
         $this->setup.= "page = PAGE\n";
+
+        // Generate Content-Marker
+        $this->setup.= $this->getCommentLine('Generate Content-Marker');
+        $this->generateSetupContent();
+
+        // Include libraries
+        $this->setup.= $this->getCommentLine('Include libraries');
         $this->setup.= "<INCLUDE_TYPOSCRIPT: source=\"DIR:EXT:".$template->getTemplateDir()."/Configuration/TypoScript/Library/\">\n";
 
+        // Generate Fluid-Template
+        $this->setup.= $this->getCommentLine('Generate Fluid-Template');
         $this->setup.= "page {\n";
         $this->setup.= "  typeNum = 0\n";
         $this->setup.= "  10 = FLUIDTEMPLATE\n";
@@ -185,13 +197,6 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             }
 
         }
-
-        //$this->setup.= "        split {\n";
-        //$this->setup.= "          token = file__\n";
-        //$this->setup.= "          1.current = 1\n";
-        //$this->setup.= "          1.wrap = |\n";
-        //$this->setup.= "        }\n";
-        //$this->setup.= "        wrap = {\$plugin.tx_themes.resourcesPrivatePath}Templates/|.html\n";
         $this->setup.= "      }\n";
 
         // Wenn keine BackendLayouts gefunden wurden
@@ -204,17 +209,28 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->setup.= "    layoutRootPath = {\$plugin.tx_themes.resourcesPrivatePath}Layouts/\n";
         $this->setup.= "    partialRootPath = {\$plugin.tx_themes.resourcesPrivatePath}Partials/\n";
 
+        // Damit nicht bei jedem f:translate der ExtensionName angegeben werden muss
+        $this->setup.= "    extbase.controllerExtensionName = ".GeneralUtility::underscoredToUpperCamelCase($template->getTemplateDir())."\n";
+
         // Fluid-Variables
         $this->setup.= "    variables {\n";
+
+        $this->setup.= "      pageTitle = TEXT\n";
+        $this->setup.= "      pageTitle.data = page:title\n";
+
         $this->setup.= "    }\n";
 
         $this->setup.= "  }\n";
         $this->setup.= "}\n";
 
         // Include DynCss
+        $this->setup.= $this->getCommentLine('Include DynCss');
         $this->setup.= "page.includeCSS {\n";
         $this->setup.= "  import = {\$plugin.tx_themes.resourcesPrivatePath}DynCss/import.less\n";
         $this->setup.= "}\n";
+
+        // Include custom setup
+        $this->setup.= $this->getCommentLine('Include custom setup');
         $this->setup.= "<INCLUDE_TYPOSCRIPT: source=\"FILE:EXT:".$template->getTemplateDir()."/Configuration/TypoScript/setupCustom.ts\">\n";
 
         // Save Configuration/setup.ts
@@ -222,5 +238,161 @@ class TypoScriptController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         return file_put_contents($dir.'setup'.$this->preview.'.ts', $this->setup);
     }
 
+    /**
+     * Generiert das Meta-TypoScript
+     *
+     * @author     Thomas Deuling <typo3@coding.ms>
+     * @return     string TypoScript
+     * @since      22.11.2013
+     */
+//    protected function generateMetaTypoScript(Template $template) {
+//
+//        $typoScript = $this->getCommentLine('Page & Meta');
+//
+//        // Create Page
+//        $typoScript.= "page = PAGE\n";
+//        $typoScript.= "page.typeNum = 0\n";
+//        $typoScript.= "\n";
+//
+//        $data = $template->getMeta()->toArray();
+//
+//        // Create Meta-Data
+//        $inheritedFields = array('abstract', 'keywords', 'description', 'author', 'authorEmail');
+//        if(!empty($data)) {
+//            foreach($data as $metaKey => $metaValue) {
+//
+//                // Wenn in Dev-Mode wird automatisch gesetzt:
+//                // page.meta.robots = noindex,nofollow
+//                if($metaKey=='robots' && $template->getTemplateMode()=='development') {
+//                    $typoScript.= "page.meta.robots = noindex,nofollow\n";
+//                }
+//                // Revisit-Key weicht ab
+//                else if($metaKey=='revisit') {
+//                    $typoScript.= "page.meta.revisit-after = ".$metaValue."\n";
+//                }
+//                // Canonical-Tag
+//                else if($metaKey=='useCanonical') {
+//                    // Spaeter behandeln
+//                }
+//                // Vererbbare Felder
+//                else if(in_array($metaKey, $inheritedFields)) {
+//
+//                    if($metaKey=='authorEmail') {
+//                        $metaKey = 'author_email';
+//                    }
+//
+//                    $typoScript.= "page.meta.".$metaKey.".data = levelfield :-1, ".$metaKey.", slide\n";
+//                    $typoScript.= "page.meta.".$metaKey.".override.data = page:".$metaKey."\n";
+//                    $typoScript.= "page.meta.".$metaKey.".ifEmpty = ".$metaValue."\n";
+//                    $typoScript.= "page.meta.".$metaKey.".".$metaKey." = 1\n";
+//
+//                    if($metaKey=='author') {
+//                        $typoScript.= "page.meta.publisher.data = levelfield :-1, ".$metaKey.", slide\n";
+//                        $typoScript.= "page.meta.publisher.override.data = page:".$metaKey."\n";
+//                        $typoScript.= "page.meta.publisher.ifEmpty = ".$metaValue."\n";
+//                        $typoScript.= "page.meta.publisher.publisher = 1\n";
+//                    }
+//
+//                }
+//                else {
+//                    $typoScript.= "page.meta.".$metaKey." = ".$metaValue."\n";
+//                }
+//
+//            }
+//        }
+//
+//        $typoScript.= "page.meta.application-name = ".$template->getSiteName()." Website\n";
+//
+//
+//
+//        /*
+//         *
+//        http://www.carstenwalther.de/blog/details/typo3-seo-massnahmen-best-practice/
+//        <meta content="2-3 Zeilen" name="description">
+//<meta content="2-3 Zeilen" name="DC.Description">
+//<meta content="5-10 Begriffe" name="keywords">
+//<meta content="5-10 Begriffe" name="DC.Subject">
+//         *
+//           keywords.field = keywords
+//       keywords.ifEmpty = IF-20, Extension, Plugin, Typo3, Extbase, Fluid
+//       description.field = description
+//       description.ifEmpty = Die IF-20-Extension auf Basis von Fluid/ExtBase für Ihr Typo3 Content Management System / CMS
+//         */
+//
+//        // Footer/Separator
+//        $typoScript.= $this->getCommentLine('End: Page & Meta');
+//
+//        return $typoScript;
+//    }
 
+    /**
+     * Returns a comment line
+     * @param string $comment
+     * @return string
+     */
+    protected function getCommentLine($comment='') {
+        $result = "\n";
+        if($comment!='') {
+            $result.= "# ".$comment."\n";
+        }
+        $result.= "#############################################\n";
+        return $result;
+    }
+
+
+    /**
+     * Returns a comment line
+     * @param string $type setup/constants
+     * @param string $comment
+     * @return string
+     */
+    protected function getCommentHeader($type='setup', $comment='') {
+        $result = "#\n";
+        $result.= "# ".$comment."\n";
+        $result.= "# \n";
+        $result.= "# Auto-generated by Fluid-Template-Manager (ftm) ".date('Y-m-d H:i:m')."\n";
+        $result.= "# \n";
+        if($type=='constants') {
+            $result.= "# More information about Constants:\n";
+            $result.= "# http://wiki.typo3.org/TypoScript_Constants\n";
+        }
+        $result.= "#############################################\n";
+        return $result;
+    }
+
+    protected function generateSetupContent() {
+        $this->setup.= "# Insert colPos 0 in main content\n";
+        $this->setup.= "lib.content.main = COA\n";
+        $this->setup.= "lib.content.main {\n";
+        $this->setup.= "  50 < styles.content.get\n";
+        $this->setup.= "  50.select.where = colPos=0\n";
+        $this->setup.= "}\n";
+        $this->setup.= "# Insert colPos 1 in menu content\n";
+        $this->setup.= "lib.content.menu = COA\n";
+        $this->setup.= "lib.content.menu {\n";
+        $this->setup.= "  stdWrap.prefixComment = 2|Output of lib.content.menu\n";
+        $this->setup.= "  stdWrap.outerWrap = |\n";
+        $this->setup.= "  10 =< lib.menu.sub\n";
+        $this->setup.= "  50 < styles.content.get\n";
+        $this->setup.= "  50.select.where = colPos=1\n";
+        $this->setup.= "}\n";
+        $this->setup.= "# Insert colPos 2 in menu content\n";
+        $this->setup.= "lib.content.sidebar = COA\n";
+        $this->setup.= "lib.content.sidebar {\n";
+        $this->setup.= "  50 < styles.content.get\n";
+        $this->setup.= "  50.select.where = colPos=2\n";
+        $this->setup.= "}\n";
+        $this->setup.= "# Insert colPos 3 in feature content\n";
+        $this->setup.= "lib.content.feature = COA\n";
+        $this->setup.= "lib.content.feature {\n";
+        $this->setup.= "  50 < styles.content.get\n";
+        $this->setup.= "  50.select.where = colPos=3\n";
+        $this->setup.= "}\n";
+        $this->setup.= "# Insert colPos 4 in extended content\n";
+        $this->setup.= "lib.content.extended = COA\n";
+        $this->setup.= "lib.content.extended {\n";
+        $this->setup.= "  50 < styles.content.get\n";
+        $this->setup.= "  50.select.where = colPos=4\n";
+        $this->setup.= "}\n";
+    }
 }

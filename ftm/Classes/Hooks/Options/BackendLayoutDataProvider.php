@@ -80,7 +80,7 @@ class BackendLayoutDataProvider implements \TYPO3\CMS\Backend\View\BackendLayout
                     $tempArray = array();
                     $tempArray['title'] = 'LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:'.$key;
                     $tempArray['config'] = file_get_contents($file);
-                    $tempArray['icon'] = 'EXT:ftm/Resources/Public/Icons/BackendLayouts/'.$name.'.jpg';
+                    $tempArray['icon'] = 'EXT:ftm/Resources/Public/Icons/BackendLayouts/Default.jpg';
                     $this->backendLayouts[$key] = $tempArray;
                 }
             }

@@ -152,17 +152,17 @@ class Tools {
         if($type=="DynCss") {
             $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/";
         }
-        if($type=="DynCssFiles") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/";
+        if($type=="DynCssLibraries") {
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Library/";
         }
         if($type=="DynCssVariables") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/Variables/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Library/Variables/";
         }
         if($type=="DynCssGridElementLayouts") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/GridElementLayouts/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Library/GridElementLayouts/";
         }
         if($type=="DynCssContentLayouts") {
-            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Files/ContentLayouts/";
+            $directory = "typo3conf/ext/".$themeName."/Resources/Private/DynCss/Library/ContentLayouts/";
         }
 
         if($type=="FluidTemplates") {

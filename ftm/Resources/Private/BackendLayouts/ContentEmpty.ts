@@ -5,7 +5,7 @@ backend_layout {
         1 {
             columns {
                 1 {
-                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:content
+                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:area_content
                     colPos = 0
                 }
             }

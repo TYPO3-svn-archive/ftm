@@ -32,7 +32,7 @@ namespace CodingMs\Ftm\Domain\Repository;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class TemplateDynCssFileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class TemplateDyncssFileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 }
 ?>

@@ -5,7 +5,7 @@ backend_layout {
         1 {
             columns {
                 1 {
-                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:feature
+                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:area_feature
                     rowspan = 1
                     colspan = 4
                     colPos = 3
@@ -15,13 +15,13 @@ backend_layout {
         2 {
             columns {
                 1 {
-                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:menu
+                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:area_menu
                     rowspan = 1
                     colspan = 1
                     colPos = 1
                 }
                 2 {
-                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:content
+                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:area_content
                     rowspan = 1
                     colspan = 3
                     colPos = 0
@@ -31,7 +31,7 @@ backend_layout {
         3 {
             columns {
                 1 {
-                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:extended
+                    name = LLL:EXT:ftm/Resources/Private/Language/BackendLayouts.xlf:area_extended
                     rowspan = 1
                     colspan = 4
                     colPos = 4

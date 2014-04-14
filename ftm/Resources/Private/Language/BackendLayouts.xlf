@@ -53,19 +53,19 @@
                 <source>FTM: Sidebar Menu Content</source>
             </trans-unit>
 
-            <trans-unit id="feature">
+            <trans-unit id="area_feature">
                 <source>Feature</source>
             </trans-unit>
-            <trans-unit id="menu">
+            <trans-unit id="area_menu">
                 <source>Menu</source>
             </trans-unit>
-            <trans-unit id="content">
+            <trans-unit id="area_content">
                 <source>Content</source>
             </trans-unit>
-            <trans-unit id="sidebar">
+            <trans-unit id="area_sidebar">
                 <source>Sidebar</source>
             </trans-unit>
-            <trans-unit id="extended">
+            <trans-unit id="area_extended">
                 <source>Extended</source>
             </trans-unit>
 

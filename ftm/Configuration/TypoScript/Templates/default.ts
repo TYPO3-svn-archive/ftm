@@ -21,10 +21,10 @@ module.tx_ftm.settings {
                 5000 = Resources
                 5100 = Resources/Private
                 5110 = Resources/Private/DynCss
-                5111 = Resources/Private/DynCss/Files
-                51110 = Resources/Private/DynCss/Files/GridElementLayouts
-                51111 = Resources/Private/DynCss/Files/ContentLayouts
-                51113 = Resources/Private/DynCss/Files/Variables
+                5111 = Resources/Private/DynCss/Library
+                51110 = Resources/Private/DynCss/Library/GridElementLayouts
+                51111 = Resources/Private/DynCss/Library/ContentLayouts
+                51113 = Resources/Private/DynCss/Library/Variables
 
                 5120 = Resources/Private/Extensions
                 5130 = Resources/Private/Language
@@ -63,6 +63,18 @@ module.tx_ftm.settings {
                     from = /Meta/theme.yaml
                     to   = /Meta/theme.yaml
                 }
+                basic005 {
+                    from = /Configuration/TypoScript/Library/page.meta.ts
+                    to   = /Configuration/TypoScript/Library/page.meta.ts
+                }
+                basic006 {
+                    from = /Resources/Private/language/locallang.xlf
+                    to   = /Resources/Private/language/locallang.xlf
+                }
+                basic007 {
+                    from = /Resources/Private/language/de.locallang.xlf
+                    to   = /Resources/Private/language/de.locallang.xlf
+                }
 
 
             }
@@ -71,8 +83,12 @@ module.tx_ftm.settings {
             constants {
                 configuration {
                     siteName {
-                        comment = cat=metaDefaults; type=string; label= Default author email
+                        comment = cat=theme; type=string; label= Name of the site
                         value   = FTM-Theme
+                    }
+                    themeMode {
+                        comment = cat=theme; type=options[development,production]; label= Production or development mode
+                        value   = development
                     }
                     colors {
                         link {
@@ -106,7 +122,7 @@ module.tx_ftm.settings {
                                 comment = cat=metaDefaults; type=string; label= Default author
                                 value = TYPO3 Themes-Team
                             }
-                            author_email {
+                            authorEmail {
                                 comment = cat=metaDefaults; type=string; label= Default author email
                                 value = team@typo3-themes.org
                             }
@@ -116,8 +132,8 @@ module.tx_ftm.settings {
                             value = TYPO3 Themes-Team - www.typo3-themes.org
                         }
                         robots {
-                            comment = cat=meta; type=string; label= Robots (for example: noindex,nofollow)
-                            value = noindex,nofollow
+                            comment = cat=meta; type=string; label= Robots (for example: noindex,nofollow or index,follow)
+                            value = index,follow
                         }
                         revisitAfter {
                             comment = cat=meta; type=string; label= Revisit after (for example: 7 days)

@@ -413,7 +413,11 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
                         $this->redirect('list', 'TemplateManager', NULL, array());
                     }
                     // -------------------------------------------------
-                    
+
+
+                    \CodingMs\Ftm\Service\Dyncss::autoCreateDatasets($this->fluidTemplate);
+                    exit;
+
                     
                 }
 

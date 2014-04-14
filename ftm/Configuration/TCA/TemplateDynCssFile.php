@@ -122,6 +122,8 @@ $TCA['tx_ftm_domain_model_templatedyncssfile'] = array(
             'config' => array(
                 'type' => 'select',
                 'items' => array(
+
+                    array('Libraryd', 'Variables'),
                     array('Variables', 'Variables'),
                     array('Menu', 'Menu'),
                     array('Plugin', 'Plugin'),

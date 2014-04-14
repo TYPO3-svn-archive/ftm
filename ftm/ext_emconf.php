@@ -32,7 +32,8 @@ $EM_CONF[$_EXTKEY] = array(
 		'depends' => array(
 			'extbase' => '6.2.0-6.2.99',
 			'fluid' => '6.2.0-6.2.99',
-			'typo3' => '6.2.0-6.2.99',
+            'typo3' => '6.2.0-6.2.99',
+            'themes' => '1.0.1-1.0.1',
 		),
 		'conflicts' => array(
             'belayout_tsprovider' => '0.0.1-0.0.1'

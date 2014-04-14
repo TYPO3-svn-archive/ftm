@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T09:11:39Z" product-name="###templateDir###">
+        <header/>
+        <body>
+
+            <trans-unit id="theme.imprint_link_label" xml:space="preserve">
+                <source>Imprint</source>
+            </trans-unit>
+            <trans-unit id="theme.breadcrumb_label" xml:space="preserve">
+                <source>You are here:</source>
+            </trans-unit>
+            <trans-unit id="theme.conceptdesign_label" xml:space="preserve">
+                <source>Concept &amp; Design</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
