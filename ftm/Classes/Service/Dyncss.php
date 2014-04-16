@@ -197,7 +197,42 @@ class Dyncss {
     public function getDatasetByUid($uid) {
         return $this->templateDyncssFileRepository->findByIdentifier($uid);
     }
-    
+
+    /**
+     * Generates the dyncss import file
+     * @param \CodingMs\Ftm\Domain\Model\Template $template
+     * @throws \Exception
+     */
+    public function generateImportFile(\CodingMs\Ftm\Domain\Model\Template $template) {
+
+        $fileContent = '';
+
+        // Dyncss variables
+        $directory = 'DyncssVariables';
+        $relPath = \CodingMs\Ftm\Utility\Tools::getDirectory($directory, $template->getTemplateDir());
+        $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
+        if(file_exists($absPath)) {
+            $files = GeneralUtility::getFilesInDir($absPath);
+            if(!empty($files)) {
+                foreach($files as $filename) {
+                    $variables = file_get_contents($absPath.$filename);
+                    $fileContent.= "// ".$absPath.$filename."\n";
+                    $fileContent.= $variables."\n";
+                }
+            }
+        }
+        else {
+            throw new \Exception($directory.' directory not found!');
+        }
+
+
+        // Save import file
+        $directory = 'Dyncss';
+        $relPath = \CodingMs\Ftm\Utility\Tools::getDirectory($directory, $template->getTemplateDir());
+        $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($relPath);
+        return file_put_contents($absPath.'import.less_preview', $fileContent);
+    }
+
 }
 
 ?>

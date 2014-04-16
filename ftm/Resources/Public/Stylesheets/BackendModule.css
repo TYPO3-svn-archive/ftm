@@ -12,6 +12,13 @@
 .ftmBlock p {
     line-height: 18px;
 }
+.ftmBlockSettings {
+    float: right;
+    width: 40%;
+}
+.ftmBlockSettings ul.ftmActionList {
+    width: 100%;
+}
 .ftmBlockInner {
     margin: 10px;
 }
@@ -60,6 +67,8 @@ span.warning {
 ul.ftmActionList {
     list-style-type: none;
     padding-left: 4px;
+    width: 50%;
+    float: left;
 }
 ul.ftmActionList a:hover,
 ul.ftmActionList a:hover span {
@@ -73,7 +82,7 @@ ul.ftmActionList a:hover span {
     font-weight: bold;
 }
 .ftmActionList li .buttonDescription {
-    display: inline-block;
+    display: none; /*inline-block;*/
     margin-bottom: 10px;
     margin-left: 28px;
 }

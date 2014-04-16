@@ -1,8 +1,9 @@
+{namespace ftm=CodingMs\Ftm\ViewHelper}
 <li>
     <a href="#" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&amp;edit[tx_ftm_domain_model_template][{fluidTemplate.uid}]=edit'; return false;"
        title="{f:translate(key: 'tx_ftm_domain_model_template.template_edit_template')}">
-        <span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-open">&nbsp;</span>&nbsp;
+        <ftm:be.icon icon="actions-document-open" title="Dyncss-Dateien im Template-Datensatz bearbeiten" />&nbsp;
         <span class="buttonLabel"><f:translate key="tx_ftm_domain_model_template.template_edit_template"></f:translate></span>
-        <span class="buttonDescription"></span>
+        <span class="buttonDescription">Klicke hier um den kompletten Template-Datensatz zu bearbeiten.</span>
     </a>
 </li>

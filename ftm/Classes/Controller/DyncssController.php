@@ -35,6 +35,13 @@ use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  *
  */
 class DyncssController extends PluginCloudBaseController {
+
+    /**
+     * Dyncss-Service
+     * @var \CodingMs\Ftm\Service\Dyncss
+     * @inject
+     */
+    protected $dyncssService;
     
     /**
      * Erstellt das dynamische CSS für ein FTM-Template
@@ -53,33 +60,36 @@ class DyncssController extends PluginCloudBaseController {
         }
         
         else {
+
+            $this->dyncssService->generateImportFile($this->fluidTemplate);
+
+
+//            // Dyncss-Typ
+//            $dyncssType = $this->fluidTemplate->getConfig()->getDyncssType();
+//
+//            // Ziel-Verzeichnis identifizieren
+//            $folderName = $this->fluidTemplate->getConfig()->getDyncssFolder();
+//            $folderAbs = \CodingMs\Ftm\Utility\Tools::getDirectory($folderName."Basic", $this->fluidTemplate->getTemplateDir());
+//
+//            // Dynamisches CSS erstellen
+//            $variables = '';
+//            if($dyncssType=='less') {
+//                $variables = $this->generateLess($this->fluidTemplate);
+//            }
+//            else if($dyncssType=='scss') {
+//                $variables = $this->generateScss($this->fluidTemplate);
+//            }
             
-            // Dyncss-Typ
-            $dyncssType = $this->fluidTemplate->getConfig()->getDyncssType();
-            
-            // Ziel-Verzeichnis identifizieren
-            $folderName = $this->fluidTemplate->getConfig()->getDyncssFolder();
-            $folderAbs = \CodingMs\Ftm\Utility\Tools::getDirectory($folderName."Basic", $this->fluidTemplate->getTemplateDir());
-            
-            // Dynamisches CSS erstellen
-            $variables = '';
-            if($dyncssType=='less') {
-                $variables = $this->generateLess($this->fluidTemplate);
-            }
-            else if($dyncssType=='scss') {
-                $variables = $this->generateScss($this->fluidTemplate);
-            }
-            
-            if($variables!='') {
-                // Variablen Speichern
-                $this->saveVariablesFile($variables, $folderAbs, $dyncssType);
-            }
-            else {
-                $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
-                $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message1", 'Ftm') . '<br />'; //Die Less-Variablen konnte re-/generiert werden, es gab einen Fehler beim Aufruf des Generierungs-WebServices.
-                $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message2", 'Ftm'); //Bitte versuchen Sie es später noch einmal. Sollte der Fehler erneut auftreten kontaktieren Sie das Entwicklungs-Team.
-                $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-            }
+//            if($variables!='') {
+//                // Variablen Speichern
+//                $this->saveVariablesFile($variables, $folderAbs, $dyncssType);
+//            }
+//            else {
+//                $headline = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_headline", 'Ftm'); //Less-Variablen nicht re-/generiert!
+//                $message  = LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message1", 'Ftm') . '<br />'; //Die Less-Variablen konnte re-/generiert werden, es gab einen Fehler beim Aufruf des Generierungs-WebServices.
+//                $message .= LocalizationUtility::translate("tx_ftm_controller_templatemanagercontroller.error_less_variables_not_generated_message2", 'Ftm'); //Bitte versuchen Sie es später noch einmal. Sollte der Fehler erneut auftreten kontaktieren Sie das Entwicklungs-Team.
+//                $this->addFlashMessage($message, $headline, \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+//            }
             
             
         }

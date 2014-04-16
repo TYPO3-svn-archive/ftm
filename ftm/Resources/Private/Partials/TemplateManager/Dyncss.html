@@ -1,9 +1,10 @@
 {namespace ftm=CodingMs\Ftm\ViewHelper}
 <ul class="ftmActionList">
-    <f:render partial="TemplateManagerButtons/EditTemplate"                   arguments="{fluidTemplate: fluidTemplate, options: options}"/>
-    <f:render partial="TemplateManagerButtons/EditTemplateTypoScriptSnippets" arguments="{fluidTemplate: fluidTemplate, options: options}"/>
-    <f:render partial="TemplateManagerButtons/GenerateTypoScript"             arguments="{fluidTemplate: fluidTemplate, options: options}"/>
-    <f:render partial="TemplateManagerButtons/LoadDyncssFiles"                arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <f:render partial="TemplateManagerButtons/EditTemplate"            arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <f:render partial="TemplateManagerButtons/EditTemplateDyncssFiles" arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <f:render partial="TemplateManagerButtons/GenerateTypoScript"      arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <f:render partial="TemplateManagerButtons/GenerateDyncssFiles"     arguments="{fluidTemplate: fluidTemplate, options: options}"/>
+    <f:render partial="TemplateManagerButtons/LoadDyncssFiles"         arguments="{fluidTemplate: fluidTemplate, options: options}"/>
     <li>Lösche Dateien ohne Datensatz</li>
     <li>Update Dateien aus Datensatz-Definitionen</li>
     <li>Update Datensatz-Definitionen aus Dateien</li>
@@ -11,12 +12,60 @@
 <br />
 <br />
 
+<div class="ftmBlock ftmBlockSettings">
+    <div class="ftmBlockInner">
+        <h2>Dyncss settings</h2>
+        <ul class="ftmActionList">
+            <li>
+                <f:if condition="{options.extConf.rewriteDyncssFileAfterUpdateDataset}">
+                    <f:then>
+                        <ftm:be.icon icon="status-status-permission-granted" />
+                        <span>Rewrite Dyncss-File after updating a dataset</span>
+                    </f:then>
+                    <f:else>
+                        <ftm:be.icon icon="status-status-permission-denied" />
+                        <span>Don't rewrite Dyncss-File after updating a dataset</span>
+                    </f:else>
+                </f:if>
+            </li>
+            <li>
+                <f:if condition="{options.extConf.deleteDyncssFileAfterDeleteDataset}">
+                    <f:then>
+                        <ftm:be.icon icon="status-status-permission-granted" />
+                        <span>Delete Dyncss-File after deleting a dataset</span>
+                    </f:then>
+                    <f:else>
+                        <ftm:be.icon icon="status-status-permission-denied" />
+                        <span>Don't delete Dyncss-File after deleting a dataset</span>
+                    </f:else>
+                </f:if>
+            </li>
+            <li>
+                <f:if condition="{options.extConf.autoCreateDyncssDatasetOnFileDetection}">
+                    <f:then>
+                        <ftm:be.icon icon="status-status-permission-granted" />
+                        <span>Auto create Dyncss-File on file detection</span>
+                    </f:then>
+                    <f:else>
+                        <ftm:be.icon icon="status-status-permission-denied" />
+                        <span>Don't auto create Dyncss-File on file detection</span>
+                    </f:else>
+                </f:if>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
 <!--
     @todo: hier einen Link zum erstellen, 
     http://docs.typo3.org/typo3cms/CoreApiReference/ApiOverview/Examples/EditLinks/Index.html#edit-links-new
     gleiche bei den TYPOScript-Snippets
     
     -->
+
+
 
 <p>
         <Ex:be.editLink parameters="&edit[tx_examples_haiku][1]=new&defVals[tx_examples_haiku][title]=New%20haiku" returnUrl="mod.php?M=tools_ExamplesExamples&tx_examples_tools_examplesexamples[action]=links" title="{f:translate(key: 'function_links_new_haiku')}">

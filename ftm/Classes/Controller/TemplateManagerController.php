@@ -244,6 +244,7 @@ class TemplateManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $options = array();
         $options['ftmVersion'] = FTM_VERSION;
         $options['pid']        = $this->pid;
+        $options['extConf']    = $this->extConf;
         $options['wikiUrl']    = 'http://fluid-template-manager.de/documentation/';
         $options['disclaimerNotAccepted'] = TRUE;
         
